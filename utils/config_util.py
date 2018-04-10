@@ -31,6 +31,10 @@ class Parser(object):
         return self.config.getfloat('rl', 'lr_rl')
 
     @property
+    def reward_c(self):
+        return self.config.getfloat('rl', 'reward_c')
+
+    @property
     def total_episodes(self):
         return self.config.getint('rl', 'total_episodes')
 
@@ -56,19 +60,46 @@ class Parser(object):
 
     @property
     def student_model_name(self):
-        return self.config.getint('model', 'student_model_name')
+        return self.config.get('stud', 'student_model_name')
 
     @property
-    def train_data(self):
-        return os.path.expanduser(self.config.get('data', 'train_data'))
+    def train_data_file(self):
+        train_data_file = self.config.get('data', 'train_data_file')
+        return os.path.join(self.data_dir, train_data_file)
 
     @property
-    def valid_data(self):
-        return os.path.expanduser(self.config.get('data', 'valid_data'))
+    def valid_data_file(self):
+        valid_data_file = self.config.get('data', 'valid_data_file')
+        return os.path.join(self.data_dir, valid_data_file)
 
     @property
-    def test_data(self):
-        return os.path.expanduser(self.config.get('data', 'test_data'))
+    def test_data_file(self):
+        test_data_file = self.config.get('data', 'test_data_file')
+        return os.path.join(self.data_dir, test_data_file)
+
+    @property
+    def batch_size(self):
+        return self.config.getint('stud', 'batch_size')
+
+    @property
+    def dim_input_stud(self):
+        return self.config.getint('stud', 'dim_input_stud')
+
+    @property
+    def dim_hidden_stud(self):
+        return self.config.getint('stud', 'dim_hidden_stud')
+
+    @property
+    def dim_output_stud(self):
+        return self.config.getint('stud', 'dim_output_stud')
+
+    @property
+    def lr_stud(self):
+        return self.config.getfloat('stud', 'lr_stud')
+
+    @property
+    def reward_baseline_decay(self):
+        return self.config.getfloat('rl', 'reward_baseline_decay')
 
     @property
     def timedelay_num(self):

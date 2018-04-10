@@ -11,7 +11,8 @@ def get_logger(name=__file__, level=logging.INFO):
     logger.propagate = False
     logger.setLevel(level)
 
-    formatter = logging.Formatter("%(asctime)s:%(filename)s:%(levelname)s::%(message)s")
+    formatter = logging.Formatter("%(levelname)s::%(message)s")
+    # formatter = logging.Formatter("%(asctime)s:%(filename)s:%(levelname)s::%(message)s")
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)
     handler.setLevel(0)
