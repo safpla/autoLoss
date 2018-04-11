@@ -6,7 +6,6 @@ def get_logger(name=__file__, level=logging.INFO):
     if getattr(logger, '_init_done__', None):
         logger.setLevel(level)
         return logger
-
     logger._init_done__ = True
     logger.propagate = False
     logger.setLevel(level)

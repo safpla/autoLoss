@@ -78,6 +78,14 @@ class Parser(object):
         return os.path.join(self.data_dir, test_data_file)
 
     @property
+    def num_sample_train(self):
+        return self.config.getint('data', 'num_sample_train')
+
+    @property
+    def num_sample_valid(self):
+         return self.config.getint('data', 'num_sample_valid')
+
+    @property
     def batch_size(self):
         return self.config.getint('stud', 'batch_size')
 

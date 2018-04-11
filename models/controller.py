@@ -5,6 +5,7 @@
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import numpy as np
+import os
 
 class Controller():
     def __init__(self, config, graph):
@@ -55,6 +56,7 @@ class Controller():
             optimizer = tf.train.AdamOptimizer(learning_rate=lr)
             self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
             self.init = tf.global_variables_initializer()
+            self.saver = tf.train.Saver()
 
     def get_gradients(self, sess, state, action, reward):
         """ Return the gradients according to one episode
@@ -93,3 +95,25 @@ class Controller():
         action = np.zeros(len(a_dist[0]), dtype='i')
         action[a] = 1
         return action
+
+    def load_model(self, sess, checkpoint_dir):
+        assert sess.graph is self.graph
+        ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
+        if ckpt and ckpt.model_checkpoint_path:
+            model_checkpoint_path = ckpt.model_checkpoint_path
+        print('loading pretrained model from: ' + model_checkpoint_path)
+        self.saver.restore(sess, model_checkpoint_path)
+
+    def save_model(self, sess, global_step):
+        assert sess.graph is self.graph
+        model_dir = self.config.model_dir
+        task_name = 'autoLoss-' + self.config.student_model_name
+        task_dir = os.path.join(model_dir, task_name)
+        if not os.path.exists(task_dir):
+            os.mkdir(task_dir)
+        controller = 'ffn'
+        student = self.config.student_model_name
+        model_name = '{}-{}'.format(controller, student)
+        save_path = os.path.join(task_dir, model_name)
+        self.saver.save(sess, save_path, global_step=global_step)
+

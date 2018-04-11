@@ -37,7 +37,7 @@ class Trainer():
         else:
             raise NotImplementedError
 
-    def train(self):
+    def train(self, load_ctrl=None):
         """ Iteratively training between controller and the multi-loss task """
         config = self.config
         sess_ctrl = self.sess_ctrl
@@ -45,9 +45,12 @@ class Trainer():
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
         total_reward = []
+        best_reward = 0
 
         # initializer controllor
         sess_ctrl.run(model_ctrl.init)
+        if load_ctrl:
+            model_ctrl.load_model(sess_ctrl, load_ctrl)
 
         # initialize gradient buffer
         gradBuffer = sess_ctrl.run(model_ctrl.tvars)
@@ -68,13 +71,14 @@ class Trainer():
             state_hist = []
             action_hist = []
             reward_hist = []
+            best_loss = 1e10
+            endurance = 0
 
             # running one episode.
             for i in range(config.max_training_step):
                 #logger.info('----train_step: {}----'.format(i))
                 action = model_ctrl.sample(sess_ctrl, state)
-                if i < 10:
-                    logger.info('sampling an action: {}'.format(action))
+                # logger.info('sampling an action: {}'.format(action))
                 state_new, reward, dead = model_stud.env(sess_stud, action)
                 #logger.info('current mse loss: {}'.format(state_new[10]))
                 #logger.info('current l1 loss: {}'.format(state_new[20]))
@@ -86,12 +90,22 @@ class Trainer():
                 reward_hist.append(reward)
                 state = state_new
                 running_reward += reward
-                if dead:
+                if i % 10 == 0:
+                    loss, _, _ = model_stud.valid(self.sess_stud)
+                    endurance += 1
+                    if loss < best_loss:
+                        best_loss = loss
+                        endurance = 0
+                    # logger.info('step: {}, valid_loss: {}'.format(i, loss))
+                if dead or endurance > 100:
                     break
             final_reward, adv = model_stud.get_final_reward(self.sess_stud)
+            loss, _, _ = model_stud.valid(self.sess_stud)
             running_reward += final_reward
             reward_hist[-1] = adv * 10
             logger.info('final_reward: {}'.format(final_reward))
+            logger.info('loss: {}'.format(loss))
+            logger.info('adv: {}'.format(adv))
             # update the controller.
             reward_hist = np.array(reward_hist)
             reward_hist = discount_rewards(reward_hist)
@@ -112,10 +126,19 @@ class Trainer():
             if ep % 10 == 0:
                 print(np.mean(total_reward[-10:]))
 
+            if final_reward > best_reward:
+                best_reward = final_reward
+                model_ctrl.save_model(sess_ctrl, global_step=ep)
+
+
 
 if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = utils.Parser(config_path)
     trainer = Trainer(config)
+    load_ctrl = os.path.join(config.model_dir, 'autoLoss-toy/')
+    ## start from pretrained
+    #trainer.train(load_ctrl=load_ctrl)
+    # start from strach
     trainer.train()

@@ -56,25 +56,29 @@ class Toy():
         lr = self.config.lr_stud
 
         with self.graph.as_default():
-            hidden = slim.fully_connected(self.x_plh, h_size,
-                                          activation_fn=tf.nn.relu)
+            #hidden = slim.fully_connected(self.x_plh, h_size,
+            #                              activation_fn=tf.nn.relu)
             #self.pred = slim.fully_connected(hidden, y_size,
             #                                 activation_fn=tf.nn.softmax)
 
+            hidden = slim.fully_connected(self.x_plh, h_size,
+                                          activation_fn=None)
             self.pred = slim.fully_connected(hidden, y_size,
                                              activation_fn=None)
 
             # define loss
-            self.loss_mse = tf.reduce_mean(tf.square(self.pred - self.y_plh))
+            self.loss_mse = tf.reduce_mean(tf.square(tf.squeeze(self.pred)
+                                                     - self.y_plh))
             tvars = tf.trainable_variables()
             l1_regularizer = tf.contrib.layers.l1_regularizer(
-                scale=0.005, scope=None)
+                scale=0.0005, scope=None)
             self.loss_l1 = tf.contrib.layers.apply_regularization(
                 l1_regularizer, tvars)
             l2_regularizer = tf.contrib.layers.l2_regularizer(
-                scale=0.001, scope=None)
+                scale=0.0005, scope=None)
             self.loss_l2 = tf.contrib.layers.apply_regularization(
                 l2_regularizer, tvars)
+            self.loss_total = self.loss_mse + self.loss_l1 + self.loss_l2
 
             # define update operation
             self.update_mse = tf.train.GradientDescentOptimizer(lr).\
@@ -83,7 +87,35 @@ class Toy():
                 minimize(self.loss_l1)
             self.update_l2 = tf.train.GradientDescentOptimizer(lr).\
                 minimize(self.loss_l2)
+            self.update_total = tf.train.GradientDescentOptimizer(lr).\
+                minimize(self.loss_total)
             self.init = tf.global_variables_initializer()
+
+    def train(self, sess):
+        """ Optimize mse loss, l1 loss, l2 loss at the same time """
+        assert sess.graph is self.graph
+        data = self.train_dataset.next_batch(self.config.batch_size)
+        x = data['input']
+        y = data['target']
+        feed_dict = {self.x_plh: x, self.y_plh: y}
+        #loss, _ = sess.run([self.loss_total, self.update_total],
+        #                   feed_dict=feed_dict)
+        loss, _ = sess.run([self.loss_mse, self.update_mse],
+                           feed_dict=feed_dict)
+        return loss
+
+    def valid(self, sess):
+        """ test on validation set """
+        assert sess.graph is self.graph
+        data = self.valid_dataset.next_batch(self.config.num_sample_valid)
+        x = data['input']
+        y = data['target']
+        feed_dict = {self.x_plh: x, self.y_plh: y}
+        fetch = [self.loss_mse, self.pred, self.y_plh]
+        [loss_mse, pred, gdth] = sess.run(fetch, feed_dict=feed_dict)
+        loss_mse_np = np.mean(np.square(pred - gdth))
+        #print('loss_mse_np: ', loss_mse_np)
+        return loss_mse, pred, gdth
 
     def env(self, sess, action):
         """ Given an action, return the new state, reward and whether dead
@@ -112,14 +144,14 @@ class Toy():
 
         if action[0] == 1:
             # update mse loss
-            _ = sess.run(self.update_mse, feed_dict=feed_dict)
+            sess.run(self.update_mse, feed_dict=feed_dict)
         elif action[1] == 1:
             # update l1 loss
-            _ = sess.run(self.update_l1, feed_dict=feed_dict)
+            sess.run(self.update_l1, feed_dict=feed_dict)
         else:
             assert action[2] == 1
             # update l2 loss
-            _ = sess.run(self.update_l2, feed_dict=feed_dict)
+            sess.run(self.update_l2, feed_dict=feed_dict)
 
         reward = self.get_step_reward()
         dead = self.check_terminate()
@@ -135,13 +167,7 @@ class Toy():
         return 0
 
     def get_final_reward(self, sess):
-        assert sess.graph is self.graph
-        data = self.valid_dataset.next_batch(1000)
-        x = data['input']
-        y = data['target']
-        feed_dict = {self.x_plh: x, self.y_plh: y}
-        fetch = [self.loss_mse, self.pred, self.y_plh]
-        [loss_mse, pred, gdth] = sess.run(fetch, feed_dict=feed_dict)
+        loss_mse, _, _ = self.valid(sess)
         valid_ppl = loss_mse / 100
         reward = self.config.reward_c / valid_ppl ** 2
 

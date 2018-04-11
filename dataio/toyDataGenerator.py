@@ -7,11 +7,11 @@ import os, sys
 import numpy as np
 import json
 
-dim = 64
+dim = 256
 num_of_data_points_train = 1000
 num_of_data_points_valid = 1000
 mean_noise = 0
-var_noise = 5
+var_noise = 1
 father_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_train = os.path.join(father_dir, 'Data/toy/train.npy')
 data_valid = os.path.join(father_dir, 'Data/toy/valid.npy')
@@ -23,13 +23,14 @@ def linear_func(x, w):
 
 def main():
     # generator training dataset
-    w = np.random.rand(dim)
+    w = np.random.rand(dim) - 0.5
+    #w = np.array([0.1, 0.5, 0.5, -0.1, 0.2, -0.2, 0.3, 0.1])
     print('weight: ', w)
 
     with open(data_train, 'wb') as f:
         data = []
         for i in range(num_of_data_points_train):
-            x = np.random.rand(dim)
+            x = np.random.rand(dim) - 0.5
             y = linear_func(x, w) + np.random.normal(loc=mean_noise,
                                                      scale=var_noise)
             data.append({'x': x, 'y': y})
