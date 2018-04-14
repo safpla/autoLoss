@@ -66,19 +66,20 @@ class Trainer():
             sess_stud.run(model_stud.init)
             model_stud.reset()
 
-            state = model_stud.get_state()
+            state = model_stud.get_state(self.sess_stud)
             running_reward = 0
             state_hist = []
             action_hist = []
             reward_hist = []
-            best_loss = 1e10
-            endurance = 0
 
             # running one episode.
             for i in range(config.max_training_step):
                 #logger.info('----train_step: {}----'.format(i))
                 action = model_ctrl.sample(sess_ctrl, state)
-                # logger.info('sampling an action: {}'.format(action))
+                #if i < config.max_training_step:
+                    #logger.info('train_loss: {}'.format(state[0:10]))
+                    #logger.info('valid_loss: {}'.format(state[10:20]))
+                    #logger.info('sampling an action: {}'.format(action))
                 state_new, reward, dead = model_stud.env(sess_stud, action)
                 #logger.info('current mse loss: {}'.format(state_new[10]))
                 #logger.info('current l1 loss: {}'.format(state_new[20]))
@@ -90,19 +91,12 @@ class Trainer():
                 reward_hist.append(reward)
                 state = state_new
                 running_reward += reward
-                if i % 10 == 0:
-                    loss, _, _ = model_stud.valid(self.sess_stud)
-                    endurance += 1
-                    if loss < best_loss:
-                        best_loss = loss
-                        endurance = 0
-                    # logger.info('step: {}, valid_loss: {}'.format(i, loss))
-                if dead or endurance > 100:
+                if dead:
                     break
             final_reward, adv = model_stud.get_final_reward(self.sess_stud)
-            loss, _, _ = model_stud.valid(self.sess_stud)
+            loss = model_stud.best_loss
             running_reward += final_reward
-            reward_hist[-1] = adv * 10
+            reward_hist[-1] = adv
             logger.info('final_reward: {}'.format(final_reward))
             logger.info('loss: {}'.format(loss))
             logger.info('adv: {}'.format(adv))
@@ -122,9 +116,6 @@ class Trainer():
                     gradBuffer[ix] = grad * 0
 
             total_reward.append(running_reward)
-
-            if ep % 10 == 0:
-                print(np.mean(total_reward[-10:]))
 
             if final_reward > best_reward:
                 best_reward = final_reward

@@ -9,6 +9,8 @@ class Parser(object):
             delimiters='=',
             interpolation=ExtendedInterpolation())
         self.config.read(config_path)
+        self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
+        self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
 
     @property
     def num_pre_loss(self):
@@ -104,6 +106,14 @@ class Parser(object):
     @property
     def lr_stud(self):
         return self.config.getfloat('stud', 'lr_stud')
+
+    @property
+    def valid_frequence_stud(self):
+        return self.config.getint('stud', 'valid_frequence_stud')
+
+    @property
+    def max_endurance_stud(self):
+        return self.config.getint('stud', 'max_endurance_stud')
 
     @property
     def reward_baseline_decay(self):

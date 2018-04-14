@@ -6,6 +6,7 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import numpy as np
 import os
+import time
 
 class Controller():
     def __init__(self, config, graph):
@@ -93,6 +94,13 @@ class Controller():
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
         action = np.zeros(len(a_dist[0]), dtype='i')
+        #p = np.random.rand(1)
+        #if p < 0.6:
+        #    a = 0
+        #elif p < 0.8:
+        #    a = 1
+        #else:
+        #    a = 2
         action[a] = 1
         return action
 

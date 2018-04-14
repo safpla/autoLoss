@@ -7,11 +7,11 @@ import os, sys
 import numpy as np
 import json
 
-dim = 256
-num_of_data_points_train = 1000
+dim = 32
+num_of_data_points_train = 500
 num_of_data_points_valid = 1000
 mean_noise = 0
-var_noise = 1
+var_noise = 2
 father_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_train = os.path.join(father_dir, 'Data/toy/train.npy')
 data_valid = os.path.join(father_dir, 'Data/toy/valid.npy')
@@ -48,6 +48,15 @@ def main():
 
         np.save(f, data)
         f.close()
+
+    mse = 0
+    for d in data:
+        x = d['x']
+        y = d['y']
+        y_ = linear_func(x, w)
+        mse += np.square(y - y_)
+    mse /= num_of_data_points_valid
+    print('valid_loss:', mse)
 
 def load():
     with open(data_train, 'rb') as f:
