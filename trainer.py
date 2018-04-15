@@ -74,12 +74,12 @@ class Trainer():
 
             # running one episode.
             for i in range(config.max_training_step):
-                #logger.info('----train_step: {}----'.format(i))
-                action = model_ctrl.sample(sess_ctrl, state)
-                #if i < config.max_training_step:
-                    #logger.info('train_loss: {}'.format(state[0:10]))
-                    #logger.info('valid_loss: {}'.format(state[10:20]))
-                    #logger.info('sampling an action: {}'.format(action))
+                action = model_ctrl.sample(sess_ctrl, state, step=ep)
+                #if i % 10 == 0:
+                #    logger.info('----train_step: {}----'.format(i))
+                #    logger.info('train_loss: {}'.format(state[19]))
+                #    logger.info('valid_loss: {}'.format(state[9]))
+                #    logger.info('sampling an action: {}'.format(action))
                 state_new, reward, dead = model_stud.env(sess_stud, action)
                 #logger.info('current mse loss: {}'.format(state_new[10]))
                 #logger.info('current l1 loss: {}'.format(state_new[20]))

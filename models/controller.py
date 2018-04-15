@@ -7,6 +7,7 @@ import tensorflow.contrib.slim as slim
 import numpy as np
 import os
 import time
+import math
 
 class Controller():
     def __init__(self, config, graph):
@@ -78,7 +79,7 @@ class Controller():
         grads = sess.run(self.gradients, feed_dict=feed_dict)
         return grads
 
-    def sample(self, sess, state):
+    def sample(self, sess, state, step):
         #
         # Sample an action from a given state, probabilistically
 
@@ -94,13 +95,20 @@ class Controller():
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
         action = np.zeros(len(a_dist[0]), dtype='i')
-        #p = np.random.rand(1)
-        #if p < 0.6:
-        #    a = 0
-        #elif p < 0.8:
-        #    a = 1
-        #else:
-        #    a = 2
+
+        # Free exploring at a certain probability.
+        decay = self.config.explore_rate_decay_rl
+        explore_rate = self.config.explore_rate_rl
+        explore_rate = explore_rate * math.exp(-step / decay)
+        p = np.random.rand(1)
+        if p[0] < explore_rate:
+            a = np.random.rand(1)
+            if a < 2/3:
+                a = 0
+            elif a < 5/6:
+                a = 1
+            else:
+                a = 2
         action[a] = 1
         return action
 

@@ -18,7 +18,7 @@ def train(config):
     configProto = tf.ConfigProto(gpu_options=gpu_options)
     sess = tf.InteractiveSession(config=configProto, graph=g)
 
-    model = toy.Toy(config, g, sys.argv[1])
+    model = toy.Toy(config, g, loss_mode=sys.argv[1])
     sess.run(model.init)
 
     max_training_step = config.max_training_step
@@ -34,19 +34,14 @@ def train(config):
                         .format(i, train_loss, valid_loss))
             if valid_loss < best_loss:
                 best_loss = valid_loss
+                with model.graph.as_default():
+                    best_tvars = tf.trainable_variables()
                 endurance = 0
         i += 1
 
     ## print weights
-    #with model.graph.as_default():
-    #    tvars = tf.trainable_variables()
-    #    for tvar in tvars:
-    #        print(sess.run(tvar))
-
-    ## print results on validation set
-    #valid_loss, preds, gdths = model.valid(sess)
-    #for pred, gdth in zip(preds, gdths):
-    #    print('pred: {} ---- gdth: {}'.format(pred, gdth))
+    for tvar in best_tvars:
+        print(sess.run(tvar))
 
     logger.info('best_loss: {}'.format(best_loss))
     return best_loss
@@ -58,13 +53,16 @@ if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = utils.Parser(config_path)
-    if sys.argv[1] == 2:
-        lambda_set = [0.0001, 0.0002, 0.0005, 0.001, 0.002]
-        aver_mat = np.zeros([5,5])
-        for i in range(5):
-            for j in range(5):
-                config.lambda1_stud = lambda_set[i]
-                config.lambda2_stud = lambda_set[j]
+    if sys.argv[1] == '2':
+        lambda_set1 = [0.2, 0.3, 0.4, 0.5, 0.6]
+        lambda_set2 = [0.0001, 0.0003, 0.001, 0.003, 0.01]
+        num1 = len(lambda_set1)
+        num2 = len(lambda_set2)
+        aver_mat = np.zeros([num1, num2])
+        for i in range(num1):
+            for j in range(num2):
+                config.lambda1_stud = lambda_set1[i]
+                config.lambda2_stud = lambda_set2[j]
                 loss = []
                 for k in range(10):
                     loss.append(train(config))

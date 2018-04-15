@@ -37,6 +37,14 @@ class Parser(object):
         return self.config.getfloat('rl', 'reward_c')
 
     @property
+    def explore_rate_decay_rl(self):
+        return self.config.getint('rl', 'explore_rate_decay_rl')
+
+    @property
+    def explore_rate_rl(self):
+        return self.config.getfloat('rl', 'explore_rate_rl')
+
+    @property
     def total_episodes(self):
         return self.config.getint('rl', 'total_episodes')
 

@@ -13,11 +13,12 @@ import utils
 logger = utils.get_logger()
 
 class Toy():
-    def __init__(self, config, graph, loss_mode=2):
+    def __init__(self, config, graph, loss_mode='2'):
         self.config = config
         self.graph = graph
         # loss_mode is only for DEBUG usage
-        self.loss_mode = 2
+        #   0: only mse, 1: mse & l1, 2: mse & l1 & l2
+        self.loss_mode = loss_mode
         train_data_file = config.train_data_file
         valid_data_file = config.valid_data_file
         self.train_dataset = Dataset()
@@ -73,19 +74,46 @@ class Toy():
         lr = self.config.lr_stud
 
         with self.graph.as_default():
+            # 2-layer ffn
             #hidden = slim.fully_connected(self.x_plh, h_size,
-            #                              activation_fn=tf.nn.relu)
+            #                              activation_fn=tf.nn.tanh)
             #self.pred = slim.fully_connected(hidden, y_size,
-            #                                 activation_fn=tf.nn.softmax)
+            #                                 activation_fn=None)
 
-            hidden = slim.fully_connected(self.x_plh, h_size,
-                                          activation_fn=tf.nn.tanh)
-            self.pred = slim.fully_connected(hidden, y_size,
-                                             activation_fn=None)
+            # quadratic equation
+            # first order
+            x_size = self.config.dim_input_stud
+            initial = tf.random_normal(shape=[x_size, 1], stddev=0.01)
+            w1 = tf.Variable(initial)
+            sum1 = tf.matmul(self.x_plh, w1)
+
+            # second order
+            initial = tf.random_normal(shape=[x_size, x_size], stddev=0.01)
+            w2 = tf.Variable(initial)
+            xx = tf.matmul(tf.reshape(self.x_plh, [-1, x_size, 1]),
+                           tf.reshape(self.x_plh, [-1, 1, x_size]))
+            sum2 = tf.matmul(tf.reshape(xx, [-1, x_size*x_size]),
+                             tf.reshape(w2, [x_size*x_size, 1]))
+            # divide by 10 is important here for the convergence.
+            self.pred = sum1 + sum2 / 10
+            self.w1 = w1
+            self.w2 = w2
 
             # define loss
             self.loss_mse = tf.reduce_mean(tf.square(tf.squeeze(self.pred)
                                                      - self.y_plh))
+
+            # NOTE(Haowen): Somehow the l1,l2 regularizers provided by tf
+            # provide a better performance than self-designed regularizers
+            # showing in the flowing 6 lines.
+
+            #self.loss_l1 = self.config.lambda1_stud * (
+            #    tf.reduce_sum(tf.reduce_sum(tf.abs(w2)))\
+            #    + tf.reduce_sum(tf.reduce_sum(tf.abs(w1))))
+            #self.loss_l2 = self.config.lambda2_stud * (
+            #    tf.reduce_sum(tf.reduce_sum(tf.square(w2)))\
+            #    + tf.reduce_sum(tf.reduce_sum(tf.square(w1))))
+
             tvars = tf.trainable_variables()
             l1_regularizer = tf.contrib.layers.l1_regularizer(
                 scale=self.config.lambda1_stud, scope=None)
@@ -95,12 +123,19 @@ class Toy():
                 scale=self.config.lambda2_stud, scope=None)
             self.loss_l2 = tf.contrib.layers.apply_regularization(
                 l2_regularizer, tvars)
-            if self.loss_mode == 0:
+            print(self.loss_mode)
+            if self.loss_mode == '0':
                 self.loss_total = self.loss_mse
-            elif self.loss_mode == 1:
+                print('mse loss')
+            elif self.loss_mode == '1':
                 self.loss_total = self.loss_mse + self.loss_l1
+                print('mse loss and l1 loss')
+                print('lambda1:', self.config.lambda1_stud)
             else:
                 self.loss_total = self.loss_mse + self.loss_l1 + self.loss_l2
+                print('mse loss, l1 loss and l2 loss')
+                print('lambda1:', self.config.lambda1_stud)
+                print('lambda2:', self.config.lambda2_stud)
 
             # define update operation
             self.update_mse = tf.train.GradientDescentOptimizer(lr).\
@@ -122,8 +157,6 @@ class Toy():
         feed_dict = {self.x_plh: x, self.y_plh: y}
         loss, _ = sess.run([self.loss_total, self.update_total],
                            feed_dict=feed_dict)
-        #loss, _ = sess.run([self.loss_mse, self.update_mse],
-        #                   feed_dict=feed_dict)
         return loss
 
     def valid(self, sess, dataset=None):
@@ -138,7 +171,6 @@ class Toy():
         fetch = [self.loss_mse, self.pred, self.y_plh]
         [loss_mse, pred, gdth] = sess.run(fetch, feed_dict=feed_dict)
         loss_mse_np = np.mean(np.square(pred - gdth))
-        #print('loss_mse_np: ', loss_mse_np)
         return loss_mse, pred, gdth
 
     def env(self, sess, action):
