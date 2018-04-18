@@ -39,6 +39,7 @@ class Dataset(object):
             self._index = np.arange(self._num_examples)
             self._index_in_epoch = 0
             self._epochs_completed = 0
+            np.random.seed(1652)
 
     @property
     def num_examples(self):
@@ -84,6 +85,6 @@ if __name__ == '__main__':
     filename = os.path.join(root_path, 'Data/toy/train.npy')
     dataset = Dataset()
     dataset.load_npy(filename)
-    point = dataset.next_batch(1)
+    point = dataset.next_batch(50)
     print('input: ', point['input'])
     print('target: ', point['target'])

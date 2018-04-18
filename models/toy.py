@@ -16,7 +16,7 @@ class Toy():
     def __init__(self, config, graph, loss_mode='2'):
         self.config = config
         self.graph = graph
-        # loss_mode is only for DEBUG usage
+        # ----Loss_mode is only for DEBUG usage.----
         #   0: only mse, 1: mse & l1, 2: mse & l1 & l2
         self.loss_mode = loss_mode
         train_data_file = config.train_data_file
@@ -36,20 +36,27 @@ class Toy():
         #state = self.step_number + self.previous_mse_loss\
         #    + self.previous_l1_loss + self.previous_l2_loss\
         #    + self.previous_action
+        abs_diff = []
+        rel_diff = []
+        for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
+            abs_diff.append(v - t)
+            if t > 1e-6:
+                rel_diff.append((v - t) / t)
+            else:
+                rel_diff.append(0)
 
-        assert sess.graph is self.graph
-        valid_loss, _, _ = self.valid(sess)
-        train_loss, _, _ = self.valid(sess, dataset=self.train_dataset)
-        self.previous_valid_loss = self.previous_valid_loss[1:]\
-            + [valid_loss.tolist()]
-        self.previous_train_loss = self.previous_train_loss[1:]\
-            + [train_loss.tolist()]
-        state = self.previous_valid_loss + self.previous_train_loss
+        state = (self.previous_valid_loss
+                 + self.previous_train_loss
+                 + abs_diff
+                 + rel_diff)
+                 #+ self.previous_mse_loss
+                 #+ self.previous_l1_loss
+                 #+ self.previous_l2_loss)
         return np.array(state, dtype='f')
 
     def reset(self):
         """ Reset the model """
-        # TODO(haowen) the way to carry step number information should be
+        # TODO(haowen) The way to carry step number information should be
         # reconsiderd
         self.step_number = [0]
         self.previous_mse_loss = [0] * self.config.num_pre_loss
@@ -65,8 +72,9 @@ class Toy():
 
     def _build_placeholder(self):
         x_size = self.config.dim_input_stud
-        self.x_plh = tf.placeholder(shape=[None, x_size], dtype=tf.float32)
-        self.y_plh = tf.placeholder(shape=[None], dtype=tf.float32)
+        with self.graph.as_default():
+            self.x_plh = tf.placeholder(shape=[None, x_size], dtype=tf.float32)
+            self.y_plh = tf.placeholder(shape=[None], dtype=tf.float32)
 
     def _build_graph(self):
         h_size = self.config.dim_hidden_stud
@@ -74,27 +82,29 @@ class Toy():
         lr = self.config.lr_stud
 
         with self.graph.as_default():
-            # 2-layer ffn
+            # ----2-layer ffn----
             #hidden = slim.fully_connected(self.x_plh, h_size,
             #                              activation_fn=tf.nn.tanh)
             #self.pred = slim.fully_connected(hidden, y_size,
             #                                 activation_fn=None)
 
-            # quadratic equation
-            # first order
+            # ----quadratic equation----
+            #  ---first order---
             x_size = self.config.dim_input_stud
-            initial = tf.random_normal(shape=[x_size, 1], stddev=0.01)
+            initial = tf.random_normal(shape=[x_size, 1], stddev=0.1, seed=1)
             w1 = tf.Variable(initial)
             sum1 = tf.matmul(self.x_plh, w1)
 
-            # second order
-            initial = tf.random_normal(shape=[x_size, x_size], stddev=0.01)
+            #  ---second order---
+            initial = tf.random_normal(shape=[x_size, x_size], stddev=0.01,
+                                       seed=1)
             w2 = tf.Variable(initial)
             xx = tf.matmul(tf.reshape(self.x_plh, [-1, x_size, 1]),
                            tf.reshape(self.x_plh, [-1, 1, x_size]))
             sum2 = tf.matmul(tf.reshape(xx, [-1, x_size*x_size]),
                              tf.reshape(w2, [x_size*x_size, 1]))
-            # divide by 10 is important here for the convergence.
+            # NOTE(Haowen): Divide by 10 is important here to promise
+            # convergence.
             self.pred = sum1 + sum2 / 10
             self.w1 = w1
             self.w2 = w2
@@ -123,7 +133,6 @@ class Toy():
                 scale=self.config.lambda2_stud, scope=None)
             self.loss_l2 = tf.contrib.layers.apply_regularization(
                 l2_regularizer, tvars)
-            print(self.loss_mode)
             if self.loss_mode == '0':
                 self.loss_total = self.loss_mse
                 print('mse loss')
@@ -137,7 +146,7 @@ class Toy():
                 print('lambda1:', self.config.lambda1_stud)
                 print('lambda2:', self.config.lambda2_stud)
 
-            # define update operation
+            # ----Define update operation.----
             self.update_mse = tf.train.GradientDescentOptimizer(lr).\
                 minimize(self.loss_mse)
             self.update_l1 = tf.train.GradientDescentOptimizer(lr*1).\
@@ -190,24 +199,31 @@ class Toy():
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
         fetch = [self.loss_mse, self.loss_l1, self.loss_l2]
+
+        if action[0] == 1:
+            # ----Update mse loss.----
+            sess.run(self.update_mse, feed_dict=feed_dict)
+        elif action[1] == 1:
+            # ----Update l1 loss.----
+            sess.run(self.update_l1, feed_dict=feed_dict)
+        else:
+            assert action[2] == 1
+            # ----Update l2 loss.----
+            sess.run(self.update_l2, feed_dict=feed_dict)
         loss_mse, loss_l1, loss_l2 = sess.run(fetch, feed_dict=feed_dict)
-        # update state
+        valid_loss, _, _ = self.valid(sess)
+        train_loss, _, _ = self.valid(sess, dataset=self.train_dataset)
+
+        # ----Update state.----
         self.previous_mse_loss = self.previous_mse_loss[1:] + [loss_mse.tolist()]
         self.previous_l1_loss = self.previous_l1_loss[1:] + [loss_l1.tolist()]
         self.previous_l2_loss = self.previous_l2_loss[1:] + [loss_l2.tolist()]
         self.previous_action = action.tolist()
         self.step_number[0] += 1
-
-        if action[0] == 1:
-            # update mse loss
-            sess.run(self.update_mse, feed_dict=feed_dict)
-        elif action[1] == 1:
-            # update l1 loss
-            sess.run(self.update_l1, feed_dict=feed_dict)
-        else:
-            assert action[2] == 1
-            # update l2 loss
-            sess.run(self.update_l2, feed_dict=feed_dict)
+        self.previous_valid_loss = self.previous_valid_loss[1:]\
+            + [valid_loss.tolist()]
+        self.previous_train_loss = self.previous_train_loss[1:]\
+            + [train_loss.tolist()]
 
         reward = self.get_step_reward()
         dead = self.check_terminate(sess)
@@ -224,6 +240,7 @@ class Toy():
             self.endurance += 1
             loss, _, _ = self.valid(sess)
             if loss < self.best_loss:
+                self.best_step = self.step_number[0]
                 self.best_loss = loss
                 self.endurance = 0
             if self.endurance > self.config.max_endurance_stud:
@@ -231,8 +248,20 @@ class Toy():
         return False
 
     def get_step_reward(self):
-        # TODO(haowen) we first use final reward as stepwise reward
-        return 0
+        # TODO(haowen) Use the decrease of validation loss as step reward
+        improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
+
+        # TODO(haowen) This design of reward may cause unbalance because
+        # positive number is more than negative number in nature
+        if abs(improve) < 1e-5:
+            return 0    # no reward if the difference is too small
+        elif improve > 0:
+            # TODO(haowen) Try not to give reward to the reduce of loss
+            # This reward will strengthen penalty and weaken reward
+            return self.config.reward_step_rl
+            #return 0
+        else:
+            return -self.config.reward_step_rl
 
     def get_final_reward(self, sess):
         assert self.best_loss < 1e10 - 1
@@ -245,5 +274,14 @@ class Toy():
         adv = reward - self.reward_baseline
         self.reward_baseline = decay * self.reward_baseline\
             + (1 - decay) * reward
+        # TODO(haowen) Try to use maximum instead of shift average as baseline
+        # Result: doesn't seem to help too much
+        #if self.reward_baseline < reward:
+        #    self.reward_baseline = reward
         return reward, adv
+
+    def print_weight(self, sess):
+        w1, w2 = sess.run([self.w1, self.w2])
+        print('w1: ', w1)
+        #print('w2: ', w2)
 

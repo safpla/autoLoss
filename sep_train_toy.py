@@ -53,7 +53,7 @@ if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = utils.Parser(config_path)
-    if sys.argv[1] == '2':
+    if sys.argv[1] == '3':
         lambda_set1 = [0.2, 0.3, 0.4, 0.5, 0.6]
         lambda_set2 = [0.0001, 0.0003, 0.001, 0.003, 0.01]
         num1 = len(lambda_set1)
@@ -72,4 +72,6 @@ if __name__ == '__main__':
         loss = []
         for k in range(10):
             loss.append(train(config))
+        print(loss)
+        print('\n')
         print(np.mean(np.array(loss)))

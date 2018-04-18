@@ -7,11 +7,14 @@ import os, sys
 import numpy as np
 import json
 
-dim = 16
-num_of_data_points_train = 50
-num_of_data_points_valid = 200
-mean_noise = 0
-var_noise = 1
+root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+config_path = os.path.join(root_path, 'config/regression.cfg')
+config = utils.Parser(config_path)
+dim = config.dim_input_stud
+num_of_data_points_train = config.num_sample_train
+num_of_data_points_valid = config.num_sample_valid
+mean_noise = config.mean_noise
+var_noise = config.var_noise
 father_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 data_train = os.path.join(father_dir, 'Data/toy/train.npy')
 data_valid = os.path.join(father_dir, 'Data/toy/valid.npy')
@@ -25,7 +28,6 @@ def main():
     # generator training dataset
     w = np.random.rand(dim) - 0.5
     #w = np.array([0.1, 0.5, 0.5, -0.1, 0.2, -0.2, 0.3, 0.1])
-    #w = np.array([3])
     print('weight: ', w)
 
     with open(data_train, 'wb') as f:

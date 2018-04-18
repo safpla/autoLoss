@@ -37,6 +37,9 @@ class Controller():
             self.output = slim.fully_connected(hidden, a_size,
                                             biases_initializer=None,
                                             activation_fn=tf.nn.softmax)
+            #self.output = slim.fully_connected(self.state_plh, a_size,
+            #                            biases_initializer=None,
+            #                            activation_fn=tf.nn.softmax)
             self.chosen_action = tf.argmax(self.output, 1)
             action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
             self.indexes = tf.range(0, tf.shape(self.output)[0])\
@@ -95,6 +98,7 @@ class Controller():
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
         action = np.zeros(len(a_dist[0]), dtype='i')
+        #print('sample: ', a)
 
         # Free exploring at a certain probability.
         decay = self.config.explore_rate_decay_rl
@@ -103,12 +107,19 @@ class Controller():
         p = np.random.rand(1)
         if p[0] < explore_rate:
             a = np.random.rand(1)
-            if a < 2/3:
+            #if a < 3/24:
+            #    a = 0
+            #elif a < 23/24:
+            #    a = 1
+            #else:
+            #    a = 2
+            if a < 2/6:
                 a = 0
-            elif a < 5/6:
+            elif a < 4/6:
                 a = 1
             else:
                 a = 2
+            #print('explore: ', a)
         action[a] = 1
         return action
 
@@ -132,4 +143,11 @@ class Controller():
         model_name = '{}-{}'.format(controller, student)
         save_path = os.path.join(task_dir, model_name)
         self.saver.save(sess, save_path, global_step=global_step)
+
+    def print_weight(self, sess):
+        assert sess.graph is self.graph
+        with self.graph.as_default():
+            tvars = sess.run(self.tvars)
+            for idx, var in enumerate(tvars):
+                print('idx:{}, var:{}'.format(idx, var))
 

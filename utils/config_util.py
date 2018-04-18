@@ -37,6 +37,10 @@ class Parser(object):
         return self.config.getfloat('rl', 'reward_c')
 
     @property
+    def reward_step_rl(self):
+        return self.config.getfloat('rl', 'reward_step_rl')
+
+    @property
     def explore_rate_decay_rl(self):
         return self.config.getint('rl', 'explore_rate_decay_rl')
 
@@ -94,6 +98,14 @@ class Parser(object):
     @property
     def num_sample_valid(self):
          return self.config.getint('data', 'num_sample_valid')
+
+    @property
+    def mean_noise(self):
+        return self.config.getfloat('data', 'mean_noise')
+
+    @property
+    def var_noise(self):
+        return self.config.getfloat('data', 'var_noise')
 
     @property
     def batch_size(self):

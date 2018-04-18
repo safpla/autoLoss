@@ -10,13 +10,14 @@ import os
 from models import controller
 from models import toy
 import utils
+from utils.analyse_utils import loss_analyzer
 
 
 logger = utils.get_logger()
 
-def discount_rewards(reward):
-    # TODO(haowen) simply use final reward as step reward, refine it later
-    reward_dis = np.array([reward[-1]] * len(reward))
+def discount_rewards(reward, final_reward):
+    # TODO(haowen) Final reward + step reward
+    reward_dis = np.array(reward) + np.array(final_reward)
     return reward_dis
 
 class Trainer():
@@ -24,13 +25,13 @@ class Trainer():
     def __init__(self, config):
         self.config = config
         self.g_ctrl = tf.Graph()
+        self.g_ctrl.device('/gpu:0')
         self.g_stud = tf.Graph()
+        self.g_stud.device('/gpu:0')
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess_ctrl = tf.InteractiveSession(config=configProto,
                                                graph=self.g_ctrl)
-        self.sess_stud = tf.InteractiveSession(config=configProto,
-                                               graph=self.g_stud)
         self.model_ctrl = controller.Controller(config, self.g_ctrl)
         if config.student_model_name == 'toy':
             self.model_stud = toy.Toy(config, self.g_stud)
@@ -41,68 +42,86 @@ class Trainer():
         """ Iteratively training between controller and the multi-loss task """
         config = self.config
         sess_ctrl = self.sess_ctrl
-        sess_stud = self.sess_stud
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
         total_reward = []
         best_reward = 0
+        gpu_options = tf.GPUOptions(allow_growth=True)
+        configProto = tf.ConfigProto(gpu_options=gpu_options)
 
-        # initializer controllor
+        # ----Initializer controllor.----
         sess_ctrl.run(model_ctrl.init)
         if load_ctrl:
             model_ctrl.load_model(sess_ctrl, load_ctrl)
 
-        # initialize gradient buffer
+        # ----Initialize gradient buffer.----
         gradBuffer = sess_ctrl.run(model_ctrl.tvars)
         for ix, grad in enumerate(gradBuffer):
             gradBuffer[ix] = grad * 0
 
-        # start episodes
+        # ----Start episodes.----
         for ep in range(config.total_episodes):
             # initializer student / environment
             logger.info('=================')
             logger.info('episodes: {}'.format(ep))
 
+            self.sess_stud = tf.InteractiveSession(config=configProto,
+                                                graph=self.g_stud)
+            sess_stud = self.sess_stud
             sess_stud.run(model_stud.init)
             model_stud.reset()
 
-            state = model_stud.get_state(self.sess_stud)
+            state = model_stud.get_state(sess_stud)
             running_reward = 0
             state_hist = []
             action_hist = []
             reward_hist = []
+            valid_loss_hist = []
+            train_loss_hist = []
+            old_action = []
 
-            # running one episode.
+            # ----Running one episode.----
             for i in range(config.max_training_step):
                 action = model_ctrl.sample(sess_ctrl, state, step=ep)
-                #if i % 10 == 0:
+                #if i % 1 == 0 and i > 1:
                 #    logger.info('----train_step: {}----'.format(i))
-                #    logger.info('train_loss: {}'.format(state[19]))
-                #    logger.info('valid_loss: {}'.format(state[9]))
+                #    logger.info('old action: {}'.format(old_action))
+                #    logger.info('train_loss: {}'.format(state[3]))
+                #    logger.info('valid_loss: {}'.format(state[1]))
+                #    logger.info('valid_loss_dif: {}'.format(state[1] - valid_loss_hist[-1]))
+                #    model_stud.print_weight(sess_stud)
                 #    logger.info('sampling an action: {}'.format(action))
+                old_action = action
                 state_new, reward, dead = model_stud.env(sess_stud, action)
-                #logger.info('current mse loss: {}'.format(state_new[10]))
-                #logger.info('current l1 loss: {}'.format(state_new[20]))
-                #logger.info('current l2 loss: {}'.format(state_new[30]))
-                #logger.info('reward: {}'.format(reward))
-                #logger.info('dead: {}'.format(dead))
                 state_hist.append(state)
                 action_hist.append(action)
                 reward_hist.append(reward)
+                valid_loss_hist.append(state[1])
+                train_loss_hist.append(state[3])
                 state = state_new
                 running_reward += reward
                 if dead:
                     break
-            final_reward, adv = model_stud.get_final_reward(self.sess_stud)
+
+            # ----Only use the history before the best result.----
+            state_hist = state_hist[:model_stud.best_step + 1]
+            action_hist = action_hist[:model_stud.best_step + 1]
+            reward_hist = reward_hist[:model_stud.best_step + 1]
+            valid_loss_hist = valid_loss_hist[:model_stud.best_step + 1]
+
+            final_reward, adv = model_stud.get_final_reward(sess_stud)
             loss = model_stud.best_loss
             running_reward += final_reward
-            reward_hist[-1] = adv
             logger.info('final_reward: {}'.format(final_reward))
             logger.info('loss: {}'.format(loss))
             logger.info('adv: {}'.format(adv))
-            # update the controller.
+            # ----Study the relation between loss and action.----
+            loss_analyzer(action_hist, valid_loss_hist, train_loss_hist)
+
+            # ----Update the controller.----
             reward_hist = np.array(reward_hist)
-            reward_hist = discount_rewards(reward_hist)
+            reward_hist = discount_rewards(reward_hist, adv)
+
             grads = model_ctrl.get_gradients(sess_ctrl, state_hist,
                                              action_hist, reward_hist)
             for idx, grad in enumerate(grads):
@@ -110,6 +129,10 @@ class Trainer():
 
             if ep % config.update_frequency == 0 and ep != 0:
                 logger.info('UPDATE CONTROLLOR')
+                # ----Print gradients and weights.----
+                #for idx, grad in enumerate(gradBuffer):
+                #    print(gradBuffer[idx])
+                #model_ctrl.print_weight(sess_ctrl)
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
                 for ix, grad in enumerate(gradBuffer):
@@ -117,9 +140,9 @@ class Trainer():
 
             total_reward.append(running_reward)
 
-            if final_reward > best_reward:
-                best_reward = final_reward
-                model_ctrl.save_model(sess_ctrl, global_step=ep)
+            #if final_reward > best_reward:
+            #    best_reward = final_reward
+            #    model_ctrl.save_model(sess_ctrl, global_step=ep)
 
 
 
@@ -129,7 +152,7 @@ if __name__ == '__main__':
     config = utils.Parser(config_path)
     trainer = Trainer(config)
     load_ctrl = os.path.join(config.model_dir, 'autoLoss-toy/')
-    ## start from pretrained
+    # ----start from pretrained----
     #trainer.train(load_ctrl=load_ctrl)
-    # start from strach
+    # ----start from strach----
     trainer.train()
