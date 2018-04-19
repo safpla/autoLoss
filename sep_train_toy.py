@@ -51,7 +51,7 @@ def train(config):
 
 if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/regression.cfg')
+    config_path = os.path.join(root_path, 'config/regression1.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '3':
         lambda_set1 = [0.2, 0.3, 0.4, 0.5, 0.6]

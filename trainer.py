@@ -6,6 +6,7 @@ import tensorflow as tf
 import numpy as np
 import logging
 import os
+import sys
 
 from models import controller
 from models import toy
@@ -25,9 +26,9 @@ class Trainer():
     def __init__(self, config):
         self.config = config
         self.g_ctrl = tf.Graph()
-        self.g_ctrl.device('/gpu:0')
+        #self.g_ctrl.device('/gpu:0')
         self.g_stud = tf.Graph()
-        self.g_stud.device('/gpu:0')
+        #self.g_stud.device('/gpu:0')
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess_ctrl = tf.InteractiveSession(config=configProto,
@@ -83,31 +84,35 @@ class Trainer():
             # ----Running one episode.----
             for i in range(config.max_training_step):
                 action = model_ctrl.sample(sess_ctrl, state, step=ep)
-                #if i % 1 == 0 and i > 1:
-                #    logger.info('----train_step: {}----'.format(i))
-                #    logger.info('old action: {}'.format(old_action))
-                #    logger.info('train_loss: {}'.format(state[3]))
-                #    logger.info('valid_loss: {}'.format(state[1]))
-                #    logger.info('valid_loss_dif: {}'.format(state[1] - valid_loss_hist[-1]))
-                #    model_stud.print_weight(sess_stud)
-                #    logger.info('sampling an action: {}'.format(action))
-                old_action = action
                 state_new, reward, dead = model_stud.env(sess_stud, action)
                 state_hist.append(state)
                 action_hist.append(action)
                 reward_hist.append(reward)
-                valid_loss_hist.append(state[1])
-                train_loss_hist.append(state[3])
+                valid_loss_hist.append(model_stud.previous_valid_loss[-1])
+                train_loss_hist.append(model_stud.previous_train_loss[-1])
+
+                #if i % 1 == 0 and i > 1:
+                #    logger.info('----train_step: {}----'.format(i))
+                #    logger.info('action: {}'.format(action))
+                #    logger.info('state:{}'.format(state_new))
+                #    l = model_stud.previous_valid_loss
+                #    logger.info('loss_imp: {}'.format(l[-2] - l[-1]))
+                #    logger.info('train_loss: {}'.format(state_new[3]))
+                #    logger.info('valid_loss: {}'.format(l[-1]))
+                #    model_stud.print_weight(sess_stud)
+
+                old_action = action
                 state = state_new
                 running_reward += reward
                 if dead:
                     break
 
             # ----Only use the history before the best result.----
-            state_hist = state_hist[:model_stud.best_step + 1]
-            action_hist = action_hist[:model_stud.best_step + 1]
-            reward_hist = reward_hist[:model_stud.best_step + 1]
+            state_hist = state_hist[:model_stud.best_step]
+            action_hist = action_hist[:model_stud.best_step]
+            reward_hist = reward_hist[:model_stud.best_step]
             valid_loss_hist = valid_loss_hist[:model_stud.best_step + 1]
+            train_loss_hist = train_loss_hist[:model_stud.best_step + 1]
 
             final_reward, adv = model_stud.get_final_reward(sess_stud)
             loss = model_stud.best_loss
@@ -115,7 +120,11 @@ class Trainer():
             logger.info('final_reward: {}'.format(final_reward))
             logger.info('loss: {}'.format(loss))
             logger.info('adv: {}'.format(adv))
+
             # ----Study the relation between loss and action.----
+            #total_steps = len(action_hist)
+            #action_sum = np.sum(np.array(action_hist), axis=0) / total_steps
+            #logger.info('p_a: {}'.format(action_sum))
             loss_analyzer(action_hist, valid_loss_hist, train_loss_hist)
 
             # ----Update the controller.----
@@ -145,10 +154,13 @@ class Trainer():
             #    model_ctrl.save_model(sess_ctrl, global_step=ep)
 
 
-
 if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/regression.cfg')
+    if len(sys.argv) > 1:
+        config_file = sys.argv[1]
+    else:
+        config_file = 'regression.cfg'
+    config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
     trainer = Trainer(config)
     load_ctrl = os.path.join(config.model_dir, 'autoLoss-toy/')

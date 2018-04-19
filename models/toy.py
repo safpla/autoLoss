@@ -29,6 +29,7 @@ class Toy():
         self._build_placeholder()
         self._build_graph()
         self.reward_baseline = None
+        self.improve_baseline = None
 
     def get_state(self, sess):
         # TODO(haowen) simply concatenate them could cause scale problem
@@ -44,11 +45,12 @@ class Toy():
                 rel_diff.append((v - t) / t)
             else:
                 rel_diff.append(0)
-
-        state = (self.previous_valid_loss
-                 + self.previous_train_loss
-                 + abs_diff
-                 + rel_diff)
+        # Notice
+        state = rel_diff[1:]
+        #state = (self.previous_valid_loss[1:]
+        #         + self.previous_train_loss[1:]
+        #         + abs_diff[1:]
+        #         + rel_diff[1:])
                  #+ self.previous_mse_loss
                  #+ self.previous_l1_loss
                  #+ self.previous_l2_loss)
@@ -69,6 +71,7 @@ class Toy():
         # to control when to terminate the episode
         self.endurance = 0
         self.best_loss = 1e10
+        self.improve_baseline = None
 
     def _build_placeholder(self):
         x_size = self.config.dim_input_stud
@@ -250,6 +253,14 @@ class Toy():
     def get_step_reward(self):
         # TODO(haowen) Use the decrease of validation loss as step reward
         improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
+
+        # TODO(haowen) Try to use tanh function instead of sign function
+        if self.improve_baseline is None:
+            self.improve_baseline = improve
+        decay = self.config.reward_baseline_decay
+        self.improve_baseline = decay * self.improve_baseline\
+            + (1 - decay) * improve
+        return math.tanh((improve - self.improve_baseline) * 10)
 
         # TODO(haowen) This design of reward may cause unbalance because
         # positive number is more than negative number in nature

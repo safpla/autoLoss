@@ -11,6 +11,7 @@ class Parser(object):
         self.config.read(config_path)
         self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
         self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
+        self.lr_rl = self.config.getfloat('rl', 'lr_rl')
 
     @property
     def num_pre_loss(self):
@@ -27,10 +28,6 @@ class Parser(object):
     @property
     def dim_action_rl(self):
         return self.config.getint('rl', 'dim_action_rl')
-
-    @property
-    def lr_rl(self):
-        return self.config.getfloat('rl', 'lr_rl')
 
     @property
     def reward_c(self):

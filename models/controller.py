@@ -14,7 +14,9 @@ class Controller():
         self.config = config
         self.graph = graph
         self._build_placeholder()
-        self._build_graph()
+        # Notice
+        #self._build_graph()
+        self._build_graph_sigmoid()
 
     def _build_placeholder(self):
         config = self.config
@@ -37,9 +39,6 @@ class Controller():
             self.output = slim.fully_connected(hidden, a_size,
                                             biases_initializer=None,
                                             activation_fn=tf.nn.softmax)
-            #self.output = slim.fully_connected(self.state_plh, a_size,
-            #                            biases_initializer=None,
-            #                            activation_fn=tf.nn.softmax)
             self.chosen_action = tf.argmax(self.output, 1)
             action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
             self.indexes = tf.range(0, tf.shape(self.output)[0])\
@@ -49,7 +48,40 @@ class Controller():
             self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
                                         * self.reward_plh)
 
-            # restore gradients and update them after several iterals
+            # ----Restore gradients and update them after several iterals.----
+            self.tvars = tf.trainable_variables()
+            tvars = self.tvars
+            self.gradient_plhs = []
+            for idx, var in enumerate(tvars):
+                placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
+                self.gradient_plhs.append(placeholder)
+
+            self.gradients = tf.gradients(self.loss, tvars)
+            optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
+            self.init = tf.global_variables_initializer()
+            self.saver = tf.train.Saver()
+
+    def _build_graph_sigmoid(self):
+        config = self.config
+        h_size = config.dim_hidden_rl
+        a_size = config.dim_action_rl
+        lr = config.lr_rl
+        with self.graph.as_default():
+            #k = tf.Variable(10)
+            #t = tf.Variable(1)
+            self.output = slim.fully_connected(self.state_plh, a_size,
+                                            activation_fn=tf.nn.softmax)
+            self.chosen_action = tf.argmax(self.output, 1)
+            action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
+            self.indexes = tf.range(0, tf.shape(self.output)[0])\
+                * tf.shape(self.output)[1] + action
+            self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
+                                                self.indexes)
+            self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
+                                        * self.reward_plh)
+
+            # ----Restore gradients and update them after several iterals.----
             self.tvars = tf.trainable_variables()
             tvars = self.tvars
             self.gradient_plhs = []
@@ -100,26 +132,43 @@ class Controller():
         action = np.zeros(len(a_dist[0]), dtype='i')
         #print('sample: ', a)
 
-        # Free exploring at a certain probability.
+        # ----Free exploring at a certain probability.----
         decay = self.config.explore_rate_decay_rl
         explore_rate = self.config.explore_rate_rl
         explore_rate = explore_rate * math.exp(-step / decay)
         p = np.random.rand(1)
         if p[0] < explore_rate:
             a = np.random.rand(1)
-            #if a < 3/24:
-            #    a = 0
-            #elif a < 23/24:
-            #    a = 1
-            #else:
-            #    a = 2
-            if a < 2/6:
+            if a < 1/3:
                 a = 0
-            elif a < 4/6:
+            elif a < 2/3:
                 a = 1
             else:
                 a = 2
-            #print('explore: ', a)
+
+        # ----Handcraft classifier----
+        #f = state[-1]
+        #  ---Hard version---
+        #  Threshold varies in different tasks, which is related to the SNR
+        #  of the data
+        #  ------
+        #threshold = 1
+        #if f < threshold:
+        #    a = 0
+        #else:
+        #    a = 1
+
+        #  ---Soft version---
+        #  Equals to one layer one dim ffn with sigmoid activation
+        #  ------
+        #k = 20
+        #t = 1
+        #p = 1 / (1 + math.exp(-k * (f - t)))
+        #if np.random.rand(1) < p:
+        #    a = 1
+        #else:
+        #    a = 0
+
         action[a] = 1
         return action
 
