@@ -91,10 +91,11 @@ class Trainer():
                 valid_loss_hist.append(model_stud.previous_valid_loss[-1])
                 train_loss_hist.append(model_stud.previous_train_loss[-1])
 
-                #if i % 1 == 0 and i > 1:
+                #if i % 1 == 0 and i > -1:
                 #    logger.info('----train_step: {}----'.format(i))
-                #    logger.info('action: {}'.format(action))
                 #    logger.info('state:{}'.format(state_new))
+                #    logger.info('action: {}'.format(action))
+                #    logger.info('reward:{}'.format(reward))
                 #    l = model_stud.previous_valid_loss
                 #    logger.info('loss_imp: {}'.format(l[-2] - l[-1]))
                 #    logger.info('train_loss: {}'.format(state_new[3]))
@@ -121,12 +122,6 @@ class Trainer():
             logger.info('loss: {}'.format(loss))
             logger.info('adv: {}'.format(adv))
 
-            # ----Study the relation between loss and action.----
-            #total_steps = len(action_hist)
-            #action_sum = np.sum(np.array(action_hist), axis=0) / total_steps
-            #logger.info('p_a: {}'.format(action_sum))
-            loss_analyzer(action_hist, valid_loss_hist, train_loss_hist)
-
             # ----Update the controller.----
             reward_hist = np.array(reward_hist)
             reward_hist = discount_rewards(reward_hist, adv)
@@ -138,16 +133,44 @@ class Trainer():
 
             if ep % config.update_frequency == 0 and ep != 0:
                 logger.info('UPDATE CONTROLLOR')
-                # ----Print gradients and weights.----
-                #for idx, grad in enumerate(gradBuffer):
-                #    print(gradBuffer[idx])
-                #model_ctrl.print_weight(sess_ctrl)
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
+
+                # ----Print gradients and weights.----
+                logger.info('Gradients')
+                for idx, grad in enumerate(gradBuffer):
+                    logger.info(gradBuffer[idx])
+                if np.isnan(gradBuffer[0][0][0]):
+                    exit()
+                logger.info('Weights')
+                model_ctrl.print_weight(sess_ctrl)
+                logger.info('Outputs')
+                feed_dict = {model_ctrl.state_plh: state_hist[:10],
+                             model_ctrl.action_plh: action_hist[:10],
+                             model_ctrl.reward_plh: reward_hist[:10]}
+                fetch = [model_ctrl.output,
+                         model_ctrl.action,
+                         model_ctrl.indexes,
+                         model_ctrl.responsible_outputs,
+                         model_ctrl.reward_plh,
+                         model_ctrl.loss]
+                r = sess_ctrl.run(fetch, feed_dict=feed_dict)
+                logger.info('state:', state_hist[:10])
+                logger.info('output:', r[0])
+                logger.info('action:', r[1])
+                logger.info('indexes:', r[2])
+                logger.info('res_outs:', r[3])
+                logger.info('reward:', r[4])
+                logger.info('loss:', r[5])
+
                 for ix, grad in enumerate(gradBuffer):
                     gradBuffer[ix] = grad * 0
 
             total_reward.append(running_reward)
+            # ----Study the relation between loss and action.----
+            loss_analyzer(action_hist, valid_loss_hist, train_loss_hist,
+                          reward_hist)
+
 
             #if final_reward > best_reward:
             #    best_reward = final_reward
@@ -166,5 +189,5 @@ if __name__ == '__main__':
     load_ctrl = os.path.join(config.model_dir, 'autoLoss-toy/')
     # ----start from pretrained----
     #trainer.train(load_ctrl=load_ctrl)
-    # ----start from strach----
-    trainer.train()
+# ----start from strach----
+trainer.train()

@@ -9,6 +9,10 @@ import os
 import time
 import math
 
+import utils
+
+logger = utils.get_logger()
+
 class Controller():
     def __init__(self, config, graph):
         self.config = config
@@ -74,6 +78,7 @@ class Controller():
                                             activation_fn=tf.nn.softmax)
             self.chosen_action = tf.argmax(self.output, 1)
             action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
+            self.action = action
             self.indexes = tf.range(0, tf.shape(self.output)[0])\
                 * tf.shape(self.output)[1] + action
             self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
@@ -90,7 +95,8 @@ class Controller():
                 self.gradient_plhs.append(placeholder)
 
             self.gradients = tf.gradients(self.loss, tvars)
-            optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            #optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            optimizer = tf.train.GradientDescentOptimizer(lr)
             self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
@@ -198,5 +204,5 @@ class Controller():
         with self.graph.as_default():
             tvars = sess.run(self.tvars)
             for idx, var in enumerate(tvars):
-                print('idx:{}, var:{}'.format(idx, var))
+                logger.info('idx:{}, var:{}'.format(idx, var))
 

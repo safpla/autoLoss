@@ -1,0 +1,1931 @@
+2018-04-20 07:08:04.276736: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-04-20 07:08:05.370041: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-04-20 07:08:05.370230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::=================
+INFO::episodes: 0
+2018-04-20 07:08:05.889629: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.3012514114379883
+INFO::adv: 0.0
+INFO::total_steps: 5900
+INFO::p_a: [0.33711864 0.3359322  0.32694915]
+INFO::Trace of actions distribution
+INFO::mse: [25, 38, 39, 26, 40, 30, 39, 24, 49, 36, 26, 30, 42, 34, 41, 26, 36, 32, 31, 31, 40, 33, 31, 36, 33, 35, 34, 35, 36, 27, 40, 43, 25, 36, 33, 36, 32, 30, 34, 41, 37, 27, 38, 30, 34, 29, 19, 30, 33, 34, 30, 41, 42, 25, 35, 31, 41, 34, 22]
+INFO::l1: [37, 33, 30, 34, 31, 25, 31, 46, 29, 37, 44, 27, 30, 33, 27, 34, 34, 37, 38, 31, 36, 37, 31, 37, 33, 31, 38, 37, 28, 29, 25, 25, 38, 33, 32, 28, 36, 35, 24, 33, 36, 32, 33, 34, 28, 31, 30, 37, 37, 32, 36, 34, 22, 41, 30, 41, 29, 30, 44]
+INFO::l2: [37, 28, 30, 39, 28, 44, 29, 29, 21, 26, 29, 42, 27, 32, 31, 39, 29, 30, 30, 37, 23, 29, 37, 26, 33, 33, 27, 27, 35, 43, 34, 31, 36, 30, 34, 35, 31, 34, 41, 25, 26, 40, 28, 35, 37, 39, 50, 32, 29, 33, 33, 24, 35, 33, 34, 27, 29, 35, 33]
+INFO::=================
+INFO::episodes: 1
+2018-04-20 07:08:52.043957: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.2315618991851807
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.8469725 -9.695449   8.848475 ]]
+INFO::[ 0.00735255 -0.28647912  0.27912655]
+INFO::Weights
+INFO::idx:0, var:[[-0.6887979   0.33329278 -0.27667764]]
+INFO::idx:1, var:[-0.00073526  0.02864791 -0.02791266]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7356224], dtype=float32), array([-2.7356238], dtype=float32), array([-2.736281], dtype=float32), array([-2.7369275], dtype=float32), array([-2.7375724], dtype=float32), array([-2.737575], dtype=float32), array([-2.7375739], dtype=float32), array([-2.573277], dtype=float32), array([-2.5740552], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33299947, 0.34292924, 0.3240713 ],
+       [0.7256578 , 0.04562281, 0.22871937],
+       [0.725658  , 0.04562275, 0.2287193 ],
+       [0.7257252 , 0.04559634, 0.22867852],
+       [0.7257912 , 0.04557036, 0.22863841],
+       [0.72585714, 0.04554448, 0.22859839],
+       [0.72585744, 0.04554437, 0.2285982 ],
+       [0.7258573 , 0.04554441, 0.22859833],
+       [0.70860815, 0.05259197, 0.23879983],
+       [0.70869213, 0.05255638, 0.23875155]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([1, 2, 1, 1, 1, 2, 2, 0, 1, 1], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 1,  5,  7, 10, 13, 17, 20, 21, 25, 28], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.34292924, 0.22871937, 0.04562275, 0.04559634, 0.04557036,
+       0.22859839, 0.2285982 , 0.7258573 , 0.05259197, 0.05255638],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([ 7.6159418e-01,  2.1192718e-05,  9.9620866e-03,  1.0248207e-02,
+        1.2155232e-02,  3.2196509e-05,  0.0000000e+00, -1.3855168e-01,
+        1.6562432e-02,  1.8046906e-02], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.09726554,)
+INFO::total_steps: 7440
+INFO::p_a: [0.32016129 0.33413978 0.34569892]
+INFO::Trace of actions distribution
+INFO::mse: [30, 35, 38, 36, 30, 36, 32, 34, 32, 30, 46, 33, 23, 41, 40, 21, 31, 28, 31, 43, 29, 38, 20, 28, 30, 25, 37, 27, 37, 33, 31, 27, 21, 30, 33, 30, 32, 32, 25, 44, 44, 30, 36, 31, 23, 29, 33, 36, 30, 40, 21, 27, 32, 33, 33, 37, 24, 30, 25, 31, 39, 32, 32, 30, 30, 32, 27, 32, 27, 35, 28, 31, 39, 35]
+INFO::l1: [37, 32, 31, 35, 27, 29, 30, 34, 34, 36, 29, 36, 38, 24, 27, 38, 39, 36, 43, 23, 31, 34, 45, 37, 42, 38, 25, 30, 31, 28, 36, 31, 33, 32, 28, 34, 31, 36, 41, 24, 27, 33, 28, 33, 36, 31, 32, 28, 32, 29, 47, 30, 32, 31, 30, 26, 43, 38, 35, 32, 25, 30, 32, 35, 45, 37, 29, 36, 33, 25, 40, 34, 26, 36]
+INFO::l2: [32, 32, 30, 28, 42, 34, 37, 31, 33, 33, 24, 30, 38, 34, 32, 40, 29, 35, 25, 33, 39, 27, 34, 34, 27, 36, 37, 42, 31, 38, 32, 41, 45, 37, 38, 35, 36, 31, 33, 31, 28, 36, 35, 35, 40, 39, 34, 35, 37, 30, 31, 42, 35, 35, 36, 36, 32, 31, 39, 36, 35, 37, 35, 34, 24, 30, 43, 31, 39, 39, 31, 34, 34, 28]
+INFO::=================
+INFO::episodes: 2
+2018-04-20 07:09:55.270232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.6521289348602295
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[-0.38992023  0.3749226   0.01499764]]
+INFO::[-0.04239622  0.03848382  0.00391241]
+INFO::Weights
+INFO::idx:0, var:[[-0.64980584  0.2958005  -0.2781774 ]]
+INFO::idx:1, var:[ 0.00350437  0.02479953 -0.0283039 ]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7356224], dtype=float32), array([-2.736281], dtype=float32), array([-2.736926], dtype=float32), array([-2.7369275], dtype=float32), array([-2.7369263], dtype=float32), array([-2.5985816], dtype=float32), array([-2.599352], dtype=float32), array([-2.599352], dtype=float32), array([-2.5993526], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33442402, 0.34162202, 0.323954  ],
+       [0.7005933 , 0.05386069, 0.24554598],
+       [0.7006589 , 0.05383219, 0.24550886],
+       [0.7007232 , 0.0538043 , 0.24547255],
+       [0.7007233 , 0.05380423, 0.24547245],
+       [0.70072323, 0.05380429, 0.2454725 ],
+       [0.6866669 , 0.06009395, 0.25323913],
+       [0.6867467 , 0.06005718, 0.2531961 ],
+       [0.6867467 , 0.06005718, 0.2531961 ],
+       [0.6867468 , 0.06005713, 0.25319603]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([1, 1, 1, 2, 2, 0, 1, 2, 2, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 1,  4,  7, 11, 14, 15, 19, 23, 26, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.34162202, 0.05386069, 0.05383219, 0.24547255, 0.24547245,
+       0.70072323, 0.06009395, 0.2531961 , 0.2531961 , 0.6867468 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([7.6159418e-01, 8.9879995e-03, 9.2018303e-03, 2.6116264e-05,
+       0.0000000e+00, 9.4219410e-01, 1.4256192e-02, 0.0000000e+00,
+       1.8202065e-05, 8.9754611e-01], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.15836549,)
+INFO::total_steps: 1730
+INFO::p_a: [0.32947977 0.35260116 0.31791908]
+INFO::Trace of actions distribution
+INFO::mse: [28, 35, 34, 32, 34, 32, 33, 29, 35, 32, 33, 32, 32, 34, 32, 35, 35]
+INFO::l1: [32, 32, 35, 29, 36, 37, 43, 41, 28, 39, 34, 34, 35, 36, 37, 40, 28]
+INFO::l2: [39, 32, 30, 38, 29, 30, 23, 29, 36, 28, 32, 33, 32, 29, 30, 24, 36]
+INFO::=================
+INFO::episodes: 3
+2018-04-20 07:10:12.978595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.2159435749053955
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.39670134 -0.43744788  0.04074661]]
+INFO::[ 0.00330489 -0.00565607  0.00235117]
+INFO::Weights
+INFO::idx:0, var:[[-0.68947595  0.3395453  -0.28225207]]
+INFO::idx:1, var:[ 0.00317388  0.02536514 -0.02853901]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7349827], dtype=float32), array([-2.7699983], dtype=float32), array([-2.770826], dtype=float32), array([-2.7020357], dtype=float32), array([-2.7024405], dtype=float32), array([-2.7028477], dtype=float32), array([-2.7032187], dtype=float32), array([-2.588723], dtype=float32), array([-2.588723], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.3343113 , 0.34181303, 0.32387567],
+       [0.7249713 , 0.04443235, 0.23059636],
+       [0.7284952 , 0.0430682 , 0.22843659],
+       [0.728578  , 0.04303643, 0.22838558],
+       [0.72161794, 0.04575198, 0.2326301 ],
+       [0.7216594 , 0.04573555, 0.23260508],
+       [0.721701  , 0.04571902, 0.23257995],
+       [0.721739  , 0.04570397, 0.23255704],
+       [0.7098039 , 0.05056851, 0.23962758],
+       [0.7098039 , 0.05056851, 0.23962758]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([2, 0, 1, 0, 1, 1, 1, 0, 2, 1], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 2,  3,  7,  9, 13, 16, 19, 21, 26, 28], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.32387567, 0.7249713 , 0.0430682 , 0.728578  , 0.04575198,
+       0.04573555, 0.04571902, 0.721739  , 0.23962758, 0.05056851],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([0.7615942 , 0.511113  , 0.01103016, 0.94704753, 0.00822536,
+       0.00915578, 0.01031461, 0.91353434, 0.        , 0.01042435],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.17720315,)
+INFO::total_steps: 5760
+INFO::p_a: [0.31875    0.37135417 0.30989583]
+INFO::Trace of actions distribution
+INFO::mse: [34, 42, 26, 39, 30, 40, 34, 27, 34, 33, 38, 26, 30, 36, 33, 26, 27, 24, 30, 35, 30, 24, 28, 34, 24, 32, 35, 36, 37, 27, 41, 36, 28, 28, 27, 31, 31, 39, 31, 30, 34, 24, 35, 24, 25, 35, 36, 32, 30, 27, 30, 35, 35, 30, 27, 38, 31]
+INFO::l1: [37, 31, 44, 24, 40, 31, 31, 38, 37, 33, 25, 39, 38, 38, 36, 39, 37, 43, 38, 30, 38, 34, 37, 35, 34, 37, 34, 31, 40, 38, 25, 35, 44, 36, 42, 37, 41, 31, 38, 46, 32, 46, 45, 38, 45, 40, 37, 39, 36, 34, 39, 30, 37, 39, 40, 35, 41]
+INFO::l2: [28, 26, 29, 36, 29, 28, 34, 34, 28, 33, 36, 34, 31, 25, 30, 34, 35, 32, 31, 34, 31, 41, 34, 30, 41, 30, 30, 32, 22, 34, 33, 28, 27, 35, 30, 31, 27, 29, 30, 23, 33, 29, 19, 37, 29, 24, 26, 28, 33, 38, 30, 34, 27, 30, 32, 26, 27]
+INFO::=================
+INFO::episodes: 4
+2018-04-20 07:11:01.455581: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.2560884952545166
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.5848982  -0.62749386  0.04259583]]
+INFO::[ 0.01048202 -0.01355249  0.00307047]
+INFO::Weights
+INFO::idx:0, var:[[-0.74796575  0.4022947  -0.28651166]]
+INFO::idx:1, var:[ 0.00212567  0.02672039 -0.02884606]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.738599], dtype=float32), array([-2.738761], dtype=float32), array([-2.7387614], dtype=float32), array([-2.6692655], dtype=float32), array([-2.669604], dtype=float32), array([-2.6699038], dtype=float32), array([-2.6702445], dtype=float32), array([-2.670246], dtype=float32), array([-2.6705456], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33395642, 0.34227186, 0.32377177],
+       [0.75878745, 0.03332188, 0.20789066],
+       [0.75880396, 0.0333164 , 0.20787962],
+       [0.758804  , 0.03331638, 0.20787957],
+       [0.7516281 , 0.0357477 , 0.21262422],
+       [0.7516635 , 0.03573546, 0.212601  ],
+       [0.75169486, 0.03572464, 0.2125805 ],
+       [0.7517305 , 0.03571234, 0.21255717],
+       [0.7517307 , 0.03571228, 0.21255706],
+       [0.75176203, 0.03570146, 0.21253653]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([0, 0, 2, 0, 1, 1, 1, 2, 1, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 0,  3,  8,  9, 13, 16, 19, 23, 25, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.33395642, 0.75878745, 0.20787962, 0.758804  , 0.0357477 ,
+       0.03573546, 0.03572464, 0.21255717, 0.03571228, 0.75176203],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([ 7.6159418e-01, -1.3649969e-01,  2.3870898e-05,  9.3366122e-01,
+        5.2771256e-03,  5.8464361e-03,  6.5068929e-03,  3.3549692e-05,
+        7.9708435e-03,  6.5768743e-01], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.13283473,)
+INFO::total_steps: 5530
+INFO::p_a: [0.3164557  0.38625678 0.29728752]
+INFO::Trace of actions distribution
+INFO::mse: [32, 40, 41, 32, 34, 32, 27, 33, 33, 40, 31, 29, 34, 19, 26, 31, 25, 28, 33, 25, 27, 38, 34, 36, 30, 31, 35, 36, 28, 24, 34, 27, 23, 32, 29, 27, 37, 32, 31, 25, 40, 32, 36, 30, 40, 28, 27, 34, 30, 32, 30, 34, 29, 27, 33]
+INFO::l1: [35, 42, 38, 38, 35, 37, 42, 37, 39, 37, 43, 40, 41, 38, 37, 45, 39, 44, 47, 39, 36, 32, 43, 39, 39, 32, 40, 31, 43, 43, 37, 44, 41, 37, 43, 42, 37, 36, 33, 48, 36, 38, 34, 36, 27, 30, 39, 32, 42, 36, 39, 38, 38, 42, 33]
+INFO::l2: [32, 17, 20, 29, 30, 30, 30, 29, 27, 22, 25, 30, 24, 42, 36, 23, 35, 27, 19, 35, 36, 29, 22, 24, 30, 36, 24, 32, 28, 32, 28, 28, 35, 30, 27, 30, 25, 31, 35, 26, 23, 29, 29, 33, 32, 41, 33, 33, 27, 31, 30, 27, 32, 30, 33]
+INFO::=================
+INFO::episodes: 5
+2018-04-20 07:11:48.820298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.1316983699798584
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.49602947 -0.5332799   0.03725048]]
+INFO::[ 0.0073717  -0.00936543  0.00199374]
+INFO::Weights
+INFO::idx:0, var:[[-0.7975687   0.45562267 -0.2902367 ]]
+INFO::idx:1, var:[ 0.00138851  0.02765693 -0.02904543]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7349827], dtype=float32), array([-2.7356238], dtype=float32), array([-2.736281], dtype=float32), array([-2.7369275], dtype=float32), array([-2.7375724], dtype=float32), array([-2.7382195], dtype=float32), array([-2.7388465], dtype=float32), array([-2.484677], dtype=float32), array([-2.4848354], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33370697, 0.34258908, 0.32370394],
+       [0.78398365, 0.02613302, 0.18988334],
+       [0.7840485 , 0.0261142 , 0.18983734],
+       [0.784115  , 0.02609492, 0.18979016],
+       [0.7841804 , 0.02607596, 0.18974373],
+       [0.78424555, 0.02605705, 0.1896974 ],
+       [0.78431094, 0.02603811, 0.18965095],
+       [0.7843743 , 0.02601975, 0.18960595],
+       [0.7572236 , 0.03454114, 0.20823526],
+       [0.7572414 , 0.0345351 , 0.20822342]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([2, 1, 1, 1, 1, 1, 1, 0, 1, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 2,  4,  7, 10, 13, 16, 19, 21, 25, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.32370394, 0.02613302, 0.0261142 , 0.02609492, 0.02607596,
+       0.02605705, 0.02603811, 0.7843743 , 0.03454114, 0.7572414 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([0.7615942 , 0.00827932, 0.00995387, 0.01023976, 0.01214523,
+       0.01259413, 0.01518375, 0.9999174 , 0.00452034, 0.9999952 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.164457,)
+INFO::total_steps: 6030
+INFO::p_a: [0.29718076 0.39038143 0.31243781]
+INFO::Trace of actions distribution
+INFO::mse: [35, 37, 32, 26, 24, 27, 26, 26, 31, 34, 35, 33, 28, 32, 40, 36, 30, 30, 23, 27, 21, 32, 22, 32, 36, 35, 27, 29, 34, 24, 20, 36, 29, 19, 28, 33, 31, 23, 33, 28, 35, 24, 26, 32, 28, 25, 39, 25, 26, 32, 29, 32, 36, 28, 31, 29, 33, 21, 25, 25]
+INFO::l1: [42, 38, 37, 44, 40, 41, 38, 43, 43, 34, 35, 38, 43, 40, 34, 39, 47, 42, 36, 40, 42, 34, 43, 37, 35, 37, 45, 39, 41, 41, 40, 33, 36, 46, 35, 30, 38, 44, 44, 35, 33, 39, 45, 44, 41, 34, 35, 40, 39, 30, 35, 36, 37, 38, 39, 35, 34, 40, 34, 41]
+INFO::l2: [22, 24, 30, 29, 35, 31, 35, 30, 25, 31, 29, 28, 28, 27, 25, 24, 22, 27, 40, 32, 36, 33, 34, 30, 28, 27, 27, 31, 24, 34, 39, 30, 34, 34, 36, 36, 30, 32, 22, 36, 31, 36, 28, 23, 30, 40, 25, 34, 34, 37, 35, 31, 26, 33, 29, 35, 32, 38, 40, 33]
+INFO::=================
+INFO::episodes: 6
+2018-04-20 07:12:41.109890: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.273670196533203
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.31649128 -0.3386095   0.02211822]]
+INFO::[-0.00352785  0.00179876  0.00172909]
+INFO::Weights
+INFO::idx:0, var:[[-0.8292178   0.48948362 -0.29244852]]
+INFO::idx:1, var:[ 0.00174129  0.02747706 -0.02921834]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7349827], dtype=float32), array([-2.7533247], dtype=float32), array([-2.753422], dtype=float32), array([-2.76746], dtype=float32), array([-2.7674615], dtype=float32), array([-2.7676978], dtype=float32), array([-2.7679532], dtype=float32), array([-2.7392235], dtype=float32), array([-2.660858], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33382466, 0.34252742, 0.32364792],
+       [0.79923207, 0.02225933, 0.17850861],
+       [0.8010591 , 0.02177706, 0.17716384],
+       [0.8010688 , 0.02177453, 0.17715673],
+       [0.8024564 , 0.02141217, 0.17613138],
+       [0.80245656, 0.02141213, 0.17613128],
+       [0.80247986, 0.02140609, 0.1761141 ],
+       [0.802505  , 0.02139955, 0.17609543],
+       [0.7996559 , 0.02214694, 0.17819718],
+       [0.7916861 , 0.0243133 , 0.1840005 ]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([2, 0, 1, 0, 2, 1, 1, 0, 0, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 2,  3,  7,  9, 14, 16, 19, 21, 24, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.32364792, 0.79923207, 0.02177706, 0.8010688 , 0.17613138,
+       0.02141213, 0.02140609, 0.802505  , 0.7996559 , 0.7916861 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([7.6159418e-01, 9.9864101e-01, 2.6547536e-03, 2.1630922e-01,
+       1.8058832e-05, 2.1465304e-03, 2.4513016e-03, 2.3512391e-02,
+       9.4158459e-01, 9.9998897e-01], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.16080713,)
+INFO::total_steps: 4030
+INFO::p_a: [0.30818859 0.40322581 0.28858561]
+INFO::Trace of actions distribution
+INFO::mse: [34, 24, 33, 25, 29, 25, 31, 24, 33, 33, 29, 28, 31, 27, 29, 38, 29, 32, 35, 26, 28, 29, 38, 32, 34, 30, 33, 30, 24, 31, 28, 27, 39, 35, 31, 26, 30, 34, 29, 33]
+INFO::l1: [41, 39, 31, 41, 41, 37, 41, 46, 38, 38, 43, 38, 33, 50, 48, 33, 42, 40, 38, 46, 46, 46, 41, 33, 29, 38, 32, 39, 46, 35, 40, 42, 36, 38, 44, 39, 45, 39, 46, 41]
+INFO::l2: [24, 36, 35, 33, 29, 37, 27, 29, 28, 28, 27, 33, 35, 22, 22, 28, 28, 27, 26, 27, 25, 24, 20, 34, 36, 31, 34, 30, 29, 33, 31, 30, 24, 26, 24, 34, 24, 26, 24, 25]
+INFO::=================
+INFO::episodes: 7
+2018-04-20 07:13:17.845357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.1606810092926025
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.10199884 -0.12720738  0.02520855]]
+INFO::[-0.00720207  0.00502376  0.00217831]
+INFO::Weights
+INFO::idx:0, var:[[-0.8394177   0.50220436 -0.29496938]]
+INFO::idx:1, var:[ 0.0024615   0.02697468 -0.02943617]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.623887], dtype=float32), array([-2.6238859], dtype=float32), array([-2.6238866], dtype=float32), array([-2.631771], dtype=float32), array([-2.6317718], dtype=float32), array([-2.6322649], dtype=float32), array([-2.6328285], dtype=float32), array([-2.6365085], dtype=float32), array([-2.6365075], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33406582, 0.34235606, 0.3235781 ],
+       [0.7921085 , 0.02402144, 0.18387015],
+       [0.7921083 , 0.02402147, 0.18387021],
+       [0.79210836, 0.02402145, 0.18387015],
+       [0.7929333 , 0.02379344, 0.18327323],
+       [0.7929333 , 0.02379343, 0.18327318],
+       [0.7929849 , 0.02377924, 0.1832359 ],
+       [0.79304373, 0.02376303, 0.18319328],
+       [0.79342747, 0.02365743, 0.18291506],
+       [0.7934274 , 0.02365746, 0.18291518]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([0, 2, 2, 0, 2, 1, 1, 0, 2, 2], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 0,  5,  8,  9, 14, 16, 19, 21, 26, 29], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.33406582, 0.18387015, 0.18387021, 0.79210836, 0.18327323,
+       0.02379343, 0.02377924, 0.79304373, 0.18291506, 0.18291518],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([7.6159418e-01, 0.0000000e+00, 1.1773743e-05, 6.3102502e-01,
+       1.3455309e-05, 1.2452416e-02, 1.4362581e-02, 2.5155640e-01,
+       0.0000000e+00, 2.2141354e-05], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.114075266,)
+INFO::total_steps: 5050
+INFO::p_a: [0.28891089 0.41782178 0.29326733]
+INFO::Trace of actions distribution
+INFO::mse: [38, 29, 28, 16, 30, 25, 23, 44, 32, 24, 35, 26, 28, 28, 33, 34, 26, 31, 32, 25, 33, 30, 37, 29, 30, 24, 30, 24, 24, 28, 30, 33, 28, 24, 28, 27, 28, 31, 36, 33, 28, 26, 26, 21, 22, 25, 30, 31, 21, 28]
+INFO::l1: [30, 32, 40, 51, 31, 40, 46, 28, 44, 44, 36, 46, 47, 46, 36, 33, 44, 41, 39, 45, 46, 41, 37, 36, 39, 49, 44, 45, 45, 40, 38, 35, 39, 44, 43, 43, 51, 45, 35, 36, 40, 34, 43, 50, 43, 52, 45, 45, 48, 39]
+INFO::l2: [31, 38, 31, 32, 38, 34, 30, 27, 23, 31, 28, 27, 24, 25, 30, 32, 29, 27, 28, 29, 20, 28, 25, 34, 30, 26, 25, 30, 30, 31, 31, 31, 32, 31, 28, 29, 20, 23, 28, 30, 31, 39, 30, 28, 34, 22, 24, 23, 30, 32]
+INFO::=================
+INFO::episodes: 8
+2018-04-20 07:14:02.860041: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.168794870376587
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.12557678 -0.16925104  0.04367423]]
+INFO::[-0.0070239   0.00303004  0.00399387]
+INFO::Weights
+INFO::idx:0, var:[[-0.8519754   0.51912946 -0.2993368 ]]
+INFO::idx:1, var:[ 0.00316389  0.02667168 -0.02983556]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7356224], dtype=float32), array([-2.736281], dtype=float32), array([-2.6224303], dtype=float32), array([-2.2878966], dtype=float32), array([-2.288523], dtype=float32), array([-1.8077437], dtype=float32), array([-1.8079221], dtype=float32), array([-1.8335543], dtype=float32), array([-1.8336769], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33429995, 0.34225175, 0.3234483 ],
+       [0.80813974, 0.01944165, 0.17241856],
+       [0.80820465, 0.01942566, 0.17236966],
+       [0.79667246, 0.02238351, 0.1809441 ],
+       [0.75890106, 0.03373152, 0.20736736],
+       [0.75897753, 0.03370597, 0.20731647],
+       [0.69341475, 0.05953295, 0.24705227],
+       [0.69344175, 0.0595207 , 0.24703753],
+       [0.697298  , 0.05778479, 0.24491727],
+       [0.69731635, 0.05777658, 0.24490708]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([1, 1, 0, 0, 1, 0, 1, 0, 1, 1], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 1,  4,  6,  9, 13, 15, 19, 21, 25, 28], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.34225175, 0.01944165, 0.80820465, 0.79667246, 0.03373152,
+       0.75897753, 0.05953295, 0.69344175, 0.05778479, 0.05777658],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([0.7615942 , 0.008988  , 0.8098326 , 0.96061623, 0.00524373,
+       0.99998647, 0.00286871, 0.41972232, 0.00314403, 0.00347859],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.1716991,)
+INFO::total_steps: 4070
+INFO::p_a: [0.27665848 0.43734644 0.28599509]
+INFO::Trace of actions distribution
+INFO::mse: [40, 36, 36, 22, 31, 29, 26, 27, 26, 23, 22, 32, 24, 25, 28, 29, 23, 27, 30, 27, 26, 20, 26, 27, 30, 24, 36, 26, 24, 19, 26, 33, 25, 27, 29, 25, 28, 23, 28, 23]
+INFO::l1: [24, 38, 42, 43, 39, 35, 45, 43, 41, 52, 49, 35, 48, 43, 45, 37, 51, 45, 49, 39, 45, 49, 40, 45, 41, 47, 34, 46, 51, 50, 47, 38, 49, 45, 47, 46, 44, 43, 43, 42]
+INFO::l2: [35, 25, 21, 34, 29, 35, 28, 29, 32, 24, 28, 32, 27, 31, 26, 33, 25, 27, 20, 33, 28, 30, 33, 27, 28, 28, 29, 27, 24, 30, 26, 28, 25, 27, 23, 28, 27, 33, 28, 34]
+INFO::=================
+INFO::episodes: 9
+2018-04-20 07:14:39.846386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.2019219398498535
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.3600773  -0.3913786   0.03130138]]
+INFO::[ 0.00054418 -0.00405254  0.00350837]
+INFO::Weights
+INFO::idx:0, var:[[-0.8879831   0.5582673  -0.30246693]]
+INFO::idx:1, var:[ 0.00310947  0.02707693 -0.0301864 ]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.2543423], dtype=float32), array([-2.1826844], dtype=float32), array([-2.1826851], dtype=float32), array([-2.1943042], dtype=float32), array([-2.115153], dtype=float32), array([-2.1194735], dtype=float32), array([-2.0576644], dtype=float32), array([-2.0259404], dtype=float32), array([-1.4488834], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.3342794 , 0.34238803, 0.32333255],
+       [0.7705911 , 0.03028891, 0.19912007],
+       [0.76157427, 0.03320322, 0.20522249],
+       [0.7615744 , 0.0332032 , 0.20522246],
+       [0.7630583 , 0.03271353, 0.2042282 ],
+       [0.752779  , 0.03618694, 0.21103403],
+       [0.7533505 , 0.03598884, 0.21066068],
+       [0.74505895, 0.03892095, 0.21602014],
+       [0.74070555, 0.04051019, 0.21878432],
+       [0.64930767, 0.08181217, 0.26888022]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([0, 0, 2, 0, 0, 0, 0, 0, 0, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 0,  3,  8,  9, 12, 15, 18, 21, 24, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.3342794 , 0.7705911 , 0.20522249, 0.7615744 , 0.7630583 ,
+       0.752779  , 0.7533505 , 0.74505895, 0.74070555, 0.64930767],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([7.6159418e-01, 9.0048814e-01, 1.0037359e-05, 9.9463993e-01,
+       3.2311261e-01, 5.4168904e-01, 7.9367983e-01, 5.9529579e-01,
+       9.9955106e-01, 7.2645360e-01], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.25950494,)
+INFO::total_steps: 4580
+INFO::p_a: [0.28427948 0.4349345  0.28078603]
+INFO::Trace of actions distribution
+INFO::mse: [39, 24, 28, 28, 24, 22, 25, 30, 27, 30, 22, 28, 27, 28, 36, 31, 27, 27, 26, 28, 29, 21, 30, 19, 31, 27, 30, 26, 25, 24, 25, 28, 29, 23, 29, 31, 30, 35, 32, 24, 30, 38, 33, 29, 24]
+INFO::l1: [35, 43, 41, 40, 50, 51, 47, 41, 45, 37, 50, 46, 46, 47, 40, 44, 44, 48, 44, 43, 39, 52, 42, 53, 37, 47, 39, 45, 40, 48, 48, 46, 43, 43, 47, 46, 41, 33, 34, 46, 45, 29, 30, 45, 43]
+INFO::l2: [25, 32, 30, 31, 25, 26, 27, 28, 27, 32, 27, 25, 26, 24, 23, 24, 28, 24, 29, 28, 31, 26, 27, 27, 31, 25, 30, 28, 34, 27, 26, 25, 27, 33, 23, 22, 28, 31, 33, 29, 24, 32, 36, 25, 32]
+INFO::=================
+INFO::episodes: 10
+2018-04-20 07:15:21.251154: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.125767946243286
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.4002597  -0.43676975  0.03651006]]
+INFO::[ 0.00146482 -0.00484653  0.00338171]
+INFO::Weights
+INFO::idx:0, var:[[-0.92800903  0.60194427 -0.30611792]]
+INFO::idx:1, var:[ 0.00296299  0.02756158 -0.03052457]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7349827], dtype=float32), array([-2.4670935], dtype=float32), array([-2.4681299], dtype=float32), array([-2.3441133], dtype=float32), array([-2.3000033], dtype=float32), array([-2.3000033], dtype=float32), array([-2.2990317], dtype=float32), array([-2.2990336], dtype=float32), array([-2.2990348], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.3342279 , 0.34255138, 0.32322076],
+       [0.8388376 , 0.01309486, 0.14806747],
+       [0.8116667 , 0.01908973, 0.16924354],
+       [0.81177974, 0.01906214, 0.16915803],
+       [0.7977824 , 0.02264752, 0.17956999],
+       [0.7925711 , 0.02407041, 0.18335849],
+       [0.7925711 , 0.02407041, 0.18335849],
+       [0.79245496, 0.02410268, 0.18344237],
+       [0.7924552 , 0.02410262, 0.18344223],
+       [0.7924553 , 0.02410258, 0.1834421 ]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([2, 0, 1, 0, 0, 2, 0, 2, 2, 2], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 2,  3,  7,  9, 12, 17, 18, 23, 26, 29], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.32322076, 0.8388376 , 0.01908973, 0.81177974, 0.7977824 ,
+       0.18335849, 0.7925711 , 0.18344237, 0.18344223, 0.1834421 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([ 7.6159418e-01,  9.4433540e-01,  1.0029780e-02,  8.3786559e-01,
+        2.7092895e-01,  0.0000000e+00, -2.1673556e-01,  1.4299769e-05,
+        4.7665668e-05,  0.0000000e+00], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.12514642,)
+INFO::total_steps: 4690
+INFO::p_a: [0.26823028 0.45159915 0.28017058]
+INFO::Trace of actions distribution
+INFO::mse: [32, 32, 25, 21, 25, 24, 32, 27, 28, 33, 23, 32, 33, 28, 30, 24, 18, 32, 23, 25, 30, 23, 24, 20, 26, 23, 23, 33, 20, 31, 27, 23, 26, 29, 33, 29, 34, 22, 29, 26, 17, 29, 19, 24, 31, 24]
+INFO::l1: [38, 39, 48, 53, 53, 43, 44, 39, 44, 42, 46, 38, 40, 42, 45, 39, 46, 36, 48, 44, 38, 48, 44, 45, 47, 44, 48, 44, 58, 42, 45, 49, 50, 41, 43, 38, 45, 49, 47, 41, 50, 47, 48, 41, 52, 44]
+INFO::l2: [29, 28, 26, 25, 21, 32, 23, 33, 27, 24, 30, 29, 26, 29, 24, 36, 35, 31, 28, 30, 31, 28, 31, 34, 26, 32, 28, 22, 21, 26, 27, 27, 23, 29, 23, 32, 20, 28, 23, 32, 32, 23, 32, 34, 16, 31]
+INFO::=================
+INFO::episodes: 11
+2018-04-20 07:16:03.367386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.049488067626953
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[ 0.21638004 -0.24256353  0.02618337]]
+INFO::[-0.00314687  0.00134693  0.00179994]
+INFO::Weights
+INFO::idx:0, var:[[-0.949647    0.6262006  -0.30873626]]
+INFO::idx:1, var:[ 0.00327768  0.02742689 -0.03070456]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.804847], dtype=float32), array([-2.708548], dtype=float32), array([-2.6002467], dtype=float32), array([-2.6006613], dtype=float32), array([-2.6011062], dtype=float32), array([-2.6015515], dtype=float32), array([-2.6019983], dtype=float32), array([-2.6019983], dtype=float32), array([-2.3288977], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.3343328 , 0.34250495, 0.3231623 ],
+       [0.85289365, 0.01051468, 0.13659167],
+       [0.84409904, 0.01211155, 0.14378943],
+       [0.8336047 , 0.01418686, 0.15220845],
+       [0.8336461 , 0.01417829, 0.15217559],
+       [0.8336906 , 0.01416912, 0.1521403 ],
+       [0.833735  , 0.01415993, 0.152105  ],
+       [0.8337797 , 0.01415072, 0.15206957],
+       [0.8337797 , 0.01415072, 0.15206957],
+       [0.8042639 , 0.02099089, 0.1747453 ]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([0, 0, 0, 1, 1, 1, 1, 2, 0, 2], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 0,  3,  6, 10, 13, 16, 19, 23, 24, 29], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.3343328 , 0.85289365, 0.84409904, 0.01418686, 0.01417829,
+       0.01416912, 0.01415993, 0.15206957, 0.8337797 , 0.1747453 ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([0.7615942 , 0.9983879 , 0.3407999 , 0.00587021, 0.00648215,
+       0.00718718, 0.00797935, 0.        , 0.9911868 , 0.        ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.13483581,)
+INFO::total_steps: 5480
+INFO::p_a: [0.26934307 0.46441606 0.26624088]
+INFO::Trace of actions distribution
+INFO::mse: [34, 25, 24, 31, 31, 20, 28, 26, 29, 20, 27, 25, 31, 34, 32, 29, 24, 21, 31, 30, 28, 27, 23, 24, 24, 32, 30, 28, 22, 26, 13, 23, 17, 23, 29, 29, 26, 20, 22, 27, 26, 32, 39, 31, 27, 26, 30, 22, 29, 21, 25, 27, 21, 36]
+INFO::l1: [33, 53, 52, 44, 43, 42, 43, 45, 47, 59, 50, 50, 43, 40, 42, 41, 49, 56, 44, 45, 47, 50, 44, 47, 51, 46, 47, 48, 45, 50, 54, 46, 41, 42, 48, 50, 49, 48, 48, 42, 48, 44, 30, 41, 44, 50, 38, 51, 48, 48, 55, 46, 43, 40]
+INFO::l2: [32, 21, 23, 24, 25, 37, 28, 28, 23, 20, 22, 24, 25, 25, 25, 29, 26, 22, 24, 24, 24, 22, 32, 28, 24, 21, 22, 23, 32, 23, 32, 30, 41, 34, 22, 20, 24, 31, 29, 30, 25, 23, 30, 27, 28, 23, 31, 26, 22, 30, 19, 26, 35, 23]
+INFO::=================
+INFO::episodes: 12
+2018-04-20 07:16:51.800098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::final_reward: 0.0
+INFO::loss: 2.128202199935913
+INFO::adv: 0.0
+INFO::UPDATE CONTROLLOR
+INFO::Gradients
+INFO::[[-0.06440637  0.04685995  0.0175464 ]]
+INFO::[-0.01495263  0.01278094  0.00217169]
+INFO::Weights
+INFO::idx:0, var:[[-0.94320637  0.6215146  -0.3104909 ]]
+INFO::idx:1, var:[ 0.00477294  0.02614879 -0.03092173]
+INFO::Outputs
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 158, in train
+    logger.info('state:', state_hist[:10])
+Message: 'state:'
+Arguments: ([array([0.], dtype=float32), array([-2.7349827], dtype=float32), array([-2.7068715], dtype=float32), array([-2.7074778], dtype=float32), array([-2.2260656], dtype=float32), array([-2.1169484], dtype=float32), array([-2.1169484], dtype=float32), array([-2.1169498], dtype=float32), array([-2.1936448], dtype=float32), array([-2.1936448], dtype=float32)],)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 159, in train
+    logger.info('output:', r[0])
+Message: 'output:'
+Arguments: (array([[0.33483556, 0.34206998, 0.3230945 ],
+       [0.8437841 , 0.01193873, 0.14427716],
+       [0.8411547 , 0.01243671, 0.1464086 ],
+       [0.8412118 , 0.01242577, 0.14636241],
+       [0.7890683 , 0.02475574, 0.18617594],
+       [0.7751796 , 0.02884789, 0.1959724 ],
+       [0.7751796 , 0.02884789, 0.1959724 ],
+       [0.77517986, 0.02884784, 0.19597232],
+       [0.785028  , 0.02591063, 0.1890614 ],
+       [0.785028  , 0.02591063, 0.1890614 ]], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 160, in train
+    logger.info('action:', r[1])
+Message: 'action:'
+Arguments: (array([2, 0, 1, 0, 0, 2, 2, 0, 2, 0], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 161, in train
+    logger.info('indexes:', r[2])
+Message: 'indexes:'
+Arguments: (array([ 2,  3,  7,  9, 12, 17, 20, 21, 26, 27], dtype=int32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 162, in train
+    logger.info('res_outs:', r[3])
+Message: 'res_outs:'
+Arguments: (array([0.3230945 , 0.8437841 , 0.01243671, 0.8412118 , 0.7890683 ,
+       0.1959724 , 0.1959724 , 0.77517986, 0.1890614 , 0.785028  ],
+      dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 163, in train
+    logger.info('reward:', r[4])
+Message: 'reward:'
+Arguments: (array([ 7.6159418e-01, -1.8974867e-01,  9.6263485e-03,  9.7675800e-01,
+        7.3546892e-01,  0.0000000e+00,  2.5751915e-05,  2.4818125e-01,
+        0.0000000e+00,  8.5193628e-01], dtype=float32),)
+--- Logging error ---
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 986, in emit
+    msg = self.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 836, in format
+    return fmt.format(record)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 573, in format
+    record.message = record.getMessage()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/logging/__init__.py", line 336, in getMessage
+    msg = msg % self.args
+TypeError: not all arguments converted during string formatting
+Call stack:
+  File "trainer.py", line 193, in <module>
+    trainer.train()
+  File "trainer.py", line 164, in train
+    logger.info('loss:', r[5])
+Message: 'loss:'
+Arguments: (0.14830288,)
+INFO::total_steps: 4230
+INFO::p_a: [0.26832151 0.46808511 0.26359338]
+INFO::Trace of actions distribution
+INFO::mse: [38, 25, 25, 27, 29, 25, 32, 23, 24, 25, 27, 33, 28, 19, 33, 30, 28, 27, 31, 36, 21, 20, 30, 27, 28, 29, 27, 22, 24, 25, 26, 26, 28, 25, 25, 26, 28, 18, 25, 25, 30, 17]
+INFO::l1: [26, 46, 42, 47, 43, 49, 39, 43, 54, 51, 51, 43, 44, 60, 41, 49, 56, 50, 34, 38, 52, 47, 52, 54, 51, 40, 47, 50, 48, 46, 48, 42, 41, 51, 45, 44, 48, 42, 57, 36, 49, 52]
+INFO::l2: [35, 28, 32, 25, 27, 25, 28, 33, 21, 23, 21, 23, 27, 20, 25, 20, 15, 22, 34, 25, 26, 32, 17, 18, 20, 30, 25, 27, 27, 28, 25, 31, 30, 23, 29, 29, 23, 39, 17, 38, 20, 30]
+INFO::=================
+INFO::episodes: 13
+2018-04-20 07:17:29.982497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)

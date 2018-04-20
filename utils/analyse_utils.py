@@ -16,7 +16,7 @@ def get_reward(losses):
             neg += 1
     return zero, pos, neg
 
-def loss_analyzer(actions, valid_losses, train_losses):
+def loss_analyzer(actions, valid_losses, train_losses, rewards):
     total_steps = len(actions)
     logger.info('total_steps: {}'.format(total_steps))
 
@@ -49,22 +49,23 @@ def loss_analyzer(actions, valid_losses, train_losses):
             loss_l2.append(loss_diff)
 
     # ----Mean and Var of loss improvement of each action.----
-    logger.info('loss_mse_mean: {}, var: {}'.format(
-        np.mean(np.array(loss_mse)), np.var(np.array(loss_mse))))
-    logger.info('loss_l1_mean: {}, var: {}'.format(
-        np.mean(np.array(loss_l1)), np.var(np.array(loss_l1))))
-    logger.info('loss_l2_mean: {}, var: {}'.format(
-        np.mean(np.array(loss_l2)), np.var(np.array(loss_l2))))
+    #logger.info('loss_mse_mean: {}, var: {}'.format(
+    #    np.mean(np.array(loss_mse)), np.var(np.array(loss_mse))))
+    #logger.info('loss_l1_mean: {}, var: {}'.format(
+    #    np.mean(np.array(loss_l1)), np.var(np.array(loss_l1))))
+    #logger.info('loss_l2_mean: {}, var: {}'.format(
+    #    np.mean(np.array(loss_l2)), np.var(np.array(loss_l2))))
 
     # ----Step reward distribution.----
-    zero, pos, neg = get_reward(loss_mse)
-    logger.info('MSE:: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
+    #zero, pos, neg = get_reward(loss_mse)
+    #logger.info('MSE:: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
 
-    zero, pos, neg = get_reward(loss_l1)
-    logger.info('L1 :: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
+    #zero, pos, neg = get_reward(loss_l1)
+    #logger.info('L1 :: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
 
-    zero, pos, neg = get_reward(loss_l2)
-    logger.info('L2 :: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
+    #zero, pos, neg = get_reward(loss_l2)
+    #logger.info('L2 :: zero: {}, pos: {}, neg: {}'.format(zero, pos, neg))
+
     # ----Distribution of each action over time.----
     win = 100
     loss_imp_mse_trace = []
@@ -79,28 +80,21 @@ def loss_analyzer(actions, valid_losses, train_losses):
         action = actions[start:stop]
         valid_loss = valid_losses[start:stop]
         loss_mse = []
+        loss_l1 = []
+        loss_l2 = []
         for idx, a in enumerate(action):
             if idx == 0:
                 continue
             if a[0] == 1:
                 loss_diff = valid_loss[idx - 1] - valid_loss[idx]
                 loss_mse.append(loss_diff)
-
-        loss_l1 = []
-        for idx, a in enumerate(action):
-            if idx == 0:
-                continue
-            if a[1] == 1:
+            elif a[1] == 1:
                 loss_diff = valid_loss[idx - 1] - valid_loss[idx]
                 loss_l1.append(loss_diff)
-
-        loss_l2 = []
-        for idx, a in enumerate(action):
-            if idx == 0:
-                continue
-            if a[2] == 1:
+            else:
                 loss_diff = valid_loss[idx - 1] - valid_loss[idx]
                 loss_l2.append(loss_diff)
+
         loss_imp_mse_trace.append(np.mean(np.array(loss_mse)))
         loss_imp_l1_trace.append(np.mean(np.array(loss_l1)))
         loss_imp_l2_trace.append(np.mean(np.array(loss_l2)))
@@ -113,7 +107,46 @@ def loss_analyzer(actions, valid_losses, train_losses):
     logger.info('l1: {}'.format(l1_dis_trace))
     logger.info('l2: {}'.format(l2_dis_trace))
 
-    logger.info('Trace of loss improvement:')
-    logger.info('mse: {}'.format(loss_imp_mse_trace))
-    logger.info('l1: {}'.format(loss_imp_l1_trace))
-    logger.info('l2: {}'.format(loss_imp_l2_trace))
+    #logger.info('Trace of loss improvement:')
+    #logger.info('mse: {}'.format(loss_imp_mse_trace))
+    #logger.info('l1: {}'.format(loss_imp_l1_trace))
+    #logger.info('l2: {}'.format(loss_imp_l2_trace))
+
+    # ----Distribution of reward.----
+    reward_mse_sum_trace = []
+    reward_mse_mean_trace = []
+    reward_l1_sum_trace = []
+    reward_l1_mean_trace = []
+    reward_l2_sum_trace = []
+    reward_l2_mean_trace = []
+    for i in range(min(80, int(total_steps / win))):
+        start = i * win
+        stop = (i + 1) * win
+        action = actions[start:stop]
+        reward = rewards[start:stop]
+        reward_mse = []
+        reward_l1 = []
+        reward_l2 = []
+        for idx, a in enumerate(action):
+            if a[0] == 1:
+                reward_mse.append(reward[idx])
+            elif a[1] == 1:
+                reward_l1.append(reward[idx])
+            else:
+                reward_l2.append(reward[idx])
+        reward_mse_sum_trace.append(np.sum(np.array(reward_mse)))
+        reward_l1_sum_trace.append(np.sum(np.array(reward_l1)))
+        reward_l2_sum_trace.append(np.sum(np.array(reward_l2)))
+        reward_mse_mean_trace.append(np.mean(np.array(reward_mse)))
+        reward_l1_mean_trace.append(np.mean(np.array(reward_l1)))
+        reward_l2_mean_trace.append(np.mean(np.array(reward_l2)))
+    #logger.info('Trace of rewards sum')
+    #logger.info('mse: {}'.format(reward_mse_sum_trace))
+    #logger.info('l1: {}'.format(reward_l1_sum_trace))
+    #logger.info('l2: {}'.format(reward_l2_sum_trace))
+
+    #logger.info('Trace of rewards mean')
+    #logger.info('mse: {}'.format(reward_mse_mean_trace))
+    #logger.info('l1: {}'.format(reward_l1_mean_trace))
+    #logger.info('l2: {}'.format(reward_l2_mean_trace))
+

@@ -42,11 +42,12 @@ class Toy():
         for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
             abs_diff.append(v - t)
             if t > 1e-6:
-                rel_diff.append((v - t) / t)
+                rel_diff.append(v / t)
             else:
-                rel_diff.append(0)
+                rel_diff.append(1)
         # Notice
-        state = rel_diff[1:]
+        #state = [10 * math.log(rel_diff[-1])]
+        state = rel_diff[-1:]
         #state = (self.previous_valid_loss[1:]
         #         + self.previous_train_loss[1:]
         #         + abs_diff[1:]
@@ -252,15 +253,24 @@ class Toy():
 
     def get_step_reward(self):
         # TODO(haowen) Use the decrease of validation loss as step reward
-        improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
+        if self.improve_baseline is None:
+            # ----First step, nothing to compare with.----
+            improve = 0.1
+        else:
+            improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
 
         # TODO(haowen) Try to use tanh function instead of sign function
+        # ----With baseline.----
         if self.improve_baseline is None:
             self.improve_baseline = improve
         decay = self.config.reward_baseline_decay
         self.improve_baseline = decay * self.improve_baseline\
             + (1 - decay) * improve
-        return math.tanh((improve - self.improve_baseline) * 10)
+        #print('baseline:', self.improve_baseline)
+        return math.tanh(improve / (abs(self.improve_baseline) + 1e-9))
+
+        # ----Without baseline.----
+        #return math.tanh(improve * 200)
 
         # TODO(haowen) This design of reward may cause unbalance because
         # positive number is more than negative number in nature
