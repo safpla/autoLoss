@@ -30,12 +30,13 @@ class Controller():
             self.state_plh = tf.placeholder(shape=[None, s], dtype=tf.float32)
             self.reward_plh = tf.placeholder(shape=[None], dtype=tf.float32)
             self.action_plh = tf.placeholder(shape=[None, a], dtype=tf.int32)
+            self.lr_plh = tf.placeholder(dtype=tf.float32)
 
     def _build_graph(self):
         config = self.config
         h_size = config.dim_hidden_rl
         a_size = config.dim_action_rl
-        lr = config.lr_rl
+        lr = self.lr_plh
         with self.graph.as_default():
             hidden = slim.fully_connected(self.state_plh, h_size,
                                         biases_initializer=None,
@@ -101,7 +102,7 @@ class Controller():
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
-    def get_gradients(self, sess, state, action, reward):
+    def get_gradients(self, sess, state, action, reward, lr):
         """ Return the gradients according to one episode
 
         Args:
@@ -116,7 +117,8 @@ class Controller():
         assert sess.graph is self.graph
         feed_dict = {self.reward_plh: reward,
                      self.action_plh: action,
-                     self.state_plh: state}
+                     self.state_plh: state,
+                     self.lr_plh: lr}
         grads = sess.run(self.gradients, feed_dict=feed_dict)
         return grads
 
@@ -135,8 +137,6 @@ class Controller():
         a_dist = sess.run(self.output, feed_dict={self.state_plh: [state]})
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
-        action = np.zeros(len(a_dist[0]), dtype='i')
-        #print('sample: ', a)
 
         # ----Free exploring at a certain probability.----
         decay = self.config.explore_rate_decay_rl
@@ -153,12 +153,12 @@ class Controller():
                 a = 2
 
         # ----Handcraft classifier----
-        #f = state[-1]
         #  ---Hard version---
         #  Threshold varies in different tasks, which is related to the SNR
         #  of the data
         #  ------
-        #threshold = 1
+        #f = state[-1]
+        #threshold = 1.0
         #if f < threshold:
         #    a = 0
         #else:
@@ -167,6 +167,7 @@ class Controller():
         #  ---Soft version---
         #  Equals to one layer one dim ffn with sigmoid activation
         #  ------
+        #f = state[-1]
         #k = 20
         #t = 1
         #p = 1 / (1 + math.exp(-k * (f - t)))
@@ -175,6 +176,7 @@ class Controller():
         #else:
         #    a = 0
 
+        action = np.zeros(len(a_dist[0]), dtype='i')
         action[a] = 1
         return action
 

@@ -49,6 +49,7 @@ class Trainer():
         best_reward = 0
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
+        lr = config.lr_rl
 
         # ----Initializer controllor.----
         sess_ctrl.run(model_ctrl.init)
@@ -125,13 +126,14 @@ class Trainer():
             # ----Update the controller.----
             reward_hist = np.array(reward_hist)
             reward_hist = discount_rewards(reward_hist, adv)
-
+            if lr > config.lr_rl * 0.1:
+                lr = lr * config.lr_decay_rl
             grads = model_ctrl.get_gradients(sess_ctrl, state_hist,
-                                             action_hist, reward_hist)
+                                             action_hist, reward_hist, lr)
             for idx, grad in enumerate(grads):
                 gradBuffer[idx] += grad
 
-            if ep % config.update_frequency == 0 and ep != 0:
+            if ep % config.update_frequency == 0:
                 logger.info('UPDATE CONTROLLOR')
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
@@ -145,23 +147,30 @@ class Trainer():
                 logger.info('Weights')
                 model_ctrl.print_weight(sess_ctrl)
                 logger.info('Outputs')
-                feed_dict = {model_ctrl.state_plh: state_hist[:10],
-                             model_ctrl.action_plh: action_hist[:10],
-                             model_ctrl.reward_plh: reward_hist[:10]}
+
+                index = []
+                ind = 3
+                while ind < len(state_hist):
+                    index.append(ind-3)
+                    index.append(ind-2)
+                    index.append(ind-1)
+                    ind += 500
+                feed_dict = {model_ctrl.state_plh:np.array(state_hist)[index],
+                            model_ctrl.action_plh:np.array(action_hist)[index],
+                            model_ctrl.reward_plh:np.array(reward_hist)[index]}
                 fetch = [model_ctrl.output,
                          model_ctrl.action,
                          model_ctrl.indexes,
                          model_ctrl.responsible_outputs,
                          model_ctrl.reward_plh,
-                         model_ctrl.loss]
+                         model_ctrl.state_plh]
                 r = sess_ctrl.run(fetch, feed_dict=feed_dict)
-                logger.info('state:', state_hist[:10])
-                logger.info('output:', r[0])
-                logger.info('action:', r[1])
-                logger.info('indexes:', r[2])
-                logger.info('res_outs:', r[3])
-                logger.info('reward:', r[4])
-                logger.info('loss:', r[5])
+                logger.info('state:\n{}'.format(r[5]))
+                logger.info('output:\n{}'.format(r[0]))
+                logger.info('action: {}'.format(r[1]))
+                logger.info('indexes: {}'.format(r[2]))
+                logger.info('res_outs: {}'.format(r[3]))
+                logger.info('reward: {}'.format(r[4]))
 
                 for ix, grad in enumerate(gradBuffer):
                     gradBuffer[ix] = grad * 0
@@ -189,5 +198,5 @@ if __name__ == '__main__':
     load_ctrl = os.path.join(config.model_dir, 'autoLoss-toy/')
     # ----start from pretrained----
     #trainer.train(load_ctrl=load_ctrl)
-# ----start from strach----
-trainer.train()
+    # ----start from strach----
+    trainer.train()

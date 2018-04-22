@@ -46,8 +46,7 @@ class Toy():
             else:
                 rel_diff.append(1)
         # Notice
-        #state = [10 * math.log(rel_diff[-1])]
-        state = rel_diff[-1:]
+        state = [math.log(rel_diff[-1])]
         #state = (self.previous_valid_loss[1:]
         #         + self.previous_train_loss[1:]
         #         + abs_diff[1:]
@@ -259,18 +258,18 @@ class Toy():
         else:
             improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
 
-        # TODO(haowen) Try to use tanh function instead of sign function
+        # TODO(haowen) Try to use sqrt function instead of sign function
         # ----With baseline.----
         if self.improve_baseline is None:
             self.improve_baseline = improve
         decay = self.config.reward_baseline_decay
         self.improve_baseline = decay * self.improve_baseline\
             + (1 - decay) * improve
-        #print('baseline:', self.improve_baseline)
-        return math.tanh(improve / (abs(self.improve_baseline) + 1e-9))
-
+        #print('baseline:', improve / (abs(self.improve_baseline) + 1e-9))
+        value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-9))
+        return math.copysign(value, improve)
         # ----Without baseline.----
-        #return math.tanh(improve * 200)
+        #return math.copysign(math.sqrt(abs(improve)), improve)
 
         # TODO(haowen) This design of reward may cause unbalance because
         # positive number is more than negative number in nature
@@ -293,10 +292,12 @@ class Toy():
             self.reward_baseline = reward
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
-        self.reward_baseline = decay * self.reward_baseline\
-            + (1 - decay) * reward
         # TODO(haowen) Try to use maximum instead of shift average as baseline
         # Result: doesn't seem to help too much
+        # ----Shift average----
+        self.reward_baseline = decay * self.reward_baseline\
+            + (1 - decay) * reward
+        # ----Maximun----
         #if self.reward_baseline < reward:
         #    self.reward_baseline = reward
         return reward, adv
