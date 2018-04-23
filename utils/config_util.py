@@ -52,7 +52,11 @@ class Parser(object):
 
     @property
     def max_training_step(self):
-        return self.config.getint('rl', 'max_training_step')
+        return self.config.getint('stud', 'max_training_step')
+
+    @property
+    def max_ctrl_step(self):
+        return self.config.getint('rl', 'max_ctrl_step')
 
     @property
     def update_frequency(self):
@@ -136,6 +140,10 @@ class Parser(object):
     @property
     def reward_baseline_decay(self):
         return self.config.getfloat('rl', 'reward_baseline_decay')
+
+    @property
+    def reward_max_value(self):
+        return self.config.getfloat('rl', 'reward_max_value')
 
     @property
     def timedelay_num(self):

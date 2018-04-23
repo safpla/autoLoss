@@ -33,12 +33,13 @@ class Toy():
 
     def get_state(self, sess):
         # TODO(haowen) simply concatenate them could cause scale problem
-
-        #state = self.step_number + self.previous_mse_loss\
-        #    + self.previous_l1_loss + self.previous_l2_loss\
-        #    + self.previous_action
         abs_diff = []
         rel_diff = []
+        if self.improve_baseline is None:
+            ib = 1
+        else:
+            ib = self.improve_baseline
+
         for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
             abs_diff.append(v - t)
             if t > 1e-6:
@@ -46,7 +47,10 @@ class Toy():
             else:
                 rel_diff.append(1)
         # Notice
-        state = [math.log(rel_diff[-1])]
+        state = ([math.log(rel_diff[-1])] +
+                 [math.log(abs(ib) + 1e-9) / 9]
+                 )
+
         #state = (self.previous_valid_loss[1:]
         #         + self.previous_train_loss[1:]
         #         + abs_diff[1:]
@@ -265,23 +269,26 @@ class Toy():
         decay = self.config.reward_baseline_decay
         self.improve_baseline = decay * self.improve_baseline\
             + (1 - decay) * improve
-        #print('baseline:', improve / (abs(self.improve_baseline) + 1e-9))
-        value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-9))
-        return math.copysign(value, improve)
+
+        #TODO(haowen) Remove nonlinearity
+        #value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-9))
+        value = abs(improve) / (abs(self.improve_baseline) + 1e-9)
+        value = min(value, self.config.reward_max_value)
+        return math.copysign(value, improve) * self.config.reward_step_rl
         # ----Without baseline.----
         #return math.copysign(math.sqrt(abs(improve)), improve)
 
         # TODO(haowen) This design of reward may cause unbalance because
         # positive number is more than negative number in nature
-        if abs(improve) < 1e-5:
-            return 0    # no reward if the difference is too small
-        elif improve > 0:
-            # TODO(haowen) Try not to give reward to the reduce of loss
-            # This reward will strengthen penalty and weaken reward
-            return self.config.reward_step_rl
-            #return 0
-        else:
-            return -self.config.reward_step_rl
+        #if abs(improve) < 1e-5:
+        #    return 0    # no reward if the difference is too small
+        #elif improve > 0:
+        #    # TODO(haowen) Try not to give reward to the reduce of loss
+        #    # This reward will strengthen penalty and weaken reward
+        #    return self.config.reward_step_rl
+        #    #return 0
+        #else:
+        #    return -self.config.reward_step_rl
 
     def get_final_reward(self, sess):
         assert self.best_loss < 1e10 - 1

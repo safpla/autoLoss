@@ -24,10 +24,11 @@ class Controller():
 
     def _build_placeholder(self):
         config = self.config
-        s = config.dim_state_rl
         a = config.dim_action_rl
+        s = config.dim_state_rl
         with self.graph.as_default():
-            self.state_plh = tf.placeholder(shape=[None, s], dtype=tf.float32)
+            self.state_plh = tf.placeholder(shape=[None, s],
+                                            dtype=tf.float32)
             self.reward_plh = tf.placeholder(shape=[None], dtype=tf.float32)
             self.action_plh = tf.placeholder(shape=[None, a], dtype=tf.int32)
             self.lr_plh = tf.placeholder(dtype=tf.float32)

@@ -128,12 +128,21 @@ class Trainer():
             reward_hist = discount_rewards(reward_hist, adv)
             if lr > config.lr_rl * 0.1:
                 lr = lr * config.lr_decay_rl
-            grads = model_ctrl.get_gradients(sess_ctrl, state_hist,
-                                             action_hist, reward_hist, lr)
-            for idx, grad in enumerate(grads):
-                gradBuffer[idx] += grad
 
-            if ep % config.update_frequency == 0:
+            # ----Randomly pick a fraction of steps to calc gradients,
+            # repeat N times.----
+            for n in range(config.max_ctrl_step):
+                rand_inds = np.arange(len(state_hist))
+                np.random.shuffle(rand_inds)
+                rand_inds = np.sort(rand_inds[:int(len(state_hist) / 2)])
+                sh = np.array(state_hist)[rand_inds]
+                ah = np.array(action_hist)[rand_inds]
+                rh = np.array(reward_hist)[rand_inds]
+
+                grads = model_ctrl.get_gradients(sess_ctrl, sh, ah, rh, lr)
+                for idx, grad in enumerate(grads):
+                    gradBuffer[idx] += grad
+
                 logger.info('UPDATE CONTROLLOR')
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
@@ -159,11 +168,11 @@ class Trainer():
                             model_ctrl.action_plh:np.array(action_hist)[index],
                             model_ctrl.reward_plh:np.array(reward_hist)[index]}
                 fetch = [model_ctrl.output,
-                         model_ctrl.action,
-                         model_ctrl.indexes,
-                         model_ctrl.responsible_outputs,
-                         model_ctrl.reward_plh,
-                         model_ctrl.state_plh]
+                            model_ctrl.action,
+                            model_ctrl.indexes,
+                            model_ctrl.responsible_outputs,
+                            model_ctrl.reward_plh,
+                            model_ctrl.state_plh]
                 r = sess_ctrl.run(fetch, feed_dict=feed_dict)
                 logger.info('state:\n{}'.format(r[5]))
                 logger.info('output:\n{}'.format(r[0]))
@@ -175,10 +184,9 @@ class Trainer():
                 for ix, grad in enumerate(gradBuffer):
                     gradBuffer[ix] = grad * 0
 
-            total_reward.append(running_reward)
-            # ----Study the relation between loss and action.----
-            loss_analyzer(action_hist, valid_loss_hist, train_loss_hist,
-                          reward_hist)
+                # ----Study the relation between loss and action.----
+                loss_analyzer(action_hist, valid_loss_hist, train_loss_hist,
+                            reward_hist)
 
 
             #if final_reward > best_reward:
