@@ -139,12 +139,13 @@ class Trainer():
                 ah = np.array(action_hist)[rand_inds]
                 rh = np.array(reward_hist)[rand_inds]
 
-                grads = model_ctrl.get_gradients(sess_ctrl, sh, ah, rh, lr)
+                grads = model_ctrl.get_gradients(sess_ctrl, sh, ah, rh)
                 for idx, grad in enumerate(grads):
                     gradBuffer[idx] += grad
 
                 logger.info('UPDATE CONTROLLOR')
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
+                feed_dict[model_ctrl.lr_plh] = lr
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
 
                 # ----Print gradients and weights.----
@@ -199,7 +200,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         config_file = sys.argv[1]
     else:
-        config_file = 'regression.cfg'
+        config_file = 'regression1.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
     trainer = Trainer(config)

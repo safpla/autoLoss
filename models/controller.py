@@ -19,8 +19,8 @@ class Controller():
         self.graph = graph
         self._build_placeholder()
         # Notice
-        #self._build_graph()
-        self._build_graph_sigmoid()
+        self._build_graph()
+        #self._build_graph_sigmoid()
 
     def _build_placeholder(self):
         config = self.config
@@ -40,49 +40,13 @@ class Controller():
         lr = self.lr_plh
         with self.graph.as_default():
             hidden = slim.fully_connected(self.state_plh, h_size,
-                                        biases_initializer=None,
                                         activation_fn=tf.nn.relu)
             self.output = slim.fully_connected(hidden, a_size,
-                                            biases_initializer=None,
                                             activation_fn=tf.nn.softmax)
             self.chosen_action = tf.argmax(self.output, 1)
-            action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
+            self.action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
             self.indexes = tf.range(0, tf.shape(self.output)[0])\
-                * tf.shape(self.output)[1] + action
-            self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
-                                                self.indexes)
-            self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
-                                        * self.reward_plh)
-
-            # ----Restore gradients and update them after several iterals.----
-            self.tvars = tf.trainable_variables()
-            tvars = self.tvars
-            self.gradient_plhs = []
-            for idx, var in enumerate(tvars):
-                placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
-                self.gradient_plhs.append(placeholder)
-
-            self.gradients = tf.gradients(self.loss, tvars)
-            optimizer = tf.train.AdamOptimizer(learning_rate=lr)
-            self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
-            self.init = tf.global_variables_initializer()
-            self.saver = tf.train.Saver()
-
-    def _build_graph_sigmoid(self):
-        config = self.config
-        h_size = config.dim_hidden_rl
-        a_size = config.dim_action_rl
-        lr = config.lr_rl
-        with self.graph.as_default():
-            #k = tf.Variable(10)
-            #t = tf.Variable(1)
-            self.output = slim.fully_connected(self.state_plh, a_size,
-                                            activation_fn=tf.nn.softmax)
-            self.chosen_action = tf.argmax(self.output, 1)
-            action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
-            self.action = action
-            self.indexes = tf.range(0, tf.shape(self.output)[0])\
-                * tf.shape(self.output)[1] + action
+                * tf.shape(self.output)[1] + self.action
             self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
                                                 self.indexes)
             self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
@@ -103,7 +67,39 @@ class Controller():
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
-    def get_gradients(self, sess, state, action, reward, lr):
+    def _build_graph_sigmoid(self):
+        config = self.config
+        h_size = config.dim_hidden_rl
+        a_size = config.dim_action_rl
+        lr = self.lr_plh
+        with self.graph.as_default():
+            self.output = slim.fully_connected(self.state_plh, a_size,
+                                            activation_fn=tf.nn.softmax)
+            self.chosen_action = tf.argmax(self.output, 1)
+            self.action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
+            self.indexes = tf.range(0, tf.shape(self.output)[0])\
+                * tf.shape(self.output)[1] + self.action
+            self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
+                                                self.indexes)
+            self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
+                                        * self.reward_plh)
+
+            # ----Restore gradients and update them after several iterals.----
+            self.tvars = tf.trainable_variables()
+            tvars = self.tvars
+            self.gradient_plhs = []
+            for idx, var in enumerate(tvars):
+                placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
+                self.gradient_plhs.append(placeholder)
+
+            self.gradients = tf.gradients(self.loss, tvars)
+            #optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            optimizer = tf.train.GradientDescentOptimizer(lr)
+            self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
+            self.init = tf.global_variables_initializer()
+            self.saver = tf.train.Saver()
+
+    def get_gradients(self, sess, state, action, reward):
         """ Return the gradients according to one episode
 
         Args:
@@ -119,7 +115,7 @@ class Controller():
         feed_dict = {self.reward_plh: reward,
                      self.action_plh: action,
                      self.state_plh: state,
-                     self.lr_plh: lr}
+                    }
         grads = sess.run(self.gradients, feed_dict=feed_dict)
         return grads
 

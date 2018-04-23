@@ -12,6 +12,19 @@ import utils
 
 logger = utils.get_logger()
 
+def _log(x):
+    y = []
+    for xx in x:
+        y.append(math.log(xx))
+    return y
+
+def _normalize(x):
+    y = []
+    for xx in x:
+        y.append(1 + math.log(xx + 1e-5) / 12)
+    return y
+
+
 class Toy():
     def __init__(self, config, graph, loss_mode='2'):
         self.config = config
@@ -48,7 +61,10 @@ class Toy():
                 rel_diff.append(1)
         # Notice
         state = ([math.log(rel_diff[-1])] +
-                 [math.log(abs(ib) + 1e-9) / 9]
+                 _normalize([abs(ib)]) +
+                 _normalize(self.previous_mse_loss) +
+                 _normalize(self.previous_l1_loss) +
+                 _normalize(self.previous_l2_loss)
                  )
 
         #state = (self.previous_valid_loss[1:]
@@ -272,7 +288,7 @@ class Toy():
 
         #TODO(haowen) Remove nonlinearity
         #value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-9))
-        value = abs(improve) / (abs(self.improve_baseline) + 1e-9)
+        value = abs(improve) / (abs(self.improve_baseline) + 1e-5)
         value = min(value, self.config.reward_max_value)
         return math.copysign(value, improve) * self.config.reward_step_rl
         # ----Without baseline.----
