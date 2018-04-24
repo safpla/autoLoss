@@ -39,7 +39,6 @@ class Dataset(object):
             self._index = np.arange(self._num_examples)
             self._index_in_epoch = 0
             self._epochs_completed = 0
-            np.random.seed(1652)
 
     @property
     def num_examples(self):
@@ -61,9 +60,10 @@ class Dataset(object):
                 self.shuffle()
             # Start next epoch
             start = 0
-            self._index_in_epoch = batch_size
             assert batch_size <= self._num_examples
+            self._index_in_epoch -= self._num_examples
         end = self._index_in_epoch
+        #print('start:{}, end:{}'.format(start, end))
         batch_index = self._index[start:end]
         batch_index = list(np.sort(batch_index))
         target = self._dataset_target[batch_index]
@@ -82,9 +82,8 @@ class Dataset(object):
 
 
 if __name__ == '__main__':
-    filename = os.path.join(root_path, 'Data/toy/train.npy')
+    filename = os.path.join(root_path, 'Data/toy_16_200/train.npy')
     dataset = Dataset()
     dataset.load_npy(filename)
-    point = dataset.next_batch(50)
-    print('input: ', point['input'])
+    point = dataset.next_batch(100)
     print('target: ', point['target'])

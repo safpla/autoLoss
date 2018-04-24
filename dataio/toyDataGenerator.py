@@ -4,10 +4,12 @@
 # __data__ == '04_07_2018'
 
 import os, sys
+root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+sys.path.append(root_path)
 import numpy as np
 import json
+import utils
 
-root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 config_path = os.path.join(root_path, 'config/regression.cfg')
 config = utils.Parser(config_path)
 dim = config.dim_input_stud
@@ -15,10 +17,9 @@ num_of_data_points_train = config.num_sample_train
 num_of_data_points_valid = config.num_sample_valid
 mean_noise = config.mean_noise
 var_noise = config.var_noise
-father_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-data_train = os.path.join(father_dir, 'Data/toy/train.npy')
-data_valid = os.path.join(father_dir, 'Data/toy/valid.npy')
-np.random.seed(1652)
+data_train = config.train_data_file
+data_valid = config.valid_data_file
+np.random.seed(1)
 
 
 def linear_func(x, w):

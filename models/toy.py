@@ -60,12 +60,15 @@ class Toy():
             else:
                 rel_diff.append(1)
         # Notice
-        state = ([math.log(rel_diff[-1])] +
-                 _normalize([abs(ib)]) +
-                 _normalize(self.previous_mse_loss) +
-                 _normalize(self.previous_l1_loss) +
-                 _normalize(self.previous_l2_loss)
+        state = ([1 + math.log(rel_diff[-1])] +
+                 _normalize([abs(ib)])
                  )
+        #state = ([math.log(rel_diff[-1])] +
+        #         _normalize([abs(ib)]) +
+        #         _normalize(self.previous_mse_loss) +
+        #         _normalize(self.previous_l1_loss) +
+        #         _normalize(self.previous_l2_loss)
+        #         )
 
         #state = (self.previous_valid_loss[1:]
         #         + self.previous_train_loss[1:]
@@ -287,8 +290,8 @@ class Toy():
             + (1 - decay) * improve
 
         #TODO(haowen) Remove nonlinearity
-        #value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-9))
-        value = abs(improve) / (abs(self.improve_baseline) + 1e-5)
+        value = math.sqrt(abs(improve) / (abs(self.improve_baseline) + 1e-5))
+        #value = abs(improve) / (abs(self.improve_baseline) + 1e-5)
         value = min(value, self.config.reward_max_value)
         return math.copysign(value, improve) * self.config.reward_step_rl
         # ----Without baseline.----
@@ -306,7 +309,7 @@ class Toy():
         #else:
         #    return -self.config.reward_step_rl
 
-    def get_final_reward(self, sess):
+    def get_final_reward(self):
         assert self.best_loss < 1e10 - 1
         loss_mse = self.best_loss
         reward = self.config.reward_c / loss_mse

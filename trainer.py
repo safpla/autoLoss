@@ -97,10 +97,11 @@ class Trainer():
                 #    logger.info('state:{}'.format(state_new))
                 #    logger.info('action: {}'.format(action))
                 #    logger.info('reward:{}'.format(reward))
-                #    l = model_stud.previous_valid_loss
+                #    lv = model_stud.previous_valid_loss
+                #    lt = model_stud.previous_train_loss
                 #    logger.info('loss_imp: {}'.format(l[-2] - l[-1]))
-                #    logger.info('train_loss: {}'.format(state_new[3]))
-                #    logger.info('valid_loss: {}'.format(l[-1]))
+                #    logger.info('train_loss: {}'.format(lt[-1]))
+                #    logger.info('valid_loss: {}'.format(lv[-1]))
                 #    model_stud.print_weight(sess_stud)
 
                 old_action = action
@@ -110,13 +111,13 @@ class Trainer():
                     break
 
             # ----Only use the history before the best result.----
-            state_hist = state_hist[:model_stud.best_step]
-            action_hist = action_hist[:model_stud.best_step]
-            reward_hist = reward_hist[:model_stud.best_step]
-            valid_loss_hist = valid_loss_hist[:model_stud.best_step + 1]
-            train_loss_hist = train_loss_hist[:model_stud.best_step + 1]
+            #state_hist = state_hist[:model_stud.best_step]
+            #action_hist = action_hist[:model_stud.best_step]
+            #reward_hist = reward_hist[:model_stud.best_step]
+            #valid_loss_hist = valid_loss_hist[:model_stud.best_step]
+            #train_loss_hist = train_loss_hist[:model_stud.best_step]
 
-            final_reward, adv = model_stud.get_final_reward(sess_stud)
+            final_reward, adv = model_stud.get_final_reward()
             loss = model_stud.best_loss
             running_reward += final_reward
             logger.info('final_reward: {}'.format(final_reward))
@@ -134,7 +135,8 @@ class Trainer():
             for n in range(config.max_ctrl_step):
                 rand_inds = np.arange(len(state_hist))
                 np.random.shuffle(rand_inds)
-                rand_inds = np.sort(rand_inds[:int(len(state_hist) / 2)])
+                #rand_inds = np.sort(rand_inds[:int(len(state_hist) / 2)])
+                rand_inds = np.sort(rand_inds)
                 sh = np.array(state_hist)[rand_inds]
                 ah = np.array(action_hist)[rand_inds]
                 rh = np.array(reward_hist)[rand_inds]
@@ -146,6 +148,7 @@ class Trainer():
                 logger.info('UPDATE CONTROLLOR')
                 feed_dict = dict(zip(model_ctrl.gradient_plhs, gradBuffer))
                 feed_dict[model_ctrl.lr_plh] = lr
+                logger.info('lr: {}'.format(lr))
                 _ = sess_ctrl.run(model_ctrl.train_op, feed_dict=feed_dict)
 
                 # ----Print gradients and weights.----
@@ -200,7 +203,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         config_file = sys.argv[1]
     else:
-        config_file = 'regression1.cfg'
+        config_file = 'regression.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
     trainer = Trainer(config)

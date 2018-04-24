@@ -19,8 +19,8 @@ class Controller():
         self.graph = graph
         self._build_placeholder()
         # Notice
-        self._build_graph()
-        #self._build_graph_sigmoid()
+        #self._build_graph()
+        self._build_graph_sigmoid()
 
     def _build_placeholder(self):
         config = self.config
