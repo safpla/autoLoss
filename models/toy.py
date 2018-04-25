@@ -18,19 +18,30 @@ def _log(x):
         y.append(math.log(xx))
     return y
 
-def _normalize(x):
+def _normalize1(x):
     y = []
     for xx in x:
         y.append(1 + math.log(xx + 1e-5) / 12)
     return y
 
+def _normalize2(x):
+    y = []
+    for xx in x:
+        y.append(min(1, xx / 20))
+    return y
+
+def _normalize3(x):
+    y = []
+    for xx in x:
+        y.append(xx)
+    return y
 
 class Toy():
-    def __init__(self, config, graph, loss_mode='2'):
+    def __init__(self, config, graph, loss_mode='1'):
         self.config = config
         self.graph = graph
         # ----Loss_mode is only for DEBUG usage.----
-        #   0: only mse, 1: mse & l1, 2: mse & l1 & l2
+        #   0: only mse, 1: mse & l1
         self.loss_mode = loss_mode
         train_data_file = config.train_data_file
         valid_data_file = config.valid_data_file
@@ -60,23 +71,16 @@ class Toy():
             else:
                 rel_diff.append(1)
         # Notice
-        state = ([1 + math.log(rel_diff[-1])] +
-                 _normalize([abs(ib)])
-                 )
-        #state = ([math.log(rel_diff[-1])] +
-        #         _normalize([abs(ib)]) +
-        #         _normalize(self.previous_mse_loss) +
-        #         _normalize(self.previous_l1_loss) +
-        #         _normalize(self.previous_l2_loss)
+        #state = ([1 + math.log(rel_diff[-1])] +
+        #         _normalize([abs(ib)])
         #         )
-
-        #state = (self.previous_valid_loss[1:]
-        #         + self.previous_train_loss[1:]
-        #         + abs_diff[1:]
-        #         + rel_diff[1:])
-                 #+ self.previous_mse_loss
-                 #+ self.previous_l1_loss
-                 #+ self.previous_l2_loss)
+        state = ([math.log(rel_diff[-1])] +
+                 _normalize1([abs(ib)]) +
+                 _normalize2(self.previous_mse_loss[-1:]) +
+                 self.previous_l1_loss[-1:]
+                 #_normalize(self.previous_mse_loss) +
+                 #_normalize(self.previous_l1_loss)
+                 )
         return np.array(state, dtype='f')
 
     def reset(self):
@@ -86,8 +90,7 @@ class Toy():
         self.step_number = [0]
         self.previous_mse_loss = [0] * self.config.num_pre_loss
         self.previous_l1_loss = [0] * self.config.num_pre_loss
-        self.previous_l2_loss = [0] * self.config.num_pre_loss
-        self.previous_action = [0, 0, 0]
+        self.previous_action = [0, 0]
         self.previous_valid_loss = [0] * self.config.num_pre_loss
         self.previous_train_loss = [0] * self.config.num_pre_loss
 
@@ -139,26 +142,19 @@ class Toy():
             self.loss_mse = tf.reduce_mean(tf.square(tf.squeeze(self.pred)
                                                      - self.y_plh))
 
-            # NOTE(Haowen): Somehow the l1,l2 regularizers provided by tf
+            # NOTE(Haowen): Somehow the l1 regularizers provided by tf
             # provide a better performance than self-designed regularizers
             # showing in the flowing 6 lines.
 
             #self.loss_l1 = self.config.lambda1_stud * (
             #    tf.reduce_sum(tf.reduce_sum(tf.abs(w2)))\
             #    + tf.reduce_sum(tf.reduce_sum(tf.abs(w1))))
-            #self.loss_l2 = self.config.lambda2_stud * (
-            #    tf.reduce_sum(tf.reduce_sum(tf.square(w2)))\
-            #    + tf.reduce_sum(tf.reduce_sum(tf.square(w1))))
 
             tvars = tf.trainable_variables()
             l1_regularizer = tf.contrib.layers.l1_regularizer(
                 scale=self.config.lambda1_stud, scope=None)
             self.loss_l1 = tf.contrib.layers.apply_regularization(
                 l1_regularizer, tvars)
-            l2_regularizer = tf.contrib.layers.l2_regularizer(
-                scale=self.config.lambda2_stud, scope=None)
-            self.loss_l2 = tf.contrib.layers.apply_regularization(
-                l2_regularizer, tvars)
             if self.loss_mode == '0':
                 self.loss_total = self.loss_mse
                 print('mse loss')
@@ -167,24 +163,19 @@ class Toy():
                 print('mse loss and l1 loss')
                 print('lambda1:', self.config.lambda1_stud)
             else:
-                self.loss_total = self.loss_mse + self.loss_l1 + self.loss_l2
-                print('mse loss, l1 loss and l2 loss')
-                print('lambda1:', self.config.lambda1_stud)
-                print('lambda2:', self.config.lambda2_stud)
+                raise NotImplementedError
 
             # ----Define update operation.----
             self.update_mse = tf.train.GradientDescentOptimizer(lr).\
                 minimize(self.loss_mse)
             self.update_l1 = tf.train.GradientDescentOptimizer(lr*1).\
                 minimize(self.loss_l1)
-            self.update_l2 = tf.train.GradientDescentOptimizer(lr*1).\
-                minimize(self.loss_l2)
             self.update_total = tf.train.GradientDescentOptimizer(lr).\
                 minimize(self.loss_total)
             self.init = tf.global_variables_initializer()
 
     def train(self, sess):
-        """ Optimize mse loss, l1 loss, l2 loss at the same time """
+        """ Optimize mse loss, l1 loss at the same time """
         assert sess.graph is self.graph
         data = self.train_dataset.next_batch(self.config.batch_size)
         x = data['input']
@@ -224,7 +215,7 @@ class Toy():
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
-        fetch = [self.loss_mse, self.loss_l1, self.loss_l2]
+        fetch = [self.loss_mse, self.loss_l1]
 
         if action[0] == 1:
             # ----Update mse loss.----
@@ -232,18 +223,13 @@ class Toy():
         elif action[1] == 1:
             # ----Update l1 loss.----
             sess.run(self.update_l1, feed_dict=feed_dict)
-        else:
-            assert action[2] == 1
-            # ----Update l2 loss.----
-            sess.run(self.update_l2, feed_dict=feed_dict)
-        loss_mse, loss_l1, loss_l2 = sess.run(fetch, feed_dict=feed_dict)
+        loss_mse, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
         valid_loss, _, _ = self.valid(sess)
         train_loss, _, _ = self.valid(sess, dataset=self.train_dataset)
 
         # ----Update state.----
         self.previous_mse_loss = self.previous_mse_loss[1:] + [loss_mse.tolist()]
         self.previous_l1_loss = self.previous_l1_loss[1:] + [loss_l1.tolist()]
-        self.previous_l2_loss = self.previous_l2_loss[1:] + [loss_l2.tolist()]
         self.previous_action = action.tolist()
         self.step_number[0] += 1
         self.previous_valid_loss = self.previous_valid_loss[1:]\
@@ -252,6 +238,7 @@ class Toy():
             + [train_loss.tolist()]
 
         reward = self.get_step_reward()
+        # ----Early stop and record best result.----
         dead = self.check_terminate(sess)
         state = self.get_state(sess)
         return state, reward, dead
@@ -318,6 +305,7 @@ class Toy():
             self.reward_baseline = reward
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
+        adv = min(adv, self.config.reward_max_value)
         # TODO(haowen) Try to use maximum instead of shift average as baseline
         # Result: doesn't seem to help too much
         # ----Shift average----

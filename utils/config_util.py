@@ -10,7 +10,6 @@ class Parser(object):
             interpolation=ExtendedInterpolation())
         self.config.read(config_path)
         self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
-        self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
         self.lr_rl = self.config.getfloat('rl', 'lr_rl')
         self.lr_decay_rl = self.config.getfloat('rl', 'lr_decay_rl')
 

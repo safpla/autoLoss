@@ -142,12 +142,10 @@ class Controller():
         p = np.random.rand(1)
         if p[0] < explore_rate:
             a = np.random.rand(1)
-            if a < 1/3:
+            if a < 1/2:
                 a = 0
-            elif a < 2/3:
-                a = 1
             else:
-                a = 2
+                a = 1
 
         # ----Handcraft classifier----
         #  ---Hard version---

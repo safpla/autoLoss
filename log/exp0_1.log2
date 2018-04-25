@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "trainer.py", line 204, in <module>
-    config = utils.Parser(config_path)
-  File "/users/hzhang2/haowen/GitHub/autoLoss/utils/config_util.py", line 7, in __init__
-    assert os.path.exists(config_path), '{} not exists.'.format(config_path)
-AssertionError: /users/hzhang2/haowen/GitHub/autoLoss/config/regressioni1.cfg not exists.
