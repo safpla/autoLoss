@@ -19,8 +19,8 @@ class Controller():
         self.graph = graph
         self._build_placeholder()
         # Notice
-        #self._build_graph()
-        self._build_graph_sigmoid()
+        self._build_graph()
+        #self._build_graph_sigmoid()
 
     def _build_placeholder(self):
         config = self.config
@@ -119,13 +119,14 @@ class Controller():
         grads = sess.run(self.gradients, feed_dict=feed_dict)
         return grads
 
-    def sample(self, sess, state, step):
+    def sample(self, sess, state, explore_rate=0):
         #
         # Sample an action from a given state, probabilistically
 
         # Args:
         #     sess: Current tf.Session
         #     state: shape = [dim_state_rl]
+        #     explore_rate: explore rate
 
         # Returns:
         #     action: shape = [dim_action_rl]
@@ -136,9 +137,6 @@ class Controller():
         a = np.argmax(a_dist == a)
 
         # ----Free exploring at a certain probability.----
-        decay = self.config.explore_rate_decay_rl
-        explore_rate = self.config.explore_rate_rl
-        explore_rate = explore_rate * math.exp(-step / decay)
         p = np.random.rand(1)
         if p[0] < explore_rate:
             a = np.random.rand(1)
@@ -183,17 +181,13 @@ class Controller():
         print('loading pretrained model from: ' + model_checkpoint_path)
         self.saver.restore(sess, model_checkpoint_path)
 
-    def save_model(self, sess, global_step):
+    def save_model(self, sess, task_name, global_step):
         assert sess.graph is self.graph
         model_dir = self.config.model_dir
-        task_name = 'autoLoss-' + self.config.student_model_name
         task_dir = os.path.join(model_dir, task_name)
         if not os.path.exists(task_dir):
             os.mkdir(task_dir)
-        controller = 'ffn'
-        student = self.config.student_model_name
-        model_name = '{}-{}'.format(controller, student)
-        save_path = os.path.join(task_dir, model_name)
+        save_path = os.path.join(task_dir, 'model')
         self.saver.save(sess, save_path, global_step=global_step)
 
     def print_weight(self, sess):

@@ -16,7 +16,7 @@ def get_reward(losses):
             neg += 1
     return zero, pos, neg
 
-def loss_analyzer(actions, valid_losses, train_losses, rewards):
+def loss_analyzer_toy(actions, valid_losses, train_losses, rewards):
     total_steps = len(actions)
     logger.info('total_steps: {}'.format(total_steps))
 

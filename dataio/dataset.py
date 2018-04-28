@@ -63,7 +63,6 @@ class Dataset(object):
             assert batch_size <= self._num_examples
             self._index_in_epoch -= self._num_examples
         end = self._index_in_epoch
-        #print('start:{}, end:{}'.format(start, end))
         batch_index = self._index[start:end]
         batch_index = list(np.sort(batch_index))
         target = self._dataset_target[batch_index]

@@ -38,6 +38,7 @@ def main():
             y = linear_func(x, w) + np.random.normal(loc=mean_noise,
                                                      scale=var_noise)
             data.append({'x': x, 'y': y})
+        print(data)
 
         np.save(f, data)
         f.close()

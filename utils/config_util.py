@@ -10,6 +10,7 @@ class Parser(object):
             interpolation=ExtendedInterpolation())
         self.config.read(config_path)
         self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
+        self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
         self.lr_rl = self.config.getfloat('rl', 'lr_rl')
         self.lr_decay_rl = self.config.getfloat('rl', 'lr_decay_rl')
 
@@ -93,12 +94,21 @@ class Parser(object):
         return os.path.join(self.data_dir, test_data_file)
 
     @property
+    def test_data_file(self):
+        test_data_file = self.config.get('data', 'test_data_file')
+        return os.path.join(self.data_dir, test_data_file)
+
+    @property
     def num_sample_train(self):
         return self.config.getint('data', 'num_sample_train')
 
     @property
     def num_sample_valid(self):
-         return self.config.getint('data', 'num_sample_valid')
+        return self.config.getint('data', 'num_sample_valid')
+
+    @property
+    def num_sample_test(self):
+        return self.config.getint('data', 'num_sample_test')
 
     @property
     def mean_noise(self):
@@ -137,12 +147,20 @@ class Parser(object):
         return self.config.getint('stud', 'max_endurance_stud')
 
     @property
+    def max_endurance_rl(self):
+        return self.config.getint('rl', 'max_endurance_rl')
+
+    @property
     def reward_baseline_decay(self):
         return self.config.getfloat('rl', 'reward_baseline_decay')
 
     @property
     def reward_max_value(self):
         return self.config.getfloat('rl', 'reward_max_value')
+
+    @property
+    def logit_clipping_c(self):
+        return self.config.getfloat('rl', 'logit_clipping_c')
 
     @property
     def timedelay_num(self):
