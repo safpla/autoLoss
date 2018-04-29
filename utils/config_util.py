@@ -63,6 +63,10 @@ class Parser(object):
         return self.config.getint('rl', 'update_frequency')
 
     @property
+    def save_frequency(self):
+        return self.config.getint('rl', 'save_frequency')
+
+    @property
     def exp_dir(self):
         return os.path.expanduser(self.config.get('env', 'exp_dir'))
 
@@ -77,6 +81,10 @@ class Parser(object):
     @property
     def student_model_name(self):
         return self.config.get('stud', 'student_model_name')
+
+    @property
+    def controller_model_name(self):
+        return self.config.get('rl', 'controller_model_name')
 
     @property
     def train_data_file(self):

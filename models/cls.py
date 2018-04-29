@@ -33,8 +33,8 @@ def _normalize2(x):
 def _normalize3(x):
     y = []
     for xx in x:
-        #y.append(math.log(xx + 1) / 10)
-        y.append(xx)
+        y.append(math.log(xx + 1) / 10)
+        #y.append(xx)
     return y
 
 def weight_variable(shape, name='b'):
@@ -65,8 +65,8 @@ class Cls():
         self.reset()
         self._build_placeholder()
         self._build_graph()
-        self.reward_baseline = None
-        self.improve_baseline = None
+        self.reward_baseline = None # average reward over episodes
+        self.improve_baseline = None # averge improvement over steps
 
     def get_state(self, sess):
         abs_diff = []
@@ -83,12 +83,12 @@ class Cls():
             else:
                 rel_diff.append(1)
             state = (rel_diff[-1:] +
-                 _normalize1([abs(ib)]) +
-                 _normalize2(self.previous_ce_loss[-1:]) +
-                 _normalize3(self.previous_l1_loss[-1:]) +
-                 self.previous_train_acc[-1:] +
-                 self.previous_valid_acc[-1:] +
-                 [self.previous_train_acc[-1] - self.previous_valid_acc[-1]]
+                     _normalize1([abs(ib)]) +
+                     _normalize2(self.previous_ce_loss[-1:]) +
+                     _normalize3(self.previous_l1_loss[-1:]) +
+                     self.previous_train_acc[-1:] +
+                     [self.previous_train_acc[-1] - self.previous_valid_acc[-1]] +
+                     self.previous_valid_acc[-1:]
                  )
         return np.array(state, dtype='f')
 
@@ -330,7 +330,7 @@ class Cls():
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
         adv = min(adv, self.config.reward_max_value)
-        #adv = max(adv, -self.config.reward_max_value)
+        adv = max(adv, -self.config.reward_max_value)
         # ----Shift average----
         self.reward_baseline = decay * self.reward_baseline\
             + (1 - decay) * reward

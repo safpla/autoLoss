@@ -18,9 +18,15 @@ class Controller():
         self.config = config
         self.graph = graph
         self._build_placeholder()
-        # Notice
-        self._build_graph()
-        #self._build_graph_sigmoid()
+        model_name = config.controller_model_name
+        if model_name == '2layer':
+            self._build_graph_2layer()
+        elif model_name == 'linear':
+            self._build_graph_linear()
+        elif model_name == 'linear_logits_clipping':
+            self._build_graph_linear_logits_clipping()
+        else:
+            raise NotImplementedError
 
     def _build_placeholder(self):
         config = self.config
@@ -33,7 +39,7 @@ class Controller():
             self.action_plh = tf.placeholder(shape=[None, a], dtype=tf.int32)
             self.lr_plh = tf.placeholder(dtype=tf.float32)
 
-    def _build_graph(self):
+    def _build_graph_2layer(self):
         config = self.config
         h_size = config.dim_hidden_rl
         a_size = config.dim_action_rl
@@ -67,7 +73,7 @@ class Controller():
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
-    def _build_graph_sigmoid(self):
+    def _build_graph_linear(self):
         config = self.config
         h_size = config.dim_hidden_rl
         a_size = config.dim_action_rl
@@ -75,6 +81,39 @@ class Controller():
         with self.graph.as_default():
             self.output = slim.fully_connected(self.state_plh, a_size,
                                             activation_fn=tf.nn.softmax)
+            self.chosen_action = tf.argmax(self.output, 1)
+            self.action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
+            self.indexes = tf.range(0, tf.shape(self.output)[0])\
+                * tf.shape(self.output)[1] + self.action
+            self.responsible_outputs = tf.gather(tf.reshape(self.output, [-1]),
+                                                self.indexes)
+            self.loss = -tf.reduce_mean(tf.log(self.responsible_outputs)
+                                        * self.reward_plh)
+
+            # ----Restore gradients and update them after several iterals.----
+            self.tvars = tf.trainable_variables()
+            tvars = self.tvars
+            self.gradient_plhs = []
+            for idx, var in enumerate(tvars):
+                placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
+                self.gradient_plhs.append(placeholder)
+
+            self.gradients = tf.gradients(self.loss, tvars)
+            #optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            optimizer = tf.train.GradientDescentOptimizer(lr)
+            self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
+            self.init = tf.global_variables_initializer()
+            self.saver = tf.train.Saver()
+
+    def _build_graph_linear_logits_clipping(self):
+        config = self.config
+        h_size = config.dim_hidden_rl
+        a_size = config.dim_action_rl
+        lr = self.lr_plh
+        with self.graph.as_default():
+            self.logits = slim.fully_connected(self.state_plh, a_size,
+                                            activation_fn=None)
+            self.output = tf.nn.softmax(self.logits / config.logit_clipping_c)
             self.chosen_action = tf.argmax(self.output, 1)
             self.action = tf.cast(tf.argmax(self.action_plh, 1), tf.int32)
             self.indexes = tf.range(0, tf.shape(self.output)[0])\
@@ -173,11 +212,19 @@ class Controller():
         action[a] = 1
         return action
 
-    def load_model(self, sess, checkpoint_dir):
+    def load_model(self, sess, checkpoint_dir, ckpt_num=None):
         assert sess.graph is self.graph
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
-        if ckpt and ckpt.model_checkpoint_path:
-            model_checkpoint_path = ckpt.model_checkpoint_path
+        if not ckpt_num:
+            if ckpt and ckpt.model_checkpoint_path:
+                model_checkpoint_path = ckpt.model_checkpoint_path
+        else:
+            model_checkpoint_path = None
+            for cp in ckpt.all_model_checkpoint_paths:
+                if cp.split('-')[-1] == str(ckpt_num):
+                    model_checkpoint_path = cp
+            if not model_checkpoint_path:
+                print('checkpoint num {} not found!'.format(ckpt_num))
         print('loading pretrained model from: ' + model_checkpoint_path)
         self.saver.restore(sess, model_checkpoint_path)
 
@@ -188,6 +235,7 @@ class Controller():
         if not os.path.exists(task_dir):
             os.mkdir(task_dir)
         save_path = os.path.join(task_dir, 'model')
+        logger.info('Save model at {}'.format(save_path))
         self.saver.save(sess, save_path, global_step=global_step)
 
     def print_weight(self, sess):
