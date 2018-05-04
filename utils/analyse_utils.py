@@ -118,3 +118,26 @@ def loss_analyzer_toy(actions, valid_losses, train_losses, rewards):
     #logger.info('mse: {}'.format(reward_mse_mean_trace))
     #logger.info('l1: {}'.format(reward_l1_mean_trace))
 
+def loss_analyzer_gan(actions, rewards):
+    total_steps = len(actions)
+    logger.info('total_steps: {}'.format(total_steps))
+
+    # ----Prior of each action.----
+    action_sum = np.sum(np.array(actions), axis=0) / total_steps
+    logger.info('p_a: {}'.format(action_sum))
+
+    # ----Distribution of each action over time.----
+    win = 100
+    update_gen_trace = []
+    update_disc_trace = []
+    for i in range(min(80, int(total_steps / win))):
+        start = i * win
+        stop = (i + 1) * win
+        action = actions[start:stop]
+        sum_action = np.sum(np.array(action), 0)
+        update_gen_trace.append(sum_action[0])
+        update_disc_trace.append(sum_action[1])
+
+    logger.info('Trace of actions distribution')
+    logger.info('gen: {}'.format(update_gen_trace))
+    logger.info('disc: {}'.format(update_disc_trace))

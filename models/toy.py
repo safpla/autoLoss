@@ -37,9 +37,13 @@ def _normalize3(x):
     return y
 
 class Toy():
-    def __init__(self, config, graph, loss_mode='1'):
+    def __init__(self, config, loss_mode='1'):
         self.config = config
-        self.graph = graph
+        self.graph = tf.Graph()
+        gpu_options = tf.GPUOptions(allow_growth=True)
+        configProto = tf.ConfigProto(gpu_options=gpu_options)
+        self.sess = tf.InteractiveSession(config=configProto,
+                                            graph=self.graph)
         # ----Loss_mode is only for DEBUG usage.----
         #   0: only mse, 1: mse & l1
         self.loss_mode = loss_mode
@@ -55,8 +59,7 @@ class Toy():
         self.reward_baseline = None
         self.improve_baseline = None
 
-    def get_state(self, sess):
-        # TODO(haowen) simply concatenate them could cause scale problem
+    def get_state(self):
         abs_diff = []
         rel_diff = []
         if self.improve_baseline is None:
@@ -70,16 +73,11 @@ class Toy():
                 rel_diff.append(v / t)
             else:
                 rel_diff.append(1)
-        # Notice
-        #state = ([1 + math.log(rel_diff[-1])] +
-        #         _normalize([abs(ib)])
-        #         )
+
         state = ([math.log(rel_diff[-1])] +
                  _normalize1([abs(ib)]) +
                  _normalize2(self.previous_mse_loss[-1:]) +
                  self.previous_l1_loss[-1:]
-                 #_normalize(self.previous_mse_loss) +
-                 #_normalize(self.previous_l1_loss)
                  )
         return np.array(state, dtype='f')
 
@@ -174,32 +172,30 @@ class Toy():
                 minimize(self.loss_total)
             self.init = tf.global_variables_initializer()
 
-    def train(self, sess):
+    def train(self):
         """ Optimize mse loss, l1 loss at the same time """
-        assert sess.graph is self.graph
         data = self.train_dataset.next_batch(self.config.batch_size)
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
-        loss, _ = sess.run([self.loss_total, self.update_total],
-                           feed_dict=feed_dict)
+        loss, _ = self.sess.run([self.loss_total, self.update_total],
+                                feed_dict=feed_dict)
         return loss
 
-    def valid(self, sess, dataset=None):
+    def valid(self, dataset=None):
         """ test on validation set """
         if not dataset:
             dataset = self.valid_dataset
-        assert sess.graph is self.graph
         data = dataset.next_batch(dataset.num_examples)
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
         fetch = [self.loss_mse, self.pred, self.y_plh]
-        [loss_mse, pred, gdth] = sess.run(fetch, feed_dict=feed_dict)
+        [loss_mse, pred, gdth] = self.sess.run(fetch, feed_dict=feed_dict)
         loss_mse_np = np.mean(np.square(pred - gdth))
         return loss_mse, pred, gdth
 
-    def env(self, sess, action):
+    def response(self, action):
         """ Given an action, return the new state, reward and whether dead
 
         Args:
@@ -210,8 +206,8 @@ class Toy():
             reward: shape = [1]
             dead: boolean
         """
-        assert sess.graph is self.graph
         data = self.train_dataset.next_batch(self.config.batch_size)
+        sess = self.sess
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
@@ -224,8 +220,8 @@ class Toy():
             # ----Update l1 loss.----
             sess.run(self.update_l1, feed_dict=feed_dict)
         loss_mse, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
-        valid_loss, _, _ = self.valid(sess)
-        train_loss, _, _ = self.valid(sess, dataset=self.train_dataset)
+        valid_loss, _, _ = self.valid()
+        train_loss, _, _ = self.valid(dataset=self.train_dataset)
 
         # ----Update state.----
         self.previous_mse_loss = self.previous_mse_loss[1:] + [loss_mse.tolist()]
@@ -239,19 +235,19 @@ class Toy():
 
         reward = self.get_step_reward()
         # ----Early stop and record best result.----
-        dead = self.check_terminate(sess)
-        state = self.get_state(sess)
+        dead = self.check_terminate()
+        state = self.get_state()
         return state, reward, dead
 
-    def check_terminate(self, sess):
+    def check_terminate(self):
         # TODO(haowen)
         # Episode terminates on two condition:
         # 1) Convergence: valid loss doesn't improve in endurance steps
         # 2) Collapse: action space collapse to one action (not implement yet)
         step = self.step_number[0]
-        if step % self.config.valid_frequence_stud == 0:
+        if step % self.config.valid_frequency_stud == 0:
             self.endurance += 1
-            loss, _, _ = self.valid(sess)
+            loss, _, _ = self.valid()
             if loss < self.best_loss:
                 self.best_step = self.step_number[0]
                 self.best_loss = loss
@@ -269,7 +265,6 @@ class Toy():
             improve = (self.previous_valid_loss[-2] - self.previous_valid_loss[-1])
 
         # TODO(haowen) Try to use sqrt function instead of sign function
-        # ----With baseline.----
         if self.improve_baseline is None:
             self.improve_baseline = improve
         decay = self.config.reward_baseline_decay
@@ -281,20 +276,6 @@ class Toy():
         #value = abs(improve) / (abs(self.improve_baseline) + 1e-5)
         value = min(value, self.config.reward_max_value)
         return math.copysign(value, improve) * self.config.reward_step_rl
-        # ----Without baseline.----
-        #return math.copysign(math.sqrt(abs(improve)), improve)
-
-        # TODO(haowen) This design of reward may cause unbalance because
-        # positive number is more than negative number in nature
-        #if abs(improve) < 1e-5:
-        #    return 0    # no reward if the difference is too small
-        #elif improve > 0:
-        #    # TODO(haowen) Try not to give reward to the reduce of loss
-        #    # This reward will strengthen penalty and weaken reward
-        #    return self.config.reward_step_rl
-        #    #return 0
-        #else:
-        #    return -self.config.reward_step_rl
 
     def get_final_reward(self):
         assert self.best_loss < 1e10 - 1
@@ -316,8 +297,9 @@ class Toy():
         #    self.reward_baseline = reward
         return reward, adv
 
-    def print_weight(self, sess):
-        w1, w2 = sess.run([self.w1, self.w2])
-        print('w1: ', w1)
-        #print('w2: ', w2)
+    def print_weights(self):
+        for tvar in self.tvars:
+            print(self.sess.run(tvar))
 
+    def initialize_weights(self):
+        self.sess.run(self.init)

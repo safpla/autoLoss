@@ -14,9 +14,13 @@ import utils
 logger = utils.get_logger()
 
 class Controller():
-    def __init__(self, config, graph):
+    def __init__(self, config):
         self.config = config
-        self.graph = graph
+        self.graph = tf.Graph()
+        gpu_options = tf.GPUOptions(allow_growth=True)
+        configProto = tf.ConfigProto(gpu_options=gpu_options)
+        self.sess = tf.InteractiveSession(config=configProto,
+                                            graph=self.graph)
         self._build_placeholder()
         model_name = config.controller_model_name
         if model_name == '2layer':
@@ -138,39 +142,18 @@ class Controller():
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
-    def get_gradients(self, sess, state, action, reward):
-        """ Return the gradients according to one episode
-
-        Args:
-            sess: Current tf.Session
-            state: shape = [time_steps, dim_state_rl]
-            action: shape = [time_steps, dim_action_rl]
-            reward: shape = [time_steps]
-
-        Returns:
-            grads: Gradients of all trainable variables
-        """
-        assert sess.graph is self.graph
-        feed_dict = {self.reward_plh: reward,
-                     self.action_plh: action,
-                     self.state_plh: state,
-                    }
-        grads = sess.run(self.gradients, feed_dict=feed_dict)
-        return grads
-
-    def sample(self, sess, state, explore_rate=0):
+    def sample(self, state, explore_rate=0):
         #
         # Sample an action from a given state, probabilistically
 
         # Args:
-        #     sess: Current tf.Session
         #     state: shape = [dim_state_rl]
         #     explore_rate: explore rate
 
         # Returns:
         #     action: shape = [dim_action_rl]
         #
-        assert sess.graph is self.graph
+        sess = self.sess
         a_dist = sess.run(self.output, feed_dict={self.state_plh: [state]})
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
@@ -212,24 +195,31 @@ class Controller():
         action[a] = 1
         return action
 
-    def load_model(self, sess, checkpoint_dir, ckpt_num=None):
-        assert sess.graph is self.graph
+    def train_one_step(self, gradBuffer, lr):
+        feed_dict = dict(zip(self.gradient_plhs, gradBuffer))
+        feed_dict[self.lr_plh] = lr
+        self.sess.run(self.train_op, feed_dict=feed_dict)
+
+    def load_model(self, checkpoint_dir, ckpt_num=None):
+        sess = self.sess
         ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
         if not ckpt_num:
             if ckpt and ckpt.model_checkpoint_path:
                 model_checkpoint_path = ckpt.model_checkpoint_path
+            else:
+                raise Exception('Invalid checkpoint_dir: ' + checkpoint_dir)
         else:
             model_checkpoint_path = None
             for cp in ckpt.all_model_checkpoint_paths:
                 if cp.split('-')[-1] == str(ckpt_num):
                     model_checkpoint_path = cp
             if not model_checkpoint_path:
-                print('checkpoint num {} not found!'.format(ckpt_num))
-        print('loading pretrained model from: ' + model_checkpoint_path)
+                raise Exception('Ckpt num {} not found!'.format(ckpt_num))
+        logger.info('loading pretrained model from: ' + model_checkpoint_path)
         self.saver.restore(sess, model_checkpoint_path)
 
-    def save_model(self, sess, task_name, global_step):
-        assert sess.graph is self.graph
+    def save_model(self, task_name, global_step):
+        sess = self.sess
         model_dir = self.config.model_dir
         task_dir = os.path.join(model_dir, task_name)
         if not os.path.exists(task_dir):
@@ -238,10 +228,35 @@ class Controller():
         logger.info('Save model at {}'.format(save_path))
         self.saver.save(sess, save_path, global_step=global_step)
 
-    def print_weight(self, sess):
-        assert sess.graph is self.graph
+    def print_weights(self):
+        sess = self.sess
         with self.graph.as_default():
             tvars = sess.run(self.tvars)
             for idx, var in enumerate(tvars):
                 logger.info('idx:{}, var:{}'.format(idx, var))
+
+    def initialize_weights(self):
+        self.sess.run(self.init)
+
+    def get_weights(self):
+        return self.sess.run(self.tvars)
+    def get_gradients(self, state, action, reward):
+        """ Return the gradients according to one episode
+
+        Args:
+            sess: Current tf.Session
+            state: shape = [time_steps, dim_state_rl]
+            action: shape = [time_steps, dim_action_rl]
+            reward: shape = [time_steps]
+
+        Returns:
+            grads: Gradients of all trainable variables
+        """
+        sess = self.sess
+        feed_dict = {self.reward_plh: reward,
+                     self.action_plh: action,
+                     self.state_plh: state,
+                    }
+        grads = sess.run(self.gradients, feed_dict=feed_dict)
+        return grads
 

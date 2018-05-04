@@ -1,6 +1,8 @@
 from configparser import ConfigParser, ExtendedInterpolation
 import json
 import os
+import utils
+logger = utils.get_logger()
 
 class Parser(object):
     def __init__(self, config_path):
@@ -9,10 +11,26 @@ class Parser(object):
             delimiters='=',
             interpolation=ExtendedInterpolation())
         self.config.read(config_path)
-        self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
-        self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
-        self.lr_rl = self.config.getfloat('rl', 'lr_rl')
-        self.lr_decay_rl = self.config.getfloat('rl', 'lr_decay_rl')
+        try:
+            self.lambda1_stud = self.config.getfloat('stud', 'lambda1_stud')
+        except:
+            logger.warning('lambda1_stud not found in config file')
+            self.lambda1_stud = 0
+        try:
+            self.lambda2_stud = self.config.getfloat('stud', 'lambda2_stud')
+        except:
+            logger.warning('lambda2_stud not found in config file')
+            self.lambda2_stud = 0
+        try:
+            self.lr_rl = self.config.getfloat('rl', 'lr_rl')
+        except:
+            logger.warning('lr_rl not found in config file')
+            self.lr_rl = 0.001
+        try:
+            self.lr_decay_rl = self.config.getfloat('rl', 'lr_decay_rl')
+        except:
+            logger.warning('lr_decay_rl not found in config file')
+            self.lr_decay_rl = 1
 
     @property
     def num_pre_loss(self):
@@ -77,6 +95,10 @@ class Parser(object):
     @property
     def model_dir(self):
         return os.path.expanduser(self.config.get('env', 'model_dir'))
+
+    @property
+    def save_images_dir(self):
+        return os.path.expanduser(self.config.get('env', 'save_images_dir'))
 
     @property
     def student_model_name(self):
@@ -147,12 +169,24 @@ class Parser(object):
         return self.config.getfloat('stud', 'lr_stud')
 
     @property
-    def valid_frequence_stud(self):
-        return self.config.getint('stud', 'valid_frequence_stud')
+    def beta1(self):
+        return self.config.getfloat('stud', 'beta1')
+
+    @property
+    def beta2(self):
+        return self.config.getfloat('stud', 'beta2')
+
+    @property
+    def valid_frequency_stud(self):
+        return self.config.getint('stud', 'valid_frequency_stud')
 
     @property
     def max_endurance_stud(self):
         return self.config.getint('stud', 'max_endurance_stud')
+
+    @property
+    def print_frequency_stud(self):
+        return self.config.getint('stud', 'print_frequency_stud')
 
     @property
     def max_endurance_rl(self):
@@ -171,21 +205,44 @@ class Parser(object):
         return self.config.getfloat('rl', 'logit_clipping_c')
 
     @property
-    def timedelay_num(self):
-        return self.config.getint('train', 'timedelay_num')
+    def gan_mode(self):
+        return self.config.get('gan', 'gan_mode')
 
     @property
-    def max_step(self):
-        return self.config.getint('train', 'max_step')
+    def dim_z(self):
+        return self.config.getint('gan', 'dim_z')
 
     @property
-    def summary_steps(self):
-        return self.config.getint('train', 'summary_steps')
+    def dim_x(self):
+        return self.config.getint('gan', 'dim_x')
 
     @property
-    def lr_policy_params(self):
-        params = self.config.get('train', 'lr_policy_params', fallback='{}')
-        return json.loads(params)
+    def dim_c(self):
+        return self.config.getint('gan', 'dim_c')
+
+    @property
+    def disc_iters(self):
+        return self.config.getint('gan', 'disc_iters')
+
+    @property
+    def gen_iters(self):
+        return self.config.getint('gan', 'gen_iters')
+
+    @property
+    def state_decay(self):
+        return self.config.getfloat('rl', 'state_decay')
+
+    @property
+    def pretrained_gan_exp_name(self):
+        value = self.config.get('gan', 'pretrained_gan_exp_name')
+        if value == 'None':
+            return None
+        else:
+            return value
+
+    @property
+    def stop_strategy_stud(self):
+        return self.config.get('stud', 'stop_strategy_stud')
 
 
 if __name__ == '__main__':

@@ -47,9 +47,13 @@ def bias_variable(shape, name='b'):
 
 
 class Cls():
-    def __init__(self, config, graph, loss_mode='1'):
+    def __init__(self, config, loss_mode='1'):
         self.config = config
-        self.graph = graph
+        self.graph = tf.Graph()
+        gpu_options = tf.GPUOptions(allow_growth=True)
+        configProto = tf.ConfigProto(gpu_options=gpu_options)
+        self.sess = tf.InteractiveSession(config=configProto,
+                                            graph=self.graph)
         # ----Loss_mode is only for DEBUG usage.----
         #   0: only ce, 1: ce & l1, 2: ce & l2, 3: ce & l1 & l2
         self.loss_mode = loss_mode
@@ -68,7 +72,7 @@ class Cls():
         self.reward_baseline = None # average reward over episodes
         self.improve_baseline = None # averge improvement over steps
 
-    def get_state(self, sess):
+    def get_state(self):
         abs_diff = []
         rel_diff = []
         if self.improve_baseline is None:
@@ -195,31 +199,32 @@ class Cls():
             self.update = [self.update_ce, self.update_l1, self.update_l2]
             self.init = tf.global_variables_initializer()
 
-    def train(self, sess):
+    def initialize_weights(self):
+        self.sess.run(self.init)
+
+    def train(self):
         # ----Optimize total loss.----
-        assert sess.graph is self.graph
         data = self.train_dataset.next_batch(self.config.batch_size)
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
         fetch = [self.loss_ce, self.accuracy, self.update_total]
-        loss, acc, _ = sess.run(fetch, feed_dict=feed_dict)
+        loss, acc, _ = self.sess.run(fetch, feed_dict=feed_dict)
         return loss, acc
 
-    def valid(self, sess, dataset=None):
+    def valid(self, dataset=None):
         # ----Test on validation set.----
         if not dataset:
             dataset = self.valid_dataset
-        assert sess.graph is self.graph
         data = dataset.next_batch(dataset.num_examples)
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
         fetch = [self.loss_ce, self.accuracy, self.pred, self.y_plh]
-        [loss_ce, acc, pred, gdth] = sess.run(fetch, feed_dict=feed_dict)
+        [loss_ce, acc, pred, gdth] = self.sess.run(fetch, feed_dict=feed_dict)
         return loss_ce, acc, pred, gdth
 
-    def env(self, sess, action):
+    def response(self, action):
         # Given an action, return the new state, reward and whether dead
 
         # Args:
@@ -230,7 +235,7 @@ class Cls():
         #     reward: shape = [1]
         #     dead: boolean
         #
-        assert sess.graph is self.graph
+        sess = self.sess
         data = self.train_dataset.next_batch(self.config.batch_size)
         x = data['input']
         y = data['target']
@@ -240,9 +245,8 @@ class Cls():
         sess.run(self.update[a], feed_dict=feed_dict)
         fetch = [self.loss_ce, self.loss_l1]
         loss_ce, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
-        valid_loss, valid_acc, _, _ = self.valid(sess)
-        train_loss, train_acc, _, _ = self.valid(sess,
-                                                 dataset=self.train_dataset)
+        valid_loss, valid_acc, _, _ = self.valid()
+        train_loss, train_acc, _, _ = self.valid(dataset=self.train_dataset)
 
         # ----Update state.----
         self.previous_ce_loss = self.previous_ce_loss[1:] + [loss_ce.tolist()]
@@ -260,26 +264,26 @@ class Cls():
 
         reward = self.get_step_reward()
         # ----Early stop and record best result.----
-        dead = self.check_terminate(sess)
-        state = self.get_state(sess)
+        dead = self.check_terminate()
+        state = self.get_state()
         return state, reward, dead
 
-    def check_terminate(self, sess):
+    def check_terminate(self):
         # TODO(haowen)
         # Early stop and recording the best result
         # Episode terminates on two condition:
         # 1) Convergence: valid loss doesn't improve in endurance steps
         # 2) Collapse: action space collapse to one action (not implement yet)
         step = self.step_number[0]
-        if step % self.config.valid_frequence_stud == 0:
+        if step % self.config.valid_frequency_stud == 0:
             self.endurance += 1
-            loss, acc, _, _ = self.valid(sess)
+            loss, acc, _, _ = self.valid()
             if acc > self.best_acc:
                 self.best_step = self.step_number[0]
                 self.best_loss = loss
                 self.best_acc = acc
                 self.endurance = 0
-                _, test_acc, _, _= self.valid(sess, dataset=self.test_dataset)
+                _, test_acc, _, _= self.valid(dataset=self.test_dataset)
                 self.test_acc = test_acc
             if self.endurance > self.config.max_endurance_stud:
                 return True
@@ -336,6 +340,6 @@ class Cls():
             + (1 - decay) * reward
         return reward, adv
 
-    def print_weight(self, sess):
+    def print_weights(self):
         for tvar in self.tvars:
-            print(sess.run(tvar))
+            print(self.sess.run(tvar))

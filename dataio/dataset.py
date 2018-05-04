@@ -49,7 +49,7 @@ class Dataset(object):
         return self._epochs_completed
 
     def next_batch(self, batch_size, shuffle=True):
-        # batch_size is in the first dimension
+        # batch_size is the first dimension
         start = self._index_in_epoch
         self._index_in_epoch += batch_size
         if self._index_in_epoch > self._num_examples:
@@ -61,9 +61,10 @@ class Dataset(object):
             # Start next epoch
             start = 0
             assert batch_size <= self._num_examples
-            self._index_in_epoch -= self._num_examples
+            self._index_in_epoch = start + batch_size
         end = self._index_in_epoch
         batch_index = self._index[start:end]
+        #print('start:{}, end:{}'.format(start, end))
         batch_index = list(np.sort(batch_index))
         target = self._dataset_target[batch_index]
         input = self._dataset_input[batch_index]
