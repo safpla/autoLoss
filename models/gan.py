@@ -14,10 +14,11 @@ import utils
 from utils import inception_score
 from utils import save_images
 from models import layers
+from models.basic_model import Basic_model
 
 logger = utils.get_logger()
 
-class Gan():
+class Gan(Basic_model):
     def __init__(self, config, exp_name='new_exp'):
         self.config = config
         self.graph = tf.Graph()
@@ -241,32 +242,6 @@ class Gan():
                 break
         logger.info(best_inps)
 
-    def get_inception_score(self, num_batches):
-        all_samples = []
-        config = self.config
-        batch_size = 100
-        dim_z = config.dim_z
-        for i in range(num_batches):
-            z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
-            feed_dict = {self.noise: z, self.is_training: False}
-            samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
-            all_samples.append(samples)
-        all_samples = np.concatenate(all_samples, axis=0)
-        all_samples = ((all_samples+1.)*255./2.).astype(np.int32)
-        all_samples = all_samples.reshape((-1, 32, 32, 3))
-        return inception_score.get_inception_score(list(all_samples))
-
-    def generate_images(self, step):
-        feed_dict = {self.noise: self.fixed_noise_128,
-                     self.is_training: False}
-        samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
-        samples = ((samples+1.)*255./2.).astype('int32')
-        task_dir = os.path.join(self.config.save_images_dir, self.exp_name)
-        if not os.path.exists(task_dir):
-            os.mkdir(task_dir)
-        save_path = os.path.join(task_dir, 'images_{}.jpg'.format(step))
-        save_images.save_images(samples.reshape((-1, 32, 32, 3)), save_path)
-
     def response(self, action):
         # Given an action, return the new state, reward and whether dead
 
@@ -326,7 +301,7 @@ class Gan():
 
     def get_state(self):
         if self.step_number == 0:
-            state = [0] * self.dim_state_rl
+            state = [0] * self.config.dim_state_rl
         else:
             #state = [self.step_number / self.config.max_training_step,
             state = [
@@ -336,33 +311,6 @@ class Gan():
                      self.inception_score / 10,
                      ]
         return np.array(state, dtype='f')
-
-    def load_model(self, checkpoint_dir, ckpt_num=None):
-        ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
-        if not ckpt_num:
-            if ckpt and ckpt.model_checkpoint_path:
-                model_checkpoint_path = ckpt.model_checkpoint_path
-            else:
-                raise Exception('Invalid checkpoint_dir: ' + checkpoint_dir)
-        else:
-            model_checkpoint_path = None
-            for cp in ckpt.all_model_checkpoint_paths:
-                if cp.split('-')[-1] == str(ckpt_num):
-                    model_checkpoint_path = cp
-            if not model_checkpoint_path:
-                raise Exception('Ckpt num {} not found!'.format(ckpt_num))
-        logger.info('Loading pretrained model from: ' + model_checkpoint_path)
-        self.saver.restore(self.sess, model_checkpoint_path)
-
-    def save_model(self, step):
-        task_name = self.exp_name
-        model_dir = self.config.model_dir
-        task_dir = os.path.join(model_dir, task_name)
-        if not os.path.exists(task_dir):
-            os.mkdir(task_dir)
-        save_path = os.path.join(task_dir, 'model')
-        logger.info('Save model at {}'.format(save_path))
-        self.saver.save(self.sess, save_path, global_step=step)
 
     def check_terminate(self):
         # TODO(haowen)
@@ -408,12 +356,31 @@ class Gan():
             + (1 - decay) * reward
         return reward, adv
 
-    def print_weights(self):
-        for tvar in self.tvars:
-            logger.info(self.sess.run(tvar))
+    def get_inception_score(self, num_batches):
+        all_samples = []
+        config = self.config
+        batch_size = 100
+        dim_z = config.dim_z
+        for i in range(num_batches):
+            z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
+            feed_dict = {self.noise: z, self.is_training: False}
+            samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
+            all_samples.append(samples)
+        all_samples = np.concatenate(all_samples, axis=0)
+        all_samples = ((all_samples+1.)*255./2.).astype(np.int32)
+        all_samples = all_samples.reshape((-1, 32, 32, 3))
+        return inception_score.get_inception_score(list(all_samples))
 
-    def initialize_weights(self):
-        self.sess.run(self.init)
+    def generate_images(self, step):
+        feed_dict = {self.noise: self.fixed_noise_128,
+                     self.is_training: False}
+        samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
+        samples = ((samples+1.)*255./2.).astype('int32')
+        task_dir = os.path.join(self.config.save_images_dir, self.exp_name)
+        if not os.path.exists(task_dir):
+            os.mkdir(task_dir)
+        save_path = os.path.join(task_dir, 'images_{}.jpg'.format(step))
+        save_images.save_images(samples.reshape((-1, 32, 32, 3)), save_path)
 
 
 if __name__ == '__main__':

@@ -9,6 +9,7 @@ import math
 
 from dataio.dataset import Dataset
 import utils
+from models.basic_model import Basic_model
 
 logger = utils.get_logger()
 
@@ -36,8 +37,9 @@ def _normalize3(x):
         y.append(xx)
     return y
 
-class Toy():
-    def __init__(self, config, loss_mode='1'):
+
+class Toy(Basic_model):
+    def __init__(self, config, exp_name='new_exp', loss_mode='1'):
         self.config = config
         self.graph = tf.Graph()
         gpu_options = tf.GPUOptions(allow_growth=True)
@@ -47,6 +49,7 @@ class Toy():
         # ----Loss_mode is only for DEBUG usage.----
         #   0: only mse, 1: mse & l1
         self.loss_mode = loss_mode
+        self.exp_name = exp_name
         train_data_file = config.train_data_file
         valid_data_file = config.valid_data_file
         self.train_dataset = Dataset()
@@ -58,28 +61,6 @@ class Toy():
         self._build_graph()
         self.reward_baseline = None
         self.improve_baseline = None
-
-    def get_state(self):
-        abs_diff = []
-        rel_diff = []
-        if self.improve_baseline is None:
-            ib = 1
-        else:
-            ib = self.improve_baseline
-
-        for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
-            abs_diff.append(v - t)
-            if t > 1e-6:
-                rel_diff.append(v / t)
-            else:
-                rel_diff.append(1)
-
-        state = ([math.log(rel_diff[-1])] +
-                 _normalize1([abs(ib)]) +
-                 _normalize2(self.previous_mse_loss[-1:]) +
-                 self.previous_l1_loss[-1:]
-                 )
-        return np.array(state, dtype='f')
 
     def reset(self):
         """ Reset the model """
@@ -109,12 +90,6 @@ class Toy():
         lr = self.config.lr_stud
 
         with self.graph.as_default():
-            # ----2-layer ffn----
-            #hidden = slim.fully_connected(self.x_plh, h_size,
-            #                              activation_fn=tf.nn.tanh)
-            #self.pred = slim.fully_connected(hidden, y_size,
-            #                                 activation_fn=None)
-
             # ----quadratic equation----
             #  ---first order---
             x_size = self.config.dim_input_stud
@@ -297,9 +272,25 @@ class Toy():
         #    self.reward_baseline = reward
         return reward, adv
 
-    def print_weights(self):
-        for tvar in self.tvars:
-            print(self.sess.run(tvar))
+    def get_state(self):
+        abs_diff = []
+        rel_diff = []
+        if self.improve_baseline is None:
+            ib = 1
+        else:
+            ib = self.improve_baseline
 
-    def initialize_weights(self):
-        self.sess.run(self.init)
+        for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
+            abs_diff.append(v - t)
+            if t > 1e-6:
+                rel_diff.append(v / t)
+            else:
+                rel_diff.append(1)
+
+        state = ([math.log(rel_diff[-1])] +
+                 _normalize1([abs(ib)]) +
+                 _normalize2(self.previous_mse_loss[-1:]) +
+                 self.previous_l1_loss[-1:]
+                 )
+        return np.array(state, dtype='f')
+

@@ -9,6 +9,7 @@ import math
 
 from dataio.dataset import Dataset
 import utils
+from models.basic_model import Basic_model
 
 logger = utils.get_logger()
 
@@ -46,16 +47,15 @@ def bias_variable(shape, name='b'):
     return tf.Variable(initial)
 
 
-class Cls():
-    def __init__(self, config, loss_mode='1'):
+class Cls(Basic_model):
+    def __init__(self, config, exp_name='new_exp', loss_mode='1'):
         self.config = config
         self.graph = tf.Graph()
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess = tf.InteractiveSession(config=configProto,
                                             graph=self.graph)
-        # ----Loss_mode is only for DEBUG usage.----
-        #   0: only ce, 1: ce & l1, 2: ce & l2, 3: ce & l1 & l2
+        self.exp_name = exp_name
         self.loss_mode = loss_mode
         train_data_file = config.train_data_file
         valid_data_file = config.valid_data_file
@@ -71,30 +71,6 @@ class Cls():
         self._build_graph()
         self.reward_baseline = None # average reward over episodes
         self.improve_baseline = None # averge improvement over steps
-
-    def get_state(self):
-        abs_diff = []
-        rel_diff = []
-        if self.improve_baseline is None:
-            ib = 1
-        else:
-            ib = self.improve_baseline
-
-        for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
-            abs_diff.append(v - t)
-            if t > 1e-6:
-                rel_diff.append(v / t)
-            else:
-                rel_diff.append(1)
-            state = (rel_diff[-1:] +
-                     _normalize1([abs(ib)]) +
-                     _normalize2(self.previous_ce_loss[-1:]) +
-                     _normalize3(self.previous_l1_loss[-1:]) +
-                     self.previous_train_acc[-1:] +
-                     [self.previous_train_acc[-1] - self.previous_valid_acc[-1]] +
-                     self.previous_valid_acc[-1:]
-                 )
-        return np.array(state, dtype='f')
 
     def reset(self):
         # ----Reset the model.----
@@ -198,9 +174,6 @@ class Cls():
                 minimize(self.loss_total)
             self.update = [self.update_ce, self.update_l1, self.update_l2]
             self.init = tf.global_variables_initializer()
-
-    def initialize_weights(self):
-        self.sess.run(self.init)
 
     def train(self):
         # ----Optimize total loss.----
@@ -340,6 +313,27 @@ class Cls():
             + (1 - decay) * reward
         return reward, adv
 
-    def print_weights(self):
-        for tvar in self.tvars:
-            print(self.sess.run(tvar))
+    def get_state(self):
+        abs_diff = []
+        rel_diff = []
+        if self.improve_baseline is None:
+            ib = 1
+        else:
+            ib = self.improve_baseline
+
+        for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
+            abs_diff.append(v - t)
+            if t > 1e-6:
+                rel_diff.append(v / t)
+            else:
+                rel_diff.append(1)
+            state = (rel_diff[-1:] +
+                     _normalize1([abs(ib)]) +
+                     _normalize2(self.previous_ce_loss[-1:]) +
+                     _normalize3(self.previous_l1_loss[-1:]) +
+                     self.previous_train_acc[-1:] +
+                     [self.previous_train_acc[-1] - self.previous_valid_acc[-1]] +
+                     self.previous_valid_acc[-1:]
+                 )
+        return np.array(state, dtype='f')
+
