@@ -57,6 +57,7 @@ class Gan(Basic_model):
         # to control when to terminate the episode
         self.endurance = 0
         self.best_inception_score = 0
+        self.inps_baseline = 0
 
     def _build_placeholder(self):
         with self.graph.as_default():
@@ -106,27 +107,36 @@ class Gan(Basic_model):
                 disc_cost = (disc_cost_fake + disc_cost_real) / 2.
 
                 tvars = tf.trainable_variables()
-                tvars_gen = [v for v in tvars if 'Generator' in v.name]
-                tvars_disc = [v for v in tvars if 'Discriminator' in v.name]
+                gen_tvars = [v for v in tvars if 'Generator' in v.name]
+                disc_tvars = [v for v in tvars if 'Discriminator' in v.name]
 
-                gen_train_op = tf.train.AdamOptimizer(learning_rate=lr,
-                    beta1=beta1, beta2=beta2).minimize(gen_cost,
-                        var_list=tvars_gen)
-                disc_train_op = tf.train.AdamOptimizer(learning_rate=lr,
-                    beta1=beta1, beta2=beta2).minimize(disc_cost,
-                        var_list=tvars_disc)
+                gen_grad = tf.gradients(gen_cost, gen_tvars)
+                disc_grad = tf.gradients(disc_cost, disc_tvars)
+                optimizer = tf.train.AdamOptimizer(learning_rate=lr,
+                                                   beta1=beta1,
+                                                   beta2=beta2)
+                gen_train_op = optimizer.apply_gradients(
+                    zip(gen_grad, gen_tvars))
+                disc_train_op = optimizer.apply_gradients(
+                    zip(disc_grad, disc_tvars))
             else:
                 raise Exception('Invalid gan_mode')
 
             self.saver = tf.train.Saver()
             self.init = tf.global_variables_initializer()
+            self.fake_data = fake_data
             self.gen_train_op = gen_train_op
             self.disc_train_op = disc_train_op
             self.update = [gen_train_op, disc_train_op]
+
+            self.gen_cost = gen_cost
+            self.gen_grad = gen_grad
+            self.gen_tvars = gen_tvars
+
             self.disc_cost_fake = disc_cost_fake
             self.disc_cost_real = disc_cost_real
-            self.gen_cost = gen_cost
-            self.fake_data = fake_data
+            self.disc_grad = disc_grad
+            self.disc_tvars = disc_tvars
 
     def generator(self, input):
         dim_z = self.config.dim_z
@@ -192,6 +202,8 @@ class Gan(Basic_model):
         max_endurance = config.max_endurance_stud
         endurance = 0
         best_inps = 0
+        inps_baseline = 0
+        decay = config.state_decay
 
         for step in range(config.max_training_step):
             start_time = time.time()
@@ -215,8 +227,14 @@ class Gan(Basic_model):
             if step % valid_frequency == (valid_frequency - 1):
                 logger.info('========Step{}========'.format(step + 1))
                 logger.info(endurance)
-                inception_score = self.get_inception_score(10)
+                inception_score = self.get_inception_score(config.inps_batches)
                 logger.info(inception_score)
+                if inps_baseline > 0:
+                    inps_baseline = inps_baseline * decay \
+                        + inception_score[0] * (1 - decay)
+                else:
+                    inps_baseline = inception_score[0]
+                logger.info('inps_baseline: {}'.format(inps_baseline))
                 self.generate_images(step)
                 endurance += 1
                 if inception_score[0] > best_inps:
@@ -303,9 +321,8 @@ class Gan(Basic_model):
         if self.step_number == 0:
             state = [0] * self.config.dim_state_rl
         else:
-            #state = [self.step_number / self.config.max_training_step,
-            state = [
-                     self.ema_gen_cost / 5,
+            state = [self.step_number / self.config.max_training_step,
+                     self.ema_gen_cost,
                      self.ema_disc_cost_real,
                      self.ema_disc_cost_fake,
                      self.inception_score / 10,
@@ -321,10 +338,18 @@ class Gan(Basic_model):
         step = self.step_number
         if step % self.config.valid_frequency_stud == 0:
             self.endurance += 1
-            inception_score = self.get_inception_score(100)
+            inception_score = self.get_inception_score(self.config.inps_batches)
             inps = inception_score[0]
-            logger.info('inception_score_100: {}'.format(inception_score))
+            logger.info('----step{}----'.format(step))
+            logger.info('inception_score: {}'.format(inception_score))
             self.inception_score = inps
+            decay = self.config.state_decay
+            if self.inps_baseline > 0:
+                self.inps_baseline = self.inps_baseline * decay \
+                                     + inps * (1 - decay)
+            else:
+                self.inps_baseline = inps
+            logger.info('inps_baseline: {}'.format(self.inps_baseline))
             if inps > self.best_inception_score:
                 self.best_step = self.step_number
                 self.best_inception_score = inps
@@ -336,21 +361,34 @@ class Gan(Basic_model):
         elif self.config.stop_strategy_stud == 'exceeding_endurance' and \
                 self.endurance > self.config.max_endurance_stud:
             return True
+        elif self.config.stop_strategy_stud == 'prescribed_inps':
+            if step < 1000:
+                return False
+            if self.inps_baseline > self.config.inps_threshold or \
+                    step > self.config.max_training_step:
+                return True
         return False
 
     def get_step_reward(self):
         return 0
 
     def get_final_reward(self):
-        inps = self.best_inception_score
-        reward = inps ** 2
+        if self.config.stop_strategy_stud == 'prescribed_steps' or \
+                self.config.stop_strategy_stud == 'exceeding_endurance':
+            inps = self.best_inception_score
+            reward = inps ** 2
+        elif self.config.stop_strategy_stud == 'prescribed_inps':
+            time_cost = self.step_number / self.config.max_training_step
+            reward = math.sqrt(self.config.reward_c / time_cost)
+            if self.step_number > self.config.max_training_step:
+                reward = -self.config.reward_c
 
         if self.reward_baseline is None:
             self.reward_baseline = reward
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
-        #adv = min(adv, self.config.reward_max_value)
-        #adv = max(adv, -self.config.reward_max_value)
+        adv = min(adv, self.config.reward_max_value)
+        adv = max(adv, -self.config.reward_max_value)
         # ----Shift average----
         self.reward_baseline = decay * self.reward_baseline\
             + (1 - decay) * reward
@@ -369,7 +407,8 @@ class Gan(Basic_model):
         all_samples = np.concatenate(all_samples, axis=0)
         all_samples = ((all_samples+1.)*255./2.).astype(np.int32)
         all_samples = all_samples.reshape((-1, 32, 32, 3))
-        return inception_score.get_inception_score(list(all_samples))
+        return inception_score.get_inception_score(list(all_samples),
+                                                   splits=config.inps_splits)
 
     def generate_images(self, step):
         feed_dict = {self.noise: self.fixed_noise_128,

@@ -21,16 +21,18 @@ class Parser(object):
         except:
             logger.warning('lambda2_stud not found in config file')
             self.lambda2_stud = 0
-        try:
-            self.lr_rl = self.config.getfloat('rl', 'lr_rl')
-        except:
-            logger.warning('lr_rl not found in config file')
-            self.lr_rl = 0.001
-        try:
-            self.lr_decay_rl = self.config.getfloat('rl', 'lr_decay_rl')
-        except:
-            logger.warning('lr_decay_rl not found in config file')
-            self.lr_decay_rl = 1
+
+    @property
+    def lr_decay_stud(self):
+        return self.config.getfloat('stud', 'lr_decay_stud')
+
+    @property
+    def lr_rl(self):
+        return self.config.getfloat('rl', 'lr_rl')
+
+    @property
+    def lr_decay_rl(self):
+        return self.config.getfloat('rl', 'lr_decay_rl')
 
     @property
     def num_pre_loss(self):
@@ -221,6 +223,14 @@ class Parser(object):
         return self.config.getint('gan', 'dim_c')
 
     @property
+    def n_hidden_disc(self):
+        return self.config.getint('gan', 'n_hidden_disc')
+
+    @property
+    def n_hidden_gen(self):
+        return self.config.getint('gan', 'n_hidden_gen')
+
+    @property
     def disc_iters(self):
         return self.config.getint('gan', 'disc_iters')
 
@@ -243,6 +253,18 @@ class Parser(object):
     @property
     def stop_strategy_stud(self):
         return self.config.get('stud', 'stop_strategy_stud')
+
+    @property
+    def inps_threshold(self):
+        return self.config.getfloat('gan', 'inps_threshold')
+
+    @property
+    def inps_batches(self):
+        return self.config.getint('gan', 'inps_batches')
+
+    @property
+    def inps_splits(self):
+        return self.config.getint('gan', 'inps_splits')
 
 
 if __name__ == '__main__':

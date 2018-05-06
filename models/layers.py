@@ -20,7 +20,8 @@ def linear(input,
            output_size,
            name='LN',
            initialization='normal',
-           gain=1.):
+           gain=1.,
+           stdev=0.02):
     input_shape = input.get_shape().as_list()
     input_size = input_shape[1]
 
@@ -30,7 +31,7 @@ def linear(input,
                                      (input_size, output_size)
                                      )
         elif initialization == 'normal':
-            weight_values = _normal(0.02, (input_size, output_size))
+            weight_values = _normal(stdev, (input_size, output_size))
         else:
             raise Exception('Invalid initialization!')
         weight_values *= gain

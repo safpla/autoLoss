@@ -13,6 +13,7 @@ from models import controller
 from models import toy
 from models import cls
 from models import gan
+from models import gan_grid
 import utils
 from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
@@ -37,6 +38,8 @@ class Trainer():
             self.model_stud = cls.Cls(config)
         elif config.student_model_name == 'gan':
             self.model_stud = gan.Gan(config, exp_name=exp_name)
+        elif config.student_model_name == 'gan_grid':
+            self.model_stud = gan_grid.Gan_grid(config, exp_name=exp_name)
         else:
             raise NotImplementedError
 
@@ -85,9 +88,10 @@ class Trainer():
             gen_cost_hist = []
             disc_cost_real_hist = []
             disc_cost_fake_hist = []
-
+            step = -1
             # ----Running one episode.----
-            for i in range(config.max_training_step):
+            while True:
+                step += 1
                 explore_rate = config.explore_rate_rl *\
                     math.exp(-ep / config.explore_rate_decay_rl)
                 action = model_ctrl.sample(state, explore_rate=explore_rate)
@@ -96,16 +100,16 @@ class Trainer():
                 state_hist.append(state)
                 action_hist.append(action)
                 reward_hist.append(reward)
-                if config.student_model_name != 'gan':
-                    valid_loss_hist.append(model_stud.previous_valid_loss[-1])
-                    train_loss_hist.append(model_stud.previous_train_loss[-1])
-                else:
+                if 'gan' in config.student_model_name:
                     gen_cost_hist.append(model_stud.ema_gen_cost)
                     disc_cost_real_hist.append(model_stud.ema_disc_cost_real)
                     disc_cost_fake_hist.append(model_stud.ema_disc_cost_fake)
+                else:
+                    valid_loss_hist.append(model_stud.previous_valid_loss[-1])
+                    train_loss_hist.append(model_stud.previous_train_loss[-1])
 
                 # ----Print training details.----
-                #if i % 1 == 0 and i < 50:
+                #if i % 1000 < 10:
                 #    logger.info('----train_step: {}----'.format(i))
                 #    logger.info('state:{}'.format(state_new))
                 #    logger.info('action: {}'.format(action))
@@ -143,8 +147,12 @@ class Trainer():
                 logger.info('UPDATE CONTROLLOR')
                 logger.info('lr_ctrl: {}'.format(lr))
                 model_ctrl.train_one_step(gradBuffer, lr)
+                print('grad')
                 for ix, grad in enumerate(gradBuffer):
+                    print(grad)
                     gradBuffer[ix] = grad * 0
+                print('weights')
+                model_ctrl.print_weights()
 
                 # ----Print training details.----
                 logger.info('Outputs')
@@ -202,6 +210,15 @@ class Trainer():
                     save_model_flag = True
                 logger.info('inps: {}'.format(inps))
                 logger.info('best_inps: {}'.format(best_inps))
+            elif config.student_model_name == 'gan_grid':
+                loss_analyzer_gan(action_hist, reward_hist)
+                hq_ratio = model_stud.best_hq_ratio
+                if final_reward > best_reward:
+                    best_reward = final_reward
+                    best_hq_ratio = hq_ratio
+                    save_model_flag = True
+                logger.info('hq_ratio: {}'.format(hq_ratio))
+                logger.info('best_hq_ratio: {}'.format(best_hq_ratio))
 
             logger.info('final_reward: {}'.format(final_reward))
             logger.info('adv: {}'.format(adv))
@@ -249,8 +266,7 @@ if __name__ == '__main__':
     #   --Start from pretrained--
     #trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
-    #model_path = os.path.join(config.model_dir, 'autoLoss-toy-1l7s-{}/'.format(
-    #    config.lambda1_stud))
+    model_path = os.path.join(config.model_dir, 'ctrl_dcgan_fixed_step=30000/')
     #trainer.train(save_ctrl=model_path)
     trainer.train()
 

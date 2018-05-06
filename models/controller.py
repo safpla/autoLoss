@@ -121,9 +121,9 @@ class Controller(Basic_model):
         #  Threshold varies in different tasks, which is related to the SNR
         #  of the data
         #  ------
-        #f = state[-1]
-        #threshold = 1.0
-        #if f < threshold:
+        #gen_cost = state[1]
+        #disc_cost = state[2]
+        #if gen_cost > disc_cost:
         #    a = 0
         #else:
         #    a = 1
