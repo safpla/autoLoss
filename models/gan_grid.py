@@ -11,11 +11,11 @@ import os
 
 from dataio.dataset import Dataset
 import utils
-from utils import inception_score
-from utils import save_images
 from models import layers
 from models.basic_model import Basic_model
 from models.gan import Gan
+import matplotlib.pyplot as plt
+plt.switch_backend('Agg')
 
 logger = utils.get_logger()
 
@@ -37,7 +37,7 @@ class Gan_grid(Gan):
         self._build_graph()
         self.reward_baseline = None # average reward over episodes
         self.reset()
-        self.fixed_noise_128 = np.random.normal(size=(128, config.dim_z))\
+        self.fixed_noise_10000 = np.random.normal(size=(10000, config.dim_z))\
             .astype('float32')
 
     def reset(self):
@@ -201,7 +201,8 @@ class Gan_grid(Gan):
 
             if step % valid_frequency == (valid_frequency - 1):
                 logger.info('========Step{}========'.format(step + 1))
-                metrics = self.get_metrics(num_batches=100)
+                metrics = self.get_metrics_5x5(num_batches=100)
+                print(metrics)
                 hq_ratio = metrics[0]
                 if hq_ratio > best_hq_ratio:
                     best_hq_ratio = hq_ratio
@@ -209,8 +210,7 @@ class Gan_grid(Gan):
                 endurance += 1
                 if endurance > config.max_endurance_stud:
                     break
-
-                #self.generate_plot(step)
+                self.generate_plot(step)
 
             if step % print_frequency == (print_frequency - 1):
                 data = self.train_dataset.next_batch(batch_size)
@@ -305,7 +305,7 @@ class Gan_grid(Gan):
         step = self.step_number
         if step % self.config.valid_frequency_stud == 0:
             self.endurance += 1
-            metrics = self.get_metrics(100)
+            metrics = self.get_metrics_5x5(100)
             hq_ratio = metrics[0]
             entropy = metrics[1]
             self.hq_ratio = hq_ratio
@@ -348,7 +348,7 @@ class Gan_grid(Gan):
             + (1 - decay) * reward
         return reward, adv
 
-    def get_metrics(self, num_batches=100):
+    def get_metrics_5x5(self, num_batches=100):
         all_samples = []
         config = self.config
         batch_size = 100
@@ -380,6 +380,53 @@ class Gan_grid(Gan):
         entropy = -np.sum(p_cluster * np.log(p_cluster))
         #print('entropy:', entropy)
         return hq_ratio, entropy
+
+    def get_metrics_2x2(self, num_batches=100):
+        all_samples = []
+        config = self.config
+        batch_size = 100
+        dim_z = config.dim_z
+        for i in range(num_batches):
+            z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
+            feed_dict = {self.noise: z, self.is_training: False}
+            samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
+            all_samples.append(samples)
+        all_samples = np.concatenate(all_samples, axis=0)
+
+        centers = []
+        for i in range(2):
+            for j in range(2):
+                centers.append([i*1.0-0.5, j*1.0-0.5])
+        centers = np.array(centers)
+        distance = np.zeros([batch_size*num_batches, 4])
+        for i in range(4):
+            distance[:,i] = np.sqrt(np.square(all_samples[:,0] - centers[i,0])
+                                  + np.square(all_samples[:,1] - centers[i,1]))
+        high_quality = distance < config.var_noise * 3
+        count_cluster = np.sum(high_quality, 0)
+        hq_ratio = np.sum(count_cluster) / (num_batches * batch_size)
+        p_cluster = count_cluster / np.sum(count_cluster)
+        #print('hq_ratio:', np.sum(hq_ratio))
+        print('count_cluster:', count_cluster)
+        #print('p_cluster:', p_cluster)
+        p_cluster += 1e-8
+        entropy = -np.sum(p_cluster * np.log(p_cluster))
+        #print('entropy:', entropy)
+        return hq_ratio, entropy
+
+    def generate_plot(self, step):
+        feed_dict = {self.noise: self.fixed_noise_10000,
+                     self.is_training: False}
+        samples = self.sess.run(self.fake_data, feed_dict=feed_dict)
+        task_dir = os.path.join(self.config.save_images_dir, self.exp_name)
+        if not os.path.exists(task_dir):
+            os.mkdir(task_dir)
+        save_path = os.path.join(task_dir, 'images_{}.png'.format(step))
+
+        plt.scatter(samples[:,0], samples[:,1])
+        plt.show()
+        plt.savefig(save_path, bbox_inches='tight')
+        plt.close()
 
 
 if __name__ == '__main__':

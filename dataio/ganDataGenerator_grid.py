@@ -27,14 +27,17 @@ def plot_data(all_data):
     plt.scatter(all_data[:,0], all_data[:,1])
     plt.show()
     plt.savefig('grid_distribution.png', bbox_inches='tight')
+    plt.close()
 
 def main():
     n_samples = num_train + num_valid + num_test
     all_data = []
-    center = [-1, 0, 1]
-    for i in range(3):
-        for j in range(3):
-            n_sample = int(n_samples / 9)
+    #center = [-0.5, 0.5]
+    center = [-1.0, -0.5, 0, 0.5, 1.0]
+    dim = len(center)
+    for i in range(dim):
+        for j in range(dim):
+            n_sample = int(n_samples / dim**2)
             data = np.random.normal(loc=0, scale=var_noise, size=(n_sample, 2))
             c = np.array([center[i], center[j]])
             all_data.append(data + c)

@@ -1,0 +1,26 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-07 23:27:45.572319: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-07 23:27:46.489375: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:03:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-07 23:27:46.489522: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:03:00.0, compute capability: 5.2)
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+test accuracy: 0.9919000267982483
+Traceback (most recent call last):
+  File "mnist.py", line 148, in <module>
+    model.save_model(20000)
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/basic_model.py", line 64, in save_model
+    self.saver.save(self.sess, save_path, global_step=step)
+AttributeError: 'Mnist' object has no attribute 'saver'

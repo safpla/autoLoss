@@ -84,7 +84,7 @@ class Controller(Basic_model):
                 placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
                 self.gradient_plhs.append(placeholder)
 
-            self.gradients = tf.gradients(self.loss, tvars)
+            self.grads = tf.gradients(self.loss, tvars)
             #optimizer = tf.train.AdamOptimizer(learning_rate=lr)
             optimizer = tf.train.GradientDescentOptimizer(lr)
             self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
@@ -149,34 +149,6 @@ class Controller(Basic_model):
         feed_dict[self.lr_plh] = lr
         self.sess.run(self.train_op, feed_dict=feed_dict)
 
-    def load_model(self, checkpoint_dir, ckpt_num=None):
-        sess = self.sess
-        ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
-        if not ckpt_num:
-            if ckpt and ckpt.model_checkpoint_path:
-                model_checkpoint_path = ckpt.model_checkpoint_path
-            else:
-                raise Exception('Invalid checkpoint_dir: ' + checkpoint_dir)
-        else:
-            model_checkpoint_path = None
-            for cp in ckpt.all_model_checkpoint_paths:
-                if cp.split('-')[-1] == str(ckpt_num):
-                    model_checkpoint_path = cp
-            if not model_checkpoint_path:
-                raise Exception('Ckpt num {} not found!'.format(ckpt_num))
-        logger.info('loading pretrained model from: ' + model_checkpoint_path)
-        self.saver.restore(sess, model_checkpoint_path)
-
-    def save_model(self, task_name, global_step):
-        sess = self.sess
-        model_dir = self.config.model_dir
-        task_dir = os.path.join(model_dir, task_name)
-        if not os.path.exists(task_dir):
-            os.mkdir(task_dir)
-        save_path = os.path.join(task_dir, 'model')
-        logger.info('Save model at {}'.format(save_path))
-        self.saver.save(sess, save_path, global_step=global_step)
-
     def print_weights(self):
         sess = self.sess
         with self.graph.as_default():
@@ -189,6 +161,7 @@ class Controller(Basic_model):
 
     def get_weights(self):
         return self.sess.run(self.tvars)
+
     def get_gradients(self, state, action, reward):
         """ Return the gradients according to one episode
 
@@ -206,6 +179,6 @@ class Controller(Basic_model):
                      self.action_plh: action,
                      self.state_plh: state,
                     }
-        grads = sess.run(self.gradients, feed_dict=feed_dict)
+        grads = sess.run(self.grads, feed_dict=feed_dict)
         return grads
 

@@ -4,6 +4,7 @@
 import numpy as np
 import tensorflow as tf
 
+stdev = 0.02
 def _uniform(stdev, size):
     return np.random.uniform(
         low=-stdev * np.sqrt(3),
@@ -67,7 +68,7 @@ def deconv2d(input, output_shape, k_h=5, k_w=5, s_h=2, s_w=2, name='deconv',
             weight_values = _uniform(np.sqrt(4./(fan_in + fan_out)),
                 (k_h, k_w, output_shape[-1], input_shape[-1]))
         elif initialization == 'normal':
-            weight_values = _normal(0.02,
+            weight_values = _normal(stdev,
                 (k_h, k_w, output_shape[-1], input_shape[-1]))
         else:
             raise Exception('Invalid initialization!')
@@ -91,7 +92,7 @@ def conv2d(input, output_dim, k_h=5, k_w=5, s_h=2, s_w=2, name='conv',
             weight_values = _uniform(np.sqrt(4./(fan_in + fan_out)),
                 (k_h, k_w, input_shape[-1], output_dim))
         elif initialization == 'normal':
-            weight_values = _normal(0.02,
+            weight_values = _normal(stdev,
                 (k_h, k_w, input_shape[-1], output_dim))
         else:
             raise Exception('Invalid initialization!')

@@ -63,11 +63,16 @@ class Basic_model():
         logger.info('Save model at {}'.format(save_path))
         self.saver.save(self.sess, save_path, global_step=step)
 
-        return 0
-
     def print_weights(self):
         for tvar in self.tvars:
             logger.info(self.sess.run(tvar))
+
+    def get_grads_magnitude(self, grads):
+        v = []
+        for grad in grads:
+            v.append(np.reshape(grad, [-1]))
+        v = np.concatenate(v)
+        return np.linalg.norm(v)
 
     def initialize_weights(self):
         self.sess.run(self.init)

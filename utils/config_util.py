@@ -243,6 +243,10 @@ class Parser(object):
         return self.config.getfloat('rl', 'state_decay')
 
     @property
+    def metric_decay(self):
+        return self.config.getfloat('rl', 'metric_decay')
+
+    @property
     def pretrained_gan_exp_name(self):
         value = self.config.get('gan', 'pretrained_gan_exp_name')
         if value == 'None':

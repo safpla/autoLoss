@@ -48,6 +48,14 @@ class Dataset(object):
     def epochs_completed(self):
         return self._epochs_completed
 
+    def build_from_data(self, input, target):
+        self._dataset_input = np.array(input)
+        self._dataset_target = np.array(target)
+        self._num_examples = len(self._dataset_target)
+        self._index = np.arange(self._num_examples)
+        self._index_in_epoch = 0
+        self._epochs_completed = 0
+
     def next_batch(self, batch_size, shuffle=True):
         # batch_size is the first dimension
         start = self._index_in_epoch

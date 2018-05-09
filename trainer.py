@@ -17,6 +17,7 @@ from models import gan_grid
 import utils
 from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
+import socket
 
 
 root_path = os.path.dirname(os.path.realpath(__file__))
@@ -53,6 +54,7 @@ class Trainer():
         best_acc = 0
         best_loss = 0
         best_inps = 0
+        best_best_inps = 0
         endurance = 0
 
         # ----Initialize controllor.----
@@ -109,8 +111,8 @@ class Trainer():
                     train_loss_hist.append(model_stud.previous_train_loss[-1])
 
                 # ----Print training details.----
-                #if i % 1000 < 10:
-                #    logger.info('----train_step: {}----'.format(i))
+                #if step % 200 < 200:
+                #    logger.info('----train_step: {}----'.format(step))
                 #    logger.info('state:{}'.format(state_new))
                 #    logger.info('action: {}'.format(action))
                 #    logger.info('reward:{}'.format(reward))
@@ -147,11 +149,11 @@ class Trainer():
                 logger.info('UPDATE CONTROLLOR')
                 logger.info('lr_ctrl: {}'.format(lr))
                 model_ctrl.train_one_step(gradBuffer, lr)
-                print('grad')
+                logger.info('grad')
                 for ix, grad in enumerate(gradBuffer):
-                    print(grad)
+                    logger.info(grad)
                     gradBuffer[ix] = grad * 0
-                print('weights')
+                logger.info('weights')
                 model_ctrl.print_weights()
 
                 # ----Print training details.----
@@ -160,7 +162,7 @@ class Trainer():
                 ind = 1
                 while ind < len(state_hist):
                     index.append(ind-1)
-                    ind += 100
+                    ind += 2000
                 feed_dict = {model_ctrl.state_plh:np.array(state_hist)[index],
                             model_ctrl.action_plh:np.array(action_hist)[index],
                             model_ctrl.reward_plh:np.array(reward_hist)[index]}
@@ -168,12 +170,14 @@ class Trainer():
                          model_ctrl.action,
                          model_ctrl.reward_plh,
                          model_ctrl.state_plh,
+                         model_ctrl.logits
                         ]
                 r = model_ctrl.sess.run(fetch, feed_dict=feed_dict)
                 logger.info('state:\n{}'.format(r[3]))
                 logger.info('output:\n{}'.format(r[0]))
                 logger.info('action: {}'.format(r[1]))
                 logger.info('reward: {}'.format(r[2]))
+                logger.info('logits: {}'.format(r[4]))
 
             save_model_flag = False
             if config.student_model_name == 'toy':
@@ -203,13 +207,13 @@ class Trainer():
                     save_model_flag = True
             elif config.student_model_name == 'gan':
                 loss_analyzer_gan(action_hist, reward_hist)
-                inps = model_stud.best_inception_score
+                best_inps = model_stud.best_inception_score
                 if final_reward > best_reward:
                     best_reward = final_reward
-                    best_inps = inps
+                    best_best_inps = best_inps
                     save_model_flag = True
-                logger.info('inps: {}'.format(inps))
                 logger.info('best_inps: {}'.format(best_inps))
+                logger.info('best_best_inps: {}'.format(best_best_inps))
             elif config.student_model_name == 'gan_grid':
                 loss_analyzer_gan(action_hist, reward_hist)
                 hq_ratio = model_stud.best_hq_ratio
@@ -224,7 +228,7 @@ class Trainer():
             logger.info('adv: {}'.format(adv))
 
             if save_model_flag and save_ctrl:
-                model_ctrl.save_model(save_ctrl, global_step=ep)
+                model_ctrl.save_model(ep)
 
     def test(self, load_ctrl, ckpt_num=None):
         config = self.config
@@ -252,6 +256,7 @@ class Trainer():
 
 if __name__ == '__main__':
     # ----Parsing config file.----
+    logger.info(socket.gethostname())
     if len(sys.argv) > 1:
         config_file = sys.argv[1]
     else:
@@ -260,15 +265,15 @@ if __name__ == '__main__':
     config = utils.Parser(config_path)
 
     # ----Instantiate a trainer object.----
-    trainer = Trainer(config)
+    trainer = Trainer(config, exp_name='dcgan_mnist')
 
     # ----Training----
     #   --Start from pretrained--
     #trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
-    model_path = os.path.join(config.model_dir, 'ctrl_dcgan_fixed_step=30000/')
-    #trainer.train(save_ctrl=model_path)
-    trainer.train()
+    model_path = os.path.join(config.model_dir, '')
+    trainer.train(save_ctrl=model_path)
+    #trainer.train()
 
     # ----Testing----
     #test_accs = []
