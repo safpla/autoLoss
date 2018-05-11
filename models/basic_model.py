@@ -73,7 +73,7 @@ class Basic_model():
         for grad in grads:
             v.append(np.reshape(grad, [-1]))
         v = np.concatenate(v)
-        return np.linalg.norm(v)
+        return np.linalg.norm(v) / np.sqrt(v.shape[0])
 
     def initialize_weights(self):
         self.sess.run(self.init)

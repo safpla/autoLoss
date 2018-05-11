@@ -117,11 +117,11 @@ class Controller(Basic_model):
         #        a = 0
         #    else:
         #        a = 1
-        a = np.random.rand(1)
-        if a < 4/5:
-            a = 0
-        else:
-            a = 1
+        #a = np.random.rand(1)
+        #if a < 4/5:
+        #    a = 0
+        #else:
+        #    a = 1
 
         # ----Handcraft classifier----
         #  ---Hard version---

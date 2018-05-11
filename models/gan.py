@@ -330,7 +330,7 @@ class Gan(Basic_model):
             state = [0] * self.config.dim_state_rl
         else:
             state = [self.step_number / self.config.max_training_step,
-                     math.log(self.mag_gen_grad / self.mag_disc_grad),
+                     math.log(self.mag_disc_grad / self.mag_gen_grad),
                      self.ema_gen_cost,
                      self.ema_disc_cost_real,
                      self.ema_disc_cost_fake,

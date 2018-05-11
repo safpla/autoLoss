@@ -121,11 +121,11 @@ class Trainer():
                     train_loss_hist.append(model_stud.previous_train_loss[-1])
 
                 # ----Print training details.----
-                if step < 200:
-                    logger.info('----train_step: {}----'.format(step))
-                    logger.info('state:{}'.format(state_new))
-                    logger.info('action: {}'.format(action))
-                    logger.info('reward:{}'.format(reward))
+                #if step % 200 < 200:
+                #    logger.info('----train_step: {}----'.format(step))
+                #    logger.info('state:{}'.format(state_new))
+                #    logger.info('action: {}'.format(action))
+                #    logger.info('reward:{}'.format(reward))
                 #    lv = model_stud.previous_valid_loss
                 #    lt = model_stud.previous_train_loss
                 #    av = model_stud.previous_valid_acc
@@ -289,14 +289,8 @@ if __name__ == '__main__':
     # ----Instantiate a trainer object.----
     trainer = Trainer(config)
 
-    # ----Training----
-    #   --Start from pretrained--
-    #trainer.train(load_ctrl=load_ctrl)
-    #   --Start from strach--
     model_path = os.path.join(config.model_dir, '')
-    #trainer.train(save_ctrl=model_path)
-    trainer.train()
-
+    trainer.train(save_ctrl=model_path)
     # ----Testing----
     #test_accs = []
     ##ckpt_num = 250
