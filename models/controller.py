@@ -15,7 +15,7 @@ from models.basic_model import Basic_model
 logger = utils.get_logger()
 
 class Controller(Basic_model):
-    def __init__(self, config, exp_name='new_exp'):
+    def __init__(self, config, exp_name='new_exp_ctrl'):
         self.config = config
         self.graph = tf.Graph()
         gpu_options = tf.GPUOptions(allow_growth=True)
@@ -47,8 +47,9 @@ class Controller(Basic_model):
             if model_name == '2layer':
                 hidden = slim.fully_connected(self.state_plh, h_size,
                                             activation_fn=tf.nn.relu)
-                self.output = slim.fully_connected(hidden, a_size,
-                                                activation_fn=tf.nn.softmax)
+                self.logits = slim.fully_connected(hidden, a_size,
+                                                activation_fn=None)
+                self.output = tf.nn.softmax(self.logits)
             elif model_name == '2layer_logits_clipping':
                 hidden = slim.fully_connected(self.state_plh, h_size,
                                             activation_fn=tf.nn.relu)
@@ -57,8 +58,9 @@ class Controller(Basic_model):
                 self.output = tf.nn.softmax(self.logits /
                                             config.logit_clipping_c)
             elif model_name == 'linear':
-                self.output = slim.fully_connected(self.state_plh, a_size,
-                                                activation_fn=tf.nn.softmax)
+                self.logits = slim.fully_connected(self.state_plh, a_size,
+                                                activation_fn=None)
+                self.output = tf.nn.softmax(self.logits)
             elif model_name == 'linear_logits_clipping':
                 self.logits = slim.fully_connected(self.state_plh, a_size,
                                                 activation_fn=None)
@@ -108,13 +110,18 @@ class Controller(Basic_model):
         a = np.argmax(a_dist == a)
 
         # ----Free exploring at a certain probability.----
-        p = np.random.rand(1)
-        if p[0] < explore_rate:
-            a = np.random.rand(1)
-            if a < 1/2:
-                a = 0
-            else:
-                a = 1
+        #p = np.random.rand(1)
+        #if p[0] < explore_rate:
+        #    a = np.random.rand(1)
+        #    if a < 1/2:
+        #        a = 0
+        #    else:
+        #        a = 1
+        a = np.random.rand(1)
+        if a < 4/5:
+            a = 0
+        else:
+            a = 1
 
         # ----Handcraft classifier----
         #  ---Hard version---

@@ -1,6 +1,8 @@
 from configparser import ConfigParser, ExtendedInterpolation
 import json
-import os
+import os, sys
+root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+sys.path.insert(0, root_path)
 import utils
 logger = utils.get_logger()
 
@@ -21,6 +23,12 @@ class Parser(object):
         except:
             logger.warning('lambda2_stud not found in config file')
             self.lambda2_stud = 0
+
+    def print_config(self):
+        for key_sec, sec in self.config.items():
+            logger.info('[{}]'.format(key_sec))
+            for key, value in sec.items():
+                logger.info('{}:: {}'.format(key, value))
 
     @property
     def lr_decay_stud(self):
@@ -275,5 +283,4 @@ if __name__ == '__main__':
     root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = Parser(config_path)
-    print(config.exp_dir)
-    print(config.model_dir)
+    config.print_config()

@@ -140,9 +140,9 @@ if __name__ == '__main__':
     config = utils.Parser(config_path)
     model = Mnist(config, exp_name='mnist_classification')
     model.initialize_weights()
+    max_iteration = 20000
     for i in range(max_iteration):
         model.train()
     test_acc = model.valid()
     print('test accuracy: {}'.format(test_acc))
     model.save_model(max_iteration)
-    max_iteration

@@ -8,6 +8,8 @@ import logging
 import os
 import sys
 import math
+import socket
+from time import gmtime, strftime
 
 from models import controller
 from models import toy
@@ -30,17 +32,25 @@ def discount_rewards(reward, final_reward):
 
 class Trainer():
     """ A class to wrap training code. """
-    def __init__(self, config, exp_name='new_exp'):
+    def __init__(self, config, exp_name=None):
         self.config = config
-        self.model_ctrl = controller.Controller(config)
+
+        hostname = socket.gethostname()
+        hostname = '-'.join(hostname.split('.')[0:2])
+        datetime = strftime('%m-%d-%H-%M', gmtime())
+        if not exp_name:
+            exp_name = '{}_{}'.format(hostname, datetime)
+        logger.info('exp_name: {}'.format(exp_name))
+
+        self.model_ctrl = controller.Controller(config, exp_name+'_ctrl')
         if config.student_model_name == 'toy':
             self.model_stud = toy.Toy(config)
         elif config.student_model_name == 'cls':
             self.model_stud = cls.Cls(config)
         elif config.student_model_name == 'gan':
-            self.model_stud = gan.Gan(config, exp_name=exp_name)
+            self.model_stud = gan.Gan(config, exp_name+'_gan')
         elif config.student_model_name == 'gan_grid':
-            self.model_stud = gan_grid.Gan_grid(config, exp_name=exp_name)
+            self.model_stud = gan_grid.Gan_grid(config, exp_name+'_gan_grid')
         else:
             raise NotImplementedError
 
@@ -132,6 +142,17 @@ class Trainer():
                 if dead:
                     break
 
+            # ----Use the best performance model to get inception score on a
+            #     larger number of samples to reduce the variance of reward----
+            if model_stud.task_dir:
+                model_stud.load_model(model_stud.task_dir)
+                inps_test = model_stud.get_inception_score(5000)
+                logger.info('inps_test: {}'.format(inps_test))
+                model_stud.update_inception_score(inps_test[0])
+            else:
+                logger.info('student model hasn\'t been saved before')
+
+
             # ----Update the controller.----
             final_reward, adv = model_stud.get_final_reward()
             reward_hist = np.array(reward_hist)
@@ -157,27 +178,27 @@ class Trainer():
                 model_ctrl.print_weights()
 
                 # ----Print training details.----
-                logger.info('Outputs')
-                index = []
-                ind = 1
-                while ind < len(state_hist):
-                    index.append(ind-1)
-                    ind += 2000
-                feed_dict = {model_ctrl.state_plh:np.array(state_hist)[index],
-                            model_ctrl.action_plh:np.array(action_hist)[index],
-                            model_ctrl.reward_plh:np.array(reward_hist)[index]}
-                fetch = [model_ctrl.output,
-                         model_ctrl.action,
-                         model_ctrl.reward_plh,
-                         model_ctrl.state_plh,
-                         model_ctrl.logits
-                        ]
-                r = model_ctrl.sess.run(fetch, feed_dict=feed_dict)
-                logger.info('state:\n{}'.format(r[3]))
-                logger.info('output:\n{}'.format(r[0]))
-                logger.info('action: {}'.format(r[1]))
-                logger.info('reward: {}'.format(r[2]))
-                logger.info('logits: {}'.format(r[4]))
+                #logger.info('Outputs')
+                #index = []
+                #ind = 1
+                #while ind < len(state_hist):
+                #    index.append(ind-1)
+                #    ind += 2000
+                #feed_dict = {model_ctrl.state_plh:np.array(state_hist)[index],
+                #            model_ctrl.action_plh:np.array(action_hist)[index],
+                #            model_ctrl.reward_plh:np.array(reward_hist)[index]}
+                #fetch = [model_ctrl.output,
+                #         model_ctrl.action,
+                #         model_ctrl.reward_plh,
+                #         model_ctrl.state_plh,
+                #         model_ctrl.logits
+                #        ]
+                #r = model_ctrl.sess.run(fetch, feed_dict=feed_dict)
+                #logger.info('state:\n{}'.format(r[3]))
+                #logger.info('output:\n{}'.format(r[0]))
+                #logger.info('action: {}'.format(r[1]))
+                #logger.info('reward: {}'.format(r[2]))
+                #logger.info('logits: {}'.format(r[4]))
 
             save_model_flag = False
             if config.student_model_name == 'toy':
@@ -263,9 +284,10 @@ if __name__ == '__main__':
         config_file = 'gan.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
+    config.print_config()
 
     # ----Instantiate a trainer object.----
-    trainer = Trainer(config, exp_name='dcgan_mnist')
+    trainer = Trainer(config)
 
     # ----Training----
     #   --Start from pretrained--

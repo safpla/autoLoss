@@ -6,7 +6,6 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import numpy as np
 import math
-import time
 import os
 
 from dataio.dataset_cifar10 import Dataset_cifar10
@@ -16,11 +15,10 @@ from utils import inception_score_mnist
 from utils import save_images
 from models import layers
 from models.basic_model import Basic_model
-
 logger = utils.get_logger()
 
 class Gan(Basic_model):
-    def __init__(self, config, exp_name='new_exp'):
+    def __init__(self, config, exp_name='new_exp_gan'):
         self.config = config
         self.graph = tf.Graph()
         self.exp_name = exp_name
@@ -68,11 +66,13 @@ class Gan(Basic_model):
         self.inception_score = 0
         self.previous_action = -1
         self.same_action_count = 0
+        self.task_dir = None
 
         # to control when to terminate the episode
         self.endurance = 0
         self.best_inception_score = 0
         self.inps_baseline = 0
+        self.collapse = False
 
     def _build_placeholder(self):
         with self.graph.as_default():
@@ -208,8 +208,6 @@ class Gan(Basic_model):
         decay = config.metric_decay
 
         for step in range(config.max_training_step):
-            start_time = time.time()
-
             # ----Update D network.----
             for i in range(config.disc_iters):
                 data = self.train_dataset.next_batch(batch_size)
@@ -239,8 +237,8 @@ class Gan(Basic_model):
                 logger.info('inps_baseline: {}'.format(inps_baseline))
                 self.generate_images(step)
                 endurance += 1
-                if inception_score[0] > best_inps:
-                    best_inps = inception_score[0]
+                if inps_baseline > best_inps:
+                    best_inps = inps_baseline
                     endurance = 0
                     if save_model:
                         self.save_model(step)
@@ -325,7 +323,7 @@ class Gan(Basic_model):
         return state, reward, dead
 
     def update_inception_score(self, score):
-        self.inception_score = score
+        self.best_inception_score = score
 
     def get_state(self):
         if self.step_number == 0:
@@ -345,17 +343,16 @@ class Gan(Basic_model):
         # Early stop and recording the best result
         # Episode terminates on two condition:
         # 1) Convergence: inception score doesn't improve in endurance steps
-        # 2) Collapse: action space collapse to one action (not implement yet)
-        if self.same_action_count > 50:
+        # 2) Collapse: action space collapse to one action
+        if self.same_action_count > 500:
             logger.info('Terminate reason: Collapse')
+            self.collapse = True
             return True
         step = self.step_number
         if step % self.config.valid_frequency_stud == 0:
             self.endurance += 1
             inception_score = self.get_inception_score(self.config.inps_batches)
             inps = inception_score[0]
-            logger.info('----step{}----'.format(step))
-            logger.info('inception_score: {}'.format(inception_score))
             self.inception_score = inps
             decay = self.config.metric_decay
             if self.inps_baseline > 0:
@@ -363,11 +360,18 @@ class Gan(Basic_model):
                                      + inps * (1 - decay)
             else:
                 self.inps_baseline = inps
-            logger.info('inps_baseline: {}'.format(self.inps_baseline))
-            if inps > self.best_inception_score:
+            if self.inps_baseline > self.best_inception_score:
+                logger.info('step: {}, new best result: {}'.\
+                            format(step, self.inps_baseline))
                 self.best_step = self.step_number
-                self.best_inception_score = inps
+                self.best_inception_score = self.inps_baseline
                 self.endurance = 0
+                self.save_model(step)
+
+        if step % self.config.print_frequency_stud == 0:
+            logger.info('----step{}----'.format(step))
+            logger.info('inception_score: {}'.format(inception_score))
+            logger.info('inps_baseline: {}'.format(self.inps_baseline))
 
         if step > self.config.max_training_step:
             return True
@@ -386,10 +390,12 @@ class Gan(Basic_model):
         return 0
 
     def get_final_reward(self):
+        if self.collapse:
+            return 0, -self.config.reward_max_value
         if self.config.stop_strategy_stud == 'prescribed_steps' or \
                 self.config.stop_strategy_stud == 'exceeding_endurance':
             inps = self.best_inception_score
-            reward = inps ** 2
+            reward = self.config.reward_c * inps ** 2
         elif self.config.stop_strategy_stud == 'prescribed_inps':
             time_cost = self.step_number / self.config.max_training_step
             reward = math.sqrt(self.config.reward_c / time_cost)
