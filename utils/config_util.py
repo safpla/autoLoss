@@ -24,6 +24,10 @@ class Parser(object):
             logger.warning('lambda2_stud not found in config file')
             self.lambda2_stud = 0
 
+    @property
+    def random_seed(self):
+        return self.config.getint('data', 'random_seed')
+
     def print_config(self):
         for key_sec, sec in self.config.items():
             logger.info('[{}]'.format(key_sec))
@@ -207,6 +211,10 @@ class Parser(object):
         return self.config.getfloat('rl', 'inps_baseline_decay')
 
     @property
+    def reward_baseline_decay(self):
+        return self.config.getfloat('rl', 'reward_baseline_decay')
+
+    @property
     def reward_max_value(self):
         return self.config.getfloat('rl', 'reward_max_value')
 
@@ -253,14 +261,6 @@ class Parser(object):
     @property
     def metric_decay(self):
         return self.config.getfloat('rl', 'metric_decay')
-
-    @property
-    def pretrained_gan_exp_name(self):
-        value = self.config.get('gan', 'pretrained_gan_exp_name')
-        if value == 'None':
-            return None
-        else:
-            return value
 
     @property
     def stop_strategy_stud(self):

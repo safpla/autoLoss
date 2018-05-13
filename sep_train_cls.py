@@ -13,23 +13,18 @@ import utils
 logger = utils.get_logger()
 
 def train(config):
-    g = tf.Graph()
-    gpu_options = tf.GPUOptions(allow_growth=True)
-    configProto = tf.ConfigProto(gpu_options=gpu_options)
-    sess = tf.InteractiveSession(config=configProto, graph=g)
-
-    model = cls.Cls(config, g, loss_mode=sys.argv[1])
-    sess.run(model.init)
+    model = cls.Cls(config, loss_mode=sys.argv[1])
+    model.initialize_weights()
 
     max_training_step = config.max_training_step
     best_acc = 0
     endurance = 0
     i = 0
     while i < max_training_step and endurance < config.max_endurance_stud:
-        train_loss, train_acc = model.train(sess)
-        if i % config.valid_frequence_stud == 0:
+        train_loss, train_acc = model.train()
+        if i % config.valid_frequency_stud == 0:
             endurance += 1
-            valid_loss, valid_acc, _, _ = model.valid(sess)
+            valid_loss, valid_acc, _, _ = model.valid()
             #logger.info('====Step: {}===='.format(i))
             #logger.info('train_loss: {}, train_acc: {}'\
             #            .format(train_loss, train_acc))
@@ -37,7 +32,7 @@ def train(config):
             #            .format(valid_loss, valid_acc))
             if valid_acc > best_acc:
                 best_acc = valid_acc
-                _, test_acc, _, _ = model.valid(sess, model.test_dataset)
+                _, test_acc, _, _ = model.valid(model.test_dataset)
                 endurance = 0
         i += 1
 
@@ -50,11 +45,11 @@ def train(config):
 
 if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/classification.cfg')
+    config_path = os.path.join(root_path, 'config/classification_transfer.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
         #lambda_set1 = [0.001, 0.005, 0.01, 0.02, 0.03, 0.04, 0.05]
-        lambda_set1 = [0.2]
+        lambda_set1 = [0.03]
         num1 = len(lambda_set1)
         aver_mat = np.zeros([num1])
         mat = []

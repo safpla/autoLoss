@@ -84,6 +84,7 @@ class Cls(Basic_model):
         self.previous_action = [0] * self.config.dim_action_rl
         self.previous_valid_loss = [0] * self.config.num_pre_loss
         self.previous_train_loss = [0] * self.config.num_pre_loss
+        self.task_dir = None
 
         # to control when to terminate the episode
         self.endurance = 0

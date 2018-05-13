@@ -11,7 +11,7 @@ import json
 import utils
 import sklearn.datasets as d
 
-config_path = os.path.join(root_path, 'config/classification.cfg')
+config_path = os.path.join(root_path, 'config/classification_transfer.cfg')
 config = utils.Parser(config_path)
 dim = config.dim_input_stud
 num_train = config.num_sample_train
@@ -22,7 +22,7 @@ var_noise = config.var_noise
 data_train = config.train_data_file
 data_valid = config.valid_data_file
 data_test = config.test_data_file
-np.random.seed(1)
+np.random.seed(config.random_seed)
 
 
 def linear_func(x, w):
@@ -37,6 +37,10 @@ def main():
                                     n_redundant=2)
     features = cls_set[0]
     labels = cls_set[1]
+    folder = '/'.join(data_train.split('/')[:-1])
+    if not os.path.exists(folder):
+        os.mkdir(folder)
+
     with open(data_train, 'wb') as f:
         data = []
         features = cls_set[0][:num_train]

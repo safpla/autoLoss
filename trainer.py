@@ -44,9 +44,9 @@ class Trainer():
 
         self.model_ctrl = controller.Controller(config, exp_name+'_ctrl')
         if config.student_model_name == 'toy':
-            self.model_stud = toy.Toy(config)
+            self.model_stud = toy.Toy(config, exp_name+'_reg')
         elif config.student_model_name == 'cls':
-            self.model_stud = cls.Cls(config)
+            self.model_stud = cls.Cls(config, exp_name+'_cls')
         elif config.student_model_name == 'gan':
             self.model_stud = gan.Gan(config, exp_name+'_gan')
         elif config.student_model_name == 'gan_grid':
@@ -84,10 +84,6 @@ class Trainer():
 
             # ----Initialize student model.----
             model_stud.initialize_weights()
-            if config.pretrained_gan_exp_name:
-                pretrained_path = os.path.join(config.model_dir,
-                                            config.pretrained_gan_exp_name)
-                model_stud.load_model(pretrained_path)
             model_stud.reset()
             model_ctrl.print_weights()
 
@@ -145,7 +141,7 @@ class Trainer():
 
             # ----Use the best performance model to get inception score on a
             #     larger number of samples to reduce the variance of reward----
-            if model_stud.task_dir:
+            if config.student_model_name == 'gan' and model_stud.task_dir:
                 model_stud.load_model(model_stud.task_dir)
                 inps_test = model_stud.get_inception_score(5000)
                 logger.info('inps_test: {}'.format(inps_test))
@@ -221,12 +217,12 @@ class Trainer():
                     best_reward = final_reward
                     best_acc = acc
                     best_loss = loss
+                    save_model_flag = True
                 logger.info('acc: {}'.format(acc))
                 logger.info('best_acc: {}'.format(best_acc))
                 logger.info('best_loss: {}'.format(loss))
-                logger.info('lambda1: {}'.format(config.lambda1_stud))
-                if ep % cofig.save_frequency == 0 and ep > 0:
-                    save_model_flag = True
+                #if ep % config.save_frequency == 0 and ep > 0:
+                #    save_model_flag = True
             elif config.student_model_name == 'gan':
                 loss_analyzer_gan(action_hist, reward_hist)
                 best_inps = model_stud.best_inception_score
@@ -295,15 +291,15 @@ if __name__ == '__main__':
     #   --Start from pretrained--
     #trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
-    model_path = os.path.join(config.model_dir, '')
-    #trainer.train(save_ctrl=model_path)
-    trainer.train()
+    #trainer.train(save_ctrl=True)
+    #trainer.train()
 
     # ----Testing----
-    #test_accs = []
-    ##ckpt_num = 250
-    #ckpt_num = None
-    #for i in range(10):
-    #    test_accs.append(trainer.test(model_path, ckpt_num=ckpt_num))
-    #print(test_accs)
-    #print(np.mean(np.array(test_accs)))
+    test_accs = []
+    #ckpt_num = 250
+    ckpt_num = None
+    model_path = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
+    for i in range(10):
+        test_accs.append(trainer.test(model_path, ckpt_num=ckpt_num))
+    print(test_accs)
+    print(np.mean(np.array(test_accs)))
