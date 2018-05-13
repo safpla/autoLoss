@@ -203,8 +203,8 @@ class Parser(object):
         return self.config.getint('rl', 'max_endurance_rl')
 
     @property
-    def reward_baseline_decay(self):
-        return self.config.getfloat('rl', 'reward_baseline_decay')
+    def inps_baseline_decay(self):
+        return self.config.getfloat('rl', 'inps_baseline_decay')
 
     @property
     def reward_max_value(self):

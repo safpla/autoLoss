@@ -15038,3 +15038,541 @@ INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen
 INFO::----step38000----
 INFO::inception_score: (8.498793, 0.035949074)
 INFO::inps_baseline: 8.494234705565997
+INFO::step: 38500, new best result: 8.502855225085122
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 39000, new best result: 8.504534851454817
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 39500, new best result: 8.51084032928397
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 40000, new best result: 8.513618399901786
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step40000----
+INFO::inception_score: (8.524731, 0.050383046)
+INFO::inps_baseline: 8.513618399901786
+INFO::step: 40500, new best result: 8.526697866283733
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 41000, new best result: 8.533910172909799
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 42000, new best result: 8.535400859661296
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step42000----
+INFO::inception_score: (8.555124, 0.01956847)
+INFO::inps_baseline: 8.535400859661296
+INFO::step: 43000, new best result: 8.539512705578737
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step44000----
+INFO::inception_score: (8.551325, 0.012870119)
+INFO::inps_baseline: 8.538920562600666
+INFO::step: 44500, new best result: 8.540775999335903
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 45000, new best result: 8.54647215597507
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 45500, new best result: 8.550105352343532
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step46000----
+INFO::inception_score: (8.549151, 0.045763895)
+INFO::inps_baseline: 8.549914565993479
+INFO::step: 46500, new best result: 8.55473859096617
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 47000, new best result: 8.559684808930163
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 47500, new best result: 8.56222767502499
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 48000, new best result: 8.572170216802219
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step48000----
+INFO::inception_score: (8.61194, 0.029264102)
+INFO::inps_baseline: 8.572170216802219
+INFO::step: 48500, new best result: 8.574971357157596
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 49000, new best result: 8.581115658418948
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 49500, new best result: 8.587842317689748
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 50000, new best result: 8.591351773158147
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step50000----
+INFO::inception_score: (8.60539, 0.036562815)
+INFO::inps_baseline: 8.591351773158147
+INFO::step: 52000, new best result: 8.593263636602957
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step52000----
+INFO::inception_score: (8.618883, 0.029535228)
+INFO::inps_baseline: 8.593263636602957
+INFO::step: 53000, new best result: 8.603637320565541
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 53500, new best result: 8.610160146369426
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 54000, new best result: 8.616699245940755
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step54000----
+INFO::inception_score: (8.642856, 0.023917846)
+INFO::inps_baseline: 8.616699245940755
+INFO::step: 54500, new best result: 8.618787405785808
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 55500, new best result: 8.62775035724442
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 56000, new best result: 8.633573309782353
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step56000----
+INFO::inception_score: (8.656865, 0.035689775)
+INFO::inps_baseline: 8.633573309782353
+INFO::step: 56500, new best result: 8.63676167822139
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 57000, new best result: 8.640085039903772
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step58000----
+INFO::inception_score: (8.628271, 0.0536137)
+INFO::inps_baseline: 8.631405753053063
+INFO::step: 60000, new best result: 8.642239798342624
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step60000----
+INFO::inception_score: (8.668136, 0.03885842)
+INFO::inps_baseline: 8.642239798342624
+INFO::step: 60500, new best result: 8.646552840261013
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step62000----
+INFO::inception_score: (8.619411, 0.042221516)
+INFO::inps_baseline: 8.639651936537856
+INFO::step: 64000, new best result: 8.647414587807955
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step64000----
+INFO::inception_score: (8.668721, 0.04274852)
+INFO::inps_baseline: 8.647414587807955
+INFO::step: 66000, new best result: 8.655457054289675
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step66000----
+INFO::inception_score: (8.697602, 0.03732193)
+INFO::inps_baseline: 8.655457054289675
+INFO::step: 66500, new best result: 8.658376530577737
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 67500, new best result: 8.663533182633717
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step68000----
+INFO::inception_score: (8.660871, 0.032114837)
+INFO::inps_baseline: 8.663000656519571
+INFO::step: 68500, new best result: 8.669312153938801
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 69500, new best result: 8.67411485969759
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step70000----
+INFO::inception_score: (8.668386, 0.045908984)
+INFO::inps_baseline: 8.67296917962819
+INFO::step: 70500, new best result: 8.682754959486243
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 71000, new best result: 8.685540744322392
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 71500, new best result: 8.68819356652725
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step72000----
+INFO::inception_score: (8.678464, 0.042390477)
+INFO::inps_baseline: 8.68624764039221
+INFO::----step74000----
+INFO::inception_score: (8.710083, 0.031325728)
+INFO::inps_baseline: 8.686065774959726
+INFO::----step76000----
+INFO::inception_score: (8.6826725, 0.031095888)
+INFO::inps_baseline: 8.685211732707684
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model-71500
+INFO::inps_test: (8.694353, 0.005501826)
+INFO::UPDATE CONTROLLOR
+INFO::lr_ctrl: 0.1
+INFO::grad
+INFO::[[-2.25559033e-05  1.51749482e-04 -7.76242626e-10 -7.26263625e-06
+  -3.36164485e-05  1.26903058e-06 -3.93157461e-06 -1.48303787e-08
+   5.09933525e-05  6.87284410e-06  1.12694222e-04  4.08121139e-07
+  -3.99553346e-06  1.85819172e-05 -3.34786455e-05 -3.11133681e-06]
+ [-4.06195031e-05 -4.34057205e-04 -1.57255784e-06  5.33064213e-06
+   1.34242917e-04  7.59080285e-06 -2.31376634e-05 -1.56021306e-05
+  -1.45422004e-04 -8.63852183e-05 -1.23998820e-04  8.30402769e-09
+  -8.74628495e-06 -1.12075060e-04  1.34877046e-04  4.20234719e-05]
+ [ 2.58741329e-05  1.67649618e-04 -6.75491492e-07 -2.21358232e-06
+  -7.16544746e-05  1.28289330e-05 -1.97141162e-05 -1.03399179e-05
+   4.35636503e-05  2.45688643e-05  6.80459707e-05 -3.65132529e-08
+  -6.45952287e-06  4.46111299e-05 -5.57723470e-05 -1.47504270e-05]
+ [ 1.52283255e-05  1.49359301e-04 -2.69510792e-07 -4.34292224e-06
+  -5.14960120e-05  5.30589296e-06 -1.44805881e-05 -3.72688169e-06
+   4.65085868e-05  2.37571439e-05  8.76323902e-05 -5.83361803e-10
+  -5.20892536e-06  3.49844377e-05 -4.00050121e-05 -1.18194084e-05]
+ [ 1.08551721e-05  1.56255817e-04 -3.12461253e-07 -5.76244338e-06
+  -4.74176486e-05  5.54099552e-06 -1.34282527e-05 -4.43271256e-06
+   4.75989327e-05  1.96503333e-05  1.00218014e-04  5.70052094e-08
+  -4.51370897e-06  3.15856159e-05 -3.90921014e-05 -1.06573843e-05]
+ [ 1.04494657e-05  2.12072424e-04  0.00000000e+00 -8.15758995e-06
+  -6.97616342e-05  7.95594497e-06 -1.94526565e-05  0.00000000e+00
+   7.12964320e-05  2.75332368e-05  1.47937433e-04  1.07206716e-07
+  -5.71476357e-06  4.57387578e-05 -5.79607586e-05 -1.48050867e-05]]
+INFO::[ 2.4460900e-05  2.2787775e-04 -9.8489647e-07 -6.1829387e-06
+ -8.0787788e-05  1.1385156e-05 -2.2709730e-05 -9.7560296e-06
+  6.5416389e-05  3.1828797e-05  1.2304855e-04  1.6564940e-08
+ -7.0022129e-06  5.2368996e-05 -6.4955551e-05 -1.7264350e-05]
+INFO::[[ 3.61281054e-05 -3.61280945e-05]
+ [ 2.27554294e-04 -2.27554352e-04]
+ [ 1.61827899e-07 -1.61827899e-07]
+ [ 4.20398974e-05 -4.20399083e-05]
+ [ 2.03264091e-04 -2.03264121e-04]
+ [ 5.37114488e-07 -5.37115341e-07]
+ [ 5.22154232e-06 -5.22154005e-06]
+ [ 2.24720316e-06 -2.24720293e-06]
+ [-2.38657176e-05  2.38656994e-05]
+ [ 7.49365136e-05 -7.49365790e-05]
+ [ 3.75921845e-05 -3.75921700e-05]
+ [ 2.92749291e-07 -2.92782033e-07]
+ [ 9.93514004e-06 -9.93513822e-06]
+ [ 1.11432302e-04 -1.11432266e-04]
+ [ 1.54534864e-04 -1.54534922e-04]
+ [ 5.49037122e-06 -5.49036758e-06]]
+INFO::[ 0.00023706 -0.00023706]
+INFO::weights
+INFO::idx:0, var:[[ 0.28824303  0.49903876  0.00245561  0.50203943  0.09015515 -0.39906058
+   0.22219372  0.12863305 -0.36107266 -0.05764297  0.50651     0.06035437
+   0.29342613  0.07358918 -0.02196287  0.11304522]
+ [ 0.46975866 -0.00815498  0.29468343  0.51637256 -0.39317667  0.17518722
+   0.42694     0.20977058  0.05527446 -0.32391208  0.38216573  0.20413971
+   0.38582757 -0.34472677 -0.34598488 -0.12621534]
+ [ 0.31268695 -0.13378981 -0.46430144  0.23866086 -0.29617658  0.08917119
+  -0.3405178  -0.03902899  0.1724893  -0.4302025   0.2841788   0.4755277
+  -0.17267272 -0.2844961  -0.40856674 -0.42503726]
+ [ 0.47883993 -0.0819689  -0.0078798   0.00319692  0.41086513 -0.50712043
+   0.39627752 -0.31522653  0.35524195 -0.22995315  0.07251826 -0.05902011
+  -0.22492592 -0.01756353  0.3867434  -0.15154123]
+ [ 0.3947592   0.22260477 -0.36755514 -0.3049973  -0.4655835   0.3504753
+  -0.29600498 -0.10516375  0.41040882  0.40819994 -0.35541067 -0.16266613
+  -0.07685261 -0.36679348  0.23441862 -0.40301743]
+ [-0.10758903  0.51231045 -0.18617621  0.3566796   0.21214493 -0.18191588
+  -0.16750617 -0.3387551  -0.33316377 -0.20041376  0.21573508  0.01099398
+   0.10642496  0.18544313 -0.14934178  0.47692645]]
+INFO::idx:1, var:[-5.0937153e-05 -2.1060057e-04  2.1152114e-06 -2.5676469e-05
+  7.6788448e-05 -1.4530090e-04  2.3651917e-05 -5.7294201e-05
+ -8.3964951e-06 -2.4160918e-05  4.1318228e-04  1.5481351e-07
+ -2.9029008e-05 -1.3486594e-04  1.3282245e-04 -4.1023501e-05]
+INFO::idx:2, var:[[ 0.30164355  0.49652565]
+ [ 0.4219972  -0.40420577]
+ [ 0.19450559  0.3972411 ]
+ [ 0.06108354  0.12264421]
+ [ 0.01395984  0.25247005]
+ [-0.36236525  0.06640729]
+ [-0.49501705 -0.00773833]
+ [-0.06373923  0.48344767]
+ [ 0.3609195   0.0831385 ]
+ [-0.37384227 -0.56139857]
+ [ 0.43774194 -0.40660554]
+ [ 0.06700144  0.06391189]
+ [ 0.07333586  0.32708576]
+ [ 0.56191486  0.35025477]
+ [ 0.04043183  0.29366362]
+ [-0.26999736 -0.20443463]]
+INFO::idx:3, var:[-6.0105731e-06  6.0084235e-06]
+INFO::total_steps: 77000
+INFO::p_a: [0.54771429 0.45228571]
+INFO::Trace of actions distribution
+INFO::gen: [51, 57, 53, 47, 43, 56, 52, 61, 63, 44, 47, 48, 55, 50, 57, 48, 49, 51, 46, 54, 53, 56, 54, 51, 56, 54, 51, 52, 53, 52, 48, 41, 53, 53, 51, 48, 51, 48, 50, 56, 56, 47, 43, 51, 54, 57, 54, 52, 51, 64, 59, 54, 54, 44, 46, 50, 43, 51, 52, 50, 51, 47, 54, 45, 54, 54, 63, 59, 51, 59, 59, 52, 44, 53, 57, 61, 50, 50, 52, 52]
+INFO::disc: [49, 43, 47, 53, 57, 44, 48, 39, 37, 56, 53, 52, 45, 50, 43, 52, 51, 49, 54, 46, 47, 44, 46, 49, 44, 46, 49, 48, 47, 48, 52, 59, 47, 47, 49, 52, 49, 52, 50, 44, 44, 53, 57, 49, 46, 43, 46, 48, 49, 36, 41, 46, 46, 56, 54, 50, 57, 49, 48, 50, 49, 53, 46, 55, 46, 46, 37, 41, 49, 41, 41, 48, 56, 47, 43, 39, 50, 50, 48, 48]
+INFO::best_inps: 8.694353103637695
+INFO::best_best_inps: 8.779579162597656
+INFO::final_reward: 377.9588794536721
+INFO::adv: -0.4818991528532024
+INFO::=================
+INFO::episodes: 33
+INFO::step: 500, new best result: 4.847102642059326
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 1000, new best result: 4.8555707931518555
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 1500, new best result: 5.013470268249511
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 2000, new best result: 5.1567530441284175
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step2000----
+INFO::inception_score: (5.729884, 0.06350613)
+INFO::inps_baseline: 5.1567530441284175
+INFO::step: 2500, new best result: 5.415896686553955
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 3000, new best result: 5.690053965759277
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 3500, new best result: 5.96737568069458
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 4000, new best result: 6.2314286588745125
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step4000----
+INFO::inception_score: (7.2876406, 0.049188577)
+INFO::inps_baseline: 6.2314286588745125
+INFO::step: 4500, new best result: 6.45508864395752
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 5000, new best result: 6.6235079039965825
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 5500, new best result: 6.784029902604004
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 6000, new best result: 6.902446986505812
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step6000----
+INFO::inception_score: (7.3761153, 0.06583846)
+INFO::inps_baseline: 6.902446986505812
+INFO::step: 6500, new best result: 7.019127083833556
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 7000, new best result: 7.138436756941112
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 7500, new best result: 7.243161553074862
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 8000, new best result: 7.334814448300954
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step8000----
+INFO::inception_score: (7.701426, 0.057480652)
+INFO::inps_baseline: 7.334814448300954
+INFO::step: 8500, new best result: 7.414095798447892
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 9000, new best result: 7.491179306757582
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 9500, new best result: 7.561133638582335
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 10000, new best result: 7.627067578285302
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step10000----
+INFO::inception_score: (7.8908033, 0.027097726)
+INFO::inps_baseline: 7.627067578285302
+INFO::step: 10500, new best result: 7.691965971350165
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 11000, new best result: 7.74243691282232
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 11500, new best result: 7.78852350486723
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 12000, new best result: 7.830455644714097
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step12000----
+INFO::inception_score: (7.998184, 0.05434382)
+INFO::inps_baseline: 7.830455644714097
+INFO::step: 12500, new best result: 7.865753065575965
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 13000, new best result: 7.896470936957842
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 13500, new best result: 7.9280362390071915
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 14000, new best result: 7.956292364008488
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step14000----
+INFO::inception_score: (8.069317, 0.02682548)
+INFO::inps_baseline: 7.956292364008488
+INFO::step: 14500, new best result: 7.976721551424076
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 15000, new best result: 8.00392305565342
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 15500, new best result: 8.034080979923127
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 16000, new best result: 8.051536558230493
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step16000----
+INFO::inception_score: (8.121359, 0.016281875)
+INFO::inps_baseline: 8.051536558230493
+INFO::step: 16500, new best result: 8.070511053530195
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 17000, new best result: 8.086338003895934
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 17500, new best result: 8.105015341776415
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 18000, new best result: 8.112353185286366
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step18000----
+INFO::inception_score: (8.141705, 0.023377465)
+INFO::inps_baseline: 8.112353185286366
+INFO::step: 18500, new best result: 8.120811541454191
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 19000, new best result: 8.123529306710717
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 19500, new best result: 8.140224164057539
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step20000----
+INFO::inception_score: (8.085049, 0.043912537)
+INFO::inps_baseline: 8.129189066353453
+INFO::step: 21000, new best result: 8.151668047754296
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 21500, new best result: 8.163592128633123
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 22000, new best result: 8.17213232412232
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step22000----
+INFO::inception_score: (8.206293, 0.03649961)
+INFO::inps_baseline: 8.17213232412232
+INFO::step: 22500, new best result: 8.180854281539066
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 23500, new best result: 8.18700948127387
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 24000, new best result: 8.19236099535845
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step24000----
+INFO::inception_score: (8.213767, 0.03783925)
+INFO::inps_baseline: 8.19236099535845
+INFO::step: 24500, new best result: 8.211678408103166
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 25000, new best result: 8.218357390178822
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 25500, new best result: 8.238925032626456
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 26000, new best result: 8.254127162941986
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step26000----
+INFO::inception_score: (8.314936, 0.034159232)
+INFO::inps_baseline: 8.254127162941986
+INFO::step: 26500, new best result: 8.263915744025464
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 27000, new best result: 8.273388073125645
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 27500, new best result: 8.282488191349637
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 28000, new best result: 8.289951200662717
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step28000----
+INFO::inception_score: (8.319803, 0.038186014)
+INFO::inps_baseline: 8.289951200662717
+INFO::step: 28500, new best result: 8.296128364704979
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 29000, new best result: 8.306672932547674
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 29500, new best result: 8.31953210977105
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 30000, new best result: 8.328487549999457
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step30000----
+INFO::inception_score: (8.364309, 0.028295055)
+INFO::inps_baseline: 8.328487549999457
+INFO::step: 30500, new best result: 8.335520295126518
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 31000, new best result: 8.347114394365374
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 31500, new best result: 8.354909952687123
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 32000, new best result: 8.363457342948038
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step32000----
+INFO::inception_score: (8.397647, 0.029910088)
+INFO::inps_baseline: 8.363457342948038
+INFO::step: 32500, new best result: 8.369168965789095
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 33000, new best result: 8.386037801720631
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 33500, new best result: 8.399329165631876
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 34000, new best result: 8.405511077256477
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step34000----
+INFO::inception_score: (8.430239, 0.018262526)
+INFO::inps_baseline: 8.405511077256477
+INFO::step: 34500, new best result: 8.410629603077155
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 35000, new best result: 8.414533688870415
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step36000----
+INFO::inception_score: (8.405557, 0.045064874)
+INFO::inps_baseline: 8.41270928335021
+INFO::step: 36500, new best result: 8.418763007734855
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 37000, new best result: 8.423374435118548
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 37500, new best result: 8.431882111876577
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 38000, new best result: 8.432262205004191
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step38000----
+INFO::inception_score: (8.433783, 0.028423395)
+INFO::inps_baseline: 8.432262205004191
+INFO::step: 38500, new best result: 8.446959132289486
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 39500, new best result: 8.451053920959216
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 40000, new best result: 8.45880494401835
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step40000----
+INFO::inception_score: (8.489809, 0.018800715)
+INFO::inps_baseline: 8.45880494401835
+INFO::step: 40500, new best result: 8.468783266432942
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 41000, new best result: 8.473605447680045
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 42000, new best result: 8.481675945072357
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step42000----
+INFO::inception_score: (8.52488, 0.0261834)
+INFO::inps_baseline: 8.481675945072357
+INFO::step: 42500, new best result: 8.486428898452905
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 43000, new best result: 8.493601736926387
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 43500, new best result: 8.49983172218271
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 44000, new best result: 8.501707876525465
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step44000----
+INFO::inception_score: (8.5092125, 0.02893023)
+INFO::inps_baseline: 8.501707876525465
+INFO::step: 44500, new best result: 8.512085600536778
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 45000, new best result: 8.513758217367899
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 46000, new best result: 8.51674707735276
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step46000----
+INFO::inception_score: (8.53266, 0.028259603)
+INFO::inps_baseline: 8.51674707735276
+INFO::step: 46500, new best result: 8.52749220533924
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 47000, new best result: 8.537110646595611
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 47500, new best result: 8.53906828564807
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 48000, new best result: 8.547560170510645
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step48000----
+INFO::inception_score: (8.581528, 0.017191632)
+INFO::inps_baseline: 8.547560170510645
+INFO::step: 49000, new best result: 8.551584520479352
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 49500, new best result: 8.555804092518736
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step50000----
+INFO::inception_score: (8.548523, 0.050028052)
+INFO::inps_baseline: 8.55434786385874
+INFO::step: 50500, new best result: 8.558666889719804
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 51000, new best result: 8.567854265254848
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step52000----
+INFO::inception_score: (8.562918, 0.026985398)
+INFO::inps_baseline: 8.566478106105876
+INFO::step: 54000, new best result: 8.575390395700909
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step54000----
+INFO::inception_score: (8.614259, 0.038863827)
+INFO::inps_baseline: 8.575390395700909
+INFO::step: 55000, new best result: 8.575438535804734
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 55500, new best result: 8.584237318511951
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 56000, new best result: 8.589984688183584
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step56000----
+INFO::inception_score: (8.612974, 0.009814057)
+INFO::inps_baseline: 8.589984688183584
+INFO::step: 56500, new best result: 8.596185519711907
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 57000, new best result: 8.60415693475146
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 57500, new best result: 8.609960717784078
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 58000, new best result: 8.610422263802459
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step58000----
+INFO::inception_score: (8.612268, 0.034175955)
+INFO::inps_baseline: 8.610422263802459
+INFO::step: 58500, new best result: 8.619979580451147
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 59000, new best result: 8.622076193657794
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 59500, new best result: 8.62475903842233
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 60000, new best result: 8.627159182336984
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::----step60000----
+INFO::inception_score: (8.63676, 0.02971233)
+INFO::inps_baseline: 8.627159182336984
+INFO::step: 60500, new best result: 8.629452947065875
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model
+INFO::step: 61000, new best result: 8.633487322557485
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h4-haowen6_05-10-19-26_gan/model

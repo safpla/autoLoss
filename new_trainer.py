@@ -21,7 +21,6 @@ from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
 import socket
 
-
 root_path = os.path.dirname(os.path.realpath(__file__))
 logger = utils.get_logger()
 
@@ -57,6 +56,7 @@ class Trainer():
     def train(self, save_ctrl=None, load_ctrl=None):
         """ Iteratively training between controller and the student model """
         config = self.config
+        print_freq = config.print_frequency_stud
         lr = config.lr_rl
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
@@ -89,6 +89,7 @@ class Trainer():
                                             config.pretrained_gan_exp_name)
                 model_stud.load_model(pretrained_path)
             model_stud.reset()
+            model_ctrl.print_weights()
 
             state = model_stud.get_state()
             state_hist = []
@@ -126,16 +127,21 @@ class Trainer():
                 #    logger.info('state:{}'.format(state_new))
                 #    logger.info('action: {}'.format(action))
                 #    logger.info('reward:{}'.format(reward))
-                #    lv = model_stud.previous_valid_loss
-                #    lt = model_stud.previous_train_loss
-                #    av = model_stud.previous_valid_acc
-                #    at = model_stud.previous_train_acc
-                #    logger.info('train_loss: {}'.format(lt[-1]))
-                #    logger.info('valid_loss: {}'.format(lv[-1]))
-                #    logger.info('loss_imp: {}'.format(lv[-2] - lv[-1]))
-                #    logger.info('train_acc: {}'.format(at[-1]))
-                #    logger.info('valid_acc: {}'.format(av[-1]))
-                #    model_stud.print_weights()
+
+                if step % print_freq == 0 and step > 0:
+                    #sh = np.array(state_hist[-print_freq:])
+                    #ah = np.array(action_hist[-print_freq:])
+                    #rh = np.ones_like(reward_hist[-print_freq:]) *\
+                    sh = np.array(state_hist)
+                    ah = np.array(action_hist)
+                    step_reward = model_stud.get_step_reward(step)
+                    rh = np.ones_like(reward_hist) * step_reward
+                    logger.info('step_reward: {}'.format(step_reward))
+                    grads = model_ctrl.get_gradients(sh, ah, rh)
+                    logger.info('grad')
+                    for idx, grad in enumerate(grads):
+                        gradBuffer[idx] += grad * 0.01
+                        logger.info(grad)
 
                 old_action = action
                 state = state_new
@@ -161,7 +167,9 @@ class Trainer():
             ah = np.array(action_hist)
             rh = np.array(reward_hist)
             grads = model_ctrl.get_gradients(sh, ah, rh)
+            logger.info('grad')
             for idx, grad in enumerate(grads):
+                logger.info(grad)
                 gradBuffer[idx] += grad
 
             if lr > config.lr_rl * 0.1:
@@ -170,7 +178,7 @@ class Trainer():
                 logger.info('UPDATE CONTROLLOR')
                 logger.info('lr_ctrl: {}'.format(lr))
                 model_ctrl.train_one_step(gradBuffer, lr)
-                logger.info('grad')
+                logger.info('total_grad')
                 for ix, grad in enumerate(gradBuffer):
                     logger.info(grad)
                     gradBuffer[ix] = grad * 0

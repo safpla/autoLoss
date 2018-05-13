@@ -44,26 +44,33 @@ class Controller(Basic_model):
         lr = self.lr_plh
         with self.graph.as_default():
             model_name = config.controller_model_name
+            initializer = tf.contrib.layers.xavier_initializer(uniform=True)
             if model_name == '2layer':
                 hidden = slim.fully_connected(self.state_plh, h_size,
-                                            activation_fn=tf.nn.relu)
+                                              weights_initializer=initializer,
+                                              activation_fn=tf.nn.relu)
                 self.logits = slim.fully_connected(hidden, a_size,
-                                                activation_fn=None)
+                                                   weights_initializer=initializer,
+                                                   activation_fn=None)
                 self.output = tf.nn.softmax(self.logits)
             elif model_name == '2layer_logits_clipping':
                 hidden = slim.fully_connected(self.state_plh, h_size,
-                                            activation_fn=tf.nn.relu)
+                                              weights_initializer=initializer,
+                                              activation_fn=tf.nn.relu)
                 self.logits = slim.fully_connected(hidden, a_size,
-                                                activation_fn=None)
+                                                   weights_initializer=initializer,
+                                                   activation_fn=None)
                 self.output = tf.nn.softmax(self.logits /
                                             config.logit_clipping_c)
             elif model_name == 'linear':
                 self.logits = slim.fully_connected(self.state_plh, a_size,
-                                                activation_fn=None)
+                                                   weights_initializer=initializer,
+                                                   activation_fn=None)
                 self.output = tf.nn.softmax(self.logits)
             elif model_name == 'linear_logits_clipping':
                 self.logits = slim.fully_connected(self.state_plh, a_size,
-                                                activation_fn=None)
+                                                   weights_initializer=initializer,
+                                                   activation_fn=None)
                 self.output = tf.nn.softmax(self.logits /
                                             config.logit_clipping_c)
             else:

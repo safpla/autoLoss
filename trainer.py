@@ -89,6 +89,7 @@ class Trainer():
                                             config.pretrained_gan_exp_name)
                 model_stud.load_model(pretrained_path)
             model_stud.reset()
+            model_ctrl.print_weights()
 
             state = model_stud.get_state()
             state_hist = []
@@ -121,11 +122,11 @@ class Trainer():
                     train_loss_hist.append(model_stud.previous_train_loss[-1])
 
                 # ----Print training details.----
-                if step < 200:
-                    logger.info('----train_step: {}----'.format(step))
-                    logger.info('state:{}'.format(state_new))
-                    logger.info('action: {}'.format(action))
-                    logger.info('reward:{}'.format(reward))
+                #if step < 200:
+                #    logger.info('----train_step: {}----'.format(step))
+                #    logger.info('state:{}'.format(state_new))
+                #    logger.info('action: {}'.format(action))
+                #    logger.info('reward:{}'.format(reward))
                 #    lv = model_stud.previous_valid_loss
                 #    lt = model_stud.previous_train_loss
                 #    av = model_stud.previous_valid_acc
@@ -235,6 +236,8 @@ class Trainer():
                     save_model_flag = True
                 logger.info('best_inps: {}'.format(best_inps))
                 logger.info('best_best_inps: {}'.format(best_best_inps))
+                logger.info('final_inps_baseline: {}'.\
+                            format(model_stud.final_inps_baseline))
             elif config.student_model_name == 'gan_grid':
                 loss_analyzer_gan(action_hist, reward_hist)
                 hq_ratio = model_stud.best_hq_ratio
@@ -245,7 +248,6 @@ class Trainer():
                 logger.info('hq_ratio: {}'.format(hq_ratio))
                 logger.info('best_hq_ratio: {}'.format(best_hq_ratio))
 
-            logger.info('final_reward: {}'.format(final_reward))
             logger.info('adv: {}'.format(adv))
 
             if save_model_flag and save_ctrl:

@@ -45,7 +45,10 @@ class Gan(Basic_model):
 
         self._build_placeholder()
         self._build_graph()
-        self.reward_baseline = None # average reward over episodes
+        self.final_inps_baseline = None # ema of final_inps over episodes
+        # ema of metrics track over episodes
+        n_steps = int(config.max_training_step / config.print_frequency_stud)
+        self.metrics_track_baseline = -np.ones([n_steps])
         self.reset()
         self.fixed_noise_128 = np.random.normal(size=(128, config.dim_z))\
             .astype('float32')
@@ -316,7 +319,7 @@ class Gan(Basic_model):
                 + disc_cost_fake * (1 - alpha)
 
 
-        reward = self.get_step_reward()
+        reward = 0
         # ----Early stop and record best result.----
         dead = self.check_terminate()
         state = self.get_state()
@@ -332,8 +335,7 @@ class Gan(Basic_model):
             state = [self.step_number / self.config.max_training_step,
                      math.log(self.mag_disc_grad / self.mag_gen_grad),
                      self.ema_gen_cost,
-                     self.ema_disc_cost_real,
-                     self.ema_disc_cost_fake,
+                     (self.ema_disc_cost_real + self.ema_disc_cost_fake) / 2,
                      self.inception_score / 10,
                      ]
         return np.array(state, dtype='f')
@@ -386,31 +388,41 @@ class Gan(Basic_model):
                 return True
         return False
 
-    def get_step_reward(self):
-        return 0
+    def get_step_reward(self, step):
+        step = int(step / self.config.print_frequency_stud) - 1
+        inps = self.inps_baseline
+        reward = self.config.reward_c * inps ** 2
+        if self.metrics_track_baseline[step] == -1:
+            self.metrics_track_baseline[step] = inps
+            #logger.info(self.metrics_track_baseline)
+            return 0
+        baseline_inps = self.metrics_track_baseline[step]
+        baseline_reward = self.config.reward_c * baseline_inps ** 2
+        adv = reward - baseline_reward
+        adv = min(adv, self.config.reward_max_value)
+        adv = max(adv, -self.config.reward_max_value)
+        decay = self.config.inps_baseline_decay
+        self.metrics_track_baseline[step] = \
+            decay * self.metrics_track_baseline[step] + (1 - decay) * inps
+        #logger.info(self.metrics_track_baseline)
+        return adv
+
 
     def get_final_reward(self):
         if self.collapse:
             return 0, -self.config.reward_max_value
-        if self.config.stop_strategy_stud == 'prescribed_steps' or \
-                self.config.stop_strategy_stud == 'exceeding_endurance':
-            inps = self.best_inception_score
-            reward = self.config.reward_c * inps ** 2
-        elif self.config.stop_strategy_stud == 'prescribed_inps':
-            time_cost = self.step_number / self.config.max_training_step
-            reward = math.sqrt(self.config.reward_c / time_cost)
-            if self.step_number > self.config.max_training_step:
-                return 0, -self.config.reward_max_value
-
-        if self.reward_baseline is None:
-            self.reward_baseline = reward
-        decay = self.config.reward_baseline_decay
-        adv = reward - self.reward_baseline
+        inps = self.best_inception_score
+        reward = self.config.reward_c * inps ** 2
+        if self.final_inps_baseline is None:
+            self.final_inps_baseline = inps
+        baseline_inps = self.final_inps_baseline
+        baseline_reward = self.config.reward_c * baseline_inps ** 2
+        decay = self.config.inps_baseline_decay
+        adv = reward - baseline_reward
         adv = min(adv, self.config.reward_max_value)
         adv = max(adv, -self.config.reward_max_value)
         # ----Shift average----
-        self.reward_baseline = decay * self.reward_baseline\
-            + (1 - decay) * reward
+        self.final_inps_baseline = decay * self.final_inps_baseline + (1 - decay) * inps
         return reward, adv
 
     def get_inception_score(self, num_batches):
