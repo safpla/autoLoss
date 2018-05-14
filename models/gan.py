@@ -8,7 +8,6 @@ import numpy as np
 import math
 import os
 
-from dataio.dataset_cifar10 import Dataset_cifar10
 from dataio.dataset_mnist import Dataset_mnist
 import utils
 from utils import inception_score_mnist
@@ -26,22 +25,12 @@ class Gan(Basic_model):
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess = tf.InteractiveSession(config=configProto,
                                             graph=self.graph)
-        if config.gan_mode == 'dcgan_mnist':
-            self.train_dataset = Dataset_mnist()
-            self.train_dataset.load_mnist(config.data_dir,
-                                          tf.estimator.ModeKeys.TRAIN)
-            self.valid_dataset = Dataset_mnist()
-            self.valid_dataset.load_mnist(config.data_dir,
-                                          tf.estimator.ModeKeys.EVAL)
-        elif config.gan_mode == 'dcgan':
-            self.train_dataset = Dataset_cifar10()
-            self.train_dataset.load_cifar10(config.data_dir,
-                                            tf.estimator.ModeKeys.TRAIN)
-            self.valid_dataset = Dataset_cifar10()
-            self.valid_dataset.load_cifar10(config.data_dir,
-                                            tf.estimator.ModeKeys.EVAL)
-        else:
-            raise NotImplementedError('Invalid gan_mode')
+        self.train_dataset = Dataset_mnist()
+        self.train_dataset.load_mnist(config.data_dir,
+                                        tf.estimator.ModeKeys.TRAIN)
+        self.valid_dataset = Dataset_mnist()
+        self.valid_dataset.load_mnist(config.data_dir,
+                                        tf.estimator.ModeKeys.EVAL)
 
         self._build_placeholder()
         self._build_graph()
@@ -101,40 +90,36 @@ class Gan(Basic_model):
             disc_real = self.discriminator(real_data)
             disc_fake = self.discriminator(fake_data, reuse=True)
 
-            if self.config.gan_mode == 'dcgan' or\
-                    self.config.gan_mode == 'dcgan_mnist':
-                gen_cost = tf.reduce_mean(
-                    tf.nn.sigmoid_cross_entropy_with_logits(
-                        logits=disc_fake, labels=tf.ones_like(disc_fake)
-                    )
+            gen_cost = tf.reduce_mean(
+                tf.nn.sigmoid_cross_entropy_with_logits(
+                    logits=disc_fake, labels=tf.ones_like(disc_fake)
                 )
-                disc_cost_fake = tf.reduce_mean(
-                    tf.nn.sigmoid_cross_entropy_with_logits(
-                        logits=disc_fake, labels=tf.zeros_like(disc_fake)
-                    )
+            )
+            disc_cost_fake = tf.reduce_mean(
+                tf.nn.sigmoid_cross_entropy_with_logits(
+                    logits=disc_fake, labels=tf.zeros_like(disc_fake)
                 )
-                disc_cost_real = tf.reduce_mean(
-                    tf.nn.sigmoid_cross_entropy_with_logits(
-                        logits=disc_real, labels=tf.ones_like(disc_real)
-                    )
+            )
+            disc_cost_real = tf.reduce_mean(
+                tf.nn.sigmoid_cross_entropy_with_logits(
+                    logits=disc_real, labels=tf.ones_like(disc_real)
                 )
-                disc_cost = (disc_cost_fake + disc_cost_real) / 2.
+            )
+            disc_cost = (disc_cost_fake + disc_cost_real) / 2.
 
-                tvars = tf.trainable_variables()
-                gen_tvars = [v for v in tvars if 'Generator' in v.name]
-                disc_tvars = [v for v in tvars if 'Discriminator' in v.name]
+            tvars = tf.trainable_variables()
+            gen_tvars = [v for v in tvars if 'Generator' in v.name]
+            disc_tvars = [v for v in tvars if 'Discriminator' in v.name]
 
-                gen_grad = tf.gradients(gen_cost, gen_tvars)
-                disc_grad = tf.gradients(disc_cost, disc_tvars)
-                optimizer = tf.train.AdamOptimizer(learning_rate=lr,
-                                                   beta1=beta1,
-                                                   beta2=beta2)
-                gen_train_op = optimizer.apply_gradients(
-                    zip(gen_grad, gen_tvars))
-                disc_train_op = optimizer.apply_gradients(
-                    zip(disc_grad, disc_tvars))
-            else:
-                raise Exception('Invalid gan_mode')
+            gen_grad = tf.gradients(gen_cost, gen_tvars)
+            disc_grad = tf.gradients(disc_cost, disc_tvars)
+            optimizer = tf.train.AdamOptimizer(learning_rate=lr,
+                                                beta1=beta1,
+                                                beta2=beta2)
+            gen_train_op = optimizer.apply_gradients(
+                zip(gen_grad, gen_tvars))
+            disc_train_op = optimizer.apply_gradients(
+                zip(disc_grad, disc_tvars))
 
             self.saver = tf.train.Saver()
             self.init = tf.global_variables_initializer()

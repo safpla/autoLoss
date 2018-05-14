@@ -223,10 +223,6 @@ class Parser(object):
         return self.config.getfloat('rl', 'logit_clipping_c')
 
     @property
-    def gan_mode(self):
-        return self.config.get('gan', 'gan_mode')
-
-    @property
     def dim_z(self):
         return self.config.getint('gan', 'dim_z')
 

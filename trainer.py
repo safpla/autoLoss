@@ -16,6 +16,7 @@ from models import toy
 from models import cls
 from models import gan
 from models import gan_grid
+from models import gan_cifar10
 import utils
 from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
@@ -51,6 +52,9 @@ class Trainer():
             self.model_stud = gan.Gan(config, exp_name+'_gan')
         elif config.student_model_name == 'gan_grid':
             self.model_stud = gan_grid.Gan_grid(config, exp_name+'_gan_grid')
+        elif config.student_model_name == 'gan_cifar10':
+            self.model_stud = gan_cifar10.Gan_cifar10(config,
+                                                      exp_name+'_gan_cifar10')
         else:
             raise NotImplementedError
 
@@ -223,7 +227,8 @@ class Trainer():
                 logger.info('best_loss: {}'.format(loss))
                 #if ep % config.save_frequency == 0 and ep > 0:
                 #    save_model_flag = True
-            elif config.student_model_name == 'gan':
+            elif config.student_model_name == 'gan' or\
+                config.student_model_name == 'gan_cifar10':
                 loss_analyzer_gan(action_hist, reward_hist)
                 best_inps = model_stud.best_inception_score
                 if final_reward > best_reward:
@@ -265,10 +270,22 @@ class Trainer():
             state = state_new
             if dead:
                 break
-        valid_acc = model_stud.best_acc
-        test_acc = model_stud.test_acc
-        logger.info('valid_acc: {}'.format(valid_acc))
-        logger.info('test_acc: {}'.format(test_acc))
+        if config.student_model_name == 'toy':
+            raise NotImplementedError
+        elif config.student_model_name == 'cls':
+            valid_acc = model_stud.best_acc
+            test_acc = model_stud.test_acc
+            logger.info('valid_acc: {}'.format(valid_acc))
+            logger.info('test_acc: {}'.format(test_acc))
+        elif config.student_model_name == 'gan':
+            raise NotImplementedError
+        elif config.student_model_name == 'gan_grid':
+            raise NotImplementedError
+        elif config.student_model_name == 'gan_cifar10':
+            best_inps = model_stud.best_inception_score
+            logger.info('best_inps: {}'.format(best_inps))
+        else:
+            raise NotImplementedError
         return test_acc
 
 
@@ -287,9 +304,13 @@ if __name__ == '__main__':
     # ----Instantiate a trainer object.----
     trainer = Trainer(config)
 
+    # classification task controllor model
+    #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
+    # gan mnist task controllor model
+    load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
     # ----Training----
     #   --Start from pretrained--
-    #trainer.train(load_ctrl=load_ctrl)
+    trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
     #trainer.train(save_ctrl=True)
     #trainer.train()
@@ -298,8 +319,7 @@ if __name__ == '__main__':
     test_accs = []
     #ckpt_num = 250
     ckpt_num = None
-    model_path = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
     for i in range(10):
-        test_accs.append(trainer.test(model_path, ckpt_num=ckpt_num))
+        test_accs.append(trainer.test(load_ctrl, ckpt_num=ckpt_num))
     print(test_accs)
     print(np.mean(np.array(test_accs)))
