@@ -31,9 +31,14 @@ def discount_rewards(reward, final_reward):
     reward_dis = np.array(reward) + np.array(final_reward)
     return reward_dis
 
+def _sampling(num):
+    p = np.random.rand(1)
+    p = min(p, 1-1e-9)
+    return int(p * num)
+
 class Trainer():
     """ A class to wrap training code. """
-    def __init__(self, config, exp_name=None):
+    def __init__(self, config, exp_name=None, arch=None):
         self.config = config
 
         hostname = socket.gethostname()
@@ -49,7 +54,7 @@ class Trainer():
         elif config.student_model_name == 'cls':
             self.model_stud = cls.Cls(config, exp_name+'_cls')
         elif config.student_model_name == 'gan':
-            self.model_stud = gan.Gan(config, exp_name+'_gan')
+            self.model_stud = gan.Gan(config, exp_name+'_gan', arch=arch)
         elif config.student_model_name == 'gan_grid':
             self.model_stud = gan_grid.Gan_grid(config, exp_name+'_gan_grid')
         elif config.student_model_name == 'gan_cifar10':
@@ -222,6 +227,9 @@ class Trainer():
                     best_acc = acc
                     best_loss = loss
                     save_model_flag = True
+                    endurance = 0
+                else:
+                    endurance += 1
                 logger.info('acc: {}'.format(acc))
                 logger.info('best_acc: {}'.format(best_acc))
                 logger.info('best_loss: {}'.format(loss))
@@ -252,7 +260,9 @@ class Trainer():
             logger.info('adv: {}'.format(adv))
 
             if save_model_flag and save_ctrl:
-                model_ctrl.save_model(ep)
+                    model_ctrl.save_model(ep)
+            if endurance > config.max_endurance_rl:
+                break
 
     def test(self, load_ctrl, ckpt_num=None):
         config = self.config
@@ -277,16 +287,29 @@ class Trainer():
             test_acc = model_stud.test_acc
             logger.info('valid_acc: {}'.format(valid_acc))
             logger.info('test_acc: {}'.format(test_acc))
+            return test_acc
         elif config.student_model_name == 'gan':
-            raise NotImplementedError
+            model_stud.load_model(model_stud.task_dir)
+            inps_test = model_stud.get_inception_score(5000)
+            logger.info('inps_test: {}'.format(inps_test))
+            return inps_test
         elif config.student_model_name == 'gan_grid':
             raise NotImplementedError
         elif config.student_model_name == 'gan_cifar10':
             best_inps = model_stud.best_inception_score
             logger.info('best_inps: {}'.format(best_inps))
+            return best_inps
         else:
             raise NotImplementedError
-        return test_acc
+
+    def baseline(self):
+        self.model_stud.initialize_weights()
+        self.model_stud.train(save_model=True)
+        if self.config.student_model_name == 'gan':
+            self.model_stud.load_model(self.model_stud.task_dir)
+            inps_baseline = self.model_stud.get_inception_score(5000)
+            logger.info('inps_baseline: {}'.format(inps_baseline))
+        return inps_baseline
 
 
 
@@ -307,19 +330,27 @@ if __name__ == '__main__':
     # classification task controllor model
     #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
     # gan mnist task controllor model
-    load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
+    #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
     # ----Training----
     #   --Start from pretrained--
-    trainer.train(load_ctrl=load_ctrl)
+    #trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
-    #trainer.train(save_ctrl=True)
+    trainer.train(save_ctrl=True)
     #trainer.train()
 
-    # ----Testing----
+    ## ----Baseline----
+    #logger.info('BASELINE')
+    #baseline_accs = []
+    #for i in range(1):
+    #    baseline_accs.append(trainer.baseline())
+    #logger.info(baseline_accs)
+
+    ## ----Testing----
+    logger.info('TEST')
     test_accs = []
-    #ckpt_num = 250
-    ckpt_num = None
     for i in range(10):
-        test_accs.append(trainer.test(load_ctrl, ckpt_num=ckpt_num))
-    print(test_accs)
-    print(np.mean(np.array(test_accs)))
+        test_accs.append(trainer.test(load_ctrl))
+    logger.info(test_accs)
+    logger.info(np.mean(np.array(test_accs)))
+    logger.info(np.var(np.array(test_accs)))
+

@@ -68,15 +68,15 @@ class Controller(Basic_model):
                                                    activation_fn=None)
                 self.output = tf.nn.softmax(self.logits)
             elif model_name == 'linear_logits_clipping':
-                #self.logits = slim.fully_connected(self.state_plh, a_size,
-                #                                   weights_initializer=initializer,
-                #                                   activation_fn=None)
-                w = np.array([[0.6229, -0.6251],[0.9433, -0.0495],[-0.0729, -0.9810],
-                              [-0.3855, 0.1590],[0.3950,0.4981]])
-                b = np.array([0.1551,-0.1551])
-                w = tf.Variable(w, name='w', dtype=tf.float32)
-                b = tf.Variable(b, name='b', dtype=tf.float32)
-                self.logits = tf.matmul(self.state_plh, w) + b
+                self.logits = slim.fully_connected(self.state_plh, a_size,
+                                                   weights_initializer=initializer,
+                                                   activation_fn=None)
+                #w = np.array([[0.6229, -0.6251],[0.9433, -0.0495],[-0.0729, -0.9810],
+                #              [-0.3855, 0.1590],[0.3950,0.4981]])
+                #b = np.array([0.1551,-0.1551])
+                #w = tf.Variable(w, name='w', dtype=tf.float32)
+                #b = tf.Variable(b, name='b', dtype=tf.float32)
+                #self.logits = tf.matmul(self.state_plh, w) + b
                 self.output = tf.nn.softmax(self.logits /
                                             config.logit_clipping_c)
             else:

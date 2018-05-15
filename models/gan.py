@@ -17,10 +17,15 @@ from models.basic_model import Basic_model
 logger = utils.get_logger()
 
 class Gan(Basic_model):
-    def __init__(self, config, exp_name='new_exp_gan'):
+    def __init__(self, config, exp_name='new_exp_gan', arch=None):
         self.config = config
         self.graph = tf.Graph()
         self.exp_name = exp_name
+        self.arch = arch
+        if arch:
+            logger.info('architecture:')
+            for key in sorted(arch.keys()):
+                logger.info('{}: {}'.format(key, arch[key]))
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess = tf.InteractiveSession(config=configProto,
@@ -140,20 +145,37 @@ class Gan(Basic_model):
             self.grads = gen_grad + disc_grad
 
     def generator(self, input):
-        dim_z = self.config.dim_z
-        dim_c = self.config.dim_c
+        if self.arch:
+            arch = self.arch
+            dim_z = arch['dim_z']
+            dim_c = arch['dim_c_G']
+            if arch['activation_G'] == 'relu':
+                activation_fn = tf.nn.relu
+            elif arch['activation_G'] == 'leakyRelu':
+                activation_fn = tf.nn.leaky_relu
+            else:
+                activation_fn = tf.nn.tanh
+            batchnorm = arch['batchnorm_G']
+        else:
+            dim_z = self.config.dim_z
+            dim_c = self.config.dim_c
+            activation_fn = tf.nn.relu
+            batchnorm = False
+
         with tf.variable_scope('Generator'):
             output = layers.linear(input, 7*7*2*dim_c, name='LN1')
-            #output = layers.batchnorm(output, is_training=self.is_training,
-            #                          name='BN1')
-            output = tf.nn.relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN1')
+            output = activation_fn(output)
             output = tf.reshape(output, [-1, 7, 7, 2*dim_c])
 
             output_shape = [-1, 14, 14, dim_c]
             output = layers.deconv2d(output, output_shape, name='Deconv2')
-            #output = layers.batchnorm(output, is_training=self.is_training,
-            #                          name='BN2')
-            output = tf.nn.relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN2')
+            output = activation_fn(output)
 
             output_shape = [-1, 28, 28, 1]
             output = layers.deconv2d(output, output_shape, name='Decovn3')
@@ -162,7 +184,21 @@ class Gan(Basic_model):
             return tf.reshape(output, [-1, 28*28])
 
     def discriminator(self, inputs, reuse=False):
-        dim_c = self.config.dim_c
+        if self.arch:
+            arch = self.arch
+            dim_c = arch['dim_c_D']
+            if arch['activation_D'] == 'relu':
+                activation_fn = tf.nn.relu
+            elif arch['activation_D'] == 'leakyRelu':
+                activation_fn = tf.nn.leaky_relu
+            else:
+                activation_fn = tf.nn.tanh
+            batchnorm = arch['batchnorm_D']
+        else:
+            dim_c = self.config.dim_c
+            activation_fn = tf.nn.leaky_relu
+            batchnorm = False
+
         with tf.variable_scope('Discriminator') as scope:
             if reuse:
                 scope.reuse_variables()
@@ -170,12 +206,13 @@ class Gan(Basic_model):
             output = tf.reshape(inputs, [-1, 28, 28, 1])
 
             output = layers.conv2d(output, dim_c, name='Conv1')
-            output = tf.nn.leaky_relu(output)
+            output = activation_fn(output)
 
             output = layers.conv2d(output, 2*dim_c, name='Conv2')
-            #output = layers.batchnorm(output, is_training=self.is_training,
-            #                          name='BN2')
-            output = tf.nn.leaky_relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN2')
+            output = activation_fn(output)
 
             output = tf.reshape(output, [-1, 7*7*2*dim_c])
             output = layers.linear(output, 1, name='LN3')
@@ -194,8 +231,8 @@ class Gan(Basic_model):
         best_inps = 0
         inps_baseline = 0
         decay = config.metric_decay
-
-        for step in range(config.max_training_step):
+        steps_per_iteration = config.disc_iters + config.gen_iters
+        for step in range(0, config.max_training_step, steps_per_iteration):
             # ----Update D network.----
             for i in range(config.disc_iters):
                 data = self.train_dataset.next_batch(batch_size)
@@ -212,8 +249,8 @@ class Gan(Basic_model):
                 feed_dict = {self.noise: z, self.is_training: True}
                 sess.run(self.gen_train_op, feed_dict=feed_dict)
 
-            if step % valid_frequency == (valid_frequency - 1):
-                logger.info('========Step{}========'.format(step + 1))
+            if step % valid_frequency == 0:
+                logger.info('========Step{}========'.format(step))
                 logger.info(endurance)
                 inception_score = self.get_inception_score(config.inps_batches)
                 logger.info(inception_score)
@@ -231,7 +268,7 @@ class Gan(Basic_model):
                     if save_model:
                         self.save_model(step)
 
-            if step % print_frequency == (print_frequency - 1):
+            if step % print_frequency == 0:
                 data = self.train_dataset.next_batch(batch_size)
                 x = data['input']
                 z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
@@ -246,7 +283,7 @@ class Gan(Basic_model):
 
             if endurance > max_endurance:
                 break
-        logger.info(best_inps)
+        logger.info('best_inps: {}'.format(best_inps))
 
     def response(self, action):
         # Given an action, return the new state, reward and whether dead

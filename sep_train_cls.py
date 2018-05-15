@@ -20,6 +20,7 @@ def train(config):
     best_acc = 0
     endurance = 0
     i = 0
+    logger.info('lambda1: {}'.format(config.lambda1_stud))
     while i < max_training_step and endurance < config.max_endurance_stud:
         train_loss, train_acc = model.train()
         if i % config.valid_frequency_stud == 0:
@@ -45,22 +46,26 @@ def train(config):
 
 if __name__ == '__main__':
     root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/classification_transfer.cfg')
+    #config_path = os.path.join(root_path, 'config/classification_transfer.cfg')
+    config_path = os.path.join(root_path, 'config/classification.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
-        #lambda_set1 = [0.001, 0.005, 0.01, 0.02, 0.03, 0.04, 0.05]
-        lambda_set1 = [0.03]
+        #lambda_set1 = 0.02 + (np.array(range(10))+1) * 0.002
+        lambda_set1 = [0.2]
         num1 = len(lambda_set1)
-        aver_mat = np.zeros([num1])
+        mean_mat = np.zeros([num1])
+        var_mat = np.zeros([num1])
         mat = []
         for i in range(num1):
             config.lambda1_stud = lambda_set1[i]
             acc = []
-            for k in range(5):
+            for k in range(10):
                 acc.append(train(config))
-            aver_mat[i] = np.mean(np.array(acc))
+            mean_mat[i] = np.mean(np.array(acc))
+            var_mat[i] = np.var(np.array(acc))
             mat.append(acc)
-        print(aver_mat)
+        print(mean_mat)
+        print(var_mat)
         print(mat)
     elif sys.argv[1] == '3':
         #lambda_set1 = [0.0001, 0.0003, 0.001, 0.003, 0.01]
@@ -85,7 +90,7 @@ if __name__ == '__main__':
         print(var_mat)
     else:
         acc = []
-        for k in range(5):
+        for k in range(10):
             acc.append(train(config))
         print(acc)
         print('\n')
