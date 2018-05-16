@@ -42,8 +42,8 @@ def read_log_inps_baseline(log_file):
             if 'inps_baseline' in line:
                 string = line.split(':')[-1].strip()
                 curve.append(float(string))
-    print(curve)
     return curve
+
 if __name__ == '__main__':
     read_log_inps_baseline('log_5-14/dcgan_cifar10_exp01_baseline.log')
 

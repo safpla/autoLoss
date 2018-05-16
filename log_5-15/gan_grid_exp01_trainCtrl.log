@@ -4657,3 +4657,559 @@ INFO::hq: 0.2811, entropy: 2.0187582018824632
 INFO::hq_baseline: 0.2580433848453082
 INFO::step: 137000, new best result: 0.25907470787624653
 INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 138000, new best result: 0.26137976630099724
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step140000----
+INFO::hq: 0.2554, entropy: 1.9632618974616236
+INFO::hq_baseline: 0.25957905043263824
+INFO::----step144000----
+INFO::hq: 0.2474, entropy: 1.8665678202268974
+INFO::hq_baseline: 0.25532933905720867
+INFO::----step148000----
+INFO::hq: 0.2588, entropy: 1.9244580941688036
+INFO::hq_baseline: 0.24447729727783263
+INFO::----step152000----
+INFO::hq: 0.2834, entropy: 1.8803161098711572
+INFO::hq_baseline: 0.2576755009650003
+INFO::step: 155000, new best result: 0.26182105649408016
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 156000, new best result: 0.2623168451952641
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step156000----
+INFO::hq: 0.2643, entropy: 1.837871893230911
+INFO::hq_baseline: 0.2623168451952641
+INFO::step: 157000, new best result: 0.2646534761562113
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 158000, new best result: 0.26592278092496907
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 159000, new best result: 0.26859822473997524
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step160000----
+INFO::hq: 0.2537, entropy: 1.902963813134878
+INFO::hq_baseline: 0.2656185797919802
+INFO::----step164000----
+INFO::hq: 0.2384, entropy: 1.8603393545198554
+INFO::hq_baseline: 0.2610949702827951
+INFO::----step168000----
+INFO::hq: 0.2686, entropy: 1.9210748398113282
+INFO::hq_baseline: 0.26284753982783293
+INFO::----step172000----
+INFO::hq: 0.2685, entropy: 1.8777392721110808
+INFO::hq_baseline: 0.26325483231348035
+INFO::----step176000----
+INFO::hq: 0.259, entropy: 1.8262903013944152
+INFO::hq_baseline: 0.26267173931560156
+INFO::----step180000----
+INFO::hq: 0.2663, entropy: 1.8638279473278185
+INFO::hq_baseline: 0.26326634442367036
+INFO::----step184000----
+INFO::hq: 0.2646, entropy: 1.819426335031054
+INFO::hq_baseline: 0.25486397467593536
+INFO::----step188000----
+INFO::hq: 0.2716, entropy: 1.8203281765509909
+INFO::hq_baseline: 0.2648127640272631
+INFO::step: 192000, new best result: 0.27138698814556694
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step192000----
+INFO::hq: 0.2868, entropy: 1.8744946076884086
+INFO::hq_baseline: 0.27138698814556694
+INFO::----step196000----
+INFO::hq: 0.2591, entropy: 1.8247042422856972
+INFO::hq_baseline: 0.2604060303444242
+INFO::----step200000----
+INFO::hq: 0.2825, entropy: 1.913156096034202
+INFO::hq_baseline: 0.25660039002907614
+INFO::student model hasn't been saved before
+INFO::lose mode with entropy: 1.8744946076884086
+INFO::UPDATE CONTROLLOR
+INFO::lr_ctrl: 2.0
+INFO::grad
+INFO::[[ 0.00278745 -0.00278745]
+ [ 0.00643362 -0.00643362]
+ [ 0.01209291 -0.01209291]
+ [ 0.00683858 -0.00683858]
+ [ 0.0014424  -0.0014424 ]
+ [ 0.0101907  -0.0101907 ]]
+INFO::[ 0.01229998 -0.01229998]
+INFO::weights
+INFO::idx:0, var:[[-0.7533221  -0.09316587]
+ [-0.03303605 -0.13437365]
+ [-0.05877499  0.5081376 ]
+ [ 0.14565258  0.7515554 ]
+ [-0.24443863  0.6815816 ]
+ [-0.173616    0.6417213 ]]
+INFO::idx:1, var:[ 0.09121901 -0.09121912]
+INFO::total_steps: 200001
+INFO::p_a: [0.30595847 0.69404153]
+INFO::Trace of actions distribution
+INFO::gen: [41, 43, 39, 44, 46, 44, 41, 44, 40, 39, 39, 41, 41, 39, 36, 36, 42, 43, 40, 38, 35, 38, 31, 36, 27, 20, 38, 36, 40, 37, 33, 35, 42, 39, 38, 36, 34, 34, 41, 30, 35, 31, 30, 37, 38, 31, 32, 29, 33, 40, 35, 32, 34, 29, 38, 33, 27, 41, 36, 32, 32, 38, 44, 25, 40, 35, 35, 41, 30, 37, 41, 33, 40, 35, 33, 31, 35, 38, 27, 39]
+INFO::disc: [59, 57, 61, 56, 54, 56, 59, 56, 60, 61, 61, 59, 59, 61, 64, 64, 58, 57, 60, 62, 65, 62, 69, 64, 73, 80, 62, 64, 60, 63, 67, 65, 58, 61, 62, 64, 66, 66, 59, 70, 65, 69, 70, 63, 62, 69, 68, 71, 67, 60, 65, 68, 66, 71, 62, 67, 73, 59, 64, 68, 68, 62, 56, 75, 60, 65, 65, 59, 70, 63, 59, 67, 60, 65, 67, 69, 65, 62, 73, 61]
+INFO::hq: 0.27138698814556694
+INFO::best_hq: 0.8167450445723716
+INFO::adv: -20.0
+INFO::=================
+INFO::episodes: 11
+INFO::idx:0, var:[[-0.7533221  -0.09316587]
+ [-0.03303605 -0.13437365]
+ [-0.05877499  0.5081376 ]
+ [ 0.14565258  0.7515554 ]
+ [-0.24443863  0.6815816 ]
+ [-0.173616    0.6417213 ]]
+INFO::idx:1, var:[ 0.09121901 -0.09121912]
+INFO::step: 1000, new best result: 0.0399
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 3000, new best result: 0.04082799999999999
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step4000----
+INFO::hq: 0.0305, entropy: 2.020478586130863
+INFO::hq_baseline: 0.038762399999999995
+INFO::step: 5000, new best result: 0.04300991999999999
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 7000, new best result: 0.043830348799999995
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step8000----
+INFO::hq: 0.0322, entropy: 1.4330612808621925
+INFO::hq_baseline: 0.04150427904
+INFO::----step12000----
+INFO::hq: 0.0515, entropy: 1.6620627967047834
+INFO::hq_baseline: 0.034971192694784
+INFO::----step16000----
+INFO::hq: 0.0688, entropy: 2.8033873568419323
+INFO::hq_baseline: 0.04204196052778352
+INFO::step: 19000, new best result: 0.04653268379022516
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 20000, new best result: 0.05114614703218012
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step20000----
+INFO::hq: 0.0696, entropy: 2.8075581958439084
+INFO::hq_baseline: 0.05114614703218012
+INFO::step: 21000, new best result: 0.0580169176257441
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 22000, new best result: 0.06949353410059528
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 23000, new best result: 0.07643482728047622
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 24000, new best result: 0.07886786182438098
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step24000----
+INFO::hq: 0.0886, entropy: 2.716537616131247
+INFO::hq_baseline: 0.07886786182438098
+INFO::step: 25000, new best result: 0.08071428945950478
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 26000, new best result: 0.08841143156760381
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 27000, new best result: 0.09608914525408305
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 28000, new best result: 0.10861131620326644
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step28000----
+INFO::hq: 0.1587, entropy: 2.5390173158290343
+INFO::hq_baseline: 0.10861131620326644
+INFO::step: 29000, new best result: 0.11580905296261315
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 30000, new best result: 0.13110724237009053
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 31000, new best result: 0.14372579389607243
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 32000, new best result: 0.14844063511685796
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step32000----
+INFO::hq: 0.1673, entropy: 2.6064116352692035
+INFO::hq_baseline: 0.14844063511685796
+INFO::step: 33000, new best result: 0.15923250809348635
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 34000, new best result: 0.16900600647478908
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 35000, new best result: 0.18262480517983126
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 36000, new best result: 0.193039844143865
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step36000----
+INFO::hq: 0.2347, entropy: 2.5807315745126718
+INFO::hq_baseline: 0.193039844143865
+INFO::step: 37000, new best result: 0.208011875315092
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 38000, new best result: 0.21946950025207357
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 39000, new best result: 0.23635560020165886
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 40000, new best result: 0.2539644801613271
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step40000----
+INFO::hq: 0.3244, entropy: 2.500764507862756
+INFO::hq_baseline: 0.2539644801613271
+INFO::step: 41000, new best result: 0.26699158412906165
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 42000, new best result: 0.28309326730324935
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 43000, new best result: 0.2987946138425995
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 44000, new best result: 0.3159556910740796
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step44000----
+INFO::hq: 0.3846, entropy: 2.4270496441791782
+INFO::hq_baseline: 0.3159556910740796
+INFO::step: 45000, new best result: 0.32932455285926365
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 46000, new best result: 0.3364796422874109
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 47000, new best result: 0.3551237138299287
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 48000, new best result: 0.3705589710639429
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step48000----
+INFO::hq: 0.4323, entropy: 2.381479145121895
+INFO::hq_baseline: 0.3705589710639429
+INFO::step: 51000, new best result: 0.39499899318473874
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 52000, new best result: 0.413599194547791
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step52000----
+INFO::hq: 0.488, entropy: 2.346480922430044
+INFO::hq_baseline: 0.413599194547791
+INFO::step: 53000, new best result: 0.4354993556382328
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 54000, new best result: 0.4585994845105862
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 55000, new best result: 0.4834995876084689
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 56000, new best result: 0.5027596700867751
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step56000----
+INFO::hq: 0.5798, entropy: 2.2707801336284468
+INFO::hq_baseline: 0.5027596700867751
+INFO::step: 57000, new best result: 0.5184077360694201
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 58000, new best result: 0.5379861888555361
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 59000, new best result: 0.5550289510844288
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 60000, new best result: 0.5709031608675431
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step60000----
+INFO::hq: 0.6344, entropy: 2.2340147336858265
+INFO::hq_baseline: 0.5709031608675431
+INFO::step: 61000, new best result: 0.5825825286940345
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 62000, new best result: 0.5983060229552275
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 63000, new best result: 0.612044818364182
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 64000, new best result: 0.6244358546913455
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step64000----
+INFO::hq: 0.674, entropy: 2.2652130137021795
+INFO::hq_baseline: 0.6244358546913455
+INFO::step: 65000, new best result: 0.6359886837530765
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 66000, new best result: 0.6427309470024611
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 67000, new best result: 0.6516447576019688
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 68000, new best result: 0.6540558060815751
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step68000----
+INFO::hq: 0.6637, entropy: 2.2378088114023056
+INFO::hq_baseline: 0.6540558060815751
+INFO::step: 69000, new best result: 0.6632246448652601
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 70000, new best result: 0.673359715892208
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 71000, new best result: 0.6805277727137664
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 72000, new best result: 0.6898022181710131
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step72000----
+INFO::hq: 0.7269, entropy: 2.2455743936535337
+INFO::hq_baseline: 0.6898022181710131
+INFO::step: 73000, new best result: 0.6967817745368104
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 74000, new best result: 0.7032254196294483
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 75000, new best result: 0.7050403357035586
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step76000----
+INFO::hq: 0.6597, entropy: 2.133440289346178
+INFO::hq_baseline: 0.6959722685628469
+INFO::step: 77000, new best result: 0.7058578148502775
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 78000, new best result: 0.711286251880222
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 79000, new best result: 0.7191690015041775
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step80000----
+INFO::hq: 0.5344, entropy: 2.117544580089976
+INFO::hq_baseline: 0.682215201203342
+INFO::----step84000----
+INFO::hq: 0.589, entropy: 2.1034111464474208
+INFO::hq_baseline: 0.674401426412889
+INFO::----step88000----
+INFO::hq: 0.7619, entropy: 2.238633253559546
+INFO::hq_baseline: 0.7148145042587193
+INFO::step: 90000, new best result: 0.7234492827255804
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 91000, new best result: 0.7300994261804643
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 92000, new best result: 0.7361195409443714
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step92000----
+INFO::hq: 0.7602, entropy: 2.2562451217648953
+INFO::hq_baseline: 0.7361195409443714
+INFO::step: 93000, new best result: 0.7389156327554971
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 94000, new best result: 0.7415925062043977
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step96000----
+INFO::hq: 0.7446, entropy: 2.2432691508202396
+INFO::hq_baseline: 0.7343392039708144
+INFO::step: 99000, new best result: 0.748828072433057
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 100000, new best result: 0.7573824579464457
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step100000----
+INFO::hq: 0.7916, entropy: 2.229189656940278
+INFO::hq_baseline: 0.7573824579464457
+INFO::step: 101000, new best result: 0.7640859663571565
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 102000, new best result: 0.7666687730857252
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 103000, new best result: 0.7706350184685802
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step104000----
+INFO::hq: 0.5916, entropy: 2.074848235935352
+INFO::hq_baseline: 0.7348280147748641
+INFO::----step108000----
+INFO::hq: 0.7887, entropy: 2.2131070190270576
+INFO::hq_baseline: 0.7629162748517844
+INFO::step: 112000, new best result: 0.7731114661792909
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step112000----
+INFO::hq: 0.8013, entropy: 2.2116456247809153
+INFO::hq_baseline: 0.7731114661792909
+INFO::----step116000----
+INFO::hq: 0.7975, entropy: 2.190721605197985
+INFO::hq_baseline: 0.7667488565470376
+INFO::step: 117000, new best result: 0.7753390852376301
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 118000, new best result: 0.7778512681901041
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 119000, new best result: 0.7865810145520833
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 120000, new best result: 0.7921048116416667
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step120000----
+INFO::hq: 0.8142, entropy: 2.220347690896195
+INFO::hq_baseline: 0.7921048116416667
+INFO::----step124000----
+INFO::hq: 0.8085, entropy: 2.226160629075823
+INFO::hq_baseline: 0.7804443708484267
+INFO::step: 127000, new best result: 0.7959315178743944
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 128000, new best result: 0.8009052142995156
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step128000----
+INFO::hq: 0.8208, entropy: 2.224191142817884
+INFO::hq_baseline: 0.8009052142995156
+INFO::step: 129000, new best result: 0.8068041714396125
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 130000, new best result: 0.80802333715169
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 131000, new best result: 0.8106586697213519
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 132000, new best result: 0.8116469357770815
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step132000----
+INFO::hq: 0.8156, entropy: 2.243765408934842
+INFO::hq_baseline: 0.8116469357770815
+INFO::step: 133000, new best result: 0.8120775486216651
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 134000, new best result: 0.8147820388973321
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step136000----
+INFO::hq: 0.8261, entropy: 2.2310683832254474
+INFO::hq_baseline: 0.8139605048942925
+INFO::step: 137000, new best result: 0.8148284039154341
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step140000----
+INFO::hq: 0.8184, entropy: 2.2515404281903475
+INFO::hq_baseline: 0.8113009428047021
+INFO::step: 141000, new best result: 0.8155407542437617
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 142000, new best result: 0.8158926033950094
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 144000, new best result: 0.817363266172806
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step144000----
+INFO::hq: 0.8278, entropy: 2.217951379068401
+INFO::hq_baseline: 0.817363266172806
+INFO::----step148000----
+INFO::hq: 0.8177, entropy: 2.2606505800609273
+INFO::hq_baseline: 0.8002238338243812
+INFO::----step152000----
+INFO::hq: 0.8201, entropy: 2.2178570531292974
+INFO::hq_baseline: 0.8157763223344665
+INFO::step: 153000, new best result: 0.8191610578675732
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 154000, new best result: 0.8198488462940586
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 155000, new best result: 0.8202590770352469
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 156000, new best result: 0.8215072616281975
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step156000----
+INFO::hq: 0.8265, entropy: 2.2619225029130425
+INFO::hq_baseline: 0.8215072616281975
+INFO::step: 157000, new best result: 0.8241058093025581
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step160000----
+INFO::hq: 0.8406, entropy: 2.2573438507454378
+INFO::hq_baseline: 0.8228141743629097
+INFO::step: 161000, new best result: 0.8267513394903278
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step164000----
+INFO::hq: 0.7609, entropy: 2.1993432599102056
+INFO::hq_baseline: 0.7926798858190479
+INFO::----step168000----
+INFO::hq: 0.8348, entropy: 2.2715585335865094
+INFO::hq_baseline: 0.819308241231482
+INFO::step: 172000, new best result: 0.8276740956084151
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step172000----
+INFO::hq: 0.8374, entropy: 2.249077533792636
+INFO::hq_baseline: 0.8276740956084151
+INFO::step: 173000, new best result: 0.8286792764867321
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 174000, new best result: 0.8319634211893857
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 175000, new best result: 0.8342507369515085
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 176000, new best result: 0.8369005895612068
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step176000----
+INFO::hq: 0.8475, entropy: 2.2714282951076705
+INFO::hq_baseline: 0.8369005895612068
+INFO::----step180000----
+INFO::hq: 0.7873, entropy: 2.2407099436217317
+INFO::hq_baseline: 0.7802852014842704
+INFO::----step184000----
+INFO::hq: 0.8419, entropy: 2.2747326801692798
+INFO::hq_baseline: 0.7953000185279571
+INFO::----step188000----
+INFO::hq: 0.8449, entropy: 2.2982880630613627
+INFO::hq_baseline: 0.8187745675890512
+INFO::----step192000----
+INFO::hq: 0.8484, entropy: 2.2857978712107285
+INFO::hq_baseline: 0.7949163028844755
+INFO::----step196000----
+INFO::hq: 0.8503, entropy: 2.2855333682345753
+INFO::hq_baseline: 0.8259924376614812
+INFO::step: 200000, new best result: 0.839060262466143
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step200000----
+INFO::hq: 0.8494, entropy: 2.300581834759009
+INFO::hq_baseline: 0.839060262466143
+INFO::student model hasn't been saved before
+INFO::lose mode with entropy: 2.300581834759009
+INFO::UPDATE CONTROLLOR
+INFO::lr_ctrl: 2.0
+INFO::grad
+INFO::[[ 0.00356144 -0.00356143]
+ [ 0.00952248 -0.00952249]
+ [ 0.00200598 -0.00200596]
+ [ 0.00065379 -0.00065378]
+ [ 0.00202434 -0.00202433]
+ [-0.00048529  0.0004853 ]]
+INFO::[ 0.00130951 -0.0013095 ]
+INFO::weights
+INFO::idx:0, var:[[-0.760445   -0.08604301]
+ [-0.05208102 -0.11532866]
+ [-0.06278695  0.5121495 ]
+ [ 0.144345    0.75286293]
+ [-0.24848731  0.68563026]
+ [-0.17264542  0.6407507 ]]
+INFO::idx:1, var:[ 0.08859999 -0.08860011]
+INFO::total_steps: 200001
+INFO::p_a: [0.23282384 0.76717616]
+INFO::Trace of actions distribution
+INFO::gen: [44, 44, 51, 49, 53, 47, 48, 42, 47, 50, 35, 29, 33, 28, 35, 31, 36, 36, 30, 34, 32, 35, 33, 37, 37, 30, 31, 35, 38, 34, 37, 32, 29, 34, 40, 31, 33, 31, 32, 36, 28, 39, 37, 39, 37, 38, 31, 31, 26, 41, 37, 38, 41, 35, 43, 37, 41, 37, 37, 39, 33, 37, 40, 34, 29, 20, 28, 33, 38, 39, 32, 36, 43, 39, 42, 34, 32, 39, 36, 35]
+INFO::disc: [56, 56, 49, 51, 47, 53, 52, 58, 53, 50, 65, 71, 67, 72, 65, 69, 64, 64, 70, 66, 68, 65, 67, 63, 63, 70, 69, 65, 62, 66, 63, 68, 71, 66, 60, 69, 67, 69, 68, 64, 72, 61, 63, 61, 63, 62, 69, 69, 74, 59, 63, 62, 59, 65, 57, 63, 59, 63, 63, 61, 67, 63, 60, 66, 71, 80, 72, 67, 62, 61, 68, 64, 57, 61, 58, 66, 68, 61, 64, 65]
+INFO::hq: 0.839060262466143
+INFO::best_hq: 0.8167450445723716
+INFO::adv: -20.0
+INFO::=================
+INFO::episodes: 12
+INFO::idx:0, var:[[-0.760445   -0.08604301]
+ [-0.05208102 -0.11532866]
+ [-0.06278695  0.5121495 ]
+ [ 0.144345    0.75286293]
+ [-0.24848731  0.68563026]
+ [-0.17264542  0.6407507 ]]
+INFO::idx:1, var:[ 0.08859999 -0.08860011]
+INFO::step: 1000, new best result: 0.0409
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 2000, new best result: 0.040959999999999996
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 3000, new best result: 0.041207999999999995
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 4000, new best result: 0.0441064
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step4000----
+INFO::hq: 0.0557, entropy: 1.6732452300280771
+INFO::hq_baseline: 0.0441064
+INFO::----step8000----
+INFO::hq: 0.0473, entropy: 1.295344397692768
+INFO::hq_baseline: 0.037586781439999994
+INFO::----step12000----
+INFO::hq: 0.0399, entropy: 2.9539723811038123
+INFO::hq_baseline: 0.03962514567782399
+INFO::step: 13000, new best result: 0.045700116542259195
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 15000, new best result: 0.048600074587045884
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 16000, new best result: 0.052620059669636704
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step16000----
+INFO::hq: 0.0687, entropy: 2.9601016911566114
+INFO::hq_baseline: 0.052620059669636704
+INFO::step: 18000, new best result: 0.05622083818856749
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 19000, new best result: 0.063016670550854
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 20000, new best result: 0.0709333364406832
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step20000----
+INFO::hq: 0.1026, entropy: 2.790816074669053
+INFO::hq_baseline: 0.0709333364406832
+INFO::step: 21000, new best result: 0.07696666915254655
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 22000, new best result: 0.08269333532203724
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 23000, new best result: 0.09409466825762978
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 24000, new best result: 0.10531573460610383
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step24000----
+INFO::hq: 0.1502, entropy: 2.637674376785772
+INFO::hq_baseline: 0.10531573460610383
+INFO::step: 25000, new best result: 0.11885258768488306
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 26000, new best result: 0.12880207014790646
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 27000, new best result: 0.12920165611832515
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 28000, new best result: 0.1442213248946601
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step28000----
+INFO::hq: 0.2043, entropy: 2.273142209980924
+INFO::hq_baseline: 0.1442213248946601
+INFO::step: 29000, new best result: 0.1569570599157281
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 30000, new best result: 0.16414564793258246
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 31000, new best result: 0.17465651834606596
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::step: 32000, new best result: 0.18612521467685278
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h0-haowen6_05-15-21-22_gan_grid/model
+INFO::----step32000----
+INFO::hq: 0.232, entropy: 2.2901204968955646
+INFO::hq_baseline: 0.18612521467685278
