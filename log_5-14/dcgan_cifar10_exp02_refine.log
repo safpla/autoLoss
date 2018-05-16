@@ -1,0 +1,2115 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-14 13:06:01.610314: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-14 13:06:02.616034: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-14 13:06:02.616219: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+2018-05-14 13:06:05.217413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::h1.haowen6.biglearning.orca.pdl.cmu.edu
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/cifar10/cifar-10-batches-py
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan_cifar10
+INFO::batch_size:: 128
+INFO::lr_stud:: 0.0002
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 2000
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 10
+INFO::max_training_step:: 400000
+INFO::stop_strategy_stud:: prescribed_steps
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 3072
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_threshold:: 6.3
+INFO::inps_batches:: 100
+INFO::inps_splits:: 1
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::logit_clipping_c:: 2
+INFO::dim_state_rl:: 5
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 2
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::inps_baseline_decay:: 0.8
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+INFO::exp_name: h1-haowen6_05-14-19-06
+2018-05-14 13:06:05.251012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+2018-05-14 13:06:05.331875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl/model-20
+INFO::=================
+INFO::episodes: 0
+INFO::idx:0, var:[[ 0.66695106 -0.66915125]
+ [ 0.8715815   0.02221821]
+ [-0.13399315 -0.91990703]
+ [-0.3733591   0.1468591 ]
+ [ 0.5019716   0.39112848]]
+INFO::idx:1, var:[ 0.14003596 -0.14003597]
+2018-05-14 13:08:00.623964: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+2018-05-14 13:08:00.986209: W tensorflow/core/framework/op_def_util.cc:334] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().
+INFO::step: 2000, new best result: 2.1815898418426514
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step2000----
+INFO::inception_score: (2.1815898, 0.0)
+INFO::inps_baseline: 2.1815898418426514
+2018-05-14 13:11:09.035646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 4000, new best result: 2.3336788177490235
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step4000----
+INFO::inception_score: (2.9420347, 0.0)
+INFO::inps_baseline: 2.3336788177490235
+2018-05-14 13:14:16.049591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 6000, new best result: 2.5498611736297607
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step6000----
+INFO::inception_score: (3.4145906, 0.0)
+INFO::inps_baseline: 2.5498611736297607
+2018-05-14 13:17:22.859887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 8000, new best result: 2.593236240386963
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step8000----
+INFO::inception_score: (2.7667365, 0.0)
+INFO::inps_baseline: 2.593236240386963
+2018-05-14 13:20:29.574076: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 10000, new best result: 2.7463535568237303
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step10000----
+INFO::inception_score: (3.3588228, 0.0)
+INFO::inps_baseline: 2.7463535568237303
+2018-05-14 13:23:36.504928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 12000, new best result: 3.089982835540771
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step12000----
+INFO::inception_score: (4.4645, 0.0)
+INFO::inps_baseline: 3.089982835540771
+2018-05-14 13:26:43.309363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 14000, new best result: 3.356888364227294
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step14000----
+INFO::inception_score: (4.4245105, 0.0)
+INFO::inps_baseline: 3.356888364227294
+2018-05-14 13:29:50.055358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 16000, new best result: 3.5834046923889153
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step16000----
+INFO::inception_score: (4.48947, 0.0)
+INFO::inps_baseline: 3.5834046923889153
+2018-05-14 13:32:57.046424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 18000, new best result: 3.8682822484790034
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step18000----
+INFO::inception_score: (5.0077925, 0.0)
+INFO::inps_baseline: 3.8682822484790034
+2018-05-14 13:36:04.047868: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 20000, new best result: 4.092514077744385
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step20000----
+INFO::inception_score: (4.9894414, 0.0)
+INFO::inps_baseline: 4.092514077744385
+2018-05-14 13:39:11.047893: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 22000, new best result: 4.255320866840282
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step22000----
+INFO::inception_score: (4.906548, 0.0)
+INFO::inps_baseline: 4.255320866840282
+2018-05-14 13:42:18.004249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 24000, new best result: 4.511776129354795
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step24000----
+INFO::inception_score: (5.537597, 0.0)
+INFO::inps_baseline: 4.511776129354795
+2018-05-14 13:45:24.755640: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 26000, new best result: 4.729705079356638
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step26000----
+INFO::inception_score: (5.601421, 0.0)
+INFO::inps_baseline: 4.729705079356638
+2018-05-14 13:48:31.543057: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 28000, new best result: 4.9296687952357985
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step28000----
+INFO::inception_score: (5.7295237, 0.0)
+INFO::inps_baseline: 4.9296687952357985
+2018-05-14 13:51:38.461320: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 30000, new best result: 5.127739533716715
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step30000----
+INFO::inception_score: (5.9200225, 0.0)
+INFO::inps_baseline: 5.127739533716715
+2018-05-14 13:54:45.452402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 32000, new best result: 5.2981324076130205
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step32000----
+INFO::inception_score: (5.979704, 0.0)
+INFO::inps_baseline: 5.2981324076130205
+2018-05-14 13:57:52.475445: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 34000, new best result: 5.430259599643883
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step34000----
+INFO::inception_score: (5.9587684, 0.0)
+INFO::inps_baseline: 5.430259599643883
+2018-05-14 14:00:59.444639: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 36000, new best result: 5.542113792386005
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step36000----
+INFO::inception_score: (5.9895306, 0.0)
+INFO::inps_baseline: 5.542113792386005
+2018-05-14 14:04:08.673679: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 38000, new best result: 5.676698216983755
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step38000----
+INFO::inception_score: (6.215036, 0.0)
+INFO::inps_baseline: 5.676698216983755
+2018-05-14 14:07:15.833901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 40000, new best result: 5.7947036816192306
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step40000----
+INFO::inception_score: (6.2667255, 0.0)
+INFO::inps_baseline: 5.7947036816192306
+2018-05-14 14:10:22.703885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 42000, new best result: 5.845363012434056
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step42000----
+INFO::inception_score: (6.0480003, 0.0)
+INFO::inps_baseline: 5.845363012434056
+2018-05-14 14:13:29.663788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 44000, new best result: 5.905586617375223
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step44000----
+INFO::inception_score: (6.146481, 0.0)
+INFO::inps_baseline: 5.905586617375223
+2018-05-14 14:16:36.455471: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step46000----
+INFO::inception_score: (5.774398, 0.0)
+INFO::inps_baseline: 5.879348863907503
+2018-05-14 14:19:42.867008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 48000, new best result: 5.956542579132594
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step48000----
+INFO::inception_score: (6.2653174, 0.0)
+INFO::inps_baseline: 5.956542579132594
+2018-05-14 14:22:50.011953: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 50000, new best result: 6.0563234073307335
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step50000----
+INFO::inception_score: (6.4554467, 0.0)
+INFO::inps_baseline: 6.0563234073307335
+2018-05-14 14:25:57.163344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 52000, new best result: 6.104602240116296
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step52000----
+INFO::inception_score: (6.2977176, 0.0)
+INFO::inps_baseline: 6.104602240116296
+2018-05-14 14:29:04.204327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 54000, new best result: 6.125288504434345
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step54000----
+INFO::inception_score: (6.2080336, 0.0)
+INFO::inps_baseline: 6.125288504434345
+2018-05-14 14:32:10.997094: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 56000, new best result: 6.130632414875601
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step56000----
+INFO::inception_score: (6.152008, 0.0)
+INFO::inps_baseline: 6.130632414875601
+2018-05-14 14:35:17.983896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 58000, new best result: 6.228909408615568
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step58000----
+INFO::inception_score: (6.6220174, 0.0)
+INFO::inps_baseline: 6.228909408615568
+2018-05-14 14:38:24.997350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 60000, new best result: 6.2595366760623765
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step60000----
+INFO::inception_score: (6.3820457, 0.0)
+INFO::inps_baseline: 6.2595366760623765
+2018-05-14 14:41:31.833709: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 62000, new best result: 6.307916587554003
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step62000----
+INFO::inception_score: (6.501436, 0.0)
+INFO::inps_baseline: 6.307916587554003
+2018-05-14 14:44:38.857008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 64000, new best result: 6.34036851403124
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step64000----
+INFO::inception_score: (6.470176, 0.0)
+INFO::inps_baseline: 6.34036851403124
+2018-05-14 14:47:45.609401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 66000, new best result: 6.40566349408632
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step66000----
+INFO::inception_score: (6.6668434, 0.0)
+INFO::inps_baseline: 6.40566349408632
+2018-05-14 14:50:52.532111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 68000, new best result: 6.448453429393812
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step68000----
+INFO::inception_score: (6.619613, 0.0)
+INFO::inps_baseline: 6.448453429393812
+2018-05-14 14:53:59.576540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step70000----
+INFO::inception_score: (6.416454, 0.0)
+INFO::inps_baseline: 6.442053511184727
+2018-05-14 14:57:06.167154: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step72000----
+INFO::inception_score: (6.0017843, 0.0)
+INFO::inps_baseline: 6.353999673876981
+2018-05-14 15:00:12.914309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step74000----
+INFO::inception_score: (6.6298404, 0.0)
+INFO::inps_baseline: 6.409167813900169
+2018-05-14 15:03:19.476050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step76000----
+INFO::inception_score: (6.4939427, 0.0)
+INFO::inps_baseline: 6.426122798636005
+2018-05-14 15:06:26.039925: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 78000, new best result: 6.484167682420766
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step78000----
+INFO::inception_score: (6.716347, 0.0)
+INFO::inps_baseline: 6.484167682420766
+2018-05-14 15:09:32.853395: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step80000----
+INFO::inception_score: (6.329258, 0.0)
+INFO::inps_baseline: 6.453185738954192
+2018-05-14 15:12:39.416824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 82000, new best result: 6.492362739112572
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step82000----
+INFO::inception_score: (6.6490707, 0.0)
+INFO::inps_baseline: 6.492362739112572
+2018-05-14 15:15:45.951309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 84000, new best result: 6.525562001440204
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step84000----
+INFO::inception_score: (6.658359, 0.0)
+INFO::inps_baseline: 6.525562001440204
+2018-05-14 15:18:52.667178: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 86000, new best result: 6.534885941484195
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step86000----
+INFO::inception_score: (6.5721817, 0.0)
+INFO::inps_baseline: 6.534885941484195
+2018-05-14 15:21:59.191606: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 88000, new best result: 6.568846367628274
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step88000----
+INFO::inception_score: (6.704688, 0.0)
+INFO::inps_baseline: 6.568846367628274
+2018-05-14 15:25:06.129204: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 90000, new best result: 6.578814810777424
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step90000----
+INFO::inception_score: (6.6186886, 0.0)
+INFO::inps_baseline: 6.578814810777424
+2018-05-14 15:28:12.992618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 92000, new best result: 6.607036071034049
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step92000----
+INFO::inception_score: (6.719921, 0.0)
+INFO::inps_baseline: 6.607036071034049
+2018-05-14 15:31:21.732009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 94000, new best result: 6.613372863937835
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step94000----
+INFO::inception_score: (6.63872, 0.0)
+INFO::inps_baseline: 6.613372863937835
+2018-05-14 15:34:28.575417: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 96000, new best result: 6.622649337140258
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step96000----
+INFO::inception_score: (6.659755, 0.0)
+INFO::inps_baseline: 6.622649337140258
+2018-05-14 15:37:35.345685: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 98000, new best result: 6.640409203598925
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step98000----
+INFO::inception_score: (6.7114487, 0.0)
+INFO::inps_baseline: 6.640409203598925
+2018-05-14 15:40:42.175913: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 100000, new best result: 6.658661438806875
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step100000----
+INFO::inception_score: (6.7316704, 0.0)
+INFO::inps_baseline: 6.658661438806875
+2018-05-14 15:43:48.945921: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step102000----
+INFO::inception_score: (6.6565685, 0.0)
+INFO::inps_baseline: 6.658242856489836
+2018-05-14 15:46:55.373277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 104000, new best result: 6.663667611302709
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step104000----
+INFO::inception_score: (6.6853666, 0.0)
+INFO::inps_baseline: 6.663667611302709
+2018-05-14 15:50:01.999787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step106000----
+INFO::inception_score: (6.5336432, 0.0)
+INFO::inps_baseline: 6.637662738181572
+2018-05-14 15:53:08.628608: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step108000----
+INFO::inception_score: (6.7210584, 0.0)
+INFO::inps_baseline: 6.65434186428183
+2018-05-14 15:56:15.138111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step110000----
+INFO::inception_score: (6.6573772, 0.0)
+INFO::inps_baseline: 6.6549489400338615
+2018-05-14 15:59:21.716808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step112000----
+INFO::inception_score: (6.6852155, 0.0)
+INFO::inps_baseline: 6.6610022466620995
+2018-05-14 16:02:28.243248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step114000----
+INFO::inception_score: (6.50098, 0.0)
+INFO::inps_baseline: 6.628997777401701
+2018-05-14 16:05:34.657089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 116000, new best result: 6.691120413541234
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step116000----
+INFO::inception_score: (6.939611, 0.0)
+INFO::inps_baseline: 6.691120413541234
+2018-05-14 16:08:43.839330: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 118000, new best result: 6.740365908622294
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step118000----
+INFO::inception_score: (6.937348, 0.0)
+INFO::inps_baseline: 6.740365908622294
+2018-05-14 16:11:50.373106: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 120000, new best result: 6.7503486999508135
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step120000----
+INFO::inception_score: (6.79028, 0.0)
+INFO::inps_baseline: 6.7503486999508135
+2018-05-14 16:14:56.821783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 122000, new best result: 6.754173861236286
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step122000----
+INFO::inception_score: (6.7694745, 0.0)
+INFO::inps_baseline: 6.754173861236286
+2018-05-14 16:18:03.720404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 124000, new best result: 6.781216896606216
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step124000----
+INFO::inception_score: (6.889389, 0.0)
+INFO::inps_baseline: 6.781216896606216
+2018-05-14 16:21:10.692982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step126000----
+INFO::inception_score: (6.7732606, 0.0)
+INFO::inps_baseline: 6.779625635967834
+2018-05-14 16:24:16.998332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step128000----
+INFO::inception_score: (6.722025, 0.0)
+INFO::inps_baseline: 6.768105492294775
+2018-05-14 16:27:23.643440: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step130000----
+INFO::inception_score: (6.739986, 0.0)
+INFO::inps_baseline: 6.762481582403936
+2018-05-14 16:30:29.800701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 132000, new best result: 6.781929884148246
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step132000----
+INFO::inception_score: (6.859723, 0.0)
+INFO::inps_baseline: 6.781929884148246
+2018-05-14 16:33:36.548371: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 134000, new best result: 6.7928571015934995
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step134000----
+INFO::inception_score: (6.836566, 0.0)
+INFO::inps_baseline: 6.7928571015934995
+2018-05-14 16:36:43.191795: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 136000, new best result: 6.800040190246968
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step136000----
+INFO::inception_score: (6.8287725, 0.0)
+INFO::inps_baseline: 6.800040190246968
+2018-05-14 16:39:52.711160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 138000, new best result: 6.8021546879031405
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step138000----
+INFO::inception_score: (6.8106127, 0.0)
+INFO::inps_baseline: 6.8021546879031405
+2018-05-14 16:43:01.974332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 140000, new best result: 6.815358947008304
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step140000----
+INFO::inception_score: (6.868176, 0.0)
+INFO::inps_baseline: 6.815358947008304
+2018-05-14 16:46:08.918787: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 142000, new best result: 6.827976091932815
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step142000----
+INFO::inception_score: (6.8784447, 0.0)
+INFO::inps_baseline: 6.827976091932815
+2018-05-14 16:49:15.902230: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 144000, new best result: 6.835851752147326
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step144000----
+INFO::inception_score: (6.8673544, 0.0)
+INFO::inps_baseline: 6.835851752147326
+2018-05-14 16:52:22.834480: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step146000----
+INFO::inception_score: (6.6737094, 0.0)
+INFO::inps_baseline: 6.803423280227382
+2018-05-14 16:55:29.384894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step148000----
+INFO::inception_score: (6.7493243, 0.0)
+INFO::inps_baseline: 6.792603488531271
+2018-05-14 16:58:35.983102: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step150000----
+INFO::inception_score: (6.7213526, 0.0)
+INFO::inps_baseline: 6.7783533062669115
+2018-05-14 17:01:42.499024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step152000----
+INFO::inception_score: (6.8580027, 0.0)
+INFO::inps_baseline: 6.7942831775452674
+2018-05-14 17:04:51.264259: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step154000----
+INFO::inception_score: (6.963915, 0.0)
+INFO::inps_baseline: 6.8282095162793786
+2018-05-14 17:07:57.914328: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step156000----
+INFO::inception_score: (6.804818, 0.0)
+INFO::inps_baseline: 6.823531243699772
+2018-05-14 17:11:04.338842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step158000----
+INFO::inception_score: (6.753346, 0.0)
+INFO::inps_baseline: 6.8094941882276405
+2018-05-14 17:14:13.106229: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step160000----
+INFO::inception_score: (6.750153, 0.0)
+INFO::inps_baseline: 6.797625963527668
+2018-05-14 17:17:19.720634: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step162000----
+INFO::inception_score: (6.9865885, 0.0)
+INFO::inps_baseline: 6.835418466439811
+2018-05-14 17:20:28.672896: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 164000, new best result: 6.844722464649651
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step164000----
+INFO::inception_score: (6.8819385, 0.0)
+INFO::inps_baseline: 6.844722464649651
+2018-05-14 17:23:35.836907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 166000, new best result: 6.876171839212397
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step166000----
+INFO::inception_score: (7.0019693, 0.0)
+INFO::inps_baseline: 6.876171839212397
+2018-05-14 17:26:42.861275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 168000, new best result: 6.932794294337446
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step168000----
+INFO::inception_score: (7.159284, 0.0)
+INFO::inps_baseline: 6.932794294337446
+2018-05-14 17:29:52.029494: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step170000----
+INFO::inception_score: (6.923774, 0.0)
+INFO::inps_baseline: 6.93099018858275
+2018-05-14 17:32:58.749901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step172000----
+INFO::inception_score: (6.915135, 0.0)
+INFO::inps_baseline: 6.92781913221996
+2018-05-14 17:36:05.341182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 174000, new best result: 6.955561542043058
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step174000----
+INFO::inception_score: (7.066531, 0.0)
+INFO::inps_baseline: 6.955561542043058
+2018-05-14 17:39:12.326848: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step176000----
+INFO::inception_score: (6.699808, 0.0)
+INFO::inps_baseline: 6.904410857779954
+2018-05-14 17:42:18.907196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step178000----
+INFO::inception_score: (6.903129, 0.0)
+INFO::inps_baseline: 6.904154506383875
+2018-05-14 17:45:25.815568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step180000----
+INFO::inception_score: (6.935239, 0.0)
+INFO::inps_baseline: 6.910371372746261
+2018-05-14 17:48:32.534709: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step182000----
+INFO::inception_score: (6.8457537, 0.0)
+INFO::inps_baseline: 6.8974478321447625
+2018-05-14 17:51:39.419769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step184000----
+INFO::inception_score: (6.6991525, 0.0)
+INFO::inps_baseline: 6.857788759642812
+2018-05-14 17:54:46.184989: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step186000----
+INFO::inception_score: (6.7665977, 0.0)
+INFO::inps_baseline: 6.839550557274796
+2018-05-14 17:57:55.172010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step188000----
+INFO::inception_score: (7.035874, 0.0)
+INFO::inps_baseline: 6.878815223804455
+2018-05-14 18:01:04.272399: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step190000----
+INFO::inception_score: (6.69055, 0.0)
+INFO::inps_baseline: 6.841162149136338
+2018-05-14 18:04:11.226111: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step192000----
+INFO::inception_score: (6.855364, 0.0)
+INFO::inps_baseline: 6.84400248847411
+2018-05-14 18:07:20.307816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step194000----
+INFO::inception_score: (6.828625, 0.0)
+INFO::inps_baseline: 6.840927031215079
+2018-05-14 18:10:27.267344: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step196000----
+INFO::inception_score: (6.9326067, 0.0)
+INFO::inps_baseline: 6.859262964388567
+2018-05-14 18:13:34.079208: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step198000----
+INFO::inception_score: (6.8889556, 0.0)
+INFO::inps_baseline: 6.86520149013268
+2018-05-14 18:16:43.143021: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step200000----
+INFO::inception_score: (6.8720756, 0.0)
+INFO::inps_baseline: 6.866576303647893
+2018-05-14 18:19:52.038101: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step202000----
+INFO::inception_score: (7.0261445, 0.0)
+INFO::inps_baseline: 6.898489943827738
+2018-05-14 18:23:00.496738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step204000----
+INFO::inception_score: (6.7584395, 0.0)
+INFO::inps_baseline: 6.870479863234799
+2018-05-14 18:26:09.252060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step206000----
+INFO::inception_score: (6.862558, 0.0)
+INFO::inps_baseline: 6.86889546819404
+2018-05-14 18:29:18.234020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step208000----
+INFO::inception_score: (6.8615475, 0.0)
+INFO::inps_baseline: 6.867425868573787
+2018-05-14 18:32:27.188848: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step210000----
+INFO::inception_score: (6.9235725, 0.0)
+INFO::inps_baseline: 6.87865520291567
+2018-05-14 18:35:36.201286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step212000----
+INFO::inception_score: (6.8879495, 0.0)
+INFO::inps_baseline: 6.880514055673601
+2018-05-14 18:38:45.282051: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step214000----
+INFO::inception_score: (6.9911275, 0.0)
+INFO::inps_baseline: 6.902636742738343
+2018-05-14 18:41:54.215808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step216000----
+INFO::inception_score: (6.9624023, 0.0)
+INFO::inps_baseline: 6.914589862940675
+2018-05-14 18:45:03.269841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step218000----
+INFO::inception_score: (6.999482, 0.0)
+INFO::inps_baseline: 6.9315683213217785
+2018-05-14 18:48:12.115196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step220000----
+INFO::inception_score: (6.6280923, 0.0)
+INFO::inps_baseline: 6.870873114851612
+2018-05-14 18:51:20.865558: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step222000----
+INFO::inception_score: (7.0058894, 0.0)
+INFO::inps_baseline: 6.897876375029483
+2018-05-14 18:54:29.729857: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step224000----
+INFO::inception_score: (6.9640317, 0.0)
+INFO::inps_baseline: 6.911107439287503
+2018-05-14 18:57:38.222267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step226000----
+INFO::inception_score: (7.0018682, 0.0)
+INFO::inps_baseline: 6.929259601027169
+2018-05-14 19:00:47.148930: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step228000----
+INFO::inception_score: (6.9015102, 0.0)
+INFO::inps_baseline: 6.923709728551228
+2018-05-14 19:03:56.283941: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 230000, new best result: 6.960596830234781
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step230000----
+INFO::inception_score: (7.108145, 0.0)
+INFO::inps_baseline: 6.960596830234781
+2018-05-14 19:07:05.468060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 232000, new best result: 6.967318273056233
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step232000----
+INFO::inception_score: (6.994204, 0.0)
+INFO::inps_baseline: 6.967318273056233
+2018-05-14 19:10:14.825245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step234000----
+INFO::inception_score: (6.452549, 0.0)
+INFO::inps_baseline: 6.864364414587564
+2018-05-14 19:13:23.929668: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step236000----
+INFO::inception_score: (6.9420404, 0.0)
+INFO::inps_baseline: 6.879899620354133
+2018-05-14 19:16:32.858245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step238000----
+INFO::inception_score: (6.868525, 0.0)
+INFO::inps_baseline: 6.877624701929059
+2018-05-14 19:19:41.891940: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step240000----
+INFO::inception_score: (7.1044755, 0.0)
+INFO::inps_baseline: 6.92299486118314
+2018-05-14 19:22:50.929203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step242000----
+INFO::inception_score: (7.0133796, 0.0)
+INFO::inps_baseline: 6.9410718037109165
+2018-05-14 19:25:59.796795: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step244000----
+INFO::inception_score: (6.773275, 0.0)
+INFO::inps_baseline: 6.907512422674543
+2018-05-14 19:29:08.381835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step246000----
+INFO::inception_score: (6.7654295, 0.0)
+INFO::inps_baseline: 6.879095837492661
+2018-05-14 19:32:17.267577: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step248000----
+INFO::inception_score: (6.9847274, 0.0)
+INFO::inps_baseline: 6.9002221465261115
+2018-05-14 19:35:26.224568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step250000----
+INFO::inception_score: (6.705825, 0.0)
+INFO::inps_baseline: 6.861342687618838
+2018-05-14 19:38:34.986177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step252000----
+INFO::inception_score: (7.0018563, 0.0)
+INFO::inps_baseline: 6.889445415506447
+2018-05-14 19:41:43.952315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step254000----
+INFO::inception_score: (6.3162613, 0.0)
+INFO::inps_baseline: 6.774808590705939
+2018-05-14 19:44:52.979816: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step256000----
+INFO::inception_score: (6.505756, 0.0)
+INFO::inps_baseline: 6.720998052832085
+2018-05-14 19:48:01.997887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step258000----
+INFO::inception_score: (6.507272, 0.0)
+INFO::inps_baseline: 6.678252795598188
+2018-05-14 19:51:10.641309: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step260000----
+INFO::inception_score: (6.0777836, 0.0)
+INFO::inps_baseline: 6.558158953397496
+2018-05-14 19:54:19.713594: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step262000----
+INFO::inception_score: (6.134102, 0.0)
+INFO::inps_baseline: 6.4733475362531525
+2018-05-14 19:57:28.718087: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step264000----
+INFO::inception_score: (6.7027884, 0.0)
+INFO::inps_baseline: 6.519235699595784
+2018-05-14 20:00:37.411261: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step266000----
+INFO::inception_score: (6.157889, 0.0)
+INFO::inps_baseline: 6.446966337539176
+2018-05-14 20:03:46.424615: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step268000----
+INFO::inception_score: (6.6427836, 0.0)
+INFO::inps_baseline: 6.486129798394378
+2018-05-14 20:06:54.785572: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step270000----
+INFO::inception_score: (6.6582327, 0.0)
+INFO::inps_baseline: 6.5205503764962645
+2018-05-14 20:10:03.827544: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step272000----
+INFO::inception_score: (6.533983, 0.0)
+INFO::inps_baseline: 6.5232369473151754
+2018-05-14 20:13:12.808847: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step274000----
+INFO::inception_score: (6.5921183, 0.0)
+INFO::inps_baseline: 6.537013210501066
+2018-05-14 20:16:21.400241: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step276000----
+INFO::inception_score: (6.779907, 0.0)
+INFO::inps_baseline: 6.585592013713353
+2018-05-14 20:19:30.087394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step278000----
+INFO::inception_score: (6.673908, 0.0)
+INFO::inps_baseline: 6.603255257699199
+2018-05-14 20:22:38.694486: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step280000----
+INFO::inception_score: (6.6455827, 0.0)
+INFO::inps_baseline: 6.611720741346126
+2018-05-14 20:25:47.309403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step282000----
+INFO::inception_score: (6.944649, 0.0)
+INFO::inps_baseline: 6.678306436979489
+2018-05-14 20:28:55.991066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step284000----
+INFO::inception_score: (6.673426, 0.0)
+INFO::inps_baseline: 6.677330379838718
+2018-05-14 20:32:02.404380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step286000----
+INFO::inception_score: (6.638961, 0.0)
+INFO::inps_baseline: 6.669656471534549
+2018-05-14 20:35:11.089239: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step288000----
+INFO::inception_score: (6.5854435, 0.0)
+INFO::inps_baseline: 6.65281387656846
+2018-05-14 20:38:19.654971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step290000----
+INFO::inception_score: (6.511364, 0.0)
+INFO::inps_baseline: 6.624523897885627
+2018-05-14 20:41:28.271920: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step292000----
+INFO::inception_score: (6.4978456, 0.0)
+INFO::inps_baseline: 6.59918824825235
+2018-05-14 20:44:36.758629: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step294000----
+INFO::inception_score: (6.758462, 0.0)
+INFO::inps_baseline: 6.631042989043774
+2018-05-14 20:47:45.513134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step296000----
+INFO::inception_score: (6.640548, 0.0)
+INFO::inps_baseline: 6.632944037078524
+2018-05-14 20:50:54.328638: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step298000----
+INFO::inception_score: (6.685598, 0.0)
+INFO::inps_baseline: 6.643474808978006
+2018-05-14 20:54:03.031703: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step300000----
+INFO::inception_score: (6.6220984, 0.0)
+INFO::inps_baseline: 6.639199536360872
+2018-05-14 20:57:11.627113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step302000----
+INFO::inception_score: (6.6499295, 0.0)
+INFO::inps_baseline: 6.641345533782301
+2018-05-14 21:00:17.880476: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step304000----
+INFO::inception_score: (6.478188, 0.0)
+INFO::inps_baseline: 6.608714034600304
+2018-05-14 21:03:26.576766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step306000----
+INFO::inception_score: (6.4050393, 0.0)
+INFO::inps_baseline: 6.567979089771308
+2018-05-14 21:06:35.223791: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step308000----
+INFO::inception_score: (6.4368725, 0.0)
+INFO::inps_baseline: 6.541757768277008
+2018-05-14 21:09:43.575482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step310000----
+INFO::inception_score: (6.885418, 0.0)
+INFO::inps_baseline: 6.6104898022680905
+2018-05-14 21:12:52.266632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step312000----
+INFO::inception_score: (6.581669, 0.0)
+INFO::inps_baseline: 6.604725612566426
+2018-05-14 21:16:00.987587: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step314000----
+INFO::inception_score: (6.4596367, 0.0)
+INFO::inps_baseline: 6.575707827699626
+2018-05-14 21:19:09.865476: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step316000----
+INFO::inception_score: (6.6362433, 0.0)
+INFO::inps_baseline: 6.587814930830355
+2018-05-14 21:22:18.507356: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step318000----
+INFO::inception_score: (6.967763, 0.0)
+INFO::inps_baseline: 6.663804534080788
+2018-05-14 21:25:24.756035: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step320000----
+INFO::inception_score: (6.4197054, 0.0)
+INFO::inps_baseline: 6.614984705450666
+2018-05-14 21:28:33.511667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step322000----
+INFO::inception_score: (6.4375653, 0.0)
+INFO::inps_baseline: 6.5795008296986675
+2018-05-14 21:31:41.856278: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step324000----
+INFO::inception_score: (6.6840286, 0.0)
+INFO::inps_baseline: 6.60040638885659
+2018-05-14 21:34:50.395587: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step326000----
+INFO::inception_score: (6.6373796, 0.0)
+INFO::inps_baseline: 6.607801040345525
+2018-05-14 21:37:59.053851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step328000----
+INFO::inception_score: (6.303325, 0.0)
+INFO::inps_baseline: 6.546905867524223
+2018-05-14 21:41:08.023507: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step330000----
+INFO::inception_score: (6.7766924, 0.0)
+INFO::inps_baseline: 6.592863172107757
+2018-05-14 21:44:16.927242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step332000----
+INFO::inception_score: (6.540755, 0.0)
+INFO::inps_baseline: 6.582441496701097
+2018-05-14 21:47:25.566689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step334000----
+INFO::inception_score: (6.5325365, 0.0)
+INFO::inps_baseline: 6.572460498691445
+2018-05-14 21:50:34.348571: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step336000----
+INFO::inception_score: (6.728502, 0.0)
+INFO::inps_baseline: 6.603668758297639
+2018-05-14 21:53:43.043372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step338000----
+INFO::inception_score: (6.63852, 0.0)
+INFO::inps_baseline: 6.610638959427418
+2018-05-14 21:56:51.867869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step340000----
+INFO::inception_score: (6.6496487, 0.0)
+INFO::inps_baseline: 6.618440900818301
+2018-05-14 22:00:00.511771: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step342000----
+INFO::inception_score: (6.8913474, 0.0)
+INFO::inps_baseline: 6.673022202313577
+2018-05-14 22:03:09.297527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step344000----
+INFO::inception_score: (6.6115637, 0.0)
+INFO::inps_baseline: 6.660730498362092
+2018-05-14 22:06:15.755966: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step346000----
+INFO::inception_score: (6.6653867, 0.0)
+INFO::inps_baseline: 6.66166173404734
+2018-05-14 22:09:24.570425: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step348000----
+INFO::inception_score: (6.4354253, 0.0)
+INFO::inps_baseline: 6.616414443542804
+2018-05-14 22:12:33.248513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step350000----
+INFO::inception_score: (7.0205226, 0.0)
+INFO::inps_baseline: 6.697236073724624
+2018-05-14 22:15:42.077805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step352000----
+INFO::inception_score: (6.40842, 0.0)
+INFO::inps_baseline: 6.639472876161095
+2018-05-14 22:18:50.875957: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step354000----
+INFO::inception_score: (6.611244, 0.0)
+INFO::inps_baseline: 6.633827141260907
+2018-05-14 22:21:59.709207: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step356000----
+INFO::inception_score: (6.7729974, 0.0)
+INFO::inps_baseline: 6.661661188869322
+2018-05-14 22:25:08.562183: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step358000----
+INFO::inception_score: (6.358118, 0.0)
+INFO::inps_baseline: 6.600952562545653
+2018-05-14 22:28:17.281820: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step360000----
+INFO::inception_score: (6.1664314, 0.0)
+INFO::inps_baseline: 6.514048335436913
+2018-05-14 22:31:25.834022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step362000----
+INFO::inception_score: (6.6576076, 0.0)
+INFO::inps_baseline: 6.542760179427411
+2018-05-14 22:34:34.676060: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step364000----
+INFO::inception_score: (6.5602427, 0.0)
+INFO::inps_baseline: 6.546256674120542
+2018-05-14 22:37:43.451677: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step366000----
+INFO::inception_score: (6.7275195, 0.0)
+INFO::inps_baseline: 6.582509241731737
+2018-05-14 22:40:52.174150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step368000----
+INFO::inception_score: (6.9313617, 0.0)
+INFO::inps_baseline: 6.65227972843788
+2018-05-14 22:43:58.711258: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step370000----
+INFO::inception_score: (6.8482757, 0.0)
+INFO::inps_baseline: 6.691478915044005
+2018-05-14 22:47:07.546232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step372000----
+INFO::inception_score: (6.9837723, 0.0)
+INFO::inps_baseline: 6.749937587601611
+2018-05-14 22:50:16.244635: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step374000----
+INFO::inception_score: (6.506917, 0.0)
+INFO::inps_baseline: 6.701333470044667
+2018-05-14 22:53:24.904833: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step376000----
+INFO::inception_score: (6.4746375, 0.0)
+INFO::inps_baseline: 6.655994277714201
+2018-05-14 22:56:33.644461: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step378000----
+INFO::inception_score: (6.464015, 0.0)
+INFO::inps_baseline: 6.617598423575169
+2018-05-14 22:59:42.526897: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step380000----
+INFO::inception_score: (6.620719, 0.0)
+INFO::inps_baseline: 6.6182225300588655
+2018-05-14 23:02:51.240318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step382000----
+INFO::inception_score: (6.632571, 0.0)
+INFO::inps_baseline: 6.621092268126683
+2018-05-14 23:06:00.135106: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step384000----
+INFO::inception_score: (6.3799043, 0.0)
+INFO::inps_baseline: 6.572854668535769
+2018-05-14 23:09:08.760457: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step386000----
+INFO::inception_score: (6.6293535, 0.0)
+INFO::inps_baseline: 6.584154439479494
+2018-05-14 23:12:17.561438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step388000----
+INFO::inception_score: (6.678038, 0.0)
+INFO::inps_baseline: 6.602931175637551
+2018-05-14 23:15:26.225112: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step390000----
+INFO::inception_score: (7.246034, 0.0)
+INFO::inps_baseline: 6.731551769581086
+2018-05-14 23:18:34.916901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step392000----
+INFO::inception_score: (6.6262255, 0.0)
+INFO::inps_baseline: 6.710486509964184
+2018-05-14 23:21:43.509350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step394000----
+INFO::inception_score: (6.453556, 0.0)
+INFO::inps_baseline: 6.65910042012955
+2018-05-14 23:24:52.298667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step396000----
+INFO::inception_score: (6.492842, 0.0)
+INFO::inps_baseline: 6.625848775587283
+2018-05-14 23:28:01.187738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step398000----
+INFO::inception_score: (6.59852, 0.0)
+INFO::inps_baseline: 6.620382980888527
+2018-05-14 23:31:09.814697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step400000----
+INFO::inception_score: (6.764428, 0.0)
+INFO::inps_baseline: 6.649192012457403
+INFO::student model hasn't been saved before
+INFO::UPDATE CONTROLLOR
+INFO::lr_ctrl: 2.0
+INFO::grad
+INFO::[[0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]
+ [0. 0.]]
+INFO::[0. 0.]
+INFO::weights
+INFO::idx:0, var:[[ 0.66695106 -0.66915125]
+ [ 0.8715815   0.02221821]
+ [-0.13399315 -0.91990703]
+ [-0.3733591   0.1468591 ]
+ [ 0.5019716   0.39112848]]
+INFO::idx:1, var:[ 0.14003596 -0.14003597]
+INFO::total_steps: 400001
+INFO::p_a: [0.79025552 0.20974448]
+INFO::Trace of actions distribution
+INFO::gen: [71, 79, 79, 72, 44, 66, 59, 64, 68, 59, 48, 54, 57, 65, 60, 75, 55, 68, 60, 67, 57, 64, 69, 71, 70, 50, 69, 71, 59, 59, 68, 63, 67, 62, 63, 63, 63, 61, 60, 81, 55, 59, 59, 68, 67, 72, 72, 67, 71, 63, 77, 63, 62, 64, 65, 64, 54, 63, 70, 59, 64, 64, 60, 72, 61, 71, 65, 57, 68, 64, 61, 68, 62, 62, 54, 79, 64, 66, 67, 72]
+INFO::disc: [29, 21, 21, 28, 56, 34, 41, 36, 32, 41, 52, 46, 43, 35, 40, 25, 45, 32, 40, 33, 43, 36, 31, 29, 30, 50, 31, 29, 41, 41, 32, 37, 33, 38, 37, 37, 37, 39, 40, 19, 45, 41, 41, 32, 33, 28, 28, 33, 29, 37, 23, 37, 38, 36, 35, 36, 46, 37, 30, 41, 36, 36, 40, 28, 39, 29, 35, 43, 32, 36, 39, 32, 38, 38, 46, 21, 36, 34, 33, 28]
+INFO::best_inps: 6.967318273056233
+INFO::best_best_inps: 6.967318273056233
+INFO::final_inps_baseline: 6.967318273056233
+INFO::adv: 0.0
+INFO::=================
+INFO::episodes: 1
+INFO::idx:0, var:[[ 0.66695106 -0.66915125]
+ [ 0.8715815   0.02221821]
+ [-0.13399315 -0.91990703]
+ [-0.3733591   0.1468591 ]
+ [ 0.5019716   0.39112848]]
+INFO::idx:1, var:[ 0.14003596 -0.14003597]
+2018-05-14 23:34:19.722403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 2000, new best result: 2.1604435443878174
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step2000----
+INFO::inception_score: (2.1604435, 0.0)
+INFO::inps_baseline: 2.1604435443878174
+2018-05-14 23:37:29.114113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 4000, new best result: 2.3769826889038086
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step4000----
+INFO::inception_score: (3.2431393, 0.0)
+INFO::inps_baseline: 2.3769826889038086
+2018-05-14 23:40:38.508262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 6000, new best result: 2.6213651657104493
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step6000----
+INFO::inception_score: (3.598895, 0.0)
+INFO::inps_baseline: 2.6213651657104493
+2018-05-14 23:43:47.766118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 8000, new best result: 2.685749225616455
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step8000----
+INFO::inception_score: (2.9432855, 0.0)
+INFO::inps_baseline: 2.685749225616455
+2018-05-14 23:46:57.052890: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 10000, new best result: 2.9982799949645993
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step10000----
+INFO::inception_score: (4.248403, 0.0)
+INFO::inps_baseline: 2.9982799949645993
+2018-05-14 23:50:06.321733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 12000, new best result: 3.222398905944824
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step12000----
+INFO::inception_score: (4.1188745, 0.0)
+INFO::inps_baseline: 3.222398905944824
+2018-05-14 23:53:15.539630: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 14000, new best result: 3.4794426194763184
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step14000----
+INFO::inception_score: (4.5076175, 0.0)
+INFO::inps_baseline: 3.4794426194763184
+2018-05-14 23:56:24.725915: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 16000, new best result: 3.774577826812744
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step16000----
+INFO::inception_score: (4.9551187, 0.0)
+INFO::inps_baseline: 3.774577826812744
+2018-05-14 23:59:33.790432: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 18000, new best result: 4.075832248175049
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step18000----
+INFO::inception_score: (5.28085, 0.0)
+INFO::inps_baseline: 4.075832248175049
+2018-05-15 00:02:42.527698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 20000, new best result: 4.323735332841796
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step20000----
+INFO::inception_score: (5.3153477, 0.0)
+INFO::inps_baseline: 4.323735332841796
+2018-05-15 00:05:51.478947: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 22000, new best result: 4.5271826556166985
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step22000----
+INFO::inception_score: (5.340972, 0.0)
+INFO::inps_baseline: 4.5271826556166985
+2018-05-15 00:09:00.460275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 24000, new best result: 4.717440761791943
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step24000----
+INFO::inception_score: (5.478473, 0.0)
+INFO::inps_baseline: 4.717440761791943
+2018-05-15 00:12:09.510936: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 26000, new best result: 4.913628035916709
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step26000----
+INFO::inception_score: (5.698377, 0.0)
+INFO::inps_baseline: 4.913628035916709
+2018-05-15 00:15:18.569312: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 28000, new best result: 5.12747416030075
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step28000----
+INFO::inception_score: (5.9828587, 0.0)
+INFO::inps_baseline: 5.12747416030075
+2018-05-15 00:18:27.663086: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 30000, new best result: 5.251539493645874
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step30000----
+INFO::inception_score: (5.747801, 0.0)
+INFO::inps_baseline: 5.251539493645874
+2018-05-15 00:21:36.843103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 32000, new best result: 5.400985642310498
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step32000----
+INFO::inception_score: (5.99877, 0.0)
+INFO::inps_baseline: 5.400985642310498
+2018-05-15 00:24:45.936489: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 34000, new best result: 5.56341794652662
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step34000----
+INFO::inception_score: (6.213147, 0.0)
+INFO::inps_baseline: 5.56341794652662
+2018-05-15 00:27:54.978446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 36000, new best result: 5.683620671613386
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step36000----
+INFO::inception_score: (6.1644316, 0.0)
+INFO::inps_baseline: 5.683620671613386
+2018-05-15 00:31:04.052160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 38000, new best result: 5.819945510374205
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step38000----
+INFO::inception_score: (6.365245, 0.0)
+INFO::inps_baseline: 5.819945510374205
+2018-05-15 00:34:13.149357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 40000, new best result: 5.9210929363145
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step40000----
+INFO::inception_score: (6.3256826, 0.0)
+INFO::inps_baseline: 5.9210929363145
+2018-05-15 00:37:22.353864: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 42000, new best result: 5.999101502829676
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step42000----
+INFO::inception_score: (6.311136, 0.0)
+INFO::inps_baseline: 5.999101502829676
+2018-05-15 00:40:31.603333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 44000, new best result: 6.0590961322259
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step44000----
+INFO::inception_score: (6.2990746, 0.0)
+INFO::inps_baseline: 6.0590961322259
+2018-05-15 00:43:40.705348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 46000, new best result: 6.071717861896443
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step46000----
+INFO::inception_score: (6.122205, 0.0)
+INFO::inps_baseline: 6.071717861896443
+2018-05-15 00:46:50.112657: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 48000, new best result: 6.156335165981998
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step48000----
+INFO::inception_score: (6.4948044, 0.0)
+INFO::inps_baseline: 6.156335165981998
+2018-05-15 00:49:59.226130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 50000, new best result: 6.1922136711156766
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step50000----
+INFO::inception_score: (6.3357277, 0.0)
+INFO::inps_baseline: 6.1922136711156766
+2018-05-15 00:53:08.351908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 52000, new best result: 6.198461831973108
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step52000----
+INFO::inception_score: (6.2234545, 0.0)
+INFO::inps_baseline: 6.198461831973108
+2018-05-15 00:56:17.367156: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 54000, new best result: 6.214298773897578
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step54000----
+INFO::inception_score: (6.2776465, 0.0)
+INFO::inps_baseline: 6.214298773897578
+2018-05-15 00:59:26.747458: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 56000, new best result: 6.262066689406149
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step56000----
+INFO::inception_score: (6.4531384, 0.0)
+INFO::inps_baseline: 6.262066689406149
+2018-05-15 01:02:35.990776: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 58000, new best result: 6.294854710320085
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step58000----
+INFO::inception_score: (6.426007, 0.0)
+INFO::inps_baseline: 6.294854710320085
+2018-05-15 01:05:45.517550: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step60000----
+INFO::inception_score: (6.2515054, 0.0)
+INFO::inps_baseline: 6.286184843237757
+2018-05-15 01:08:54.500548: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 62000, new best result: 6.3572141137564655
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step62000----
+INFO::inception_score: (6.641331, 0.0)
+INFO::inps_baseline: 6.3572141137564655
+2018-05-15 01:12:03.714283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step64000----
+INFO::inception_score: (6.26855, 0.0)
+INFO::inps_baseline: 6.339481274830856
+2018-05-15 01:15:12.447956: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 66000, new best result: 6.371577295102721
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step66000----
+INFO::inception_score: (6.4999614, 0.0)
+INFO::inps_baseline: 6.371577295102721
+2018-05-15 01:18:21.785673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step68000----
+INFO::inception_score: (5.937212, 0.0)
+INFO::inps_baseline: 6.284704234153466
+2018-05-15 01:21:30.829660: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step70000----
+INFO::inception_score: (6.4908085, 0.0)
+INFO::inps_baseline: 6.325925084710468
+2018-05-15 01:24:39.767478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step72000----
+INFO::inception_score: (6.368232, 0.0)
+INFO::inps_baseline: 6.334386422443668
+2018-05-15 01:27:48.680753: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step74000----
+INFO::inception_score: (6.4397154, 0.0)
+INFO::inps_baseline: 6.355452215042337
+2018-05-15 01:30:57.665711: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 76000, new best result: 6.375958756897151
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step76000----
+INFO::inception_score: (6.457985, 0.0)
+INFO::inps_baseline: 6.375958756897151
+2018-05-15 01:34:04.671636: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 78000, new best result: 6.423796046808004
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step78000----
+INFO::inception_score: (6.615145, 0.0)
+INFO::inps_baseline: 6.423796046808004
+2018-05-15 01:37:14.024877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 80000, new best result: 6.469370642530632
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step80000----
+INFO::inception_score: (6.651669, 0.0)
+INFO::inps_baseline: 6.469370642530632
+2018-05-15 01:40:23.304855: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 82000, new best result: 6.502540047349701
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step82000----
+INFO::inception_score: (6.6352177, 0.0)
+INFO::inps_baseline: 6.502540047349701
+2018-05-15 01:43:32.335506: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step84000----
+INFO::inception_score: (6.3827815, 0.0)
+INFO::inps_baseline: 6.478588338996704
+2018-05-15 01:46:41.302958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 86000, new best result: 6.505195519372412
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step86000----
+INFO::inception_score: (6.6116242, 0.0)
+INFO::inps_baseline: 6.505195519372412
+2018-05-15 01:49:50.551636: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 88000, new best result: 6.517941396271856
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step88000----
+INFO::inception_score: (6.568925, 0.0)
+INFO::inps_baseline: 6.517941396271856
+2018-05-15 01:52:59.715166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 90000, new best result: 6.53187983897183
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step90000----
+INFO::inception_score: (6.5876336, 0.0)
+INFO::inps_baseline: 6.53187983897183
+2018-05-15 01:56:09.109277: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 92000, new best result: 6.555032107566624
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step92000----
+INFO::inception_score: (6.647641, 0.0)
+INFO::inps_baseline: 6.555032107566624
+2018-05-15 01:59:18.323681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 94000, new best result: 6.565853574542069
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step94000----
+INFO::inception_score: (6.6091394, 0.0)
+INFO::inps_baseline: 6.565853574542069
+2018-05-15 02:02:27.674823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 96000, new best result: 6.572501547072619
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step96000----
+INFO::inception_score: (6.5990934, 0.0)
+INFO::inps_baseline: 6.572501547072619
+2018-05-15 02:05:36.669126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 98000, new best result: 6.582558446672988
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step98000----
+INFO::inception_score: (6.622786, 0.0)
+INFO::inps_baseline: 6.582558446672988
+2018-05-15 02:08:45.777805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 100000, new best result: 6.609132141707287
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step100000----
+INFO::inception_score: (6.715427, 0.0)
+INFO::inps_baseline: 6.609132141707287
+2018-05-15 02:11:54.883292: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 102000, new best result: 6.6140923268301846
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step102000----
+INFO::inception_score: (6.633933, 0.0)
+INFO::inps_baseline: 6.6140923268301846
+2018-05-15 02:15:03.837732: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 104000, new best result: 6.620132332380896
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step104000----
+INFO::inception_score: (6.6442924, 0.0)
+INFO::inps_baseline: 6.620132332380896
+2018-05-15 02:18:12.973265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step106000----
+INFO::inception_score: (6.4438934, 0.0)
+INFO::inps_baseline: 6.5848845524281545
+2018-05-15 02:21:21.941696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step108000----
+INFO::inception_score: (6.726476, 0.0)
+INFO::inps_baseline: 6.613202880437397
+2018-05-15 02:24:28.416428: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step110000----
+INFO::inception_score: (6.464609, 0.0)
+INFO::inps_baseline: 6.583484133573551
+2018-05-15 02:27:37.064596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 112000, new best result: 6.628567378117386
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step112000----
+INFO::inception_score: (6.8089004, 0.0)
+INFO::inps_baseline: 6.628567378117386
+2018-05-15 02:30:46.014651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 114000, new best result: 6.652003034268811
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step114000----
+INFO::inception_score: (6.7457457, 0.0)
+INFO::inps_baseline: 6.652003034268811
+2018-05-15 02:33:55.159841: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 116000, new best result: 6.659697520188486
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step116000----
+INFO::inception_score: (6.6904755, 0.0)
+INFO::inps_baseline: 6.659697520188486
+2018-05-15 02:37:04.456015: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 118000, new best result: 6.676706494849519
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step118000----
+INFO::inception_score: (6.7447424, 0.0)
+INFO::inps_baseline: 6.676706494849519
+2018-05-15 02:40:13.651362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 120000, new best result: 6.693802501330055
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step120000----
+INFO::inception_score: (6.7621865, 0.0)
+INFO::inps_baseline: 6.693802501330055
+2018-05-15 02:43:22.518703: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 122000, new best result: 6.70914451723836
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step122000----
+INFO::inception_score: (6.7705126, 0.0)
+INFO::inps_baseline: 6.70914451723836
+2018-05-15 02:46:31.900641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 124000, new best result: 6.7335298891507955
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step124000----
+INFO::inception_score: (6.8310714, 0.0)
+INFO::inps_baseline: 6.7335298891507955
+2018-05-15 02:49:40.943464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 126000, new best result: 6.782779855381915
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step126000----
+INFO::inception_score: (6.9797797, 0.0)
+INFO::inps_baseline: 6.782779855381915
+2018-05-15 02:52:50.113508: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step128000----
+INFO::inception_score: (6.6675014, 0.0)
+INFO::inps_baseline: 6.759724174222524
+2018-05-15 02:55:58.951644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 130000, new best result: 6.79051516396298
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step130000----
+INFO::inception_score: (6.913679, 0.0)
+INFO::inps_baseline: 6.79051516396298
+2018-05-15 02:59:08.184618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 132000, new best result: 6.8119003132382545
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step132000----
+INFO::inception_score: (6.897441, 0.0)
+INFO::inps_baseline: 6.8119003132382545
+2018-05-15 03:02:17.465163: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step134000----
+INFO::inception_score: (6.624581, 0.0)
+INFO::inps_baseline: 6.774436422618192
+2018-05-15 03:05:26.477964: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step136000----
+INFO::inception_score: (6.908499, 0.0)
+INFO::inps_baseline: 6.801248890902171
+2018-05-15 03:08:35.343801: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step138000----
+INFO::inception_score: (6.8504934, 0.0)
+INFO::inps_baseline: 6.811097798939999
+2018-05-15 03:11:44.198875: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 140000, new best result: 6.812350414750144
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step140000----
+INFO::inception_score: (6.817361, 0.0)
+INFO::inps_baseline: 6.812350414750144
+2018-05-15 03:14:51.209654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step142000----
+INFO::inception_score: (6.295134, 0.0)
+INFO::inps_baseline: 6.708907145307196
+2018-05-15 03:17:57.863781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step144000----
+INFO::inception_score: (6.788317, 0.0)
+INFO::inps_baseline: 6.724789156950102
+2018-05-15 03:21:06.367394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step146000----
+INFO::inception_score: (6.8344555, 0.0)
+INFO::inps_baseline: 6.746722423582543
+2018-05-15 03:24:14.932826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step148000----
+INFO::inception_score: (6.7716484, 0.0)
+INFO::inps_baseline: 6.751707620262519
+2018-05-15 03:27:23.799681: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step150000----
+INFO::inception_score: (6.5583963, 0.0)
+INFO::inps_baseline: 6.713045364093316
+2018-05-15 03:30:32.724963: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step152000----
+INFO::inception_score: (6.9460387, 0.0)
+INFO::inps_baseline: 6.759644035873041
+2018-05-15 03:33:39.362083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 154000, new best result: 6.82597036709565
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step154000----
+INFO::inception_score: (7.0912757, 0.0)
+INFO::inps_baseline: 6.82597036709565
+2018-05-15 03:36:48.478728: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 156000, new best result: 6.832622397344733
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step156000----
+INFO::inception_score: (6.8592305, 0.0)
+INFO::inps_baseline: 6.832622397344733
+2018-05-15 03:39:57.632079: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step158000----
+INFO::inception_score: (6.779463, 0.0)
+INFO::inps_baseline: 6.821990480741997
+2018-05-15 03:43:06.676403: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step160000----
+INFO::inception_score: (6.451204, 0.0)
+INFO::inps_baseline: 6.747833149211518
+2018-05-15 03:46:15.321651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step162000----
+INFO::inception_score: (6.87642, 0.0)
+INFO::inps_baseline: 6.77355052358064
+2018-05-15 03:49:24.179801: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step164000----
+INFO::inception_score: (6.8249745, 0.0)
+INFO::inps_baseline: 6.783835326243662
+2018-05-15 03:52:32.794675: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step166000----
+INFO::inception_score: (6.7496567, 0.0)
+INFO::inps_baseline: 6.776999596444148
+2018-05-15 03:55:41.389413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step168000----
+INFO::inception_score: (6.7717433, 0.0)
+INFO::inps_baseline: 6.7759483366707
+2018-05-15 03:58:49.949607: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step170000----
+INFO::inception_score: (6.7769127, 0.0)
+INFO::inps_baseline: 6.776141207178357
+2018-05-15 04:01:58.446100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step172000----
+INFO::inception_score: (6.865798, 0.0)
+INFO::inps_baseline: 6.794072565046886
+2018-05-15 04:05:07.026444: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step174000----
+INFO::inception_score: (6.8094945, 0.0)
+INFO::inps_baseline: 6.797156951115878
+2018-05-15 04:08:15.774385: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step176000----
+INFO::inception_score: (6.889201, 0.0)
+INFO::inps_baseline: 6.815565793741824
+2018-05-15 04:11:24.581416: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 178000, new best result: 6.832756971541311
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step178000----
+INFO::inception_score: (6.9015217, 0.0)
+INFO::inps_baseline: 6.832756971541311
+2018-05-15 04:14:33.803499: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step180000----
+INFO::inception_score: (6.5471196, 0.0)
+INFO::inps_baseline: 6.775629500725481
+2018-05-15 04:17:42.733972: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step182000----
+INFO::inception_score: (6.840413, 0.0)
+INFO::inps_baseline: 6.788586219293764
+2018-05-15 04:20:51.574081: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step184000----
+INFO::inception_score: (6.798712, 0.0)
+INFO::inps_baseline: 6.79061133078169
+2018-05-15 04:24:00.403521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step186000----
+INFO::inception_score: (6.8493633, 0.0)
+INFO::inps_baseline: 6.802361730030626
+2018-05-15 04:27:08.976638: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step188000----
+INFO::inception_score: (6.8380094, 0.0)
+INFO::inps_baseline: 6.809491255514979
+2018-05-15 04:30:17.669278: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step190000----
+INFO::inception_score: (6.8716946, 0.0)
+INFO::inps_baseline: 6.821931917375851
+2018-05-15 04:33:26.389479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 192000, new best result: 6.843204370265427
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step192000----
+INFO::inception_score: (6.928294, 0.0)
+INFO::inps_baseline: 6.843204370265427
+2018-05-15 04:36:35.387435: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step194000----
+INFO::inception_score: (6.8381114, 0.0)
+INFO::inps_baseline: 6.842185776333191
+2018-05-15 04:39:44.168421: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 196000, new best result: 6.880244669040186
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step196000----
+INFO::inception_score: (7.0324802, 0.0)
+INFO::inps_baseline: 6.880244669040186
+2018-05-15 04:42:53.195158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step198000----
+INFO::inception_score: (6.814479, 0.0)
+INFO::inps_baseline: 6.8670915100734575
+2018-05-15 04:46:02.008651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 200000, new best result: 6.9126071718344
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step200000----
+INFO::inception_score: (7.09467, 0.0)
+INFO::inps_baseline: 6.9126071718344
+2018-05-15 04:49:11.074326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step202000----
+INFO::inception_score: (6.8596797, 0.0)
+INFO::inps_baseline: 6.9020216772563385
+2018-05-15 04:52:20.026037: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step204000----
+INFO::inception_score: (6.903714, 0.0)
+INFO::inps_baseline: 6.902360177803606
+2018-05-15 04:55:26.756005: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 206000, new best result: 6.917246132507778
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step206000----
+INFO::inception_score: (6.97679, 0.0)
+INFO::inps_baseline: 6.917246132507778
+2018-05-15 04:58:35.826899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step208000----
+INFO::inception_score: (6.8556576, 0.0)
+INFO::inps_baseline: 6.904928421509152
+2018-05-15 05:01:44.409315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 210000, new best result: 6.922399215326218
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step210000----
+INFO::inception_score: (6.9922824, 0.0)
+INFO::inps_baseline: 6.922399215326218
+2018-05-15 05:04:53.330764: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step212000----
+INFO::inception_score: (6.905187, 0.0)
+INFO::inps_baseline: 6.918956798255847
+2018-05-15 05:08:01.937255: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step214000----
+INFO::inception_score: (6.815597, 0.0)
+INFO::inps_baseline: 6.898284850073184
+2018-05-15 05:11:10.593529: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step216000----
+INFO::inception_score: (6.961535, 0.0)
+INFO::inps_baseline: 6.910934875450392
+2018-05-15 05:14:19.162878: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step218000----
+INFO::inception_score: (6.9640594, 0.0)
+INFO::inps_baseline: 6.921559770935265
+2018-05-15 05:17:27.873061: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 220000, new best result: 6.965688482946943
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step220000----
+INFO::inception_score: (7.1422033, 0.0)
+INFO::inps_baseline: 6.965688482946943
+2018-05-15 05:20:36.956228: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step222000----
+INFO::inception_score: (6.8790293, 0.0)
+INFO::inps_baseline: 6.948356641154918
+2018-05-15 05:23:45.416706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step224000----
+INFO::inception_score: (6.9074235, 0.0)
+INFO::inps_baseline: 6.940170012173201
+2018-05-15 05:26:54.004943: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step226000----
+INFO::inception_score: (6.7181506, 0.0)
+INFO::inps_baseline: 6.895766132876989
+2018-05-15 05:30:02.706360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step228000----
+INFO::inception_score: (6.8837667, 0.0)
+INFO::inps_baseline: 6.893366236532304
+2018-05-15 05:33:11.170155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step230000----
+INFO::inception_score: (6.6167684, 0.0)
+INFO::inps_baseline: 6.838046661253431
+2018-05-15 05:36:19.923030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step232000----
+INFO::inception_score: (6.8642187, 0.0)
+INFO::inps_baseline: 6.843281071373351
+2018-05-15 05:39:26.251457: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step234000----
+INFO::inception_score: (6.974183, 0.0)
+INFO::inps_baseline: 6.869461473614795
+2018-05-15 05:42:34.709813: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step236000----
+INFO::inception_score: (6.900909, 0.0)
+INFO::inps_baseline: 6.8757509682900295
+2018-05-15 05:45:41.189482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step238000----
+INFO::inception_score: (6.8535795, 0.0)
+INFO::inps_baseline: 6.8713166788678635
+2018-05-15 05:48:47.821620: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step240000----
+INFO::inception_score: (6.9926295, 0.0)
+INFO::inps_baseline: 6.895579248703422
+2018-05-15 05:51:56.756929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step242000----
+INFO::inception_score: (6.8955827, 0.0)
+INFO::inps_baseline: 6.895579934149506
+2018-05-15 05:55:03.601042: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step244000----
+INFO::inception_score: (7.0097194, 0.0)
+INFO::inps_baseline: 6.918407821678736
+2018-05-15 05:58:12.505617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step246000----
+INFO::inception_score: (6.9214377, 0.0)
+INFO::inps_baseline: 6.919013805408174
+2018-05-15 06:01:21.424265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step248000----
+INFO::inception_score: (6.9600425, 0.0)
+INFO::inps_baseline: 6.927219539657349
+2018-05-15 06:04:30.319337: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step250000----
+INFO::inception_score: (6.8468556, 0.0)
+INFO::inps_baseline: 6.911146759808155
+2018-05-15 06:07:39.213992: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step252000----
+INFO::inception_score: (6.9555874, 0.0)
+INFO::inps_baseline: 6.920034885263516
+2018-05-15 06:10:48.162650: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step254000----
+INFO::inception_score: (6.9148464, 0.0)
+INFO::inps_baseline: 6.91899719226843
+2018-05-15 06:13:56.868673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step256000----
+INFO::inception_score: (6.871374, 0.0)
+INFO::inps_baseline: 6.909472579864548
+2018-05-15 06:17:05.566229: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step258000----
+INFO::inception_score: (6.8372207, 0.0)
+INFO::inps_baseline: 6.895022197650183
+2018-05-15 06:20:14.249279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step260000----
+INFO::inception_score: (6.949165, 0.0)
+INFO::inps_baseline: 6.905850731600371
+2018-05-15 06:23:22.889470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step262000----
+INFO::inception_score: (6.87924, 0.0)
+INFO::inps_baseline: 6.900528592482445
+2018-05-15 06:26:31.369917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step264000----
+INFO::inception_score: (7.0483074, 0.0)
+INFO::inps_baseline: 6.930084357750605
+2018-05-15 06:29:40.094582: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step266000----
+INFO::inception_score: (6.9906697, 0.0)
+INFO::inps_baseline: 6.942201431665572
+2018-05-15 06:32:48.770632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step268000----
+INFO::inception_score: (6.8879514, 0.0)
+INFO::inps_baseline: 6.9313514201432485
+2018-05-15 06:35:57.253524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step270000----
+INFO::inception_score: (7.0551114, 0.0)
+INFO::inps_baseline: 6.9561034177613275
+2018-05-15 06:39:05.949596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step272000----
+INFO::inception_score: (6.859941, 0.0)
+INFO::inps_baseline: 6.936870935350419
+2018-05-15 06:42:14.368387: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step274000----
+INFO::inception_score: (7.0254393, 0.0)
+INFO::inps_baseline: 6.954584600758363
+2018-05-15 06:45:22.949684: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step276000----
+INFO::inception_score: (6.732748, 0.0)
+INFO::inps_baseline: 6.9102172869299325
+2018-05-15 06:48:31.594269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step278000----
+INFO::inception_score: (7.0580153, 0.0)
+INFO::inps_baseline: 6.939776898849366
+2018-05-15 06:51:39.993199: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step280000----
+INFO::inception_score: (6.901551, 0.0)
+INFO::inps_baseline: 6.932131673040674
+2018-05-15 06:54:48.483613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step282000----
+INFO::inception_score: (6.82015, 0.0)
+INFO::inps_baseline: 6.90973531813835
+2018-05-15 06:57:57.077496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step284000----
+INFO::inception_score: (6.7925963, 0.0)
+INFO::inps_baseline: 6.886307522546568
+2018-05-15 07:01:05.689166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step286000----
+INFO::inception_score: (6.869067, 0.0)
+INFO::inps_baseline: 6.882859456452782
+2018-05-15 07:04:14.459455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step288000----
+INFO::inception_score: (6.848721, 0.0)
+INFO::inps_baseline: 6.876031770637079
+2018-05-15 07:07:23.216913: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step290000----
+INFO::inception_score: (6.820375, 0.0)
+INFO::inps_baseline: 6.864900409643208
+2018-05-15 07:10:31.964906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step292000----
+INFO::inception_score: (6.3659263, 0.0)
+INFO::inps_baseline: 6.7651055808578775
+2018-05-15 07:13:40.689919: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step294000----
+INFO::inception_score: (6.320229, 0.0)
+INFO::inps_baseline: 6.6761302753857645
+2018-05-15 07:16:49.350047: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step296000----
+INFO::inception_score: (6.3904686, 0.0)
+INFO::inps_baseline: 6.618997939791034
+2018-05-15 07:19:57.959053: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step298000----
+INFO::inception_score: (6.3408904, 0.0)
+INFO::inps_baseline: 6.563376433345278
+2018-05-15 07:23:06.703261: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step300000----
+INFO::inception_score: (6.2454543, 0.0)
+INFO::inps_baseline: 6.499792008950392
+2018-05-15 07:26:15.376346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step302000----
+INFO::inception_score: (6.4262176, 0.0)
+INFO::inps_baseline: 6.485077118360265
+2018-05-15 07:29:24.136376: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step304000----
+INFO::inception_score: (6.4990897, 0.0)
+INFO::inps_baseline: 6.48787963826121
+2018-05-15 07:32:32.784375: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step306000----
+INFO::inception_score: (6.1195703, 0.0)
+INFO::inps_baseline: 6.414217761664876
+2018-05-15 07:35:41.543260: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step308000----
+INFO::inception_score: (6.3523054, 0.0)
+INFO::inps_baseline: 6.401835291790397
+2018-05-15 07:38:50.292477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step310000----
+INFO::inception_score: (6.420315, 0.0)
+INFO::inps_baseline: 6.40553119119599
+2018-05-15 07:41:56.619552: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step312000----
+INFO::inception_score: (6.359814, 0.0)
+INFO::inps_baseline: 6.396387786361332
+2018-05-15 07:45:02.736503: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step314000----
+INFO::inception_score: (6.517117, 0.0)
+INFO::inps_baseline: 6.42053363378267
+2018-05-15 07:48:11.613327: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step316000----
+INFO::inception_score: (6.695332, 0.0)
+INFO::inps_baseline: 6.475493317090833
+2018-05-15 07:51:20.346008: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step318000----
+INFO::inception_score: (6.5839443, 0.0)
+INFO::inps_baseline: 6.497183517808409
+2018-05-15 07:54:29.072854: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step320000----
+INFO::inception_score: (6.4389033, 0.0)
+INFO::inps_baseline: 6.485527480598045
+2018-05-15 07:57:35.510618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step322000----
+INFO::inception_score: (6.229792, 0.0)
+INFO::inps_baseline: 6.434380408092938
+2018-05-15 08:00:44.110321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step324000----
+INFO::inception_score: (6.573999, 0.0)
+INFO::inps_baseline: 6.462304112088365
+2018-05-15 08:03:52.771398: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step326000----
+INFO::inception_score: (6.626452, 0.0)
+INFO::inps_baseline: 6.495133683500038
+2018-05-15 08:07:01.448198: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step328000----
+INFO::inception_score: (6.550045, 0.0)
+INFO::inps_baseline: 6.506115949485578
+2018-05-15 08:10:10.003273: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step330000----
+INFO::inception_score: (6.8826475, 0.0)
+INFO::inps_baseline: 6.581422262457115
+2018-05-15 08:13:18.624606: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step332000----
+INFO::inception_score: (6.594442, 0.0)
+INFO::inps_baseline: 6.584026188109002
+2018-05-15 08:16:27.332701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step334000----
+INFO::inception_score: (6.428418, 0.0)
+INFO::inps_baseline: 6.5529045823841745
+2018-05-15 08:19:36.022473: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step336000----
+INFO::inception_score: (6.2105436, 0.0)
+INFO::inps_baseline: 6.484432392408804
+2018-05-15 08:22:45.077212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step338000----
+INFO::inception_score: (6.5492334, 0.0)
+INFO::inps_baseline: 6.497392601243938
+2018-05-15 08:25:54.033817: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step340000----
+INFO::inception_score: (6.1848426, 0.0)
+INFO::inps_baseline: 6.434882598298618
+2018-05-15 08:29:00.862326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step342000----
+INFO::inception_score: (6.4052176, 0.0)
+INFO::inps_baseline: 6.428949608149392
+2018-05-15 08:32:09.724209: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step344000----
+INFO::inception_score: (6.580525, 0.0)
+INFO::inps_baseline: 6.459264670802961
+2018-05-15 08:35:18.773247: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step346000----
+INFO::inception_score: (6.7106466, 0.0)
+INFO::inps_baseline: 6.509541062509068
+2018-05-15 08:38:27.900314: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step348000----
+INFO::inception_score: (6.282365, 0.0)
+INFO::inps_baseline: 6.464105819062429
+2018-05-15 08:41:37.031100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step350000----
+INFO::inception_score: (6.4507203, 0.0)
+INFO::inps_baseline: 6.46142871729218
+2018-05-15 08:44:46.276591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step352000----
+INFO::inception_score: (6.4819717, 0.0)
+INFO::inps_baseline: 6.4655373219782755
+2018-05-15 08:48:05.740562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step354000----
+INFO::inception_score: (6.7234287, 0.0)
+INFO::inps_baseline: 6.517115602821878
+2018-05-15 08:51:15.979377: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step356000----
+INFO::inception_score: (6.670158, 0.0)
+INFO::inps_baseline: 6.547724064136165
+2018-05-15 08:54:24.817288: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step358000----
+INFO::inception_score: (6.6619296, 0.0)
+INFO::inps_baseline: 6.570565172787203
+2018-05-15 08:57:31.464056: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step360000----
+INFO::inception_score: (6.9474945, 0.0)
+INFO::inps_baseline: 6.64595103959695
+2018-05-15 09:00:40.177167: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step362000----
+INFO::inception_score: (6.5683866, 0.0)
+INFO::inps_baseline: 6.630438142621164
+2018-05-15 09:03:57.858654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step364000----
+INFO::inception_score: (6.5244985, 0.0)
+INFO::inps_baseline: 6.609250206632332
+2018-05-15 09:07:17.848725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step366000----
+INFO::inception_score: (6.2197523, 0.0)
+INFO::inps_baseline: 6.531350627647174
+2018-05-15 09:10:26.750069: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step368000----
+INFO::inception_score: (6.572345, 0.0)
+INFO::inps_baseline: 6.5395494581113915
+2018-05-15 09:13:35.470907: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step370000----
+INFO::inception_score: (6.5458016, 0.0)
+INFO::inps_baseline: 6.54079989440049
+2018-05-15 09:16:44.252158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step372000----
+INFO::inception_score: (6.3539658, 0.0)
+INFO::inps_baseline: 6.503433067375861
+2018-05-15 09:19:52.979853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step374000----
+INFO::inception_score: (6.7598186, 0.0)
+INFO::inps_baseline: 6.5547101646856
+2018-05-15 09:23:01.980537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step376000----
+INFO::inception_score: (6.602813, 0.0)
+INFO::inps_baseline: 6.564330685154243
+2018-05-15 09:26:10.877425: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step378000----
+INFO::inception_score: (6.436386, 0.0)
+INFO::inps_baseline: 6.538741769803082
+2018-05-15 09:29:19.808242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step380000----
+INFO::inception_score: (6.764132, 0.0)
+INFO::inps_baseline: 6.583819820413999
+2018-05-15 09:32:28.681624: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step382000----
+INFO::inception_score: (6.4608803, 0.0)
+INFO::inps_baseline: 6.559231912239403
+2018-05-15 09:35:37.490849: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step384000----
+INFO::inception_score: (6.504267, 0.0)
+INFO::inps_baseline: 6.548238972937273
+2018-05-15 09:38:46.281003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step386000----
+INFO::inception_score: (6.8922076, 0.0)
+INFO::inps_baseline: 6.617032702855434
+2018-05-15 09:41:55.004303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step388000----
+INFO::inception_score: (6.384377, 0.0)
+INFO::inps_baseline: 6.57050156282756
+2018-05-15 09:45:03.854767: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step390000----
+INFO::inception_score: (6.345966, 0.0)
+INFO::inps_baseline: 6.525594422716882
+2018-05-15 09:48:12.613596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step392000----
+INFO::inception_score: (6.5562115, 0.0)
+INFO::inps_baseline: 6.531717832485029
+2018-05-15 09:51:21.196911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step394000----
+INFO::inception_score: (6.569265, 0.0)
+INFO::inps_baseline: 6.539227243740708
+2018-05-15 09:54:29.954249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step396000----
+INFO::inception_score: (6.344743, 0.0)
+INFO::inps_baseline: 6.5003303499852425
+2018-05-15 09:57:38.608975: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step398000----
+INFO::inception_score: (6.176781, 0.0)
+INFO::inps_baseline: 6.435620515492344
+2018-05-15 10:00:47.270685: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::----step400000----
+INFO::inception_score: (6.636698, 0.0)
+INFO::inps_baseline: 6.4758359662268825
+INFO::student model hasn't been saved before
+INFO::UPDATE CONTROLLOR
+INFO::lr_ctrl: 2.0
+INFO::grad
+INFO::[[ 1.9432879e-05 -1.9432793e-05]
+ [-7.3121744e-05  7.3121504e-05]
+ [ 2.0420812e-05 -2.0420288e-05]
+ [-2.3772272e-05  2.3772305e-05]
+ [-2.2362701e-06  2.2363658e-06]]
+INFO::[-2.4286757e-05  2.4286926e-05]
+INFO::weights
+INFO::idx:0, var:[[ 0.6669122  -0.6691124 ]
+ [ 0.87172776  0.02207197]
+ [-0.134034   -0.9198662 ]
+ [-0.37331158  0.14681154]
+ [ 0.5019761   0.391124  ]]
+INFO::idx:1, var:[ 0.14008453 -0.14008455]
+INFO::total_steps: 400001
+INFO::p_a: [0.79582051 0.20417949]
+INFO::Trace of actions distribution
+INFO::gen: [73, 81, 72, 55, 56, 54, 62, 63, 64, 64, 56, 52, 62, 58, 73, 62, 70, 59, 62, 59, 59, 69, 60, 73, 67, 66, 52, 65, 58, 54, 62, 73, 56, 60, 55, 53, 64, 73, 62, 56, 63, 57, 69, 47, 66, 56, 57, 66, 70, 67, 69, 53, 68, 65, 74, 73, 62, 68, 63, 69, 69, 64, 74, 52, 67, 62, 66, 72, 60, 50, 60, 58, 64, 70, 62, 61, 63, 68, 68, 76]
+INFO::disc: [27, 19, 28, 45, 44, 46, 38, 37, 36, 36, 44, 48, 38, 42, 27, 38, 30, 41, 38, 41, 41, 31, 40, 27, 33, 34, 48, 35, 42, 46, 38, 27, 44, 40, 45, 47, 36, 27, 38, 44, 37, 43, 31, 53, 34, 44, 43, 34, 30, 33, 31, 47, 32, 35, 26, 27, 38, 32, 37, 31, 31, 36, 26, 48, 33, 38, 34, 28, 40, 50, 40, 42, 36, 30, 38, 39, 37, 32, 32, 24]
+INFO::best_inps: 6.965688482946943
+INFO::best_best_inps: 6.967318273056233
+INFO::final_inps_baseline: 6.966992315034375
+INFO::adv: -0.2270787660361293
+INFO::=================
+INFO::episodes: 2
+INFO::idx:0, var:[[ 0.6669122  -0.6691124 ]
+ [ 0.87172776  0.02207197]
+ [-0.134034   -0.9198662 ]
+ [-0.37331158  0.14681154]
+ [ 0.5019761   0.391124  ]]
+INFO::idx:1, var:[ 0.14008453 -0.14008455]
+2018-05-15 10:03:54.095651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 2000, new best result: 2.192129611968994
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step2000----
+INFO::inception_score: (2.1921296, 0.0)
+INFO::inps_baseline: 2.192129611968994
+2018-05-15 10:07:00.682312: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 4000, new best result: 2.321785497665405
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step4000----
+INFO::inception_score: (2.840409, 0.0)
+INFO::inps_baseline: 2.321785497665405
+2018-05-15 10:10:09.979735: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 6000, new best result: 2.4083228969573973
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step6000----
+INFO::inception_score: (2.7544725, 0.0)
+INFO::inps_baseline: 2.4083228969573973
+2018-05-15 10:13:19.221883: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 8000, new best result: 2.787397834777832
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step8000----
+INFO::inception_score: (4.3036976, 0.0)
+INFO::inps_baseline: 2.787397834777832
+2018-05-15 10:16:26.185664: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 10000, new best result: 2.8153522277832033
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step10000----
+INFO::inception_score: (2.9271698, 0.0)
+INFO::inps_baseline: 2.8153522277832033
+2018-05-15 10:19:35.590357: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 12000, new best result: 3.0648700924682615
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step12000----
+INFO::inception_score: (4.0629416, 0.0)
+INFO::inps_baseline: 3.0648700924682615
+2018-05-15 10:22:42.682642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 14000, new best result: 3.266439988769531
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step14000----
+INFO::inception_score: (4.0727196, 0.0)
+INFO::inps_baseline: 3.266439988769531
+2018-05-15 10:25:49.765811: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 16000, new best result: 3.4048561688720698
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step16000----
+INFO::inception_score: (3.958521, 0.0)
+INFO::inps_baseline: 3.4048561688720698
+2018-05-15 10:28:59.181279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 18000, new best result: 3.689418286995849
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step18000----
+INFO::inception_score: (4.8276668, 0.0)
+INFO::inps_baseline: 3.689418286995849
+2018-05-15 10:32:08.721210: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 20000, new best result: 3.8583394773139643
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step20000----
+INFO::inception_score: (4.5340242, 0.0)
+INFO::inps_baseline: 3.8583394773139643
+2018-05-15 10:35:18.185612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 22000, new best result: 4.109179440127539
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step22000----
+INFO::inception_score: (5.1125393, 0.0)
+INFO::inps_baseline: 4.109179440127539
+2018-05-15 10:38:27.747346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 24000, new best result: 4.285596230019512
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step24000----
+INFO::inception_score: (4.9912634, 0.0)
+INFO::inps_baseline: 4.285596230019512
+2018-05-15 10:41:37.136088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 26000, new best result: 4.520308095923569
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step26000----
+INFO::inception_score: (5.4591556, 0.0)
+INFO::inps_baseline: 4.520308095923569
+2018-05-15 10:44:44.281987: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 28000, new best result: 4.785007348626062
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step28000----
+INFO::inception_score: (5.8438044, 0.0)
+INFO::inps_baseline: 4.785007348626062
+2018-05-15 10:47:53.644446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 30000, new best result: 4.887840263819062
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step30000----
+INFO::inception_score: (5.299172, 0.0)
+INFO::inps_baseline: 4.887840263819062
+2018-05-15 10:51:02.961202: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 32000, new best result: 5.061435026149244
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step32000----
+INFO::inception_score: (5.755814, 0.0)
+INFO::inps_baseline: 5.061435026149244
+2018-05-15 10:54:12.207072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 34000, new best result: 5.2806738235317
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step34000----
+INFO::inception_score: (6.157629, 0.0)
+INFO::inps_baseline: 5.2806738235317
+2018-05-15 10:57:21.538169: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 36000, new best result: 5.410259121081219
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step36000----
+INFO::inception_score: (5.9286003, 0.0)
+INFO::inps_baseline: 5.410259121081219
+2018-05-15 11:00:28.699279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::step: 38000, new best result: 5.509683603780259
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h1-haowen6_05-14-19-06_gan_cifar10/model
+INFO::----step38000----
+INFO::inception_score: (5.9073815, 0.0)
+INFO::inps_baseline: 5.509683603780259
+2018-05-15 11:03:35.616332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)

@@ -1,0 +1,221 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-15 00:21:01.063869: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-15 00:21:01.965489: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-15 00:21:01.965655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+2018-05-15 00:21:04.918585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::h3.haowen6.biglearning.orca.pdl.cmu.edu
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: ~/haowen/GitHub/autoLoss/Data
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::[data]
+INFO::train_data_file:: cls/train.npy
+INFO::valid_data_file:: cls/valid.npy
+INFO::test_data_file:: cls/test.npy
+INFO::num_sample_train:: 200
+INFO::num_sample_valid:: 1000
+INFO::num_sample_test:: 1000
+INFO::mean_noise:: 0
+INFO::var_noise:: 4
+INFO::random_seed:: 1
+INFO::[stud]
+INFO::student_model_name:: cls
+INFO::batch_size:: 200
+INFO::dim_input_stud:: 32
+INFO::dim_hidden_stud:: 32
+INFO::dim_output_stud:: 2
+INFO::lr_stud:: 0.1
+INFO::valid_frequency_stud:: 10
+INFO::max_endurance_stud:: 50
+INFO::max_training_step:: 20000
+INFO::lambda1_stud:: 0.1
+INFO::lambda2_stud:: 0.0003
+INFO::[train]
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::num_pre_loss:: 2
+INFO::dim_state_rl:: 7
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 0.1
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 401
+INFO::update_frequency:: 1
+INFO::save_frequency:: 50
+INFO::reward_baseline_decay:: 0.9
+INFO::reward_c:: 100
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 2
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::logit_clipping_c:: 2
+INFO::exp_name: h3-haowen6_05-15-06-21
+2018-05-15 00:21:04.942688: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Traceback (most recent call last):
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/common_shapes.py", line 686, in _call_cpp_shape_fn_impl
+    input_tensors_as_shapes, status)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/errors_impl.py", line 473, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Dimensions must be equal, but are 7 and 5 for 'MatMul' (op: 'MatMul') with input shapes: [?,7], [5,2].
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "trainer.py", line 323, in <module>
+    trainer = Trainer(config)
+  File "trainer.py", line 51, in __init__
+    self.model_ctrl = controller.Controller(config, exp_name+'_ctrl')
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/controller.py", line 27, in __init__
+    self._build_graph()
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/controller.py", line 79, in _build_graph
+    self.logits = tf.matmul(self.state_plh, w) + b
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/math_ops.py", line 1891, in matmul
+    a, b, transpose_a=transpose_a, transpose_b=transpose_b, name=name)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gen_math_ops.py", line 2437, in _mat_mul
+    name=name)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2958, in create_op
+    set_shapes_for_outputs(ret)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2209, in set_shapes_for_outputs
+    shapes = shape_func(op)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2159, in call_with_requiring
+    return call_cpp_shape_fn(op, require_shape_fn=True)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/common_shapes.py", line 627, in call_cpp_shape_fn
+    require_shape_fn)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/common_shapes.py", line 691, in _call_cpp_shape_fn_impl
+    raise ValueError(err.message)
+ValueError: Dimensions must be equal, but are 7 and 5 for 'MatMul' (op: 'MatMul') with input shapes: [?,7], [5,2].
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-15 00:26:22.019643: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-15 00:26:23.103076: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-15 00:26:23.103115: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+2018-05-15 00:26:25.948204: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::h3.haowen6.biglearning.orca.pdl.cmu.edu
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: ~/haowen/GitHub/autoLoss/Data
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::[data]
+INFO::train_data_file:: cls/train.npy
+INFO::valid_data_file:: cls/valid.npy
+INFO::test_data_file:: cls/test.npy
+INFO::num_sample_train:: 200
+INFO::num_sample_valid:: 1000
+INFO::num_sample_test:: 1000
+INFO::mean_noise:: 0
+INFO::var_noise:: 4
+INFO::random_seed:: 1
+INFO::[stud]
+INFO::student_model_name:: cls
+INFO::batch_size:: 200
+INFO::dim_input_stud:: 32
+INFO::dim_hidden_stud:: 32
+INFO::dim_output_stud:: 2
+INFO::lr_stud:: 0.1
+INFO::valid_frequency_stud:: 10
+INFO::max_endurance_stud:: 50
+INFO::max_training_step:: 20000
+INFO::lambda1_stud:: 0.1
+INFO::lambda2_stud:: 0.0003
+INFO::[train]
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::num_pre_loss:: 2
+INFO::dim_state_rl:: 7
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 0.1
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 401
+INFO::update_frequency:: 1
+INFO::save_frequency:: 50
+INFO::reward_baseline_decay:: 0.9
+INFO::reward_c:: 100
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 2
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::logit_clipping_c:: 2
+INFO::exp_name: h3-haowen6_05-15-06-26
+2018-05-15 00:26:25.964508: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+2018-05-15 00:26:26.028155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::TEST
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9269999861717224
+INFO::test_acc: 0.9089999794960022
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9290000200271606
+INFO::test_acc: 0.906000018119812
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9300000071525574
+INFO::test_acc: 0.9089999794960022
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9279999732971191
+INFO::test_acc: 0.9049999713897705
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9290000200271606
+INFO::test_acc: 0.9120000004768372
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9269999861717224
+INFO::test_acc: 0.906000018119812
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9259999990463257
+INFO::test_acc: 0.906000018119812
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9269999861717224
+INFO::test_acc: 0.906000018119812
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9240000247955322
+INFO::test_acc: 0.906000018119812
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl/model-400
+INFO::valid_acc: 0.9240000247955322
+INFO::test_acc: 0.9089999794960022
+INFO::[0.909, 0.906, 0.909, 0.905, 0.912, 0.906, 0.906, 0.906, 0.906, 0.909]
+INFO::0.9074
+INFO::4.4399694e-06
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+load 200 samples.
+load 1000 samples.
+load 1000 samples.
+ce loss and l1 loss
+lambda1: 0.1

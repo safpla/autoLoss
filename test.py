@@ -8,7 +8,7 @@ if __name__ == '__main__':
     config_path = os.path.join(root_path, 'config/' + 'gan.cfg')
     config = utils.Parser(config_path)
     config.print_config()
-    model = gan.Gan(config, exp_name='dcgan_baseline_mnist_10')
+    model = gan.Gan(config, exp_name='dcgan_baseline_mnist_24')
     model.initialize_weights()
 
     # ----Load pretrain.----

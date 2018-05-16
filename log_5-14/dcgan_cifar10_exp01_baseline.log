@@ -1,0 +1,572 @@
+2018-05-14 10:16:53.241081: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-14 10:16:54.163962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-14 10:16:54.163991: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-14 10:16:54.249801: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/cifar10/cifar-10-batches-py
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan_cifar10
+INFO::batch_size:: 128
+INFO::lr_stud:: 0.0002
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 2000
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 10
+INFO::max_training_step:: 200000
+INFO::stop_strategy_stud:: prescribed_steps
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 3072
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_threshold:: 6.3
+INFO::inps_batches:: 100
+INFO::inps_splits:: 1
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::logit_clipping_c:: 2
+INFO::dim_state_rl:: 5
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 2
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::reward_baseline_decay:: 0.8
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+2018-05-14 10:16:55.496345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::========Step2000========
+INFO::0
+2018-05-14 10:19:03.468104: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+2018-05-14 10:19:03.826447: W tensorflow/core/framework/op_def_util.cc:334] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().
+INFO::(3.5290802, 0.0)
+INFO::inps_baseline: 3.5290801525115967
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.8926093578338623
+INFO::disc_cost fake: 0.22978273034095764, real: 0.9272719621658325
+INFO::========Step4000========
+INFO::0
+2018-05-14 10:22:25.657050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(4.10817, 0.0)
+INFO::inps_baseline: 3.644898128509521
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 0.8993657231330872
+INFO::disc_cost fake: 0.6736154556274414, real: 0.4410970211029053
+INFO::========Step6000========
+INFO::0
+2018-05-14 10:25:45.522158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(5.3976808, 0.0)
+INFO::inps_baseline: 3.9954546546936034
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.903563380241394
+INFO::disc_cost fake: 0.254507839679718, real: 0.9396098852157593
+INFO::========Step8000========
+INFO::0
+2018-05-14 10:29:06.372538: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(5.933656, 0.0)
+INFO::inps_baseline: 4.383094966888428
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.7550066709518433
+INFO::disc_cost fake: 0.25384432077407837, real: 1.1032124757766724
+INFO::========Step10000========
+INFO::0
+2018-05-14 10:32:29.046243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.015599, 0.0)
+INFO::inps_baseline: 4.709595728302002
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.7503855228424072
+INFO::disc_cost fake: 0.29576006531715393, real: 0.8996114730834961
+INFO::========Step12000========
+INFO::0
+2018-05-14 10:35:51.582166: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.1266704, 0.0)
+INFO::inps_baseline: 4.993010654754639
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.6926685571670532
+INFO::disc_cost fake: 0.30739396810531616, real: 0.7126520872116089
+INFO::========Step14000========
+INFO::0
+2018-05-14 10:39:11.665204: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.284128, 0.0)
+INFO::inps_baseline: 5.251234161621094
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.8243563175201416
+INFO::disc_cost fake: 0.2688833773136139, real: 0.8763731718063354
+INFO::========Step16000========
+INFO::0
+2018-05-14 10:42:32.470869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.2597046, 0.0)
+INFO::inps_baseline: 5.452928247265625
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.029273509979248
+INFO::disc_cost fake: 0.22852998971939087, real: 0.7325239181518555
+INFO::========Step18000========
+INFO::0
+2018-05-14 10:45:55.716867: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.2455263, 0.0)
+INFO::inps_baseline: 5.611447860568847
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.9167072772979736
+INFO::disc_cost fake: 0.2734585702419281, real: 0.6661386489868164
+INFO::========Step20000========
+INFO::0
+2018-05-14 10:49:18.100843: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.4331927, 0.0)
+INFO::inps_baseline: 5.775796834445068
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 5.005389213562012
+INFO::disc_cost fake: 0.025476932525634766, real: 3.126206874847412
+INFO::========Step22000========
+INFO::0
+2018-05-14 10:52:38.055003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5105696, 0.0)
+INFO::inps_baseline: 5.9227513820458
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.6826568841934204
+INFO::disc_cost fake: 0.34185129404067993, real: 0.5383471846580505
+INFO::========Step24000========
+INFO::0
+2018-05-14 10:55:58.649269: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5121903, 0.0)
+INFO::inps_baseline: 6.040639174026532
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.1057510375976562
+INFO::disc_cost fake: 0.2809644043445587, real: 0.7476452589035034
+INFO::========Step26000========
+INFO::0
+2018-05-14 10:59:21.424398: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6339293, 0.0)
+INFO::inps_baseline: 6.159297189746129
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.6756458282470703
+INFO::disc_cost fake: 0.1491788923740387, real: 0.7107557654380798
+INFO::========Step28000========
+INFO::0
+2018-05-14 11:02:43.512334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.3272696, 0.0)
+INFO::inps_baseline: 6.19289166262454
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.00539231300354
+INFO::disc_cost fake: 0.2714827358722687, real: 0.6039813756942749
+INFO::========Step30000========
+INFO::0
+2018-05-14 11:06:03.207599: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.338786, 0.0)
+INFO::inps_baseline: 6.222070555136253
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 4.381386756896973
+INFO::disc_cost fake: 0.0798335075378418, real: 2.8611836433410645
+INFO::========Step32000========
+INFO::0
+2018-05-14 11:09:23.685424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5198436, 0.0)
+INFO::inps_baseline: 6.281625159776727
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.3271477222442627
+INFO::disc_cost fake: 0.21623656153678894, real: 0.49990296363830566
+INFO::========Step34000========
+INFO::0
+2018-05-14 11:12:46.388286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5754123, 0.0)
+INFO::inps_baseline: 6.3403825825027775
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.8407034873962402
+INFO::disc_cost fake: 0.14242464303970337, real: 0.814045786857605
+INFO::========Step36000========
+INFO::0
+2018-05-14 11:16:08.521792: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.4537396, 0.0)
+INFO::inps_baseline: 6.363053994621607
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.518184185028076
+INFO::disc_cost fake: 0.19151818752288818, real: 0.516348123550415
+INFO::========Step38000========
+INFO::0
+2018-05-14 11:19:28.671194: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.482791, 0.0)
+INFO::inps_baseline: 6.387001385089376
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.6192994117736816
+INFO::disc_cost fake: 0.18305227160453796, real: 0.5734835267066956
+INFO::========Step40000========
+INFO::0
+2018-05-14 11:22:49.281967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.444147, 0.0)
+INFO::inps_baseline: 6.3984305300685715
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.0581605434417725
+INFO::disc_cost fake: 0.29211166501045227, real: 0.5362926721572876
+INFO::========Step42000========
+INFO::0
+2018-05-14 11:26:12.204378: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.659649, 0.0)
+INFO::inps_baseline: 6.450674203107591
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.5348353385925293
+INFO::disc_cost fake: 0.19880211353302002, real: 0.5725604891777039
+INFO::========Step44000========
+INFO::0
+2018-05-14 11:29:34.355422: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5770335, 0.0)
+INFO::inps_baseline: 6.475946066435047
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.66899037361145
+INFO::disc_cost fake: 0.15450432896614075, real: 0.5049515962600708
+INFO::========Step46000========
+INFO::0
+2018-05-14 11:32:54.421814: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.4174767, 0.0)
+INFO::inps_baseline: 6.4642521839585845
+INFO::gen_cost: 3.102961540222168
+INFO::disc_cost fake: 0.11417065560817719, real: 0.7823542356491089
+INFO::========Step48000========
+INFO::1
+2018-05-14 11:36:14.788131: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.571315, 0.0)
+INFO::inps_baseline: 6.4856647095081765
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.3160362243652344
+INFO::disc_cost fake: 0.25169995427131653, real: 0.4714745581150055
+INFO::========Step50000========
+INFO::0
+2018-05-14 11:39:37.367842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.746959, 0.0)
+INFO::inps_baseline: 6.537923609494968
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 1.8988245725631714
+INFO::disc_cost fake: 0.4968966245651245, real: 0.18141672015190125
+INFO::========Step52000========
+INFO::0
+2018-05-14 11:42:59.669969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6338153, 0.0)
+INFO::inps_baseline: 6.557101945304715
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.6803483963012695
+INFO::disc_cost fake: 0.16884395480155945, real: 0.4723324775695801
+INFO::========Step54000========
+INFO::0
+2018-05-14 11:46:19.581454: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6856503, 0.0)
+INFO::inps_baseline: 6.582811625976438
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.6700963973999023
+INFO::disc_cost fake: 0.08291472494602203, real: 1.08603835105896
+INFO::========Step56000========
+INFO::0
+2018-05-14 11:49:40.006536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.713966, 0.0)
+INFO::inps_baseline: 6.6090424793395
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.3449809551239014
+INFO::disc_cost fake: 0.10799089074134827, real: 0.5938650369644165
+INFO::========Step58000========
+INFO::0
+2018-05-14 11:53:02.992328: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.652747, 0.0)
+INFO::inps_baseline: 6.617783414318769
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.4474446773529053
+INFO::disc_cost fake: 0.2818244695663452, real: 0.39808082580566406
+INFO::========Step60000========
+INFO::0
+2018-05-14 11:56:25.427313: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.824022, 0.0)
+INFO::inps_baseline: 6.659031094705748
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.3475708961486816
+INFO::disc_cost fake: 0.12917505204677582, real: 0.5636630654335022
+INFO::========Step62000========
+INFO::0
+2018-05-14 11:59:45.725618: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7342644, 0.0)
+INFO::inps_baseline: 6.674077750520458
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.500943660736084
+INFO::disc_cost fake: 0.12095539271831512, real: 0.7196891903877258
+INFO::========Step64000========
+INFO::0
+2018-05-14 12:03:05.894513: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.739396, 0.0)
+INFO::inps_baseline: 6.687141419471542
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.5910539627075195
+INFO::disc_cost fake: 0.14156249165534973, real: 0.5892934799194336
+INFO::========Step66000========
+INFO::0
+2018-05-14 12:06:28.582007: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.668018, 0.0)
+INFO::inps_baseline: 6.6833167084226925
+INFO::gen_cost: 3.3701345920562744
+INFO::disc_cost fake: 0.09017570316791534, real: 0.7799457311630249
+INFO::========Step68000========
+INFO::1
+2018-05-14 12:09:50.834674: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.670428, 0.0)
+INFO::inps_baseline: 6.680738926583125
+INFO::gen_cost: 3.2404441833496094
+INFO::disc_cost fake: 0.1398950219154358, real: 0.42044493556022644
+INFO::========Step70000========
+INFO::2
+2018-05-14 12:13:10.691307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6995006, 0.0)
+INFO::inps_baseline: 6.684491253418599
+INFO::gen_cost: 3.4746336936950684
+INFO::disc_cost fake: 0.10647605359554291, real: 0.7291114926338196
+INFO::========Step72000========
+INFO::3
+2018-05-14 12:16:31.121203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.903023, 0.0)
+INFO::inps_baseline: 6.728197555957536
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.350040912628174
+INFO::disc_cost fake: 0.14697808027267456, real: 0.5813713073730469
+INFO::========Step74000========
+INFO::0
+2018-05-14 12:19:54.360318: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.783856, 0.0)
+INFO::inps_baseline: 6.739329227779944
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.1910862922668457
+INFO::disc_cost fake: 0.13850446045398712, real: 0.8206260800361633
+INFO::========Step76000========
+INFO::0
+2018-05-14 12:23:16.731643: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6495543, 0.0)
+INFO::inps_baseline: 6.7213742327488575
+INFO::gen_cost: 3.7201104164123535
+INFO::disc_cost fake: 0.09609659016132355, real: 0.829953134059906
+INFO::========Step78000========
+INFO::1
+2018-05-14 12:26:36.255584: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.81144, 0.0)
+INFO::inps_baseline: 6.739387384398549
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.518580913543701
+INFO::disc_cost fake: 0.10241013020277023, real: 0.561693012714386
+INFO::========Step80000========
+INFO::0
+2018-05-14 12:29:56.676185: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.9239683, 0.0)
+INFO::inps_baseline: 6.7763035705437416
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.426386833190918
+INFO::disc_cost fake: 0.1282459944486618, real: 0.6126284003257751
+INFO::========Step82000========
+INFO::0
+2018-05-14 12:33:19.385959: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8870964, 0.0)
+INFO::inps_baseline: 6.798462137440853
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.420292615890503
+INFO::disc_cost fake: 0.12382897734642029, real: 0.5741423964500427
+INFO::========Step84000========
+INFO::0
+2018-05-14 12:36:41.543537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7417173, 0.0)
+INFO::inps_baseline: 6.787113177665085
+INFO::gen_cost: 3.4194493293762207
+INFO::disc_cost fake: 0.17238888144493103, real: 0.5774016976356506
+INFO::========Step86000========
+INFO::1
+2018-05-14 12:40:01.231407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7426114, 0.0)
+INFO::inps_baseline: 6.778212823778796
+INFO::gen_cost: 3.4547901153564453
+INFO::disc_cost fake: 0.10952937602996826, real: 0.6570473909378052
+INFO::========Step88000========
+INFO::2
+2018-05-14 12:43:21.744272: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.821237, 0.0)
+INFO::inps_baseline: 6.786817676472988
+INFO::gen_cost: 2.4084479808807373
+INFO::disc_cost fake: 0.300215482711792, real: 0.692871630191803
+INFO::========Step90000========
+INFO::3
+2018-05-14 12:46:44.328113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7017946, 0.0)
+INFO::inps_baseline: 6.769813066044113
+INFO::gen_cost: 3.2888145446777344
+INFO::disc_cost fake: 0.1305742859840393, real: 0.5988524556159973
+INFO::========Step92000========
+INFO::4
+2018-05-14 12:50:06.279952: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.746969, 0.0)
+INFO::inps_baseline: 6.765244297439783
+INFO::gen_cost: 4.2940897941589355
+INFO::disc_cost fake: 0.09993104636669159, real: 0.9086471199989319
+INFO::========Step94000========
+INFO::5
+2018-05-14 12:53:25.776447: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.735482, 0.0)
+INFO::inps_baseline: 6.759291881128096
+INFO::gen_cost: 4.30974006652832
+INFO::disc_cost fake: 0.05522283539175987, real: 0.7503708600997925
+INFO::========Step96000========
+INFO::6
+2018-05-14 12:56:45.929070: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8441195, 0.0)
+INFO::inps_baseline: 6.776257414661998
+INFO::gen_cost: 3.89013934135437
+INFO::disc_cost fake: 0.08073696494102478, real: 0.6742221713066101
+INFO::========Step98000========
+INFO::7
+2018-05-14 13:00:08.483666: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.880635, 0.0)
+INFO::inps_baseline: 6.797132888669296
+INFO::gen_cost: 3.4611973762512207
+INFO::disc_cost fake: 0.13029441237449646, real: 0.5515833497047424
+INFO::========Step100000========
+INFO::8
+2018-05-14 13:03:30.429889: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.781368, 0.0)
+INFO::inps_baseline: 6.793979866691052
+INFO::gen_cost: 4.247520446777344
+INFO::disc_cost fake: 0.0871075689792633, real: 0.7472288608551025
+INFO::========Step102000========
+INFO::9
+2018-05-14 13:06:50.009770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.814407, 0.0)
+INFO::inps_baseline: 6.798065267711973
+INFO::gen_cost: 3.2733278274536133
+INFO::disc_cost fake: 0.2049679160118103, real: 0.8280694484710693
+INFO::========Step104000========
+INFO::10
+2018-05-14 13:10:10.392790: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.824669, 0.0)
+INFO::inps_baseline: 6.803385991025047
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 3.6103904247283936
+INFO::disc_cost fake: 0.1400231271982193, real: 0.4707377552986145
+INFO::========Step106000========
+INFO::0
+2018-05-14 13:13:33.213307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.825828, 0.0)
+INFO::inps_baseline: 6.807874407901825
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 2.126528263092041
+INFO::disc_cost fake: 0.5094561576843262, real: 1.4005975723266602
+INFO::========Step108000========
+INFO::0
+2018-05-14 13:16:55.659304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.825108, 0.0)
+INFO::inps_baseline: 6.81132113658147
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/dcgan_baseline_cifar_01/model
+INFO::gen_cost: 4.3556227684021
+INFO::disc_cost fake: 0.07365521043539047, real: 0.6954512000083923
+INFO::========Step110000========
+INFO::0
+2018-05-14 13:20:15.554728: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.753136, 0.0)
+INFO::inps_baseline: 6.799684140863077
+INFO::gen_cost: 4.612536907196045
+INFO::disc_cost fake: 0.0636080950498581, real: 0.7367764711380005
+INFO::========Step112000========
+INFO::1
+2018-05-14 13:23:36.081190: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.710602, 0.0)
+INFO::inps_baseline: 6.781867674018587
+INFO::gen_cost: 3.606658935546875
+INFO::disc_cost fake: 0.14280985295772552, real: 0.6940823197364807
+INFO::========Step114000========
+INFO::2
+2018-05-14 13:26:58.888262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7487526, 0.0)
+INFO::inps_baseline: 6.775244658013698
+INFO::gen_cost: 4.751943588256836
+INFO::disc_cost fake: 0.04745859280228615, real: 0.8566089868545532
+INFO::========Step116000========
+INFO::3
+2018-05-14 13:30:21.106470: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.717231, 0.0)
+INFO::inps_baseline: 6.763641885773751
+INFO::gen_cost: 3.2179956436157227
+INFO::disc_cost fake: 0.1708044409751892, real: 0.43351882696151733
+INFO::========Step118000========
+INFO::4
+2018-05-14 13:33:41.309325: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6308036, 0.0)
+INFO::inps_baseline: 6.737074225629499
+INFO::gen_cost: 4.019042015075684
+INFO::disc_cost fake: 0.08156239241361618, real: 0.6877667903900146
+INFO::========Step120000========
+INFO::5
+2018-05-14 13:37:01.945921: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.867961, 0.0)
+INFO::inps_baseline: 6.76325156647772
+INFO::gen_cost: 4.8203125
+INFO::disc_cost fake: 0.05812181904911995, real: 0.9606630206108093
+INFO::========Step122000========
+INFO::6
+2018-05-14 13:40:24.602847: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.903465, 0.0)
+INFO::inps_baseline: 6.791294212013963
+INFO::gen_cost: 4.003856658935547
+INFO::disc_cost fake: 0.09687858074903488, real: 0.609410285949707
+INFO::========Step124000========
+INFO::7
+2018-05-14 13:43:46.732960: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.775596, 0.0)
+INFO::inps_baseline: 6.788154597974208
+INFO::gen_cost: 4.3981523513793945
+INFO::disc_cost fake: 0.11418905854225159, real: 0.5753777623176575
+INFO::========Step126000========
+INFO::8
+2018-05-14 13:47:06.315009: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.793713, 0.0)
+INFO::inps_baseline: 6.789266296940157
+INFO::gen_cost: 3.6119489669799805
+INFO::disc_cost fake: 0.12226516008377075, real: 0.4532572627067566
+INFO::========Step128000========
+INFO::9
+2018-05-14 13:50:26.633551: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.841789, 0.0)
+INFO::inps_baseline: 6.799770791305788
+INFO::gen_cost: 4.556653022766113
+INFO::disc_cost fake: 0.07183279097080231, real: 0.5064526796340942
+INFO::========Step130000========
+INFO::10
+2018-05-14 13:53:49.444340: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.812442, 0.0)
+INFO::inps_baseline: 6.80230499821797
+INFO::gen_cost: 4.539788722991943
+INFO::disc_cost fake: 0.07216805964708328, real: 0.8434702754020691
+INFO::6.81132113658147
+2018-05-14 13:55:49.098080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Load 50000 samples.
+Load 10000 samples.
+(6.826076, 0.0)

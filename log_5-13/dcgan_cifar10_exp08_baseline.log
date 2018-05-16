@@ -1,0 +1,464 @@
+2018-05-13 18:18:25.753409: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-13 18:18:26.663747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-13 18:18:26.663776: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-13 18:18:26.745769: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/cifar10/cifar-10-batches-py
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan_cifar10
+INFO::batch_size:: 128
+INFO::lr_stud:: 0.0002
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 2000
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 10
+INFO::max_training_step:: 200000
+INFO::stop_strategy_stud:: prescribed_steps
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 3072
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_threshold:: 6.3
+INFO::inps_batches:: 100
+INFO::inps_splits:: 1
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::logit_clipping_c:: 2
+INFO::dim_state_rl:: 5
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 2
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::reward_baseline_decay:: 0.8
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+2018-05-13 18:18:27.953737: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::========Step2000========
+INFO::0
+2018-05-13 18:20:37.522372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+2018-05-13 18:20:37.875349: W tensorflow/core/framework/op_def_util.cc:334] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().
+INFO::(3.195437, 0.0)
+INFO::inps_baseline: 3.195436954498291
+INFO::gen_cost: 2.041053533554077
+INFO::disc_cost fake: 0.24730369448661804, real: 0.9233839511871338
+INFO::========Step4000========
+INFO::0
+2018-05-13 18:24:02.549479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(4.3760567, 0.0)
+INFO::inps_baseline: 3.4315608978271483
+INFO::gen_cost: 1.3910086154937744
+INFO::disc_cost fake: 0.37922394275665283, real: 0.5966260433197021
+INFO::========Step6000========
+INFO::0
+2018-05-13 18:27:24.168566: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(5.208917, 0.0)
+INFO::inps_baseline: 3.787032146453857
+INFO::gen_cost: 1.5464715957641602
+INFO::disc_cost fake: 0.3532789945602417, real: 0.590492844581604
+INFO::========Step8000========
+INFO::0
+2018-05-13 18:30:47.751221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(5.4878016, 0.0)
+INFO::inps_baseline: 4.127186027526855
+INFO::gen_cost: 1.1617728471755981
+INFO::disc_cost fake: 0.5053653120994568, real: 0.6068241596221924
+INFO::========Step10000========
+INFO::0
+2018-05-13 18:34:10.784358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(5.822677, 0.0)
+INFO::inps_baseline: 4.466284249114989
+INFO::gen_cost: 1.3777183294296265
+INFO::disc_cost fake: 0.4278104901313782, real: 0.5755296349525452
+INFO::========Step12000========
+INFO::0
+2018-05-13 18:37:31.430103: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.093856, 0.0)
+INFO::inps_baseline: 4.791798570861815
+INFO::gen_cost: 1.6435216665267944
+INFO::disc_cost fake: 0.3210518956184387, real: 0.7050884962081909
+INFO::========Step14000========
+INFO::0
+2018-05-13 18:40:52.719779: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.1283503, 0.0)
+INFO::inps_baseline: 5.059108908264159
+INFO::gen_cost: 1.489694356918335
+INFO::disc_cost fake: 0.35120341181755066, real: 0.5970432758331299
+INFO::========Step16000========
+INFO::0
+2018-05-13 18:44:16.271869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.262837, 0.0)
+INFO::inps_baseline: 5.299854513238524
+INFO::gen_cost: 0.9586274027824402
+INFO::disc_cost fake: 0.837024986743927, real: 0.3923320174217224
+INFO::========Step18000========
+INFO::0
+2018-05-13 18:47:39.393153: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.38875, 0.0)
+INFO::inps_baseline: 5.517633625849609
+INFO::gen_cost: 1.2942695617675781
+INFO::disc_cost fake: 0.49317049980163574, real: 0.39921334385871887
+INFO::========Step20000========
+INFO::0
+2018-05-13 18:51:00.121389: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.3156643, 0.0)
+INFO::inps_baseline: 5.677239758956054
+INFO::gen_cost: 2.109968662261963
+INFO::disc_cost fake: 0.2306414246559143, real: 0.6908925175666809
+INFO::========Step22000========
+INFO::0
+2018-05-13 18:54:21.190680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.490447, 0.0)
+INFO::inps_baseline: 5.8398812160393545
+INFO::gen_cost: 1.4478507041931152
+INFO::disc_cost fake: 0.4630412459373474, real: 0.39477044343948364
+INFO::========Step24000========
+INFO::0
+2018-05-13 18:57:44.949348: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.488213, 0.0)
+INFO::inps_baseline: 5.969547585288758
+INFO::gen_cost: 1.4219437837600708
+INFO::disc_cost fake: 0.4934036135673523, real: 0.2854659855365753
+INFO::========Step26000========
+INFO::0
+2018-05-13 19:01:07.950274: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.608506, 0.0)
+INFO::inps_baseline: 6.097339308770557
+INFO::gen_cost: 2.023829460144043
+INFO::disc_cost fake: 0.2629936933517456, real: 0.5335017442703247
+INFO::========Step28000========
+INFO::0
+2018-05-13 19:04:28.890145: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.4345036, 0.0)
+INFO::inps_baseline: 6.1647721580760155
+INFO::gen_cost: 1.9845255613327026
+INFO::disc_cost fake: 0.30248120427131653, real: 0.4489603042602539
+INFO::========Step30000========
+INFO::0
+2018-05-13 19:07:50.644412: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.5818577, 0.0)
+INFO::inps_baseline: 6.248189262715695
+INFO::gen_cost: 1.7667783498764038
+INFO::disc_cost fake: 0.46436527371406555, real: 0.37086501717567444
+INFO::========Step32000========
+INFO::0
+2018-05-13 19:11:14.646601: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.598631, 0.0)
+INFO::inps_baseline: 6.318277591202829
+INFO::gen_cost: 2.884669303894043
+INFO::disc_cost fake: 0.1182563304901123, real: 0.6783696413040161
+INFO::========Step34000========
+INFO::0
+2018-05-13 19:14:37.777353: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.660655, 0.0)
+INFO::inps_baseline: 6.38675307729576
+INFO::gen_cost: 2.505066394805908
+INFO::disc_cost fake: 0.18170201778411865, real: 0.5302900075912476
+INFO::========Step36000========
+INFO::0
+2018-05-13 19:17:58.902332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.567982, 0.0)
+INFO::inps_baseline: 6.422998901198181
+INFO::gen_cost: 2.568772077560425
+INFO::disc_cost fake: 0.18426305055618286, real: 0.4987965226173401
+INFO::========Step38000========
+INFO::0
+2018-05-13 19:21:20.487628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7520633, 0.0)
+INFO::inps_baseline: 6.488811775835254
+INFO::gen_cost: 2.617692470550537
+INFO::disc_cost fake: 0.15066683292388916, real: 0.6184014081954956
+INFO::========Step40000========
+INFO::0
+2018-05-13 19:24:44.280476: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.661202, 0.0)
+INFO::inps_baseline: 6.523289811445792
+INFO::gen_cost: 2.6841747760772705
+INFO::disc_cost fake: 0.217075377702713, real: 0.5354442596435547
+INFO::========Step42000========
+INFO::0
+2018-05-13 19:28:07.597131: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6545978, 0.0)
+INFO::inps_baseline: 6.549551401005998
+INFO::gen_cost: 3.1770050525665283
+INFO::disc_cost fake: 0.137969508767128, real: 1.1978070735931396
+INFO::========Step44000========
+INFO::0
+2018-05-13 19:31:28.669570: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.758921, 0.0)
+INFO::inps_baseline: 6.591425350083363
+INFO::gen_cost: 2.55914568901062
+INFO::disc_cost fake: 0.19662068784236908, real: 0.6267635226249695
+INFO::========Step46000========
+INFO::0
+2018-05-13 19:34:50.186667: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.6490917, 0.0)
+INFO::inps_baseline: 6.602958624182902
+INFO::gen_cost: 3.010577917098999
+INFO::disc_cost fake: 0.1567137986421585, real: 0.47805649042129517
+INFO::========Step48000========
+INFO::0
+2018-05-13 19:38:14.205316: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.765575, 0.0)
+INFO::inps_baseline: 6.635481885765999
+INFO::gen_cost: 3.423022747039795
+INFO::disc_cost fake: 0.09983867406845093, real: 0.7796069383621216
+INFO::========Step50000========
+INFO::0
+2018-05-13 19:41:37.460407: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8505607, 0.0)
+INFO::inps_baseline: 6.678497641638922
+INFO::gen_cost: 2.1384384632110596
+INFO::disc_cost fake: 0.32724907994270325, real: 0.36728960275650024
+INFO::========Step52000========
+INFO::0
+2018-05-13 19:44:58.485074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.9542103, 0.0)
+INFO::inps_baseline: 6.733640169585551
+INFO::gen_cost: 3.396057605743408
+INFO::disc_cost fake: 0.10482059419155121, real: 0.8240554928779602
+INFO::========Step54000========
+INFO::0
+2018-05-13 19:48:20.149846: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7571945, 0.0)
+INFO::inps_baseline: 6.738351039477035
+INFO::gen_cost: 2.5504345893859863
+INFO::disc_cost fake: 0.26958346366882324, real: 0.3168599605560303
+INFO::========Step56000========
+INFO::0
+2018-05-13 19:51:44.057567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8053164, 0.0)
+INFO::inps_baseline: 6.751744121223962
+INFO::gen_cost: 2.911752223968506
+INFO::disc_cost fake: 0.18393586575984955, real: 0.48575282096862793
+INFO::========Step58000========
+INFO::0
+2018-05-13 19:55:07.405574: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7799325, 0.0)
+INFO::inps_baseline: 6.7573817967655465
+INFO::gen_cost: 2.969667434692383
+INFO::disc_cost fake: 0.12986400723457336, real: 0.4616924822330475
+INFO::========Step60000========
+INFO::0
+2018-05-13 19:58:28.601733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.79318, 0.0)
+INFO::inps_baseline: 6.764541435184654
+INFO::gen_cost: 2.892505645751953
+INFO::disc_cost fake: 0.16833661496639252, real: 0.730170488357544
+INFO::========Step62000========
+INFO::0
+2018-05-13 20:01:50.114460: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.73711, 0.0)
+INFO::inps_baseline: 6.759055175735614
+INFO::gen_cost: 0.9600787162780762
+INFO::disc_cost fake: 0.824111819267273, real: 0.7369139194488525
+INFO::========Step64000========
+INFO::1
+2018-05-13 20:05:13.600288: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7050486, 0.0)
+INFO::inps_baseline: 6.748253852807729
+INFO::gen_cost: 2.8131909370422363
+INFO::disc_cost fake: 0.2067650556564331, real: 0.41199907660484314
+INFO::========Step66000========
+INFO::2
+2018-05-13 20:08:36.778129: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7916636, 0.0)
+INFO::inps_baseline: 6.756935811585783
+INFO::gen_cost: 3.8130645751953125
+INFO::disc_cost fake: 0.08262933045625687, real: 0.6827373504638672
+INFO::========Step68000========
+INFO::3
+2018-05-13 20:11:57.792171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.78523, 0.0)
+INFO::inps_baseline: 6.762594681220531
+INFO::gen_cost: 3.952488899230957
+INFO::disc_cost fake: 0.08869188278913498, real: 0.7003893852233887
+INFO::========Step70000========
+INFO::4
+2018-05-13 20:15:18.995073: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7352905, 0.0)
+INFO::inps_baseline: 6.757133850445174
+INFO::gen_cost: 3.4467685222625732
+INFO::disc_cost fake: 0.10627810657024384, real: 0.6979712247848511
+INFO::========Step72000========
+INFO::5
+2018-05-13 20:18:42.827343: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7131295, 0.0)
+INFO::inps_baseline: 6.748332984439392
+INFO::gen_cost: 3.234989643096924
+INFO::disc_cost fake: 0.1640101820230484, real: 0.3963955044746399
+INFO::========Step74000========
+INFO::6
+2018-05-13 20:22:06.097203: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.787278, 0.0)
+INFO::inps_baseline: 6.756122022622314
+INFO::gen_cost: 1.8134765625
+INFO::disc_cost fake: 0.5165743827819824, real: 0.6117672920227051
+INFO::========Step76000========
+INFO::7
+2018-05-13 20:25:27.073410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.863366, 0.0)
+INFO::inps_baseline: 6.777570843500683
+INFO::gen_cost: 2.8892290592193604
+INFO::disc_cost fake: 0.17885145545005798, real: 0.3984391689300537
+INFO::========Step78000========
+INFO::0
+2018-05-13 20:28:48.286759: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8664217, 0.0)
+INFO::inps_baseline: 6.795341014705333
+INFO::gen_cost: 3.3821239471435547
+INFO::disc_cost fake: 0.13749322295188904, real: 0.5982359647750854
+INFO::========Step80000========
+INFO::0
+2018-05-13 20:32:11.951941: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7932367, 0.0)
+INFO::inps_baseline: 6.794920158260848
+INFO::gen_cost: 3.4761266708374023
+INFO::disc_cost fake: 0.09896518290042877, real: 0.3929485082626343
+INFO::========Step82000========
+INFO::1
+2018-05-13 20:35:35.150834: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.899107, 0.0)
+INFO::inps_baseline: 6.815757522482702
+INFO::gen_cost: 3.7435569763183594
+INFO::disc_cost fake: 0.11562582850456238, real: 0.6401101350784302
+INFO::========Step84000========
+INFO::0
+2018-05-13 20:38:55.686088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7013736, 0.0)
+INFO::inps_baseline: 6.792880733409746
+INFO::gen_cost: 4.1478705406188965
+INFO::disc_cost fake: 0.05721401050686836, real: 0.6746612787246704
+INFO::========Step86000========
+INFO::1
+2018-05-13 20:42:17.213321: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.9531045, 0.0)
+INFO::inps_baseline: 6.824925485928237
+INFO::gen_cost: 3.3689610958099365
+INFO::disc_cost fake: 0.1751776933670044, real: 0.45840588212013245
+INFO::========Step88000========
+INFO::0
+2018-05-13 20:45:40.969392: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8698, 0.0)
+INFO::inps_baseline: 6.833900406900549
+INFO::gen_cost: 3.8360400199890137
+INFO::disc_cost fake: 0.11389593780040741, real: 0.6601539254188538
+INFO::========Step90000========
+INFO::0
+2018-05-13 20:49:04.049929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.816329, 0.0)
+INFO::inps_baseline: 6.8303861259965135
+INFO::gen_cost: 5.780420303344727
+INFO::disc_cost fake: 0.029992638155817986, real: 3.652658224105835
+INFO::========Step92000========
+INFO::1
+2018-05-13 20:52:24.966307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.674786, 0.0)
+INFO::inps_baseline: 6.799266118967377
+INFO::gen_cost: 3.621138572692871
+INFO::disc_cost fake: 0.11512159556150436, real: 0.6408517956733704
+INFO::========Step94000========
+INFO::2
+2018-05-13 20:55:46.026619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8281574, 0.0)
+INFO::inps_baseline: 6.805044380159253
+INFO::gen_cost: 4.334395408630371
+INFO::disc_cost fake: 0.10386508703231812, real: 0.7275655269622803
+INFO::========Step96000========
+INFO::3
+2018-05-13 20:59:09.706443: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.909376, 0.0)
+INFO::inps_baseline: 6.825910733009238
+INFO::gen_cost: 4.2124552726745605
+INFO::disc_cost fake: 0.0778387039899826, real: 0.6317462921142578
+INFO::========Step98000========
+INFO::4
+2018-05-13 21:02:32.687689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.7985554, 0.0)
+INFO::inps_baseline: 6.820439661236492
+INFO::gen_cost: 1.6373028755187988
+INFO::disc_cost fake: 0.44529271125793457, real: 0.8736307621002197
+INFO::========Step100000========
+INFO::5
+2018-05-13 21:05:53.625774: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.9573975, 0.0)
+INFO::inps_baseline: 6.847831221176694
+INFO::gen_cost: 4.4340901374816895
+INFO::disc_cost fake: 0.08429501950740814, real: 0.6638706922531128
+INFO::========Step102000========
+INFO::0
+2018-05-13 21:09:15.153596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.9969287, 0.0)
+INFO::inps_baseline: 6.877650715314158
+INFO::gen_cost: 3.4474589824676514
+INFO::disc_cost fake: 0.12097011506557465, real: 0.47456470131874084
+INFO::========Step104000========
+INFO::0
+2018-05-13 21:12:38.784366: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.822715, 0.0)
+INFO::inps_baseline: 6.866663533371932
+INFO::gen_cost: 4.129868507385254
+INFO::disc_cost fake: 0.08237382769584656, real: 0.6663382053375244
+INFO::========Step106000========
+INFO::1
+2018-05-13 21:16:01.957965: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8447185, 0.0)
+INFO::inps_baseline: 6.862274517951208
+INFO::gen_cost: 4.4678215980529785
+INFO::disc_cost fake: 0.05174138396978378, real: 0.6404950022697449
+INFO::========Step108000========
+INFO::2
+2018-05-13 21:19:22.929647: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(7.1041403, 0.0)
+INFO::inps_baseline: 6.910647670696417
+INFO::gen_cost: 4.679444313049316
+INFO::disc_cost fake: 0.054831840097904205, real: 0.6758827567100525
+INFO::========Step110000========
+INFO::0
+2018-05-13 21:22:44.559662: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8783026, 0.0)
+INFO::inps_baseline: 6.904178651388676
+INFO::gen_cost: 3.362809658050537
+INFO::disc_cost fake: 0.1458001285791397, real: 0.44062691926956177
+INFO::========Step112000========
+INFO::1
+2018-05-13 21:26:08.096063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8989086, 0.0)
+INFO::inps_baseline: 6.903124644133403
+INFO::gen_cost: 4.393404960632324
+INFO::disc_cost fake: 0.06563334167003632, real: 0.6268081665039062
+INFO::========Step114000========
+INFO::2
+2018-05-13 21:29:31.209986: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::(6.8598824, 0.0)
+INFO::inps_baseline: 6.894476186253987
+INFO::gen_cost: 4.259048938751221
+INFO::disc_cost fake: 0.0879468023777008, real: 0.6300538778305054
+INFO::========Step116000========
+INFO::3
+2018-05-13 21:32:51.980293: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)

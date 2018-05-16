@@ -31,11 +31,6 @@ def discount_rewards(reward, final_reward):
     reward_dis = np.array(reward) + np.array(final_reward)
     return reward_dis
 
-def _sampling(num):
-    p = np.random.rand(1)
-    p = min(p, 1-1e-9)
-    return int(p * num)
-
 class Trainer():
     """ A class to wrap training code. """
     def __init__(self, config, exp_name=None, arch=None):
@@ -214,7 +209,7 @@ class Trainer():
                 if final_reward > best_reward:
                     best_reward = final_reward
                     best_loss = loss
-                    save_model_flag = Ture
+                    save_model_flag = True
                 logger.info('best_loss: {}'.format(loss))
                 logger.info('lambda1: {}'.format(config.lambda1_stud))
             elif config.student_model_name == 'cls':
@@ -227,7 +222,7 @@ class Trainer():
                     best_acc = acc
                     best_loss = loss
                     save_model_flag = True
-                    endurance = 0
+                    enduranc = 0
                 else:
                     endurance += 1
                 logger.info('acc: {}'.format(acc))
@@ -249,13 +244,13 @@ class Trainer():
                             format(model_stud.final_inps_baseline))
             elif config.student_model_name == 'gan_grid':
                 loss_analyzer_gan(action_hist, reward_hist)
-                hq_ratio = model_stud.best_hq_ratio
+                hq = model_stud.best_hq
                 if final_reward > best_reward:
                     best_reward = final_reward
-                    best_hq_ratio = hq_ratio
+                    best_hq = hq
                     save_model_flag = True
-                logger.info('hq_ratio: {}'.format(hq_ratio))
-                logger.info('best_hq_ratio: {}'.format(best_hq_ratio))
+                logger.info('hq: {}'.format(hq))
+                logger.info('best_hq: {}'.format(best_hq))
 
             logger.info('adv: {}'.format(adv))
 
@@ -330,12 +325,12 @@ if __name__ == '__main__':
     # classification task controllor model
     #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
     # gan mnist task controllor model
-    #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
+    load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
     # ----Training----
     #   --Start from pretrained--
     #trainer.train(load_ctrl=load_ctrl)
     #   --Start from strach--
-    trainer.train(save_ctrl=True)
+    #trainer.train(save_ctrl=True)
     #trainer.train()
 
     ## ----Baseline----
@@ -348,7 +343,7 @@ if __name__ == '__main__':
     ## ----Testing----
     logger.info('TEST')
     test_accs = []
-    for i in range(10):
+    for i in range(1):
         test_accs.append(trainer.test(load_ctrl))
     logger.info(test_accs)
     logger.info(np.mean(np.array(test_accs)))

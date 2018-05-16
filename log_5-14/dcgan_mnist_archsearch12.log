@@ -1,0 +1,757 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-14 17:56:29.167007: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-14 17:56:30.192885: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-14 17:56:30.193078: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+2018-05-14 17:56:32.778585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::h2.haowen4.biglearning.orca.pdl.cmu.edu
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/mnist
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan
+INFO::batch_size:: 128
+INFO::lr_stud:: 0.0002
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 500
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 10
+INFO::max_training_step:: 200000
+INFO::stop_strategy_stud:: exceeding_endurance
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 784
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_threshold:: 6.3
+INFO::inps_batches:: 200
+INFO::inps_splits:: 5
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::logit_clipping_c:: 2
+INFO::dim_state_rl:: 5
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 2
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::inps_baseline_decay:: 0.8
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+INFO::exp_name: h2-haowen4_05-14-23-56
+2018-05-14 17:56:32.795152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::architecture:
+INFO::activation_D: tanh
+INFO::activation_G: relu
+INFO::batchnorm_D: False
+INFO::batchnorm_G: False
+INFO::depth_D: 2
+INFO::depth_G: 2
+INFO::dim_c_D: 32
+INFO::dim_c_G: 32
+INFO::dim_z: 128
+2018-05-14 17:56:32.862316: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::BASELINE
+INFO::========Step0========
+INFO::0
+INFO::(1.0011278, 9.658748e-06)
+INFO::inps_baseline: 1.00112783908844
+INFO::gen_cost: 0.6930903196334839
+INFO::disc_cost fake: 0.6932041049003601, real: 0.6811254024505615
+INFO::========Step500========
+INFO::0
+INFO::(1.3379277, 0.005234403)
+INFO::inps_baseline: 1.068487811088562
+INFO::========Step1000========
+INFO::0
+INFO::(1.1791899, 0.004341319)
+INFO::inps_baseline: 1.0906282329559327
+INFO::========Step1500========
+INFO::0
+INFO::(1.399917, 0.009811648)
+INFO::inps_baseline: 1.1524859876632692
+INFO::========Step2000========
+INFO::0
+INFO::(1.1651349, 0.0025689222)
+INFO::inps_baseline: 1.1550157714843752
+INFO::gen_cost: 0.6359670758247375
+INFO::disc_cost fake: 0.7547942996025085, real: 0.6595910787582397
+INFO::========Step2500========
+INFO::0
+INFO::(1.1272771, 0.002271323)
+INFO::inps_baseline: 1.1494680443573
+INFO::========Step3000========
+INFO::1
+INFO::(1.0808626, 0.0014813222)
+INFO::inps_baseline: 1.1357469637527466
+INFO::========Step3500========
+INFO::2
+INFO::(1.1130303, 0.0015497212)
+INFO::inps_baseline: 1.1312036338912965
+INFO::========Step4000========
+INFO::3
+INFO::(1.256108, 0.004478955)
+INFO::inps_baseline: 1.1561845162286377
+INFO::gen_cost: 0.6976639628410339
+INFO::disc_cost fake: 0.688797116279602, real: 0.7736534476280212
+INFO::========Step4500========
+INFO::0
+INFO::(1.2477434, 0.003138709)
+INFO::inps_baseline: 1.174496286612671
+INFO::========Step5000========
+INFO::0
+INFO::(1.1935717, 0.004114321)
+INFO::inps_baseline: 1.1783113666390748
+INFO::========Step5500========
+INFO::0
+INFO::(1.3229638, 0.0024456726)
+INFO::inps_baseline: 1.2072418600730397
+INFO::========Step6000========
+INFO::0
+INFO::(1.3572748, 0.0052243457)
+INFO::inps_baseline: 1.2372484422057706
+INFO::gen_cost: 0.6764768362045288
+INFO::disc_cost fake: 0.7101597785949707, real: 0.6686815619468689
+INFO::========Step6500========
+INFO::0
+INFO::(1.1894832, 0.0022949998)
+INFO::inps_baseline: 1.2276953869128098
+INFO::========Step7000========
+INFO::1
+INFO::(1.285784, 0.005062318)
+INFO::inps_baseline: 1.2393131107540027
+INFO::========Step7500========
+INFO::0
+INFO::(1.3127016, 0.0018227176)
+INFO::inps_baseline: 1.2539908051849282
+INFO::========Step8000========
+INFO::0
+INFO::(1.5816709, 0.0083638355)
+INFO::inps_baseline: 1.3195268202114803
+INFO::gen_cost: 0.6640856266021729
+INFO::disc_cost fake: 0.7234822511672974, real: 0.701468288898468
+INFO::========Step8500========
+INFO::0
+INFO::(1.7002773, 0.0066135935)
+INFO::inps_baseline: 1.3956769218674265
+INFO::========Step9000========
+INFO::0
+INFO::(1.3443818, 0.005594682)
+INFO::inps_baseline: 1.3854178993408652
+INFO::========Step9500========
+INFO::1
+INFO::(1.542023, 0.009671015)
+INFO::inps_baseline: 1.416738908172033
+INFO::========Step10000========
+INFO::0
+INFO::(1.5189326, 0.008416414)
+INFO::inps_baseline: 1.4371776427272016
+INFO::gen_cost: 0.7653650045394897
+INFO::disc_cost fake: 0.6265087127685547, real: 0.7242823243141174
+INFO::========Step10500========
+INFO::0
+INFO::(1.810746, 0.012873206)
+INFO::inps_baseline: 1.5118913050844713
+INFO::========Step11000========
+INFO::0
+INFO::(1.6159356, 0.009639727)
+INFO::inps_baseline: 1.5327001568758047
+INFO::========Step11500========
+INFO::0
+INFO::(1.9644191, 0.011095767)
+INFO::inps_baseline: 1.6190439508027676
+INFO::========Step12000========
+INFO::0
+INFO::(1.8343179, 0.010995143)
+INFO::inps_baseline: 1.6620987451606466
+INFO::gen_cost: 0.6747193336486816
+INFO::disc_cost fake: 0.7135560512542725, real: 0.701398491859436
+INFO::========Step12500========
+INFO::0
+INFO::(1.8506775, 0.008282094)
+INFO::inps_baseline: 1.6998144941753923
+INFO::========Step13000========
+INFO::0
+INFO::(1.7294359, 0.0095123025)
+INFO::inps_baseline: 1.7057387794833803
+INFO::========Step13500========
+INFO::0
+INFO::(1.7584594, 0.0073146927)
+INFO::inps_baseline: 1.7162829133495827
+INFO::========Step14000========
+INFO::0
+INFO::(2.0651493, 0.0027875614)
+INFO::inps_baseline: 1.7860561921298614
+INFO::gen_cost: 0.6642019748687744
+INFO::disc_cost fake: 0.724669873714447, real: 0.7118513584136963
+INFO::========Step14500========
+INFO::0
+INFO::(1.9012038, 0.008881659)
+INFO::inps_baseline: 1.8090857040166943
+INFO::========Step15000========
+INFO::0
+INFO::(1.9093244, 0.02106515)
+INFO::inps_baseline: 1.8291334447288583
+INFO::========Step15500========
+INFO::0
+INFO::(2.1986194, 0.013038786)
+INFO::inps_baseline: 1.9030306289215144
+INFO::========Step16000========
+INFO::0
+INFO::(2.2862828, 0.009171763)
+INFO::inps_baseline: 1.9796810586944624
+INFO::gen_cost: 0.7311038970947266
+INFO::disc_cost fake: 0.657950758934021, real: 0.6551190614700317
+INFO::========Step16500========
+INFO::0
+INFO::(2.490127, 0.017421644)
+INFO::inps_baseline: 2.081770264283451
+INFO::========Step17000========
+INFO::0
+INFO::(2.3722377, 0.016092423)
+INFO::inps_baseline: 2.1398637478952667
+INFO::========Step17500========
+INFO::0
+INFO::(2.1087954, 0.021935396)
+INFO::inps_baseline: 2.133650079203054
+INFO::========Step18000========
+INFO::1
+INFO::(2.308619, 0.002492126)
+INFO::inps_baseline: 2.1686438678363205
+INFO::gen_cost: 0.7192654609680176
+INFO::disc_cost fake: 0.6678938865661621, real: 0.6275648474693298
+INFO::========Step18500========
+INFO::0
+INFO::(2.4343963, 0.0136357)
+INFO::inps_baseline: 2.2217943476565076
+INFO::========Step19000========
+INFO::0
+INFO::(2.315516, 0.011782056)
+INFO::inps_baseline: 2.240538677130333
+INFO::========Step19500========
+INFO::0
+INFO::(2.3571305, 0.0125180455)
+INFO::inps_baseline: 2.263857047203534
+INFO::========Step20000========
+INFO::0
+INFO::(2.3319306, 0.016165633)
+INFO::inps_baseline: 2.2774717652347514
+INFO::gen_cost: 0.7232753038406372
+INFO::disc_cost fake: 0.6644924879074097, real: 0.6266080737113953
+INFO::========Step20500========
+INFO::0
+INFO::(2.5484002, 0.010850061)
+INFO::inps_baseline: 2.3316574449179037
+INFO::========Step21000========
+INFO::0
+INFO::(2.536213, 0.014140347)
+INFO::inps_baseline: 2.3725685401628387
+INFO::========Step21500========
+INFO::0
+INFO::(2.7481709, 0.03086058)
+INFO::inps_baseline: 2.4476890026624973
+INFO::========Step22000========
+INFO::0
+INFO::(2.3122582, 0.0083328)
+INFO::inps_baseline: 2.420602850842156
+INFO::gen_cost: 0.7576155662536621
+INFO::disc_cost fake: 0.6350330114364624, real: 0.7354738116264343
+INFO::========Step22500========
+INFO::1
+INFO::(2.9872603, 0.0041616554)
+INFO::inps_baseline: 2.5339343490025823
+INFO::========Step23000========
+INFO::0
+INFO::(2.6133125, 0.029510288)
+INFO::inps_baseline: 2.549809975768838
+INFO::========Step23500========
+INFO::0
+INFO::(2.6832361, 0.04072466)
+INFO::inps_baseline: 2.57649520504134
+INFO::========Step24000========
+INFO::0
+INFO::(4.49697, 0.019605966)
+INFO::inps_baseline: 2.960590199372427
+INFO::gen_cost: 0.7249866127967834
+INFO::disc_cost fake: 0.6766062378883362, real: 0.6503731608390808
+INFO::========Step24500========
+INFO::0
+INFO::(3.765873, 0.03257799)
+INFO::inps_baseline: 3.1216467505623946
+INFO::========Step25000========
+INFO::0
+INFO::(4.490177, 0.048373718)
+INFO::inps_baseline: 3.3953528313581187
+INFO::========Step25500========
+INFO::0
+INFO::(4.8009872, 0.032707814)
+INFO::inps_baseline: 3.6764797138169634
+INFO::========Step26000========
+INFO::0
+INFO::(5.026565, 0.02358084)
+INFO::inps_baseline: 3.9464967860377014
+INFO::gen_cost: 0.8068543672561646
+INFO::disc_cost fake: 0.6196532845497131, real: 0.6038215160369873
+INFO::========Step26500========
+INFO::0
+INFO::(5.855019, 0.050777458)
+INFO::inps_baseline: 4.328201247342124
+INFO::========Step27000========
+INFO::0
+INFO::(5.5514164, 0.036933515)
+INFO::inps_baseline: 4.572844277292644
+INFO::========Step27500========
+INFO::0
+INFO::(6.552729, 0.051455338)
+INFO::inps_baseline: 4.968821247792367
+INFO::========Step28000========
+INFO::0
+INFO::(6.8040147, 0.037251346)
+INFO::inps_baseline: 5.335859934787849
+INFO::gen_cost: 1.0720775127410889
+INFO::disc_cost fake: 0.4617981016635895, real: 0.5906102061271667
+INFO::========Step28500========
+INFO::0
+INFO::(7.143434, 0.05779474)
+INFO::inps_baseline: 5.697374757370074
+INFO::========Step29000========
+INFO::0
+INFO::(7.3295336, 0.049336053)
+INFO::inps_baseline: 6.023806521289125
+INFO::========Step29500========
+INFO::0
+INFO::(7.4275846, 0.019311061)
+INFO::inps_baseline: 6.304562146657765
+INFO::========Step30000========
+INFO::0
+INFO::(7.406768, 0.04606628)
+INFO::inps_baseline: 6.525003286356974
+INFO::gen_cost: 0.8697425127029419
+INFO::disc_cost fake: 0.6294600963592529, real: 0.48882487416267395
+INFO::========Step30500========
+INFO::0
+INFO::(7.501548, 0.05277974)
+INFO::inps_baseline: 6.720312191768684
+INFO::========Step31000========
+INFO::0
+INFO::(7.6360435, 0.047233075)
+INFO::inps_baseline: 6.903458463131744
+INFO::========Step31500========
+INFO::0
+INFO::(7.66949, 0.030116078)
+INFO::inps_baseline: 7.056664742612329
+INFO::========Step32000========
+INFO::0
+INFO::(7.7321672, 0.056982066)
+INFO::inps_baseline: 7.191765242881367
+INFO::gen_cost: 0.8697947263717651
+INFO::disc_cost fake: 0.6192353963851929, real: 0.5608500242233276
+INFO::========Step32500========
+INFO::0
+INFO::(7.779223, 0.020662105)
+INFO::inps_baseline: 7.309256787353189
+INFO::========Step33000========
+INFO::0
+INFO::(7.863412, 0.031278193)
+INFO::inps_baseline: 7.420087810558821
+INFO::========Step33500========
+INFO::0
+INFO::(7.791972, 0.032920063)
+INFO::inps_baseline: 7.494464680514927
+INFO::========Step34000========
+INFO::0
+INFO::(7.8740973, 0.050853647)
+INFO::inps_baseline: 7.570391213863846
+INFO::gen_cost: 1.1078431606292725
+INFO::disc_cost fake: 0.4844204783439636, real: 0.6507004499435425
+INFO::========Step34500========
+INFO::0
+INFO::(7.8621826, 0.03161703)
+INFO::inps_baseline: 7.628749494528577
+INFO::========Step35000========
+INFO::0
+INFO::(7.9010367, 0.027845245)
+INFO::inps_baseline: 7.683206943492735
+INFO::========Step35500========
+INFO::0
+INFO::(7.8976684, 0.0184893)
+INFO::inps_baseline: 7.7260992271269515
+INFO::========Step36000========
+INFO::0
+INFO::(7.907771, 0.061613142)
+INFO::inps_baseline: 7.762433603808495
+INFO::gen_cost: 0.9248584508895874
+INFO::disc_cost fake: 0.5787952542304993, real: 0.6743139624595642
+INFO::========Step36500========
+INFO::0
+INFO::(7.906785, 0.055483606)
+INFO::inps_baseline: 7.791303885305098
+INFO::========Step37000========
+INFO::0
+INFO::(7.959244, 0.02607579)
+INFO::inps_baseline: 7.824891863126891
+INFO::========Step37500========
+INFO::0
+INFO::(7.987615, 0.05700128)
+INFO::inps_baseline: 7.857436512199511
+INFO::========Step38000========
+INFO::0
+INFO::(7.955323, 0.042028476)
+INFO::inps_baseline: 7.877013853619472
+INFO::gen_cost: 0.9574822783470154
+INFO::disc_cost fake: 0.5721580982208252, real: 0.5662129521369934
+INFO::========Step38500========
+INFO::0
+INFO::(8.004321, 0.036994766)
+INFO::inps_baseline: 7.902475302561105
+INFO::========Step39000========
+INFO::0
+INFO::(8.003592, 0.054474786)
+INFO::inps_baseline: 7.922698549544001
+INFO::========Step39500========
+INFO::0
+INFO::(7.948661, 0.05292834)
+INFO::inps_baseline: 7.927891009740181
+INFO::========Step40000========
+INFO::0
+INFO::(7.9713135, 0.0685533)
+INFO::inps_baseline: 7.9365755031046445
+INFO::gen_cost: 0.9640960097312927
+INFO::disc_cost fake: 0.5942221879959106, real: 0.5270252823829651
+INFO::========Step40500========
+INFO::0
+INFO::(7.9780045, 0.03775565)
+INFO::inps_baseline: 7.944861293596997
+INFO::========Step41000========
+INFO::0
+INFO::(8.016495, 0.019664906)
+INFO::inps_baseline: 7.95918798507291
+INFO::========Step41500========
+INFO::0
+INFO::(7.996338, 0.042489786)
+INFO::inps_baseline: 7.966617966183328
+INFO::========Step42000========
+INFO::0
+INFO::(7.9997573, 0.055591185)
+INFO::inps_baseline: 7.9732458309239576
+INFO::gen_cost: 0.9831579923629761
+INFO::disc_cost fake: 0.570188045501709, real: 0.5328882932662964
+INFO::========Step42500========
+INFO::0
+INFO::(7.990172, 0.030178003)
+INFO::inps_baseline: 7.976631046605622
+INFO::========Step43000========
+INFO::0
+INFO::(8.007605, 0.029102145)
+INFO::inps_baseline: 7.982825757084302
+INFO::========Step43500========
+INFO::0
+INFO::(7.977248, 0.020585002)
+INFO::inps_baseline: 7.98171024403414
+INFO::========Step44000========
+INFO::1
+INFO::(7.988725, 0.04261349)
+INFO::inps_baseline: 7.983113232306169
+INFO::gen_cost: 0.978815495967865
+INFO::disc_cost fake: 0.5539917945861816, real: 0.5832861661911011
+INFO::========Step44500========
+INFO::0
+INFO::(7.9796247, 0.056930304)
+INFO::inps_baseline: 7.982415535490931
+INFO::========Step45000========
+INFO::1
+INFO::(7.980868, 0.06414324)
+INFO::inps_baseline: 7.982106000933029
+INFO::========Step45500========
+INFO::2
+INFO::(7.997986, 0.04723296)
+INFO::inps_baseline: 7.985281968715173
+INFO::========Step46000========
+INFO::0
+INFO::(8.077223, 0.03094715)
+INFO::inps_baseline: 8.003670139791474
+INFO::gen_cost: 1.287136197090149
+INFO::disc_cost fake: 0.40977442264556885, real: 0.7219090461730957
+INFO::========Step46500========
+INFO::0
+INFO::(7.997238, 0.023675224)
+INFO::inps_baseline: 8.002383743669117
+INFO::========Step47000========
+INFO::1
+INFO::(8.0044155, 0.027630577)
+INFO::inps_baseline: 8.002790097352285
+INFO::========Step47500========
+INFO::2
+INFO::(8.002262, 0.058160488)
+INFO::inps_baseline: 8.002684500977532
+INFO::========Step48000========
+INFO::3
+INFO::(8.088621, 0.0543078)
+INFO::inps_baseline: 8.019871828687299
+INFO::gen_cost: 0.9646068215370178
+INFO::disc_cost fake: 0.581839919090271, real: 0.5150985717773438
+INFO::========Step48500========
+INFO::0
+INFO::(8.0807085, 0.036975767)
+INFO::inps_baseline: 8.032039163694469
+INFO::========Step49000========
+INFO::0
+INFO::(8.062151, 0.020666)
+INFO::inps_baseline: 8.038061521995614
+INFO::========Step49500========
+INFO::0
+INFO::(8.068184, 0.063783504)
+INFO::inps_baseline: 8.044085997381647
+INFO::========Step50000========
+INFO::0
+INFO::(8.088585, 0.036084823)
+INFO::inps_baseline: 8.052985777885786
+INFO::gen_cost: 1.0314297676086426
+INFO::disc_cost fake: 0.5510461330413818, real: 0.4881073832511902
+INFO::========Step50500========
+INFO::0
+INFO::(8.049009, 0.04032543)
+INFO::inps_baseline: 8.052190486932652
+INFO::========Step51000========
+INFO::1
+INFO::(8.057462, 0.029853793)
+INFO::inps_baseline: 8.053244737263407
+INFO::========Step51500========
+INFO::0
+INFO::(8.059651, 0.054334022)
+INFO::inps_baseline: 8.054526064774105
+INFO::========Step52000========
+INFO::0
+INFO::(8.092738, 0.05016534)
+INFO::inps_baseline: 8.062168482129342
+INFO::gen_cost: 1.00766122341156
+INFO::disc_cost fake: 0.5514747500419617, real: 0.5416810512542725
+INFO::========Step52500========
+INFO::0
+INFO::(8.044891, 0.03688406)
+INFO::inps_baseline: 8.058713057187848
+INFO::========Step53000========
+INFO::1
+INFO::(8.072527, 0.04239814)
+INFO::inps_baseline: 8.061475832102818
+INFO::========Step53500========
+INFO::2
+INFO::(8.061868, 0.024630528)
+INFO::inps_baseline: 8.0615542084679
+INFO::========Step54000========
+INFO::3
+INFO::(8.102892, 0.03200091)
+INFO::inps_baseline: 8.069821751173734
+INFO::gen_cost: 1.2066638469696045
+INFO::disc_cost fake: 0.43126189708709717, real: 0.6513456106185913
+INFO::========Step54500========
+INFO::0
+INFO::(8.074732, 0.029563138)
+INFO::inps_baseline: 8.070803766295432
+INFO::========Step55000========
+INFO::0
+INFO::(8.056476, 0.05282656)
+INFO::inps_baseline: 8.067938140904998
+INFO::========Step55500========
+INFO::1
+INFO::(8.137468, 0.04917956)
+INFO::inps_baseline: 8.081844180326536
+INFO::========Step56000========
+INFO::0
+INFO::(8.068728, 0.07072451)
+INFO::inps_baseline: 8.079221033653319
+INFO::gen_cost: 1.0595399141311646
+INFO::disc_cost fake: 0.5605508089065552, real: 0.534959077835083
+INFO::========Step56500========
+INFO::1
+INFO::(8.107711, 0.034529597)
+INFO::inps_baseline: 8.084918994586229
+INFO::========Step57000========
+INFO::0
+INFO::(8.158806, 0.05151026)
+INFO::inps_baseline: 8.099696365102577
+INFO::========Step57500========
+INFO::0
+INFO::(8.046923, 0.04118639)
+INFO::inps_baseline: 8.089141628825226
+INFO::========Step58000========
+INFO::1
+INFO::(8.194479, 0.06832429)
+INFO::inps_baseline: 8.110209100789673
+INFO::gen_cost: 1.0810048580169678
+INFO::disc_cost fake: 0.5430358648300171, real: 0.4557555913925171
+INFO::========Step58500========
+INFO::0
+INFO::(8.132793, 0.030565174)
+INFO::inps_baseline: 8.114725965934474
+INFO::========Step59000========
+INFO::0
+INFO::(8.096599, 0.03327843)
+INFO::inps_baseline: 8.1111004977842
+INFO::========Step59500========
+INFO::1
+INFO::(8.088248, 0.06590103)
+INFO::inps_baseline: 8.10653004880109
+INFO::========Step60000========
+INFO::2
+INFO::(8.110347, 0.04896598)
+INFO::inps_baseline: 8.107293397866556
+INFO::gen_cost: 0.976693332195282
+INFO::disc_cost fake: 0.6248313188552856, real: 0.4591885805130005
+INFO::========Step60500========
+INFO::3
+INFO::(8.1617565, 0.021594476)
+INFO::inps_baseline: 8.11818602139383
+INFO::========Step61000========
+INFO::0
+INFO::(8.158115, 0.038867973)
+INFO::inps_baseline: 8.126171894507642
+INFO::========Step61500========
+INFO::0
+INFO::(8.149221, 0.057266936)
+INFO::inps_baseline: 8.130781799663731
+INFO::========Step62000========
+INFO::0
+INFO::(8.126549, 0.02987396)
+INFO::inps_baseline: 8.129935193148954
+INFO::gen_cost: 0.9165993332862854
+INFO::disc_cost fake: 0.618282675743103, real: 0.4744877815246582
+INFO::========Step62500========
+INFO::1
+INFO::(8.185249, 0.04474842)
+INFO::inps_baseline: 8.14099802024182
+INFO::========Step63000========
+INFO::0
+INFO::(8.136183, 0.07455859)
+INFO::inps_baseline: 8.140034973200292
+INFO::========Step63500========
+INFO::1
+INFO::(8.170395, 0.033700403)
+INFO::inps_baseline: 8.146106958052421
+INFO::========Step64000========
+INFO::0
+INFO::(8.190038, 0.03122776)
+INFO::inps_baseline: 8.154893111913129
+INFO::gen_cost: 1.2444710731506348
+INFO::disc_cost fake: 0.45469266176223755, real: 0.6636738777160645
+INFO::========Step64500========
+INFO::0
+INFO::(8.155266, 0.06001458)
+INFO::inps_baseline: 8.154967651151598
+INFO::========Step65000========
+INFO::0
+INFO::(8.162137, 0.034774516)
+INFO::inps_baseline: 8.156401527232314
+INFO::========Step65500========
+INFO::0
+INFO::(8.149116, 0.04671405)
+INFO::inps_baseline: 8.154944334273644
+INFO::========Step66000========
+INFO::1
+INFO::(8.139088, 0.0400413)
+INFO::inps_baseline: 8.151773002819306
+INFO::gen_cost: 1.1316782236099243
+INFO::disc_cost fake: 0.5308764576911926, real: 0.5999926328659058
+INFO::========Step66500========
+INFO::2
+INFO::(8.110521, 0.019440409)
+INFO::inps_baseline: 8.14352266556111
+INFO::========Step67000========
+INFO::3
+INFO::(8.151225, 0.07017118)
+INFO::inps_baseline: 8.145063150454257
+INFO::========Step67500========
+INFO::4
+INFO::(8.078908, 0.050384287)
+INFO::inps_baseline: 8.13183211368616
+INFO::========Step68000========
+INFO::5
+INFO::(8.157313, 0.05900338)
+INFO::inps_baseline: 8.136928360321487
+INFO::gen_cost: 1.171633005142212
+INFO::disc_cost fake: 0.49913299083709717, real: 0.5706846117973328
+INFO::========Step68500========
+INFO::6
+INFO::(8.148379, 0.023832787)
+INFO::inps_baseline: 8.13921855343053
+INFO::========Step69000========
+INFO::7
+INFO::(8.1092, 0.029724503)
+INFO::inps_baseline: 8.13321474752958
+INFO::========Step69500========
+INFO::8
+INFO::(8.183197, 0.031172026)
+INFO::inps_baseline: 8.143211202320538
+INFO::========Step70000========
+INFO::9
+INFO::(8.148313, 0.047251377)
+INFO::inps_baseline: 8.14423147558934
+INFO::gen_cost: 1.0133978128433228
+INFO::disc_cost fake: 0.5963523387908936, real: 0.5193284749984741
+INFO::========Step70500========
+INFO::10
+INFO::(8.184823, 0.045764722)
+INFO::inps_baseline: 8.152349787710241
+INFO::best_inps: 8.156401527232314
+INFO::inps_baseline: (8.184534, 0.010698783)
+INFO::[(8.184534, 0.010698783)]
+INFO::TEST
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl/model-20
+INFO::step: 500, new best result: 1.4310091733932495
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-56_gan/model
+INFO::----step2000----
+INFO::inception_score: (1.1327446, 0.004830258)
+INFO::inps_baseline: 1.344897165298462
+INFO::----step4000----
+INFO::inception_score: (1.2039397, 0.0014209384)
+INFO::inps_baseline: 1.2136027650299073
+INFO::----step6000----
+INFO::inception_score: (1.1022376, 0.0043517286)
+INFO::inps_baseline: 1.1562897361887574
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-56_gan/model-500
+INFO::inps_test: (1.4303672, 0.0009033051)
+INFO::[(1.4303672, 0.0009033051)]
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.

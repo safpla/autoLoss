@@ -61,8 +61,6 @@ class Gan(Basic_model):
         self.mag_gen_grad = None
         self.mag_disc_grad = None
         self.inception_score = 0
-        self.previous_action = -1
-        self.same_action_count = 0
         self.task_dir = None
 
         # to control when to terminate the episode
@@ -70,6 +68,8 @@ class Gan(Basic_model):
         self.best_inception_score = 0
         self.inps_baseline = 0
         self.collapse = False
+        self.previous_action = -1
+        self.same_action_count = 0
 
     def _build_placeholder(self):
         with self.graph.as_default():
@@ -340,7 +340,6 @@ class Gan(Basic_model):
             self.ema_disc_cost_fake = self.ema_disc_cost_fake * alpha\
                 + disc_cost_fake * (1 - alpha)
 
-
         reward = 0
         # ----Early stop and record best result.----
         dead = self.check_terminate()
@@ -444,7 +443,8 @@ class Gan(Basic_model):
         adv = min(adv, self.config.reward_max_value)
         adv = max(adv, -self.config.reward_max_value)
         # ----Shift average----
-        self.final_inps_baseline = decay * self.final_inps_baseline + (1 - decay) * inps
+        self.final_inps_baseline = decay * self.final_inps_baseline\
+            + (1 - decay) * inps
         return reward, adv
 
     def get_inception_score(self, num_batches):

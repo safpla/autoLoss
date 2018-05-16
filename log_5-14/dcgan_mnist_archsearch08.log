@@ -1,0 +1,281 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-05-14 17:37:47.570245: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-05-14 17:37:48.770126: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-05-14 17:37:48.770155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/mnist_classification/model-20000
+2018-05-14 17:37:52.852706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::h2.haowen4.biglearning.orca.pdl.cmu.edu
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/mnist
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan
+INFO::batch_size:: 128
+INFO::lr_stud:: 0.0002
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 500
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 10
+INFO::max_training_step:: 200000
+INFO::stop_strategy_stud:: exceeding_endurance
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 784
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_threshold:: 6.3
+INFO::inps_batches:: 200
+INFO::inps_splits:: 5
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: linear_logits_clipping
+INFO::logit_clipping_c:: 2
+INFO::dim_state_rl:: 5
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 2
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::inps_baseline_decay:: 0.8
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+INFO::exp_name: h2-haowen4_05-14-23-37
+2018-05-14 17:37:52.877313: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gradients_impl.py:96: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::architecture:
+INFO::activation_D: relu
+INFO::activation_G: leakyRelu
+INFO::batchnorm_D: True
+INFO::batchnorm_G: True
+INFO::depth_D: 3
+INFO::depth_G: 3
+INFO::dim_c_D: 32
+INFO::dim_c_G: 128
+INFO::dim_z: 128
+2018-05-14 17:37:52.976646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+INFO::BASELINE
+INFO::========Step0========
+INFO::0
+INFO::(1.0218651, 0.00031729587)
+INFO::inps_baseline: 1.0218651294708252
+INFO::gen_cost: 0.6928305625915527
+INFO::disc_cost fake: 0.6934640407562256, real: 0.6870685815811157
+INFO::========Step500========
+INFO::0
+INFO::(3.6807187, 0.012105732)
+INFO::inps_baseline: 1.553635835647583
+INFO::========Step1000========
+INFO::0
+INFO::(3.8931534, 0.025173657)
+INFO::inps_baseline: 2.0215393543243407
+INFO::========Step1500========
+INFO::0
+INFO::(4.0811872, 0.04068745)
+INFO::inps_baseline: 2.433468933105469
+INFO::========Step2000========
+INFO::0
+INFO::(4.21243, 0.050761968)
+INFO::inps_baseline: 2.7892611465454102
+INFO::gen_cost: 5.697745323181152
+INFO::disc_cost fake: 0.004968344233930111, real: 0.013387426733970642
+INFO::========Step2500========
+INFO::0
+INFO::(4.7268615, 0.040100172)
+INFO::inps_baseline: 3.1767812126159667
+INFO::========Step3000========
+INFO::0
+INFO::(5.0128617, 0.020268548)
+INFO::inps_baseline: 3.5439973158264158
+INFO::========Step3500========
+INFO::0
+INFO::(5.0507154, 0.04125164)
+INFO::inps_baseline: 3.845340941955566
+INFO::========Step4000========
+INFO::0
+INFO::(5.082545, 0.0337223)
+INFO::inps_baseline: 4.092781714288329
+INFO::gen_cost: 5.0789899826049805
+INFO::disc_cost fake: 0.008762487210333347, real: 0.043668314814567566
+INFO::========Step4500========
+INFO::0
+INFO::(4.930153, 0.02236463)
+INFO::inps_baseline: 4.260255950043945
+INFO::========Step5000========
+INFO::0
+INFO::(4.927685, 0.043128047)
+INFO::inps_baseline: 4.393741716822265
+INFO::========Step5500========
+INFO::0
+INFO::(4.8527536, 0.044172186)
+INFO::inps_baseline: 4.48554410130205
+INFO::========Step6000========
+INFO::0
+INFO::(4.7543535, 0.03761978)
+INFO::inps_baseline: 4.539305985692518
+INFO::gen_cost: 4.655917167663574
+INFO::disc_cost fake: 0.01554567925632, real: 0.17251968383789062
+INFO::========Step6500========
+INFO::0
+INFO::(4.663828, 0.05112974)
+INFO::inps_baseline: 4.5642103677776475
+INFO::========Step7000========
+INFO::0
+INFO::(5.1532235, 0.018151606)
+INFO::inps_baseline: 4.682012997133495
+INFO::========Step7500========
+INFO::0
+INFO::(5.068402, 0.0477853)
+INFO::inps_baseline: 4.759290760408212
+INFO::========Step8000========
+INFO::0
+INFO::(4.5674844, 0.043570727)
+INFO::inps_baseline: 4.720929484089509
+INFO::gen_cost: 7.71460485458374
+INFO::disc_cost fake: 0.0006615519523620605, real: 6.217354774475098
+INFO::========Step8500========
+INFO::1
+INFO::(4.0116677, 0.040189195)
+INFO::inps_baseline: 4.579077132956422
+INFO::========Step9000========
+INFO::2
+INFO::(4.55057, 0.037344653)
+INFO::inps_baseline: 4.573375708592921
+INFO::========Step9500========
+INFO::3
+INFO::(4.2388487, 0.02875766)
+INFO::inps_baseline: 4.506470304117989
+INFO::========Step10000========
+INFO::4
+INFO::(3.949765, 0.032298498)
+INFO::inps_baseline: 4.395129236687335
+INFO::gen_cost: 5.945399761199951
+INFO::disc_cost fake: 0.0036673969589173794, real: 0.11804310977458954
+INFO::========Step10500========
+INFO::5
+INFO::(3.9467788, 0.043459486)
+INFO::inps_baseline: 4.305459144202163
+INFO::========Step11000========
+INFO::6
+INFO::(3.916246, 0.04143538)
+INFO::inps_baseline: 4.2276165028312125
+INFO::========Step11500========
+INFO::7
+INFO::(4.115217, 0.05330964)
+INFO::inps_baseline: 4.205136644037431
+INFO::========Step12000========
+INFO::8
+INFO::(4.0371394, 0.06308956)
+INFO::inps_baseline: 4.171537198378138
+INFO::gen_cost: 7.357555389404297
+INFO::disc_cost fake: 0.0011822835076600313, real: 0.1030602753162384
+INFO::========Step12500========
+INFO::9
+INFO::(4.129617, 0.01644483)
+INFO::inps_baseline: 4.1631532015430865
+INFO::========Step13000========
+INFO::10
+INFO::(4.35474, 0.029298907)
+INFO::inps_baseline: 4.201470589798922
+INFO::best_inps: 4.759290760408212
+INFO::inps_baseline: (4.339153, 0.009071331)
+INFO::[(4.339153, 0.009071331)]
+INFO::TEST
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl/model-20
+INFO::step: 500, new best result: 3.94575572013855
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 1500, new best result: 3.9987970352172852
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 2000, new best result: 4.0940164375305175
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::----step2000----
+INFO::inception_score: (4.474894, 0.026381481)
+INFO::inps_baseline: 4.0940164375305175
+INFO::step: 2500, new best result: 4.217560485839844
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 3000, new best result: 4.370500052642822
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 3500, new best result: 4.564829512176514
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 4000, new best result: 4.658013092468262
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::----step4000----
+INFO::inception_score: (5.0307474, 0.04046305)
+INFO::inps_baseline: 4.658013092468262
+INFO::step: 4500, new best result: 4.71741217532959
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 5000, new best result: 4.7856093896167
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 5500, new best result: 4.851037045537354
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 6000, new best result: 4.921075264786817
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::----step6000----
+INFO::inception_score: (5.201228, 0.01736039)
+INFO::inps_baseline: 4.921075264786817
+INFO::step: 6500, new best result: 5.015919812659531
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 7000, new best result: 5.078851229461121
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 7500, new best result: 5.116490941454639
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::step: 8000, new best result: 5.162096866933243
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::----step8000----
+INFO::inception_score: (5.3445206, 0.07251228)
+INFO::inps_baseline: 5.162096866933243
+INFO::step: 8500, new best result: 5.193618209336389
+INFO::Save model at /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model
+INFO::----step10000----
+INFO::inception_score: (5.1483345, 0.0476284)
+INFO::inps_baseline: 5.177787689806208
+INFO::----step12000----
+INFO::inception_score: (4.706769, 0.020131033)
+INFO::inps_baseline: 4.980206220374017
+INFO::----step14000----
+INFO::inception_score: (4.531007, 0.02294492)
+INFO::inps_baseline: 4.710132606109826
+INFO::Loading pretrained model from: /datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen4_05-14-23-37_gan/model-8500
+INFO::inps_test: (5.2948623, 0.0027482952)
+INFO::[(5.2948623, 0.0027482952)]
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.

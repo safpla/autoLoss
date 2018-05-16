@@ -262,6 +262,7 @@ class Toy(Basic_model):
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
         adv = min(adv, self.config.reward_max_value)
+        adv = max(adv, -self.config.reward_max_value)
         # TODO(haowen) Try to use maximum instead of shift average as baseline
         # Result: doesn't seem to help too much
         # ----Shift average----
