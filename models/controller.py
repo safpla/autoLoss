@@ -49,7 +49,7 @@ class Controller(Basic_model):
             if model_name == '2layer':
                 hidden = slim.fully_connected(self.state_plh, h_size,
                                               weights_initializer=initializer,
-                                              activation_fn=tf.nn.relu)
+                                              activation_fn=tf.nn.leaky_relu)
                 self.logits = slim.fully_connected(hidden, a_size,
                                                    weights_initializer=initializer,
                                                    activation_fn=None)
@@ -57,7 +57,7 @@ class Controller(Basic_model):
             elif model_name == '2layer_logits_clipping':
                 hidden = slim.fully_connected(self.state_plh, h_size,
                                               weights_initializer=initializer,
-                                              activation_fn=tf.nn.relu)
+                                              activation_fn=tf.nn.leaky_relu)
                 self.logits = slim.fully_connected(hidden, a_size,
                                                    weights_initializer=initializer,
                                                    activation_fn=None)
@@ -109,7 +109,7 @@ class Controller(Basic_model):
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
-    def sample(self, state, explore_rate=0):
+    def sample(self, state, explore_rate=0, discrete=True):
         #
         # Sample an action from a given state, probabilistically
 
@@ -125,25 +125,26 @@ class Controller(Basic_model):
         a = np.random.choice(a_dist[0], p=a_dist[0])
         a = np.argmax(a_dist == a)
 
-        # ----Free exploring at a certain probability.----
-        #p = np.random.rand(1)
-        #if p[0] < explore_rate:
-        #    a = np.random.rand(1)
-        #    if a < 1/2:
-        #        a = 0
-        #    else:
-        #        a = 1
-        #a = np.random.rand(1)
-        #if a < 4/5:
-        #    a = 0
-        #else:
-        #    a = 1
-
         # ----Handcraft classifier----
         #  ---Hard version---
         #  Threshold varies in different tasks, which is related to the SNR
         #  of the data
         #  ------
+        #if state[0] > 1.2:
+        #    a = 1
+        #else:
+        #    a = 0
+        #mse_loss = state[2]
+        #l1_loss = state[3]
+        #if (l1_loss - mse_loss) > 0.8:
+        #    a = 1
+        #else:
+        #    a = 0
+        #if state[4] > -0.19:
+        #    a = 0
+        #else:
+        #    a = 1
+
         #gen_cost = state[1]
         #disc_cost = state[2]
         #if gen_cost > disc_cost:
@@ -165,7 +166,10 @@ class Controller(Basic_model):
 
         action = np.zeros(len(a_dist[0]), dtype='i')
         action[a] = 1
-        return action
+        if discrete:
+            return action
+        else:
+            return a_dist[0]
 
     def train_one_step(self, gradBuffer, lr):
         feed_dict = dict(zip(self.gradient_plhs, gradBuffer))

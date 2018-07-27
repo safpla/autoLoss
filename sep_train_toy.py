@@ -7,13 +7,13 @@ import numpy as np
 import logging
 import os
 import sys
-from models import toy
+from models import reg
 import utils
 
 logger = utils.get_logger()
 
 def train(config):
-    model = toy.Toy(config, loss_mode=sys.argv[1])
+    model = reg.Reg(config, loss_mode=sys.argv[1])
     model.initialize_weights()
 
     max_training_step = config.max_training_step
@@ -43,8 +43,8 @@ if __name__ == '__main__':
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
-        lambda_set1 = [0.05, 0.1, 0.2, 0.4, 0.8, 1.6, 3.2]
-        lambda_set1 = 0.4 + (np.array(range(50))+1) * 0.02
+        #lambda_set1 = [0.05, 0.1, 0.2, 0.4, 0.8, 1.6, 3.2]
+        lambda_set1 = 0.3 + (np.array(range(21))) * 0.01
         num1 = len(lambda_set1)
         aver_mat = np.zeros([num1])
         var_mat = np.zeros([num1])

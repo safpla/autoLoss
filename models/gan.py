@@ -300,24 +300,25 @@ class Gan(Basic_model):
         dim_z = self.config.dim_z
         alpha = self.config.state_decay
 
-        data = self.train_dataset.next_batch(batch_size)
-        x = data['input']
-        z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
-        feed_dict = {self.noise: z, self.real_data: x,
-                     self.is_training: True}
-        a = np.argmax(np.array(action))
+        for i in range(1):
+            data = self.train_dataset.next_batch(batch_size)
+            x = data['input']
+            z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
+            feed_dict = {self.noise: z, self.real_data: x,
+                        self.is_training: True}
+            a = np.argmax(np.array(action))
 
-        # ----To detect collapse.----
-        if a == self.previous_action:
-            self.same_action_count += 1
-        else:
-            self.same_action_count = 0
-        self.previous_action = a
+            # ----To detect collapse.----
+            if a == self.previous_action:
+                self.same_action_count += 1
+            else:
+                self.same_action_count = 0
+            self.previous_action = a
 
-        fetch = [self.update[a], self.gen_grad, self.disc_grad,
-                 self.gen_cost, self.disc_cost_real, self.disc_cost_fake]
-        _, gen_grad, disc_grad, gen_cost, disc_cost_real, disc_cost_fake = \
-            sess.run(fetch, feed_dict=feed_dict)
+            fetch = [self.update[a], self.gen_grad, self.disc_grad,
+                    self.gen_cost, self.disc_cost_real, self.disc_cost_fake]
+            _, gen_grad, disc_grad, gen_cost, disc_cost_real, disc_cost_fake = \
+                sess.run(fetch, feed_dict=feed_dict)
 
         self.mag_gen_grad = self.get_grads_magnitude(gen_grad)
         self.mag_disc_grad = self.get_grads_magnitude(disc_grad)
@@ -352,12 +353,12 @@ class Gan(Basic_model):
         if self.step_number == 0:
             state = [0] * self.config.dim_state_rl
         else:
-            state = [self.step_number / self.config.max_training_step,
+            state = [
                      math.log(self.mag_disc_grad / self.mag_gen_grad),
-                     self.ema_gen_cost,
+                     self.ema_gen_cost - 1,
                      (self.ema_disc_cost_real + self.ema_disc_cost_fake) / 2,
-                     self.inception_score / 10,
-                     ]
+                     self.inception_score - 8,
+                    ]
         return np.array(state, dtype='f')
 
     def check_terminate(self):

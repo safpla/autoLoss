@@ -12,7 +12,7 @@ import socket
 from time import gmtime, strftime
 
 from models import controller
-from models import toy
+from models import reg
 from models import cls
 from models import gan
 from models import gan_grid
@@ -44,8 +44,8 @@ class Trainer():
         logger.info('exp_name: {}'.format(exp_name))
 
         self.model_ctrl = controller.Controller(config, exp_name+'_ctrl')
-        if config.student_model_name == 'toy':
-            self.model_stud = toy.Toy(config, exp_name+'_reg')
+        if config.student_model_name == 'reg':
+            self.model_stud = reg.Reg(config, exp_name+'_reg')
         elif config.student_model_name == 'cls':
             self.model_stud = cls.Cls(config, exp_name+'_cls')
         elif config.student_model_name == 'gan':
@@ -106,8 +106,12 @@ class Trainer():
                 step += 1
                 explore_rate = config.explore_rate_rl *\
                     math.exp(-ep / config.explore_rate_decay_rl)
-                action = model_ctrl.sample(state, explore_rate=explore_rate)
-                state_new, reward, dead = model_stud.response(action)
+                if 'gan' in config.student_model_name:
+                    action = model_ctrl.sample(state, explore_rate=explore_rate)
+                    state_new, reward, dead = model_stud.response(action)
+                else:
+                    action = model_ctrl.sample(state, explore_rate=explore_rate)
+                    state_new, reward, dead = model_stud.response(action)
                 # ----Record training details.----
                 state_hist.append(state)
                 action_hist.append(action)
@@ -170,12 +174,12 @@ class Trainer():
                 logger.info('UPDATE CONTROLLOR')
                 logger.info('lr_ctrl: {}'.format(lr))
                 model_ctrl.train_one_step(gradBuffer, lr)
-                logger.info('grad')
-                for ix, grad in enumerate(gradBuffer):
-                    logger.info(grad)
-                    gradBuffer[ix] = grad * 0
-                logger.info('weights')
-                model_ctrl.print_weights()
+                #logger.info('grad')
+                #for ix, grad in enumerate(gradBuffer):
+                #    logger.info(grad)
+                #    gradBuffer[ix] = grad * 0
+                #logger.info('weights')
+                #model_ctrl.print_weights()
 
                 # ----Print training details.----
                 #logger.info('Outputs')
@@ -201,7 +205,7 @@ class Trainer():
                 #logger.info('logits: {}'.format(r[4]))
 
             save_model_flag = False
-            if config.student_model_name == 'toy':
+            if config.student_model_name == 'reg':
                 loss_analyzer_toy(action_hist, valid_loss_hist,
                                   train_loss_hist, reward_hist)
                 loss = model_stud.best_loss
@@ -258,8 +262,8 @@ class Trainer():
 
             if save_model_flag and save_ctrl:
                     model_ctrl.save_model(ep)
-            if endurance > config.max_endurance_rl:
-                break
+            #if endurance > config.max_endurance_rl:
+            #    break
 
     def test(self, load_ctrl, ckpt_num=None):
         config = self.config
@@ -286,7 +290,7 @@ class Trainer():
             state = state_new
             if dead:
                 break
-        if config.student_model_name == 'toy':
+        if config.student_model_name == 'reg':
             loss = model_stud.best_loss
             logger.info('loss: {}'.format(loss))
             return loss
@@ -332,6 +336,7 @@ if __name__ == '__main__':
     # ----Parsing config file.----
     logger.info(socket.gethostname())
     config_file = 'gan.cfg'
+    #config_file = 'regression.cfg'
     #config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)

@@ -28,17 +28,17 @@ def _normalize1(x):
 def _normalize2(x):
     y = []
     for xx in x:
-        y.append(min(1, xx / 20))
+        y.append(min(1, xx / 20) - 0.5)
     return y
 
 def _normalize3(x):
     y = []
     for xx in x:
-        y.append(xx)
+        y.append(xx - 1)
     return y
 
 
-class Toy(Basic_model):
+class Reg(Basic_model):
     def __init__(self, config, exp_name='new_exp', loss_mode='1'):
         self.config = config
         self.graph = tf.Graph()
@@ -75,6 +75,8 @@ class Toy(Basic_model):
         self.previous_action = [0, 0]
         self.previous_valid_loss = [0] * self.config.num_pre_loss
         self.previous_train_loss = [0] * self.config.num_pre_loss
+        self.mag_mse_grad = 0
+        self.mag_l1_grad = 0
 
         # to control when to terminate the episode
         self.endurance = 0
@@ -142,13 +144,16 @@ class Toy(Basic_model):
                 raise NotImplementedError
 
             # ----Define update operation.----
-            self.update_mse = tf.train.GradientDescentOptimizer(lr).\
-                minimize(self.loss_mse)
-            self.update_l1 = tf.train.GradientDescentOptimizer(lr*1).\
-                minimize(self.loss_l1)
-            self.update_total = tf.train.GradientDescentOptimizer(lr).\
-                minimize(self.loss_total)
+            optimizer = tf.train.AdamOptimizer(lr)
+            mse_gvs = optimizer.compute_gradients(self.loss_mse, tvars)
+            l1_gvs = optimizer.compute_gradients(self.loss_l1, tvars)
+            total_gvs = optimizer.compute_gradients(self.loss_total, tvars)
+            self.update_mse = optimizer.apply_gradients(mse_gvs)
+            self.update_l1 = optimizer.apply_gradients(l1_gvs)
+            self.update_total = optimizer.apply_gradients(total_gvs)
             self.init = tf.global_variables_initializer()
+            self.mse_grad = [grad for grad, _ in mse_gvs]
+            self.l1_grad = [grad for grad, _ in l1_gvs]
 
     def train(self):
         """ Optimize mse loss, l1 loss at the same time """
@@ -194,7 +199,6 @@ class Toy(Basic_model):
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
-        fetch = [self.loss_mse, self.loss_l1]
 
         if action[0] == 1:
             # ----Update mse loss.----
@@ -202,7 +206,8 @@ class Toy(Basic_model):
         elif action[1] == 1:
             # ----Update l1 loss.----
             sess.run(self.update_l1, feed_dict=feed_dict)
-        loss_mse, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
+        fetch = [self.loss_mse, self.loss_l1, self.mse_grad, self.l1_grad]
+        loss_mse, loss_l1, mse_grad, l1_grad = sess.run(fetch, feed_dict=feed_dict)
         valid_loss, _, _ = self.valid()
         train_loss, _, _ = self.valid(dataset=dataset)
 
@@ -215,6 +220,8 @@ class Toy(Basic_model):
             + [valid_loss.tolist()]
         self.previous_train_loss = self.previous_train_loss[1:]\
             + [train_loss.tolist()]
+        self.mag_mse_grad = self.get_grads_magnitude(mse_grad)
+        self.mag_l1_grad = self.get_grads_magnitude(l1_grad)
 
         reward = self.get_step_reward()
         # ----Early stop and record best result.----
@@ -267,6 +274,8 @@ class Toy(Basic_model):
 
         if self.reward_baseline is None:
             self.reward_baseline = reward
+        logger.info('reward: {}'.format(reward))
+        logger.info('reward_baseline: {}'.format(self.reward_baseline))
         decay = self.config.reward_baseline_decay
         adv = reward - self.reward_baseline
         adv = min(adv, self.config.reward_max_value)
@@ -292,14 +301,15 @@ class Toy(Basic_model):
         for v, t in zip(self.previous_valid_loss, self.previous_train_loss):
             abs_diff.append(v - t)
             if t > 1e-6:
-                rel_diff.append(v / t)
+                rel_diff.append((v - t) / t)
             else:
-                rel_diff.append(1)
+                rel_diff.append(0)
 
-        state = ([math.log(rel_diff[-1])] +
+        state = ([rel_diff[-1] * 10] +
                  _normalize1([abs(ib)]) +
                  _normalize2(self.previous_mse_loss[-1:]) +
-                 self.previous_l1_loss[-1:]
+                 _normalize3(self.previous_l1_loss[-1:]) +
+                 [self.mag_mse_grad - self.mag_l1_grad]
                  )
         return np.array(state, dtype='f')
 
