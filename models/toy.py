@@ -51,11 +51,14 @@ class Toy(Basic_model):
         self.loss_mode = loss_mode
         self.exp_name = exp_name
         train_data_file = config.train_data_file
+        train_stud_data_file = config.train_stud_data_file
         valid_data_file = config.valid_data_file
         self.train_dataset = Dataset()
         self.train_dataset.load_npy(train_data_file)
         self.valid_dataset = Dataset()
         self.valid_dataset.load_npy(valid_data_file)
+        self.train_stud_dataset = Dataset()
+        self.train_stud_dataset.load_npy(train_stud_data_file)
         self.reset()
         self._build_placeholder()
         self._build_graph()
@@ -170,7 +173,7 @@ class Toy(Basic_model):
         loss_mse_np = np.mean(np.square(pred - gdth))
         return loss_mse, pred, gdth
 
-    def response(self, action):
+    def response(self, action, mode='TRAIN'):
         """ Given an action, return the new state, reward and whether dead
 
         Args:
@@ -181,7 +184,12 @@ class Toy(Basic_model):
             reward: shape = [1]
             dead: boolean
         """
-        data = self.train_dataset.next_batch(self.config.batch_size)
+        if mode == 'TRAIN':
+            dataset = self.train_dataset
+        else:
+            dataset = self.train_stud_dataset
+
+        data = dataset.next_batch(self.config.batch_size)
         sess = self.sess
         x = data['input']
         y = data['target']
@@ -196,7 +204,7 @@ class Toy(Basic_model):
             sess.run(self.update_l1, feed_dict=feed_dict)
         loss_mse, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
         valid_loss, _, _ = self.valid()
-        train_loss, _, _ = self.valid(dataset=self.train_dataset)
+        train_loss, _, _ = self.valid(dataset=dataset)
 
         # ----Update state.----
         self.previous_mse_loss = self.previous_mse_loss[1:] + [loss_mse.tolist()]

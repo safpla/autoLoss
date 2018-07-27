@@ -26,11 +26,11 @@ def train(config):
         if i % config.valid_frequency_stud == 0:
             endurance += 1
             valid_loss, valid_acc, _, _ = model.valid()
-            #logger.info('====Step: {}===='.format(i))
-            #logger.info('train_loss: {}, train_acc: {}'\
-            #            .format(train_loss, train_acc))
-            #logger.info('valid_loss: {}, valid_acc: {}'\
-            #            .format(valid_loss, valid_acc))
+            logger.info('====Step: {}===='.format(i))
+            logger.info('train_loss: {}, valid_loss: {}'\
+                        .format(train_loss, valid_loss))
+            logger.info('train_acc: {}, valid_acc: {}'\
+                        .format(train_acc, valid_acc))
             if valid_acc > best_acc:
                 best_acc = valid_acc
                 _, test_acc, _, _ = model.valid(model.test_dataset)
@@ -50,8 +50,8 @@ if __name__ == '__main__':
     config_path = os.path.join(root_path, 'config/classification.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
-        #lambda_set1 = 0.02 + (np.array(range(10))+1) * 0.002
-        lambda_set1 = [0.2]
+        lambda_set1 = 0.002 + (np.array(range(50))+1) * 0.002
+        #lambda_set1 = [0.034]
         num1 = len(lambda_set1)
         mean_mat = np.zeros([num1])
         var_mat = np.zeros([num1])
@@ -59,7 +59,7 @@ if __name__ == '__main__':
         for i in range(num1):
             config.lambda1_stud = lambda_set1[i]
             acc = []
-            for k in range(10):
+            for k in range(1):
                 acc.append(train(config))
             mean_mat[i] = np.mean(np.array(acc))
             var_mat[i] = np.var(np.array(acc))
@@ -90,8 +90,9 @@ if __name__ == '__main__':
         print(var_mat)
     else:
         acc = []
-        for k in range(10):
-            acc.append(train(config))
-        print(acc)
-        print('\n')
-        print(np.mean(np.array(acc)))
+        train(config)
+        #for k in range(10):
+        #    acc.append(train(config))
+        #print(acc)
+        #print('\n')
+        #print(np.mean(np.array(acc)))

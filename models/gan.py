@@ -232,9 +232,9 @@ class Gan(Basic_model):
         inps_baseline = 0
         decay = config.metric_decay
         steps_per_iteration = config.disc_iters + config.gen_iters
-        for step in range(0, config.max_training_step, steps_per_iteration):
-            # ----Update D network.----
-            for i in range(config.disc_iters):
+        for step in range(config.max_training_step):
+            if step % steps_per_iteration < config.disc_iters:
+                # ----Update D network.----
                 data = self.train_dataset.next_batch(batch_size)
                 x = data['input']
 
@@ -242,9 +242,8 @@ class Gan(Basic_model):
                 feed_dict = {self.noise: z, self.real_data: x,
                              self.is_training: True}
                 sess.run(self.disc_train_op, feed_dict=feed_dict)
-
-            # ----Update G network.----
-            for i in range(config.gen_iters):
+            else:
+                # ----Update G network.----
                 z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
                 feed_dict = {self.noise: z, self.is_training: True}
                 sess.run(self.gen_train_op, feed_dict=feed_dict)
@@ -285,7 +284,7 @@ class Gan(Basic_model):
                 break
         logger.info('best_inps: {}'.format(best_inps))
 
-    def response(self, action):
+    def response(self, action, mode='TRAIN'):
         # Given an action, return the new state, reward and whether dead
 
         # Args:
@@ -391,7 +390,7 @@ class Gan(Basic_model):
                 self.endurance = 0
                 self.save_model(step)
 
-        if step % self.config.print_frequency_stud == 0:
+        if step % self.config.valid_frequency_stud == 0:
             logger.info('----step{}----'.format(step))
             logger.info('inception_score: {}'.format(inception_score))
             logger.info('inps_baseline: {}'.format(self.inps_baseline))
@@ -440,16 +439,19 @@ class Gan(Basic_model):
         baseline_reward = self.config.reward_c * baseline_inps ** 2
         decay = self.config.inps_baseline_decay
         adv = reward - baseline_reward
-        adv = min(adv, self.config.reward_max_value)
-        adv = max(adv, -self.config.reward_max_value)
+        # reward_min_value < abs(adv) < reward_max_value
+        adv = math.copysign(max(self.config.reward_min_value, abs(adv)), adv)
+        adv = math.copysign(min(self.config.reward_max_value, abs(adv)), adv)
         # ----Shift average----
         self.final_inps_baseline = decay * self.final_inps_baseline\
             + (1 - decay) * inps
         return reward, adv
 
-    def get_inception_score(self, num_batches):
+    def get_inception_score(self, num_batches, splits=None):
         all_samples = []
         config = self.config
+        if not splits:
+            splits = config.inps_splits
         batch_size = 100
         dim_z = config.dim_z
         for i in range(num_batches):
@@ -460,7 +462,7 @@ class Gan(Basic_model):
         all_samples = np.concatenate(all_samples, axis=0)
         all_samples = all_samples.reshape((-1, 28*28))
         return inception_score_mnist.get_inception_score(all_samples,
-                                                   splits=config.inps_splits)
+                                                   splits=splits)
 
     def generate_images(self, step):
         feed_dict = {self.noise: self.fixed_noise_128,

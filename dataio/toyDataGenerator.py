@@ -15,10 +15,12 @@ config = utils.Parser(config_path)
 dim = config.dim_input_stud
 num_of_data_points_train = config.num_sample_train
 num_of_data_points_valid = config.num_sample_valid
+num_of_data_points_train_stud = config.num_sample_train_stud
 mean_noise = config.mean_noise
 var_noise = config.var_noise
 data_train = config.train_data_file
 data_valid = config.valid_data_file
+data_train_stud = config.train_stud_data_file
 np.random.seed(1)
 
 
@@ -39,7 +41,6 @@ def main():
                                                      scale=var_noise)
             data.append({'x': x, 'y': y})
         print(data)
-
         np.save(f, data)
         f.close()
 
@@ -50,7 +51,17 @@ def main():
             y = linear_func(x, w) + np.random.normal(loc=mean_noise,
                                                      scale=var_noise)
             data.append({'x': x, 'y': y})
+        np.save(f, data)
+        f.close()
 
+    with open(data_train_stud, 'wb') as f:
+        data = []
+        for i in range(num_of_data_points_train_stud):
+            x = 10 * (np.random.rand(dim) - 0.5)
+            y = linear_func(x, w) + np.random.normal(loc=mean_noise,
+                                                     scale=var_noise)
+            data.append({'x': x, 'y': y})
+        print(data)
         np.save(f, data)
         f.close()
 

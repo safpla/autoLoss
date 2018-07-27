@@ -101,8 +101,10 @@ class Controller(Basic_model):
                 self.gradient_plhs.append(placeholder)
 
             self.grads = tf.gradients(self.loss, tvars)
-            #optimizer = tf.train.AdamOptimizer(learning_rate=lr)
-            optimizer = tf.train.GradientDescentOptimizer(lr)
+            if config.optimizer_ctrl == 'adam':
+                optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            elif config.optimizer_ctrl == 'sgd':
+                optimizer = tf.train.GradientDescentOptimizer(lr)
             self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()

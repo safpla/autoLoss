@@ -325,8 +325,8 @@ if __name__ == '__main__':
     dim_z_cand = [64, 128]
     batchnorm_G_cand = [True, False]
     batchnorm_D_cand = [True, False]
-    activation_G_cand = ['relu', 'leakyRelu', 'tanh']
-    activation_D_cand = ['relu', 'leakyRelu', 'tanh']
+    activation_G_cand = ['relu', 'leakyRelu']
+    activation_D_cand = ['relu', 'leakyRelu']
     depth_G_cand = [2, 3, 4]
     depth_D_cand = [2, 3, 4]
     architecture = {}
@@ -335,8 +335,8 @@ if __name__ == '__main__':
     architecture['dim_z'] = dim_z_cand[_sampling(2)]
     architecture['batchnorm_G'] = batchnorm_G_cand[_sampling(2)]
     architecture['batchnorm_D'] = batchnorm_D_cand[_sampling(2)]
-    architecture['activation_G'] = activation_G_cand[_sampling(3)]
-    architecture['activation_D'] = activation_D_cand[_sampling(3)]
+    architecture['activation_G'] = activation_G_cand[_sampling(2)]
+    architecture['activation_D'] = activation_D_cand[_sampling(2)]
     architecture['depth_G'] = depth_G_cand[_sampling(3)]
     architecture['depth_D'] = depth_D_cand[_sampling(3)]
 

@@ -39,7 +39,7 @@ def read_log_inps_baseline(log_file):
     with open(log_file, 'r') as f:
         curve = []
         for line in f.readlines():
-            if 'inps_baseline' in line:
+            if 'inps_baseline:' in line and not '(' in line:
                 string = line.split(':')[-1].strip()
                 curve.append(float(string))
     return curve

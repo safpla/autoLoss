@@ -208,9 +208,11 @@ class Gan_cifar10(Gan):
                      ]
         return np.array(state, dtype='f')
 
-    def get_inception_score(self, num_batches):
+    def get_inception_score(self, num_batches, splits=None):
         all_samples = []
         config = self.config
+        if not splits:
+            splits = config.inps_splits
         batch_size = 100
         dim_z = config.dim_z
         for i in range(num_batches):
@@ -222,7 +224,7 @@ class Gan_cifar10(Gan):
         all_samples = ((all_samples+1.)*255./2.).astype(np.int32)
         all_samples = all_samples.reshape((-1, 32, 32, 3))
         return inception_score.get_inception_score(list(all_samples),
-                                                   splits=config.inps_splits)
+                                                   splits=splits)
 
     def generate_images(self, step):
         feed_dict = {self.noise: self.fixed_noise_128,

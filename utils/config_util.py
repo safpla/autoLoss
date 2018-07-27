@@ -133,9 +133,9 @@ class Parser(object):
         return os.path.join(self.data_dir, valid_data_file)
 
     @property
-    def test_data_file(self):
-        test_data_file = self.config.get('data', 'test_data_file')
-        return os.path.join(self.data_dir, test_data_file)
+    def train_stud_data_file(self):
+        train_stud_data_file = self.config.get('data', 'train_stud_data_file')
+        return os.path.join(self.data_dir, train_stud_data_file)
 
     @property
     def test_data_file(self):
@@ -153,6 +153,10 @@ class Parser(object):
     @property
     def num_sample_test(self):
         return self.config.getint('data', 'num_sample_test')
+
+    @property
+    def num_sample_train_stud(self):
+        return self.config.getint('data', 'num_sample_train_stud')
 
     @property
     def mean_noise(self):
@@ -219,6 +223,10 @@ class Parser(object):
         return self.config.getfloat('rl', 'reward_max_value')
 
     @property
+    def reward_min_value(self):
+        return self.config.getfloat('rl', 'reward_min_value')
+
+    @property
     def logit_clipping_c(self):
         return self.config.getfloat('rl', 'logit_clipping_c')
 
@@ -273,6 +281,10 @@ class Parser(object):
     @property
     def inps_splits(self):
         return self.config.getint('gan', 'inps_splits')
+
+    @property
+    def optimizer_ctrl(self):
+        return self.config.get('rl', 'optimizer_ctrl')
 
 
 if __name__ == '__main__':

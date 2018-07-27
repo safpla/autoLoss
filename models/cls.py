@@ -60,12 +60,15 @@ class Cls(Basic_model):
         train_data_file = config.train_data_file
         valid_data_file = config.valid_data_file
         test_data_file = config.test_data_file
+        train_stud_data_file = config.train_stud_data_file
         self.train_dataset = Dataset()
         self.train_dataset.load_npy(train_data_file)
         self.valid_dataset = Dataset()
         self.valid_dataset.load_npy(valid_data_file)
         self.test_dataset = Dataset()
         self.test_dataset.load_npy(test_data_file)
+        self.train_stud_dataset = Dataset()
+        self.train_stud_dataset.load_npy(train_stud_data_file)
         self.reset()
         self._build_placeholder()
         self._build_graph()
@@ -198,7 +201,7 @@ class Cls(Basic_model):
         [loss_ce, acc, pred, gdth] = self.sess.run(fetch, feed_dict=feed_dict)
         return loss_ce, acc, pred, gdth
 
-    def response(self, action):
+    def response(self, action, mode='TRAIN'):
         # Given an action, return the new state, reward and whether dead
 
         # Args:
@@ -210,7 +213,11 @@ class Cls(Basic_model):
         #     dead: boolean
         #
         sess = self.sess
-        data = self.train_dataset.next_batch(self.config.batch_size)
+        if mode == 'TRAIN':
+            dataset = self.train_dataset
+        else:
+            dataset = self.train_dataset
+        data = dataset.next_batch(self.config.batch_size)
         x = data['input']
         y = data['target']
         feed_dict = {self.x_plh: x, self.y_plh: y}
@@ -220,7 +227,7 @@ class Cls(Basic_model):
         fetch = [self.loss_ce, self.loss_l1]
         loss_ce, loss_l1 = sess.run(fetch, feed_dict=feed_dict)
         valid_loss, valid_acc, _, _ = self.valid()
-        train_loss, train_acc, _, _ = self.valid(dataset=self.train_dataset)
+        train_loss, train_acc, _, _ = self.valid(dataset=dataset)
 
         # ----Update state.----
         self.previous_ce_loss = self.previous_ce_loss[1:] + [loss_ce.tolist()]

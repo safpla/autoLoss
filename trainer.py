@@ -64,7 +64,7 @@ class Trainer():
         lr = config.lr_rl
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
-        best_reward = -1e5
+        best_reward = -1e5 # A big negative initial value
         best_acc = 0
         best_loss = 0
         best_inps = 0
@@ -89,7 +89,6 @@ class Trainer():
             # ----Initialize student model.----
             model_stud.initialize_weights()
             model_stud.reset()
-            model_ctrl.print_weights()
 
             state = model_stud.get_state()
             state_hist = []
@@ -210,6 +209,9 @@ class Trainer():
                     best_reward = final_reward
                     best_loss = loss
                     save_model_flag = True
+                    endurance = 0
+                else:
+                    endurance += 1
                 logger.info('best_loss: {}'.format(loss))
                 logger.info('lambda1: {}'.format(config.lambda1_stud))
             elif config.student_model_name == 'cls':
@@ -271,12 +273,23 @@ class Trainer():
         state = model_stud.get_state()
         for i in range(config.max_training_step):
             action = model_ctrl.sample(state)
-            state_new, _, dead = model_stud.response(action)
+            state_new, _, dead = model_stud.response(action, mode='TEST')
+            if (i % 10 == 0) and config.student_model_name == 'cls':
+                valid_loss = model_stud.previous_valid_loss[-1]
+                valid_acc = model_stud.previous_valid_acc[-1]
+                train_loss = model_stud.previous_train_loss[-1]
+                train_acc = model_stud.previous_train_acc[-1]
+                logger.info('Step {}'.format(i))
+                logger.info('train_loss: {}, valid_loss: {}'.format(train_loss, valid_loss))
+                logger.info('train_acc : {}, valid_acc : {}'.format(train_acc, valid_acc))
+
             state = state_new
             if dead:
                 break
         if config.student_model_name == 'toy':
-            raise NotImplementedError
+            loss = model_stud.best_loss
+            logger.info('loss: {}'.format(loss))
+            return loss
         elif config.student_model_name == 'cls':
             valid_acc = model_stud.best_acc
             test_acc = model_stud.test_acc
@@ -285,7 +298,8 @@ class Trainer():
             return test_acc
         elif config.student_model_name == 'gan':
             model_stud.load_model(model_stud.task_dir)
-            inps_test = model_stud.get_inception_score(5000)
+            inps_test = model_stud.get_inception_score(500, splits=5)
+            model_stud.genrate_images(0)
             logger.info('inps_test: {}'.format(inps_test))
             return inps_test
         elif config.student_model_name == 'gan_grid':
@@ -302,50 +316,65 @@ class Trainer():
         self.model_stud.train(save_model=True)
         if self.config.student_model_name == 'gan':
             self.model_stud.load_model(self.model_stud.task_dir)
-            inps_baseline = self.model_stud.get_inception_score(5000)
+            inps_baseline = self.model_stud.get_inception_score(500, splits=5)
+            self.model_stud.generate_images(0)
             logger.info('inps_baseline: {}'.format(inps_baseline))
         return inps_baseline
 
+    def generate(self, load_stud):
+        self.model_stud.initialize_weights()
+        self.model_stud.load_model(load_stud)
+        self.model_stud.generate_images(0)
 
 
 if __name__ == '__main__':
+    argv = sys.argv
     # ----Parsing config file.----
     logger.info(socket.gethostname())
-    if len(sys.argv) > 1:
-        config_file = sys.argv[1]
-    else:
-        config_file = 'gan.cfg'
+    config_file = 'gan.cfg'
+    #config_file = 'gan_cifar10.cfg'
+    #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
     config.print_config()
 
     # ----Instantiate a trainer object.----
-    trainer = Trainer(config)
+    trainer = Trainer(config, exp_name=argv[1])
 
     # classification task controllor model
     #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
+    # regression task controllor model
+    #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-15-20-32_ctrl'
     # gan mnist task controllor model
-    load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
-    # ----Training----
-    #   --Start from pretrained--
-    #trainer.train(load_ctrl=load_ctrl)
-    #   --Start from strach--
-    #trainer.train(save_ctrl=True)
-    #trainer.train()
+    #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
 
-    ## ----Baseline----
-    #logger.info('BASELINE')
-    #baseline_accs = []
-    #for i in range(1):
-    #    baseline_accs.append(trainer.baseline())
-    #logger.info(baseline_accs)
+    load_stud = '/datasets/BigLearning/haowen/autoLoss/saved_models/' + argv[1]
 
-    ## ----Testing----
-    logger.info('TEST')
-    test_accs = []
-    for i in range(1):
-        test_accs.append(trainer.test(load_ctrl))
-    logger.info(test_accs)
-    logger.info(np.mean(np.array(test_accs)))
-    logger.info(np.var(np.array(test_accs)))
+    if argv[2] == 'train':
+        # ----Training----
+        #   --Start from pretrained--
+        #trainer.train(load_ctrl=load_ctrl)
+        #trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
+        #   --Start from strach--
+        trainer.train(save_ctrl=True)
+        #trainer.train(save_ctrl=False)
+    elif argv[2] == 'test':
+        ## ----Testing----
+        logger.info('TEST')
+        test_accs = []
+        for i in range(1):
+            test_accs.append(trainer.test(trainer.model_ctrl.task_dir))
+            #test_accs.append(trainer.test(load_ctrl))
+        logger.info(test_accs)
+    elif argv[2] == 'baseline':
+        # ----Baseline----
+        logger.info('BASELINE')
+        baseline_accs = []
+        for i in range(1):
+            baseline_accs.append(trainer.baseline())
+        logger.info(baseline_accs)
+    elif argv[2] == 'generate':
+        logger.info('GENERATE')
+        trainer.generate(load_stud)
+
 
