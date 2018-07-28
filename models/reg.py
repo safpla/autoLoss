@@ -306,11 +306,11 @@ class Reg(Basic_model):
             else:
                 rel_diff.append(0)
 
-        state = ([rel_diff[-1] * 10] +
-                 _normalize1([abs(ib)]) +
-                 _normalize2(self.previous_mse_loss[-1:]) +
-                 _normalize3(self.previous_l1_loss[-1:]) +
-                 [self.mag_mse_grad - self.mag_l1_grad]
+        state = ([rel_diff[-1] * 10]
+                 + _normalize1([abs(ib)])
+                 + _normalize2(self.previous_mse_loss[-1:])
+                 + _normalize3(self.previous_l1_loss[-1:])
+                 #+ [self.mag_mse_grad - self.mag_l1_grad]
                  )
         return np.array(state, dtype='f')
 

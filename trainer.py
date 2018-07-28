@@ -14,9 +14,9 @@ from time import gmtime, strftime
 from models import controller
 from models import reg
 from models import cls
-from models import gan
-from models import gan_grid
-from models import gan_cifar10
+#from models import gan
+#from models import gan_grid
+#from models import gan_cifar10
 import utils
 from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
@@ -281,7 +281,7 @@ class Trainer():
         for i in range(config.max_training_step):
             lr = lrs[min(config.lr_decay_steps_stud-1, i)]
             action = model_ctrl.sample(state)
-            state_new, _, dead = model_stud.response(action, lr, mode='TEST')
+            state_new, _, dead = model_stud.response(action, lr, mode='TRAIN')
             if (i % 10 == 0) and config.student_model_name == 'cls':
                 valid_loss = model_stud.previous_valid_loss[-1]
                 valid_acc = model_stud.previous_valid_acc[-1]
@@ -357,7 +357,7 @@ if __name__ == '__main__':
     # gan mnist task controllor model
     #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h2-haowen6_05-13-20-21_ctrl'
 
-    load_stud = '/datasets/BigLearning/haowen/autoLoss/saved_models/' + argv[1]
+    load_ctrl = config.model_dir + '/' + argv[1] + '_ctrl'
 
     if argv[2] == 'train':
         # ----Training----
@@ -371,10 +371,11 @@ if __name__ == '__main__':
         ## ----Testing----
         logger.info('TEST')
         test_accs = []
-        for i in range(1):
-            test_accs.append(trainer.test(trainer.model_ctrl.task_dir))
-            #test_accs.append(trainer.test(load_ctrl))
+        for i in range(10):
+            #test_accs.append(trainer.test(trainer.model_ctrl.task_dir))
+            test_accs.append(trainer.test(load_ctrl))
         logger.info(test_accs)
+        print(np.mean(test_accs))
     elif argv[2] == 'baseline':
         # ----Baseline----
         logger.info('BASELINE')

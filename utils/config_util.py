@@ -98,7 +98,7 @@ class Parser(object):
     @property
     def exp_dir(self):
         if socket.gethostname() == 'Luna-Desktop':
-            return os.path.expanduer(self.config.get('env', 'exp_dir1'))
+            return os.path.expanduser(self.config.get('env', 'exp_dir1'))
         else:
             return os.path.expanduser(self.config.get('env', 'exp_dir'))
 
@@ -309,4 +309,4 @@ if __name__ == '__main__':
     root_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     config_path = os.path.join(root_path, 'config/regression.cfg')
     config = Parser(config_path)
-    config.print_config()
+    print(config.data_dir)
