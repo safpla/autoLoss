@@ -79,13 +79,15 @@ class Gan(Basic_model):
                                                 name='real_data')
             self.noise = tf.placeholder(tf.float32, shape=[None, dim_z],
                                         name='noise')
+            self.lr = tf.placeholder(tf.float32, name='learning_rate')
             self.is_training = tf.placeholder(tf.bool, name='is_training')
 
     def _build_graph(self):
         dim_x = self.config.dim_x
         dim_z = self.config.dim_z
         batch_size = self.config.batch_size
-        lr = self.config.lr_stud
+        #lr = self.config.lr_stud
+        lr = self.lr
         beta1 = self.config.beta1
         beta2 = self.config.beta2
 
@@ -232,7 +234,11 @@ class Gan(Basic_model):
         inps_baseline = 0
         decay = config.metric_decay
         steps_per_iteration = config.disc_iters + config.gen_iters
+        lrs = np.linspace(config.lr_start_stud,
+                          config.lr_end_stud,
+                          config.lr_decay_steps_stud)
         for step in range(config.max_training_step):
+            lr = lrs[min(config.lr_decay_steps_stud-1, step)]
             if step % steps_per_iteration < config.disc_iters:
                 # ----Update D network.----
                 data = self.train_dataset.next_batch(batch_size)
@@ -240,12 +246,13 @@ class Gan(Basic_model):
 
                 z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
                 feed_dict = {self.noise: z, self.real_data: x,
-                             self.is_training: True}
+                             self.is_training: True, self.lr: lr}
                 sess.run(self.disc_train_op, feed_dict=feed_dict)
             else:
                 # ----Update G network.----
                 z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
-                feed_dict = {self.noise: z, self.is_training: True}
+                feed_dict = {self.noise: z, self.is_training: True,
+                             self.lr: lr}
                 sess.run(self.gen_train_op, feed_dict=feed_dict)
 
             if step % valid_frequency == 0:
@@ -284,7 +291,7 @@ class Gan(Basic_model):
                 break
         logger.info('best_inps: {}'.format(best_inps))
 
-    def response(self, action, mode='TRAIN'):
+    def response(self, action, lr, mode='TRAIN'):
         # Given an action, return the new state, reward and whether dead
 
         # Args:
@@ -296,29 +303,29 @@ class Gan(Basic_model):
         #     dead: boolean
         #
         sess = self.sess
-        batch_size = self.config.batch_size
-        dim_z = self.config.dim_z
-        alpha = self.config.state_decay
+        config = self.config
+        batch_size = config.batch_size
+        dim_z = config.dim_z
+        alpha = config.state_decay
 
-        for i in range(1):
-            data = self.train_dataset.next_batch(batch_size)
-            x = data['input']
-            z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
-            feed_dict = {self.noise: z, self.real_data: x,
-                        self.is_training: True}
-            a = np.argmax(np.array(action))
+        data = self.train_dataset.next_batch(batch_size)
+        x = data['input']
+        z = np.random.normal(size=[batch_size, dim_z]).astype(np.float32)
+        feed_dict = {self.noise: z, self.real_data: x,
+                     self.is_training: True, self.lr: lr}
+        a = np.argmax(np.array(action))
 
-            # ----To detect collapse.----
-            if a == self.previous_action:
-                self.same_action_count += 1
-            else:
-                self.same_action_count = 0
-            self.previous_action = a
+        # ----To detect collapse.----
+        if a == self.previous_action:
+            self.same_action_count += 1
+        else:
+            self.same_action_count = 0
+        self.previous_action = a
 
-            fetch = [self.update[a], self.gen_grad, self.disc_grad,
-                    self.gen_cost, self.disc_cost_real, self.disc_cost_fake]
-            _, gen_grad, disc_grad, gen_cost, disc_cost_real, disc_cost_fake = \
-                sess.run(fetch, feed_dict=feed_dict)
+        fetch = [self.update[a], self.gen_grad, self.disc_grad,
+                self.gen_cost, self.disc_cost_real, self.disc_cost_fake]
+        _, gen_grad, disc_grad, gen_cost, disc_cost_real, disc_cost_fake = \
+            sess.run(fetch, feed_dict=feed_dict)
 
         self.mag_gen_grad = self.get_grads_magnitude(gen_grad)
         self.mag_disc_grad = self.get_grads_magnitude(disc_grad)

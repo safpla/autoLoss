@@ -36,10 +36,6 @@ class Parser(object):
                 logger.info('{}:: {}'.format(key, value))
 
     @property
-    def lr_decay_stud(self):
-        return self.config.getfloat('stud', 'lr_decay_stud')
-
-    @property
     def lr_rl(self):
         return self.config.getfloat('rl', 'lr_rl')
 
@@ -195,6 +191,18 @@ class Parser(object):
     @property
     def lr_stud(self):
         return self.config.getfloat('stud', 'lr_stud')
+
+    @property
+    def lr_start_stud(self):
+        return self.config.getfloat('stud', 'lr_start_stud')
+
+    @property
+    def lr_end_stud(self):
+        return self.config.getfloat('stud', 'lr_end_stud')
+
+    @property
+    def lr_decay_steps_stud(self):
+        return self.config.getint('stud', 'lr_decay_steps_stud')
 
     @property
     def beta1(self):

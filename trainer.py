@@ -70,6 +70,9 @@ class Trainer():
         best_inps = 0
         best_best_inps = 0
         endurance = 0
+        lrs = np.linspace(config.lr_start_stud,
+                          config.lr_end_stud,
+                          config.lr_decay_steps_stud)
 
         # ----Initialize controllor.----
         model_ctrl.initialize_weights()
@@ -106,12 +109,9 @@ class Trainer():
                 step += 1
                 explore_rate = config.explore_rate_rl *\
                     math.exp(-ep / config.explore_rate_decay_rl)
-                if 'gan' in config.student_model_name:
-                    action = model_ctrl.sample(state, explore_rate=explore_rate)
-                    state_new, reward, dead = model_stud.response(action)
-                else:
-                    action = model_ctrl.sample(state, explore_rate=explore_rate)
-                    state_new, reward, dead = model_stud.response(action)
+                lr = lrs[min(config.lr_decay_steps_stud-1, step)]
+                action = model_ctrl.sample(state, explore_rate=explore_rate)
+                state_new, reward, dead = model_stud.response(action, lr)
                 # ----Record training details.----
                 state_hist.append(state)
                 action_hist.append(action)
@@ -125,21 +125,21 @@ class Trainer():
                     train_loss_hist.append(model_stud.previous_train_loss[-1])
 
                 # ----Print training details.----
-                #if step < 200:
+                #if step > 0:
                 #    logger.info('----train_step: {}----'.format(step))
                 #    logger.info('state:{}'.format(state_new))
                 #    logger.info('action: {}'.format(action))
                 #    logger.info('reward:{}'.format(reward))
-                #    lv = model_stud.previous_valid_loss
-                #    lt = model_stud.previous_train_loss
-                #    av = model_stud.previous_valid_acc
-                #    at = model_stud.previous_train_acc
-                #    logger.info('train_loss: {}'.format(lt[-1]))
-                #    logger.info('valid_loss: {}'.format(lv[-1]))
-                #    logger.info('loss_imp: {}'.format(lv[-2] - lv[-1]))
-                #    logger.info('train_acc: {}'.format(at[-1]))
-                #    logger.info('valid_acc: {}'.format(av[-1]))
-                #    model_stud.print_weights()
+                #    #lv = model_stud.previous_valid_loss
+                #    #lt = model_stud.previous_train_loss
+                #    #av = model_stud.previous_valid_acc
+                #    #at = model_stud.previous_train_acc
+                #    #logger.info('train_loss: {}'.format(lt[-1]))
+                #    #logger.info('valid_loss: {}'.format(lv[-1]))
+                #    #logger.info('loss_imp: {}'.format(lv[-2] - lv[-1]))
+                #    #logger.info('train_acc: {}'.format(at[-1]))
+                #    #logger.info('valid_acc: {}'.format(av[-1]))
+                #    #model_stud.print_weights()
 
                 old_action = action
                 state = state_new
@@ -273,11 +273,15 @@ class Trainer():
         model_stud.initialize_weights()
         model_ctrl.load_model(load_ctrl, ckpt_num=ckpt_num)
         model_stud.reset()
+        lrs = np.linspace(config.lr_start_stud,
+                          config.lr_end_stud,
+                          config.lr_decay_steps_stud)
 
         state = model_stud.get_state()
         for i in range(config.max_training_step):
+            lr = lrs[min(config.lr_decay_steps_stud-1, i)]
             action = model_ctrl.sample(state)
-            state_new, _, dead = model_stud.response(action, mode='TEST')
+            state_new, _, dead = model_stud.response(action, lr, mode='TEST')
             if (i % 10 == 0) and config.student_model_name == 'cls':
                 valid_loss = model_stud.previous_valid_loss[-1]
                 valid_acc = model_stud.previous_valid_acc[-1]
@@ -335,8 +339,8 @@ if __name__ == '__main__':
     argv = sys.argv
     # ----Parsing config file.----
     logger.info(socket.gethostname())
-    config_file = 'gan.cfg'
-    #config_file = 'regression.cfg'
+    #config_file = 'gan.cfg'
+    config_file = 'regression.cfg'
     #config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)

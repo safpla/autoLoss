@@ -178,11 +178,12 @@ class Reg(Basic_model):
         loss_mse_np = np.mean(np.square(pred - gdth))
         return loss_mse, pred, gdth
 
-    def response(self, action, mode='TRAIN'):
+    def response(self, action, lr, mode='TRAIN'):
         """ Given an action, return the new state, reward and whether dead
 
         Args:
             action: one hot encoding of actions
+            lr: when lr needs decay
 
         Returns:
             state: shape = [dim_state_rl]
