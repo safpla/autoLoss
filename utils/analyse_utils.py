@@ -130,7 +130,7 @@ def loss_analyzer_gan(actions, rewards):
     win = 100
     update_gen_trace = []
     update_disc_trace = []
-    for i in range(min(80, int(total_steps / win))):
+    for i in range(int(total_steps / win)):
         start = i * win
         stop = (i + 1) * win
         action = actions[start:stop]

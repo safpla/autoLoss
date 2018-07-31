@@ -93,6 +93,10 @@ class Controller(Basic_model):
                                         * self.reward_plh)
 
             # ----Restore gradients and update them after several iterals.----
+            if config.optimizer_ctrl == 'adam':
+                optimizer = tf.train.AdamOptimizer(learning_rate=lr)
+            elif config.optimizer_ctrl == 'sgd':
+                optimizer = tf.train.GradientDescentOptimizer(lr)
             self.tvars = tf.trainable_variables()
             tvars = self.tvars
             self.gradient_plhs = []
@@ -100,12 +104,10 @@ class Controller(Basic_model):
                 placeholder = tf.placeholder(tf.float32, name=str(idx) + '_plh')
                 self.gradient_plhs.append(placeholder)
 
-            self.grads = tf.gradients(self.loss, tvars)
-            if config.optimizer_ctrl == 'adam':
-                optimizer = tf.train.AdamOptimizer(learning_rate=lr)
-            elif config.optimizer_ctrl == 'sgd':
-                optimizer = tf.train.GradientDescentOptimizer(lr)
+            gvs = optimizer.compute_gradients(self.loss, tvars)
+            self.grads = [grad for grad, _ in gvs]
             self.train_op = optimizer.apply_gradients(zip(self.gradient_plhs, tvars))
+            #self.train_op = optimizer.apply_gradients(gvs)
             self.init = tf.global_variables_initializer()
             self.saver = tf.train.Saver()
 
@@ -171,9 +173,13 @@ class Controller(Basic_model):
         else:
             return a_dist[0]
 
-    def train_one_step(self, gradBuffer, lr):
+    def train_one_step(self, gradBuffer, sh, ah, rh, lr):
         feed_dict = dict(zip(self.gradient_plhs, gradBuffer))
         feed_dict[self.lr_plh] = lr
+        feed_dict[self.reward_plh] = rh
+        feed_dict[self.action_plh] = ah
+        feed_dict[self.state_plh] = sh
+
         self.sess.run(self.train_op, feed_dict=feed_dict)
 
     def print_weights(self):

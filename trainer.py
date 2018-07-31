@@ -14,7 +14,7 @@ from time import gmtime, strftime
 from models import controller
 from models import reg
 from models import cls
-#from models import gan
+from models import gan
 #from models import gan_grid
 #from models import gan_cifar10
 import utils
@@ -61,7 +61,7 @@ class Trainer():
     def train(self, save_ctrl=None, load_ctrl=None):
         """ Iteratively training between controller and the student model """
         config = self.config
-        lr = config.lr_rl
+        lr_meta = config.lr_rl
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
         best_reward = -1e5 # A big negative initial value
@@ -168,18 +168,18 @@ class Trainer():
             for idx, grad in enumerate(grads):
                 gradBuffer[idx] += grad
 
-            if lr > config.lr_rl * 0.1:
-                lr = lr * config.lr_decay_rl
+            if lr_meta > config.lr_rl * 0.1:
+                lr_meta = lr_meta * config.lr_decay_rl
             if ep % config.update_frequency == (config.update_frequency - 1):
                 logger.info('UPDATE CONTROLLOR')
-                logger.info('lr_ctrl: {}'.format(lr))
-                model_ctrl.train_one_step(gradBuffer, lr)
-                #logger.info('grad')
-                #for ix, grad in enumerate(gradBuffer):
-                #    logger.info(grad)
-                #    gradBuffer[ix] = grad * 0
-                #logger.info('weights')
-                #model_ctrl.print_weights()
+                logger.info('lr_ctrl: {}'.format(lr_meta))
+                model_ctrl.train_one_step(gradBuffer, sh, ah, rh, lr_meta)
+                logger.info('grad')
+                for ix, grad in enumerate(gradBuffer):
+                    logger.info(grad)
+                    gradBuffer[ix] = grad * 0
+                logger.info('weights')
+                model_ctrl.print_weights()
 
                 # ----Print training details.----
                 #logger.info('Outputs')
@@ -306,8 +306,8 @@ class Trainer():
             return test_acc
         elif config.student_model_name == 'gan':
             model_stud.load_model(model_stud.task_dir)
-            inps_test = model_stud.get_inception_score(500, splits=5)
-            model_stud.genrate_images(0)
+            inps_test = model_stud.get_inception_score(5000)
+            #model_stud.generate_images(0)
             logger.info('inps_test: {}'.format(inps_test))
             return inps_test
         elif config.student_model_name == 'gan_grid':
@@ -339,8 +339,8 @@ if __name__ == '__main__':
     argv = sys.argv
     # ----Parsing config file.----
     logger.info(socket.gethostname())
-    #config_file = 'gan.cfg'
-    config_file = 'regression.cfg'
+    config_file = 'gan.cfg'
+    #config_file = 'regression.cfg'
     #config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
@@ -363,15 +363,15 @@ if __name__ == '__main__':
         # ----Training----
         #   --Start from pretrained--
         #trainer.train(load_ctrl=load_ctrl)
-        #trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
+        trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
         #   --Start from strach--
-        trainer.train(save_ctrl=True)
+        #trainer.train(save_ctrl=True)
         #trainer.train(save_ctrl=False)
     elif argv[2] == 'test':
         ## ----Testing----
         logger.info('TEST')
         test_accs = []
-        for i in range(10):
+        for i in range(6):
             #test_accs.append(trainer.test(trainer.model_ctrl.task_dir))
             test_accs.append(trainer.test(load_ctrl))
         logger.info(test_accs)

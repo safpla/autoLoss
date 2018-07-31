@@ -1,0 +1,1555 @@
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-07-30 06:04:34.882042: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-30 06:04:35.001264: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-07-30 06:04:35.001743: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.683
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.70GiB
+2018-07-30 06:04:35.063332: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-07-30 06:04:35.063806: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1356] Found device 1 with properties: 
+name: Tesla K40c major: 3 minor: 5 memoryClockRate(GHz): 0.745
+pciBusID: 0000:02:00.0
+totalMemory: 11.92GiB freeMemory: 11.84GiB
+2018-07-30 06:04:35.063825: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0, 1
+2018-07-30 06:04:35.402798: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-30 06:04:35.402829: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 1 
+2018-07-30 06:04:35.402835: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N N 
+2018-07-30 06:04:35.402838: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 1:   N N 
+2018-07-30 06:04:35.403172: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10353 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2018-07-30 06:04:35.403547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 11483 MB memory) -> physical GPU (device: 1, name: Tesla K40c, pci bus id: 0000:02:00.0, compute capability: 3.5)
+WARNING:tensorflow:From /home/haowen/GitHub/autoLoss/dataio/dataset_mnist.py:16: read_data_sets (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:260: maybe_download (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please write your own downloading logic.
+WARNING:tensorflow:From /home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:262: extract_images (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:267: extract_labels (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.data to implement this functionality.
+WARNING:tensorflow:From /home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:110: dense_to_one_hot (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use tf.one_hot on tensors.
+WARNING:tensorflow:From /home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/mnist.py:290: DataSet.__init__ (from tensorflow.contrib.learn.python.learn.datasets.mnist) is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use alternatives such as official/mnist/dataset.py from tensorflow/models.
+WARNING:tensorflow:From /home/haowen/GitHub/autoLoss/models/mnist.py:104: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See @{tf.nn.softmax_cross_entropy_with_logits_v2}.
+
+INFO::Loading pretrained model from: /media/haowen/autoLoss/saved_models/mnist_classification/model-20000
+INFO::Luna-Desktop
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+INFO::[DEFAULT]
+INFO::[env]
+INFO::exp_dir:: ~/haowen/GitHub/autoLoss
+INFO::data_dir:: /datasets/BigLearning/haowen/mnist
+INFO::model_dir:: /datasets/BigLearning/haowen/autoLoss/saved_models
+INFO::save_images_dir:: /datasets/BigLearning/haowen/autoLoss/saved_images
+INFO::exp_dir1:: ~/GitHub/autoLoss
+INFO::data_dir1:: /media/haowen/mnist
+INFO::model_dir1:: /media/haowen/autoLoss/saved_models
+INFO::[data]
+INFO::[stud]
+INFO::student_model_name:: gan
+INFO::batch_size:: 512
+INFO::lr_stud:: 0.0002
+INFO::lr_start_stud:: 0.0002
+INFO::lr_end_stud:: 0.0002
+INFO::lr_decay_steps_stud:: 50000
+INFO::beta1:: 0.5
+INFO::beta2:: 0.999
+INFO::valid_frequency_stud:: 500
+INFO::print_frequency_stud:: 2000
+INFO::max_endurance_stud:: 200
+INFO::max_training_step:: 200000
+INFO::stop_strategy_stud:: exceeding_endurance
+INFO::[gan]
+INFO::dim_z:: 128
+INFO::dim_x:: 784
+INFO::dim_c:: 64
+INFO::disc_iters:: 1
+INFO::gen_iters:: 1
+INFO::inps_batches:: 200
+INFO::inps_splits:: 5
+INFO::[evaluate]
+INFO::[rl]
+INFO::controller_model_name:: 2layer_logits_clipping
+INFO::logit_clipping_c:: 1
+INFO::dim_state_rl:: 4
+INFO::dim_hidden_rl:: 16
+INFO::dim_action_rl:: 2
+INFO::lr_rl:: 0.002
+INFO::lr_decay_rl:: 1
+INFO::total_episodes:: 1000
+INFO::update_frequency:: 1
+INFO::save_frequency:: 100
+INFO::inps_baseline_decay:: 0.9
+INFO::reward_c:: 10
+INFO::reward_step_rl:: 0.1
+INFO::reward_max_value:: 20
+INFO::reward_min_value:: 1
+INFO::explore_rate_decay_rl:: 100
+INFO::explore_rate_rl:: 0
+INFO::max_endurance_rl:: 50
+INFO::state_decay:: 0.9
+INFO::metric_decay:: 0.8
+INFO::optimizer_ctrl:: adam
+INFO::exp_name: rebuttal_gan_2l_adam_short
+2018-07-30 06:04:36.512663: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0, 1
+2018-07-30 06:04:36.512690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-30 06:04:36.512695: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 1 
+2018-07-30 06:04:36.512699: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N N 
+2018-07-30 06:04:36.512702: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 1:   N N 
+2018-07-30 06:04:36.513011: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10353 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2018-07-30 06:04:36.513091: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 11483 MB memory) -> physical GPU (device: 1, name: Tesla K40c, pci bus id: 0000:02:00.0, compute capability: 3.5)
+2018-07-30 06:04:36.626636: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1435] Adding visible gpu devices: 0, 1
+2018-07-30 06:04:36.626677: I tensorflow/core/common_runtime/gpu/gpu_device.cc:923] Device interconnect StreamExecutor with strength 1 edge matrix:
+2018-07-30 06:04:36.626683: I tensorflow/core/common_runtime/gpu/gpu_device.cc:929]      0 1 
+2018-07-30 06:04:36.626687: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 0:   N N 
+2018-07-30 06:04:36.626696: I tensorflow/core/common_runtime/gpu/gpu_device.cc:942] 1:   N N 
+2018-07-30 06:04:36.627013: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10353 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+2018-07-30 06:04:36.627080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1053] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:1 with 11483 MB memory) -> physical GPU (device: 1, name: Tesla K40c, pci bus id: 0000:02:00.0, compute capability: 3.5)
+/home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/python/client/session.py:1711: UserWarning: An interactive session is already active. This can cause out-of-memory errors in some cases. You must explicitly call `InteractiveSession.close()` to release resources held by the other session(s).
+  warnings.warn('An interactive session is already active. This can '
+/home/haowen/miniconda3/envs/py3/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:100: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+INFO::TEST
+INFO::Loading pretrained model from: /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_ctrl/model-4
+INFO::step: 500, new best result: 4.707136154174805
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step500----
+INFO::inception_score: (4.707136, 0.03950292)
+INFO::inps_baseline: 4.707136154174805
+INFO::step: 1000, new best result: 4.713187980651855
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step1000----
+INFO::inception_score: (4.7373953, 0.042318046)
+INFO::inps_baseline: 4.713187980651855
+INFO::step: 1500, new best result: 4.978785362243652
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step1500----
+INFO::inception_score: (6.041175, 0.021405034)
+INFO::inps_baseline: 4.978785362243652
+INFO::step: 2000, new best result: 5.339785072326659
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step2000----
+INFO::inception_score: (6.783784, 0.08113573)
+INFO::inps_baseline: 5.339785072326659
+INFO::step: 2500, new best result: 5.741458489990233
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step2500----
+INFO::inception_score: (7.348152, 0.03900238)
+INFO::inps_baseline: 5.741458489990233
+INFO::step: 3000, new best result: 6.099259626464843
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step3000----
+INFO::inception_score: (7.530464, 0.04261861)
+INFO::inps_baseline: 6.099259626464843
+INFO::step: 3500, new best result: 6.4273391815795895
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step3500----
+INFO::inception_score: (7.7396574, 0.032327216)
+INFO::inps_baseline: 6.4273391815795895
+INFO::step: 4000, new best result: 6.646766174060058
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step4000----
+INFO::inception_score: (7.524474, 0.032861628)
+INFO::inps_baseline: 6.646766174060058
+INFO::step: 4500, new best result: 6.861783209023438
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step4500----
+INFO::inception_score: (7.7218513, 0.051103212)
+INFO::inps_baseline: 6.861783209023438
+INFO::step: 5000, new best result: 7.02823624815747
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step5000----
+INFO::inception_score: (7.6940484, 0.03306553)
+INFO::inps_baseline: 7.02823624815747
+INFO::step: 5500, new best result: 7.158323365896582
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step5500----
+INFO::inception_score: (7.678672, 0.03781585)
+INFO::inps_baseline: 7.158323365896582
+INFO::step: 6000, new best result: 7.290405812620829
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step6000----
+INFO::inception_score: (7.8187356, 0.028094282)
+INFO::inps_baseline: 7.290405812620829
+INFO::step: 6500, new best result: 7.406113292979963
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step6500----
+INFO::inception_score: (7.868943, 0.04639043)
+INFO::inps_baseline: 7.406113292979963
+INFO::step: 7000, new best result: 7.496055528487974
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step7000----
+INFO::inception_score: (7.8558245, 0.04102176)
+INFO::inps_baseline: 7.496055528487974
+INFO::----step7500----
+INFO::inception_score: (6.7410965, 0.03377096)
+INFO::inps_baseline: 7.345063722106786
+INFO::----step8000----
+INFO::inception_score: (7.901223, 0.037584886)
+INFO::inps_baseline: 7.456295614221073
+INFO::step: 8500, new best result: 7.5674157180614285
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step8500----
+INFO::inception_score: (8.011896, 0.028566873)
+INFO::inps_baseline: 7.5674157180614285
+INFO::step: 9000, new best result: 7.633719256578049
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step9000----
+INFO::inception_score: (7.8989334, 0.040277187)
+INFO::inps_baseline: 7.633719256578049
+INFO::step: 9500, new best result: 7.710772173450915
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step9500----
+INFO::inception_score: (8.018984, 0.04087141)
+INFO::inps_baseline: 7.710772173450915
+INFO::step: 10000, new best result: 7.793106569327138
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step10000----
+INFO::inception_score: (8.122444, 0.032123737)
+INFO::inps_baseline: 7.793106569327138
+INFO::step: 10500, new best result: 7.84763280032255
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step10500----
+INFO::inception_score: (8.065738, 0.049875293)
+INFO::inps_baseline: 7.84763280032255
+INFO::step: 11000, new best result: 7.915853814110579
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step11000----
+INFO::inception_score: (8.188738, 0.057166085)
+INFO::inps_baseline: 7.915853814110579
+INFO::----step11500----
+INFO::inception_score: (5.151066, 0.037804827)
+INFO::inps_baseline: 7.3628962165716665
+INFO::----step12000----
+INFO::inception_score: (8.16093, 0.020223338)
+INFO::inps_baseline: 7.522502909231454
+INFO::----step12500----
+INFO::inception_score: (8.099415, 0.035134763)
+INFO::inps_baseline: 7.637885292473054
+INFO::----step13000----
+INFO::inception_score: (8.130027, 0.028755268)
+INFO::inps_baseline: 7.736313597442798
+INFO::----step13500----
+INFO::inception_score: (8.272722, 0.034840547)
+INFO::inps_baseline: 7.843595326806778
+INFO::step: 14000, new best result: 7.935699320527453
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step14000----
+INFO::inception_score: (8.304115, 0.026618985)
+INFO::inps_baseline: 7.935699320527453
+INFO::step: 14500, new best result: 8.007608299805751
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step14500----
+INFO::inception_score: (8.295244, 0.016830867)
+INFO::inps_baseline: 8.007608299805751
+INFO::step: 15000, new best result: 8.06603651472253
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step15000----
+INFO::inception_score: (8.299749, 0.034428384)
+INFO::inps_baseline: 8.06603651472253
+INFO::step: 15500, new best result: 8.087732547349313
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step15500----
+INFO::inception_score: (8.174517, 0.046711273)
+INFO::inps_baseline: 8.087732547349313
+INFO::step: 16000, new best result: 8.138221926551326
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step16000----
+INFO::inception_score: (8.340179, 0.058507435)
+INFO::inps_baseline: 8.138221926551326
+INFO::----step16500----
+INFO::inception_score: (4.7887225, 0.023669569)
+INFO::inps_baseline: 7.468322044262301
+INFO::----step17000----
+INFO::inception_score: (8.074125, 0.03678)
+INFO::inps_baseline: 7.589482693393239
+INFO::----step17500----
+INFO::inception_score: (8.185835, 0.050428316)
+INFO::inps_baseline: 7.708753131643302
+INFO::----step18000----
+INFO::inception_score: (8.209394, 0.02738324)
+INFO::inps_baseline: 7.8088813963058525
+INFO::----step18500----
+INFO::inception_score: (8.233375, 0.03989477)
+INFO::inps_baseline: 7.8937800361731005
+INFO::----step19000----
+INFO::inception_score: (1.0826201, 0.0039351815)
+INFO::inps_baseline: 6.531548057716558
+INFO::----step19500----
+INFO::inception_score: (8.233225, 0.074231885)
+INFO::inps_baseline: 6.871883419928129
+INFO::----step20000----
+INFO::inception_score: (8.077121, 0.03841857)
+INFO::inps_baseline: 7.112930892131468
+INFO::----step20500----
+INFO::inception_score: (8.2426815, 0.04062125)
+INFO::inps_baseline: 7.338881014364354
+INFO::----step21000----
+INFO::inception_score: (8.341176, 0.031846154)
+INFO::inps_baseline: 7.539340018095487
+INFO::----step21500----
+INFO::inception_score: (8.299204, 0.033396356)
+INFO::inps_baseline: 7.691312789012523
+INFO::----step22000----
+INFO::inception_score: (8.326868, 0.03473432)
+INFO::inps_baseline: 7.818423842660214
+INFO::----step22500----
+INFO::inception_score: (8.40597, 0.037687138)
+INFO::inps_baseline: 7.935932998078366
+INFO::----step23000----
+INFO::inception_score: (8.411103, 0.03454668)
+INFO::inps_baseline: 8.030967048181932
+INFO::----step23500----
+INFO::inception_score: (8.446963, 0.04776646)
+INFO::inps_baseline: 8.114166300593885
+INFO::step: 24000, new best result: 8.182683405160168
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step24000----
+INFO::inception_score: (8.456752, 0.04061998)
+INFO::inps_baseline: 8.182683405160168
+INFO::step: 24500, new best result: 8.23822302570284
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step24500----
+INFO::inception_score: (8.4603815, 0.03092523)
+INFO::inps_baseline: 8.23822302570284
+INFO::step: 25000, new best result: 8.284638555449968
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step25000----
+INFO::inception_score: (8.470301, 0.02737366)
+INFO::inps_baseline: 8.284638555449968
+INFO::step: 25500, new best result: 8.33376534112511
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step25500----
+INFO::inception_score: (8.5302725, 0.028630141)
+INFO::inps_baseline: 8.33376534112511
+INFO::----step26000----
+INFO::inception_score: (8.148857, 0.038213603)
+INFO::inps_baseline: 8.296783696239931
+INFO::----step26500----
+INFO::inception_score: (2.1990352, 0.01624469)
+INFO::inps_baseline: 7.077233990530763
+INFO::----step27000----
+INFO::inception_score: (8.335951, 0.018320221)
+INFO::inps_baseline: 7.328977362712696
+INFO::----step27500----
+INFO::inception_score: (8.028264, 0.050601497)
+INFO::inps_baseline: 7.4688346993132235
+INFO::----step28000----
+INFO::inception_score: (8.359504, 0.041576743)
+INFO::inps_baseline: 7.646968508657121
+INFO::----step28500----
+INFO::inception_score: (8.424064, 0.02868637)
+INFO::inps_baseline: 7.802387543436927
+INFO::----step29000----
+INFO::inception_score: (8.423002, 0.033513464)
+INFO::inps_baseline: 7.92651048335794
+INFO::----step29500----
+INFO::inception_score: (8.432656, 0.052840523)
+INFO::inps_baseline: 8.027739644315746
+INFO::----step30000----
+INFO::inception_score: (8.606055, 0.04057545)
+INFO::inps_baseline: 8.143402767393514
+INFO::----step30500----
+INFO::inception_score: (8.548078, 0.010105879)
+INFO::inps_baseline: 8.224337730577409
+INFO::----step31000----
+INFO::inception_score: (1.6351725, 0.0060587903)
+INFO::inps_baseline: 6.906504681722975
+INFO::----step31500----
+INFO::inception_score: (8.382648, 0.037796028)
+INFO::inps_baseline: 7.201733438981896
+INFO::----step32000----
+INFO::inception_score: (8.326499, 0.04561753)
+INFO::inps_baseline: 7.426686548243622
+INFO::----step32500----
+INFO::inception_score: (8.256188, 0.05790184)
+INFO::inps_baseline: 7.5925869171227305
+INFO::----step33000----
+INFO::inception_score: (8.518707, 0.018670872)
+INFO::inps_baseline: 7.777810988776309
+INFO::----step33500----
+INFO::inception_score: (8.55075, 0.053589314)
+INFO::inps_baseline: 7.932398746770559
+INFO::----step34000----
+INFO::inception_score: (8.470097, 0.061087813)
+INFO::inps_baseline: 8.0399383150434
+INFO::----step34500----
+INFO::inception_score: (8.560265, 0.026577162)
+INFO::inps_baseline: 8.144003569515188
+INFO::----step35000----
+INFO::inception_score: (8.626508, 0.028345836)
+INFO::inps_baseline: 8.240504407430999
+INFO::----step35500----
+INFO::inception_score: (8.238856, 0.053648613)
+INFO::inps_baseline: 8.240174789067359
+INFO::----step36000----
+INFO::inception_score: (8.611508, 0.030560864)
+INFO::inps_baseline: 8.314441505143048
+INFO::step: 36500, new best result: 8.376433804090025
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step36500----
+INFO::inception_score: (8.624403, 0.015901636)
+INFO::inps_baseline: 8.376433804090025
+INFO::step: 37000, new best result: 8.439825975461961
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step37000----
+INFO::inception_score: (8.693395, 0.028054306)
+INFO::inps_baseline: 8.439825975461961
+INFO::step: 37500, new best result: 8.489220971714783
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step37500----
+INFO::inception_score: (8.686801, 0.020578807)
+INFO::inps_baseline: 8.489220971714783
+INFO::step: 38000, new best result: 8.533894820889893
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step38000----
+INFO::inception_score: (8.71259, 0.033225622)
+INFO::inps_baseline: 8.533894820889893
+INFO::step: 38500, new best result: 8.567649113242677
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step38500----
+INFO::inception_score: (8.702666, 0.04293452)
+INFO::inps_baseline: 8.567649113242677
+INFO::step: 39000, new best result: 8.583196057561915
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step39000----
+INFO::inception_score: (8.645384, 0.040108763)
+INFO::inps_baseline: 8.583196057561915
+INFO::----step39500----
+INFO::inception_score: (4.0686874, 0.06448163)
+INFO::inps_baseline: 7.680294333842501
+INFO::----step40000----
+INFO::inception_score: (8.652705, 0.04339978)
+INFO::inps_baseline: 7.874776505587184
+INFO::----step40500----
+INFO::inception_score: (7.232128, 0.03919117)
+INFO::inps_baseline: 7.746246833131856
+INFO::----step41000----
+INFO::inception_score: (8.513051, 0.02911121)
+INFO::inps_baseline: 7.899607673109489
+INFO::----step41500----
+INFO::inception_score: (8.460106, 0.05590261)
+INFO::inps_baseline: 8.01170731768681
+INFO::----step42000----
+INFO::inception_score: (8.597615, 0.052251145)
+INFO::inps_baseline: 8.128888902550326
+INFO::----step42500----
+INFO::inception_score: (8.544549, 0.041516084)
+INFO::inps_baseline: 8.212020919708717
+INFO::----step43000----
+INFO::inception_score: (8.68482, 0.04356158)
+INFO::inps_baseline: 8.306580770801153
+INFO::----step43500----
+INFO::inception_score: (8.670217, 0.026800588)
+INFO::inps_baseline: 8.379307928713676
+INFO::----step44000----
+INFO::inception_score: (8.703138, 0.02311025)
+INFO::inps_baseline: 8.444074013259026
+INFO::----step44500----
+INFO::inception_score: (8.667936, 0.036202624)
+INFO::inps_baseline: 8.48884647562187
+INFO::----step45000----
+INFO::inception_score: (8.71616, 0.020122817)
+INFO::inps_baseline: 8.534309144608823
+INFO::----step45500----
+INFO::inception_score: (8.696676, 0.033191044)
+INFO::inps_baseline: 8.566782566541551
+INFO::step: 46000, new best result: 8.59907100409994
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step46000----
+INFO::inception_score: (8.728225, 0.024189929)
+INFO::inps_baseline: 8.59907100409994
+INFO::step: 46500, new best result: 8.627972013240889
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step46500----
+INFO::inception_score: (8.743576, 0.031779118)
+INFO::inps_baseline: 8.627972013240889
+INFO::step: 47000, new best result: 8.655585198788513
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step47000----
+INFO::inception_score: (8.766038, 0.036483135)
+INFO::inps_baseline: 8.655585198788513
+INFO::step: 47500, new best result: 8.687810825656786
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step47500----
+INFO::inception_score: (8.816713, 0.04088772)
+INFO::inps_baseline: 8.687810825656786
+INFO::----step48000----
+INFO::inception_score: (7.526661, 0.051396355)
+INFO::inps_baseline: 8.45558084436332
+INFO::----step48500----
+INFO::inception_score: (8.762491, 0.049047224)
+INFO::inps_baseline: 8.516962920729913
+INFO::----step49000----
+INFO::inception_score: (8.750947, 0.028349523)
+INFO::inps_baseline: 8.563759736303169
+INFO::----step49500----
+INFO::inception_score: (8.753901, 0.03632484)
+INFO::inps_baseline: 8.601787894633356
+INFO::----step50000----
+INFO::inception_score: (8.791758, 0.028051423)
+INFO::inps_baseline: 8.639781832430318
+INFO::----step50500----
+INFO::inception_score: (8.73714, 0.047854003)
+INFO::inps_baseline: 8.659253406312907
+INFO::step: 51000, new best result: 8.688173904249544
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step51000----
+INFO::inception_score: (8.803856, 0.015370624)
+INFO::inps_baseline: 8.688173904249544
+INFO::----step51500----
+INFO::inception_score: (8.530797, 0.02096462)
+INFO::inps_baseline: 8.656698524339577
+INFO::step: 52000, new best result: 8.689706277357404
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step52000----
+INFO::inception_score: (8.821737, 0.026369225)
+INFO::inps_baseline: 8.689706277357404
+INFO::step: 52500, new best result: 8.713104400242857
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step52500----
+INFO::inception_score: (8.806697, 0.010809931)
+INFO::inps_baseline: 8.713104400242857
+INFO::step: 53000, new best result: 8.732424857779735
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step53000----
+INFO::inception_score: (8.809707, 0.03554964)
+INFO::inps_baseline: 8.732424857779735
+INFO::step: 53500, new best result: 8.746243383538241
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step53500----
+INFO::inception_score: (8.8015175, 0.041016508)
+INFO::inps_baseline: 8.746243383538241
+INFO::----step54000----
+INFO::inception_score: (8.131094, 0.032339636)
+INFO::inps_baseline: 8.62321350260696
+INFO::----step54500----
+INFO::inception_score: (8.825451, 0.022477608)
+INFO::inps_baseline: 8.663660981528928
+INFO::----step55000----
+INFO::inception_score: (8.844136, 0.027632948)
+INFO::inps_baseline: 8.699756032842771
+INFO::----step55500----
+INFO::inception_score: (8.857779, 0.013173878)
+INFO::inps_baseline: 8.731360536113083
+INFO::step: 56000, new best result: 8.75387924615121
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step56000----
+INFO::inception_score: (8.843954, 0.03821987)
+INFO::inps_baseline: 8.75387924615121
+INFO::----step56500----
+INFO::inception_score: (8.5847, 0.024543654)
+INFO::inps_baseline: 8.720043323068428
+INFO::----step57000----
+INFO::inception_score: (8.868426, 0.051014867)
+INFO::inps_baseline: 8.749719923042145
+INFO::step: 57500, new best result: 8.777492765826294
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step57500----
+INFO::inception_score: (8.888584, 0.034513146)
+INFO::inps_baseline: 8.777492765826294
+INFO::step: 58000, new best result: 8.799669269118555
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step58000----
+INFO::inception_score: (8.888375, 0.022262657)
+INFO::inps_baseline: 8.799669269118555
+INFO::----step58500----
+INFO::inception_score: (1.9730352, 0.025713537)
+INFO::inps_baseline: 7.43434245856114
+INFO::----step59000----
+INFO::inception_score: (8.82803, 0.046320498)
+INFO::inps_baseline: 7.713079893362584
+INFO::----step59500----
+INFO::inception_score: (8.72757, 0.04636914)
+INFO::inps_baseline: 7.9159778307056925
+INFO::----step60000----
+INFO::inception_score: (8.882158, 0.028131858)
+INFO::inps_baseline: 8.109213920448344
+INFO::----step60500----
+INFO::inception_score: (8.811067, 0.03374138)
+INFO::inps_baseline: 8.249584461859163
+INFO::----step61000----
+INFO::inception_score: (8.884705, 0.016160335)
+INFO::inps_baseline: 8.37660848745608
+INFO::----step61500----
+INFO::inception_score: (8.877903, 0.035674334)
+INFO::inps_baseline: 8.476867386888692
+INFO::----step62000----
+INFO::inception_score: (8.903936, 0.017751696)
+INFO::inps_baseline: 8.562281186732633
+INFO::----step62500----
+INFO::inception_score: (8.885195, 0.033954494)
+INFO::inps_baseline: 8.626863905074584
+INFO::----step63000----
+INFO::inception_score: (8.886072, 0.024471482)
+INFO::inps_baseline: 8.678705555822363
+INFO::----step63500----
+INFO::inception_score: (8.753614, 0.027892763)
+INFO::inps_baseline: 8.693687329789727
+INFO::----step64000----
+INFO::inception_score: (8.846941, 0.012548907)
+INFO::inps_baseline: 8.724338062684321
+INFO::----step64500----
+INFO::inception_score: (8.666867, 0.043780874)
+INFO::inps_baseline: 8.712843901380367
+INFO::----step65000----
+INFO::inception_score: (8.9207325, 0.01650905)
+INFO::inps_baseline: 8.754421620738082
+INFO::----step65500----
+INFO::inception_score: (8.955246, 0.024426004)
+INFO::inps_baseline: 8.794586490926402
+INFO::----step66000----
+INFO::inception_score: (7.676421, 0.04081322)
+INFO::inps_baseline: 8.570953425834384
+INFO::----step66500----
+INFO::inception_score: (8.935048, 0.021053337)
+INFO::inps_baseline: 8.643772361334012
+INFO::----step67000----
+INFO::inception_score: (8.856295, 0.03717591)
+INFO::inps_baseline: 8.686276815458811
+INFO::----step67500----
+INFO::inception_score: (8.868235, 0.019249946)
+INFO::inps_baseline: 8.722668379246931
+INFO::----step68000----
+INFO::inception_score: (8.902974, 0.021505682)
+INFO::inps_baseline: 8.758729529142174
+INFO::----step68500----
+INFO::inception_score: (8.885581, 0.01438824)
+INFO::inps_baseline: 8.784099826621846
+INFO::step: 69000, new best result: 8.817298705901969
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step69000----
+INFO::inception_score: (8.950094, 0.028568797)
+INFO::inps_baseline: 8.817298705901969
+INFO::step: 69500, new best result: 8.837946554443254
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step69500----
+INFO::inception_score: (8.920538, 0.03480925)
+INFO::inps_baseline: 8.837946554443254
+INFO::step: 70000, new best result: 8.84545528127433
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step70000----
+INFO::inception_score: (8.87549, 0.04841226)
+INFO::inps_baseline: 8.84545528127433
+INFO::step: 70500, new best result: 8.854632657636651
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step70500----
+INFO::inception_score: (8.891342, 0.03123113)
+INFO::inps_baseline: 8.854632657636651
+INFO::----step71000----
+INFO::inception_score: (8.7977085, 0.03712102)
+INFO::inps_baseline: 8.843247828379829
+INFO::step: 71500, new best result: 8.85687060157105
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step71500----
+INFO::inception_score: (8.911362, 0.031897724)
+INFO::inps_baseline: 8.85687060157105
+INFO::step: 72000, new best result: 8.86621700127637
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step72000----
+INFO::inception_score: (8.903603, 0.012056304)
+INFO::inps_baseline: 8.86621700127637
+INFO::step: 72500, new best result: 8.87408779779844
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step72500----
+INFO::inception_score: (8.905571, 0.045118768)
+INFO::inps_baseline: 8.87408779779844
+INFO::step: 73000, new best result: 8.892355336505354
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step73000----
+INFO::inception_score: (8.9654255, 0.03923214)
+INFO::inps_baseline: 8.892355336505354
+INFO::step: 73500, new best result: 8.90324126383319
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step73500----
+INFO::inception_score: (8.946785, 0.021307856)
+INFO::inps_baseline: 8.90324126383319
+INFO::----step74000----
+INFO::inception_score: (8.830397, 0.034548245)
+INFO::inps_baseline: 8.888672341510889
+INFO::----step74500----
+INFO::inception_score: (8.923014, 0.02917596)
+INFO::inps_baseline: 8.895540610635468
+INFO::----step75000----
+INFO::inception_score: (8.872066, 0.03035635)
+INFO::inps_baseline: 8.890845597334058
+INFO::step: 75500, new best result: 8.906926966148497
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step75500----
+INFO::inception_score: (8.971252, 0.0337639)
+INFO::inps_baseline: 8.906926966148497
+INFO::step: 76000, new best result: 8.917122154583836
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step76000----
+INFO::inception_score: (8.957903, 0.03129487)
+INFO::inps_baseline: 8.917122154583836
+INFO::----step76500----
+INFO::inception_score: (8.336992, 0.04485854)
+INFO::inps_baseline: 8.801096176425858
+INFO::----step77000----
+INFO::inception_score: (8.979284, 0.031613782)
+INFO::inps_baseline: 8.836733798440491
+INFO::----step77500----
+INFO::inception_score: (8.8869, 0.045637213)
+INFO::inps_baseline: 8.846767028376416
+INFO::----step78000----
+INFO::inception_score: (8.588442, 0.047132686)
+INFO::inps_baseline: 8.795101992452109
+INFO::----step78500----
+INFO::inception_score: (4.483266, 0.08232779)
+INFO::inps_baseline: 7.932734769315691
+INFO::----step79000----
+INFO::inception_score: (8.776236, 0.016345931)
+INFO::inps_baseline: 8.10143493154142
+INFO::----step79500----
+INFO::inception_score: (8.706463, 0.035535373)
+INFO::inps_baseline: 8.22244051725462
+INFO::----step80000----
+INFO::inception_score: (8.849734, 0.030787898)
+INFO::inps_baseline: 8.347899275070786
+INFO::----step80500----
+INFO::inception_score: (8.848317, 0.026064225)
+INFO::inps_baseline: 8.447982849316883
+INFO::----step81000----
+INFO::inception_score: (5.190429, 0.02374928)
+INFO::inps_baseline: 7.796472121586075
+INFO::----step81500----
+INFO::inception_score: (8.84231, 0.01182379)
+INFO::inps_baseline: 8.005639687625305
+INFO::----step82000----
+INFO::inception_score: (8.821428, 0.015002554)
+INFO::inps_baseline: 8.168797409890283
+INFO::----step82500----
+INFO::inception_score: (8.846884, 0.045166317)
+INFO::inps_baseline: 8.304414682672968
+INFO::----step83000----
+INFO::inception_score: (8.914981, 0.02613963)
+INFO::inps_baseline: 8.426527923811715
+INFO::----step83500----
+INFO::inception_score: (8.900565, 0.03256618)
+INFO::inps_baseline: 8.521335368529352
+INFO::----step84000----
+INFO::inception_score: (8.938821, 0.033498187)
+INFO::inps_baseline: 8.604832462609126
+INFO::----step84500----
+INFO::inception_score: (8.972839, 0.01995753)
+INFO::inps_baseline: 8.67843384118105
+INFO::----step85000----
+INFO::inception_score: (8.928787, 0.06130059)
+INFO::inps_baseline: 8.728504519233903
+INFO::----step85500----
+INFO::inception_score: (8.937056, 0.021988101)
+INFO::inps_baseline: 8.770214732940834
+INFO::----step86000----
+INFO::inception_score: (8.969862, 0.025787322)
+INFO::inps_baseline: 8.810144183203255
+INFO::----step86500----
+INFO::inception_score: (8.695855, 0.06787893)
+INFO::inps_baseline: 8.78728637469981
+INFO::----step87000----
+INFO::inception_score: (8.991794, 0.033143338)
+INFO::inps_baseline: 8.828187826261313
+INFO::----step87500----
+INFO::inception_score: (8.690163, 0.035109986)
+INFO::inps_baseline: 8.800582792747331
+INFO::----step88000----
+INFO::inception_score: (8.9998865, 0.036031485)
+INFO::inps_baseline: 8.840443536749135
+INFO::----step88500----
+INFO::inception_score: (8.8743725, 0.025461884)
+INFO::inps_baseline: 8.847229325859269
+INFO::----step89000----
+INFO::inception_score: (8.908959, 0.024157759)
+INFO::inps_baseline: 8.859575338433997
+INFO::----step89500----
+INFO::inception_score: (8.896843, 0.036829155)
+INFO::inps_baseline: 8.867028862055792
+INFO::----step90000----
+INFO::inception_score: (8.999185, 0.035194654)
+INFO::inps_baseline: 8.893460011336527
+INFO::----step90500----
+INFO::inception_score: (8.964983, 0.02824018)
+INFO::inps_baseline: 8.907764606359262
+INFO::step: 91000, new best result: 8.926484817411628
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step91000----
+INFO::inception_score: (9.001366, 0.0240445)
+INFO::inps_baseline: 8.926484817411628
+INFO::step: 91500, new best result: 8.943217845079205
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step91500----
+INFO::inception_score: (9.01015, 0.016548183)
+INFO::inps_baseline: 8.943217845079205
+INFO::step: 92000, new best result: 8.955439067933481
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step92000----
+INFO::inception_score: (9.004324, 0.023800759)
+INFO::inps_baseline: 8.955439067933481
+INFO::----step92500----
+INFO::inception_score: (8.912195, 0.028798608)
+INFO::inps_baseline: 8.94679029548448
+INFO::step: 93000, new best result: 8.956002869322154
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step93000----
+INFO::inception_score: (8.992853, 0.028014747)
+INFO::inps_baseline: 8.956002869322154
+INFO::step: 93500, new best result: 8.965738994371296
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step93500----
+INFO::inception_score: (9.0046835, 0.017592179)
+INFO::inps_baseline: 8.965738994371296
+INFO::----step94000----
+INFO::inception_score: (8.86976, 0.031226845)
+INFO::inps_baseline: 8.946543107423308
+INFO::----step94500----
+INFO::inception_score: (8.996706, 0.021952407)
+INFO::inps_baseline: 8.956575687720873
+INFO::----step95000----
+INFO::inception_score: (8.996379, 0.05141143)
+INFO::inps_baseline: 8.96453632990082
+INFO::----step95500----
+INFO::inception_score: (8.775614, 0.02780168)
+INFO::inps_baseline: 8.926751820878664
+INFO::----step96000----
+INFO::inception_score: (9.0454, 0.020325998)
+INFO::inps_baseline: 8.950481389869434
+INFO::----step96500----
+INFO::inception_score: (9.001434, 0.01955306)
+INFO::inps_baseline: 8.960671977129923
+INFO::----step97000----
+INFO::inception_score: (7.1689515, 0.07453746)
+INFO::inps_baseline: 8.60232788398055
+INFO::----step97500----
+INFO::inception_score: (8.884996, 0.040630996)
+INFO::inps_baseline: 8.658861590021354
+INFO::----step98000----
+INFO::inception_score: (8.641432, 0.025140323)
+INFO::inps_baseline: 8.655375633711419
+INFO::----step98500----
+INFO::inception_score: (8.907415, 0.0153322285)
+INFO::inps_baseline: 8.705783584972066
+INFO::----step99000----
+INFO::inception_score: (8.952491, 0.03562724)
+INFO::inps_baseline: 8.755125029293572
+INFO::----step99500----
+INFO::inception_score: (9.021452, 0.01626074)
+INFO::inps_baseline: 8.808390413449505
+INFO::----step100000----
+INFO::inception_score: (8.814417, 0.025444528)
+INFO::inps_baseline: 8.809595707834799
+INFO::----step100500----
+INFO::inception_score: (8.946017, 0.025633715)
+INFO::inps_baseline: 8.836880019331803
+INFO::----step101000----
+INFO::inception_score: (9.024858, 0.025028687)
+INFO::inps_baseline: 8.874475710411732
+INFO::----step101500----
+INFO::inception_score: (9.000038, 0.019458635)
+INFO::inps_baseline: 8.899588197723917
+INFO::----step102000----
+INFO::inception_score: (7.9676766, 0.075719275)
+INFO::inps_baseline: 8.713205886090511
+INFO::----step102500----
+INFO::inception_score: (8.878243, 0.0401845)
+INFO::inps_baseline: 8.746213398142428
+INFO::----step103000----
+INFO::inception_score: (8.894788, 0.016610192)
+INFO::inps_baseline: 8.775928276192165
+INFO::----step103500----
+INFO::inception_score: (8.974335, 0.025812736)
+INFO::inps_baseline: 8.815609564313107
+INFO::----step104000----
+INFO::inception_score: (8.903035, 0.05767515)
+INFO::inps_baseline: 8.833094684226364
+INFO::----step104500----
+INFO::inception_score: (8.96881, 0.047027946)
+INFO::inps_baseline: 8.860237763677477
+INFO::----step105000----
+INFO::inception_score: (8.984344, 0.03958726)
+INFO::inps_baseline: 8.885058916691493
+INFO::----step105500----
+INFO::inception_score: (8.997343, 0.04335512)
+INFO::inps_baseline: 8.907515746024092
+INFO::----step106000----
+INFO::inception_score: (8.845073, 0.031369127)
+INFO::inps_baseline: 8.895027146074645
+INFO::----step106500----
+INFO::inception_score: (8.99869, 0.032197293)
+INFO::inps_baseline: 8.915759647157568
+INFO::----step107000----
+INFO::inception_score: (9.0606985, 0.029557612)
+INFO::inps_baseline: 8.944747419569316
+INFO::----step107500----
+INFO::inception_score: (9.040369, 0.036342088)
+INFO::inps_baseline: 8.963871742418148
+INFO::----step108000----
+INFO::inception_score: (8.943045, 0.027539706)
+INFO::inps_baseline: 8.959706326429636
+INFO::step: 108500, new best result: 8.974243942979646
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step108500----
+INFO::inception_score: (9.032394, 0.031892754)
+INFO::inps_baseline: 8.974243942979646
+INFO::----step109000----
+INFO::inception_score: (8.779259, 0.025303395)
+INFO::inps_baseline: 8.935246899989185
+INFO::----step109500----
+INFO::inception_score: (9.054518, 0.03297266)
+INFO::inps_baseline: 8.959101069185683
+INFO::step: 110000, new best result: 8.977346124818762
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step110000----
+INFO::inception_score: (9.050326, 0.009377212)
+INFO::inps_baseline: 8.977346124818762
+INFO::step: 110500, new best result: 8.99499945844876
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step110500----
+INFO::inception_score: (9.065613, 0.022843797)
+INFO::inps_baseline: 8.99499945844876
+INFO::step: 111000, new best result: 9.010338632310766
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step111000----
+INFO::inception_score: (9.071695, 0.030485269)
+INFO::inps_baseline: 9.010338632310766
+INFO::----step111500----
+INFO::inception_score: (9.008773, 0.023294112)
+INFO::inps_baseline: 9.010025475855937
+INFO::step: 112000, new best result: 9.022634867379086
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step112000----
+INFO::inception_score: (9.073072, 0.02633267)
+INFO::inps_baseline: 9.022634867379086
+INFO::step: 112500, new best result: 9.036290457685007
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step112500----
+INFO::inception_score: (9.090913, 0.022975776)
+INFO::inps_baseline: 9.036290457685007
+INFO::step: 113000, new best result: 9.044680254331599
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step113000----
+INFO::inception_score: (9.078239, 0.02360208)
+INFO::inps_baseline: 9.044680254331599
+INFO::step: 113500, new best result: 9.049128641026314
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step113500----
+INFO::inception_score: (9.066922, 0.025005069)
+INFO::inps_baseline: 9.049128641026314
+INFO::----step114000----
+INFO::inception_score: (9.036234, 0.038373835)
+INFO::inps_baseline: 9.046549693216559
+INFO::----step114500----
+INFO::inception_score: (8.945684, 0.019976461)
+INFO::inps_baseline: 9.026376641169927
+INFO::----step115000----
+INFO::inception_score: (8.454687, 0.023629367)
+INFO::inps_baseline: 8.912038736641996
+INFO::----step115500----
+INFO::inception_score: (9.101407, 0.044888765)
+INFO::inps_baseline: 8.949912399530882
+INFO::----step116000----
+INFO::inception_score: (9.097518, 0.04020675)
+INFO::inps_baseline: 8.97943351306953
+INFO::----step116500----
+INFO::inception_score: (9.114565, 0.03041358)
+INFO::inps_baseline: 9.0064597895816
+INFO::----step117000----
+INFO::inception_score: (9.1036, 0.03647639)
+INFO::inps_baseline: 9.025887741333248
+INFO::----step117500----
+INFO::inception_score: (9.066284, 0.013844581)
+INFO::inps_baseline: 9.0339670290041
+INFO::----step118000----
+INFO::inception_score: (9.103524, 0.0429881)
+INFO::inps_baseline: 9.04787846481705
+INFO::step: 118500, new best result: 9.049273078250124
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step118500----
+INFO::inception_score: (9.054852, 0.031040104)
+INFO::inps_baseline: 9.049273078250124
+INFO::step: 119000, new best result: 9.053008512343752
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step119000----
+INFO::inception_score: (9.06795, 0.051984683)
+INFO::inps_baseline: 9.053008512343752
+INFO::step: 119500, new best result: 9.059255946227541
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step119500----
+INFO::inception_score: (9.084246, 0.027820803)
+INFO::inps_baseline: 9.059255946227541
+INFO::step: 120000, new best result: 9.067761507470314
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step120000----
+INFO::inception_score: (9.101784, 0.03650956)
+INFO::inps_baseline: 9.067761507470314
+INFO::----step120500----
+INFO::inception_score: (9.043139, 0.026377713)
+INFO::inps_baseline: 9.062837097516779
+INFO::----step121000----
+INFO::inception_score: (9.066987, 0.02330555)
+INFO::inps_baseline: 9.06366708554516
+INFO::----step121500----
+INFO::inception_score: (9.069387, 0.024211718)
+INFO::inps_baseline: 9.064811155618747
+INFO::step: 122000, new best result: 9.068116319514528
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step122000----
+INFO::inception_score: (9.081337, 0.03569297)
+INFO::inps_baseline: 9.068116319514528
+INFO::----step122500----
+INFO::inception_score: (9.061976, 0.02510407)
+INFO::inps_baseline: 9.066888342171682
+INFO::step: 123000, new best result: 9.075357826447306
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step123000----
+INFO::inception_score: (9.109236, 0.039066307)
+INFO::inps_baseline: 9.075357826447306
+INFO::----step123500----
+INFO::inception_score: (9.0591345, 0.02610888)
+INFO::inps_baseline: 9.072113157825324
+INFO::step: 124000, new best result: 9.078362180007819
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step124000----
+INFO::inception_score: (9.103358, 0.01936063)
+INFO::inps_baseline: 9.078362180007819
+INFO::step: 124500, new best result: 9.082601319323638
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step124500----
+INFO::inception_score: (9.099558, 0.03681239)
+INFO::inps_baseline: 9.082601319323638
+INFO::----step125000----
+INFO::inception_score: (9.081587, 0.03325186)
+INFO::inps_baseline: 9.082398423012622
+INFO::----step125500----
+INFO::inception_score: (8.991362, 0.04214812)
+INFO::inps_baseline: 9.064191062018496
+INFO::----step126000----
+INFO::inception_score: (9.117069, 0.023318982)
+INFO::inps_baseline: 9.07476669849175
+INFO::----step126500----
+INFO::inception_score: (9.060549, 0.02498498)
+INFO::inps_baseline: 9.071923115263127
+INFO::----step127000----
+INFO::inception_score: (9.104069, 0.042266585)
+INFO::inps_baseline: 9.078352243431205
+INFO::----step127500----
+INFO::inception_score: (9.03306, 0.050428417)
+INFO::inps_baseline: 9.069293809515472
+INFO::----step128000----
+INFO::inception_score: (9.083097, 0.02643611)
+INFO::inps_baseline: 9.072054539189526
+INFO::----step128500----
+INFO::inception_score: (9.097109, 0.04327231)
+INFO::inps_baseline: 9.077065399540098
+INFO::----step129000----
+INFO::inception_score: (9.057875, 0.01754127)
+INFO::inps_baseline: 9.073227255545165
+INFO::----step129500----
+INFO::inception_score: (9.086164, 0.043714885)
+INFO::inps_baseline: 9.075814699333593
+INFO::step: 130000, new best result: 9.084175471625077
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step130000----
+INFO::inception_score: (9.117619, 0.028628945)
+INFO::inps_baseline: 9.084175471625077
+INFO::----step130500----
+INFO::inception_score: (9.043285, 0.02139979)
+INFO::inps_baseline: 9.075997451274672
+INFO::----step131000----
+INFO::inception_score: (9.102646, 0.027599117)
+INFO::inps_baseline: 9.081327135824425
+INFO::step: 131500, new best result: 9.084991403788935
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step131500----
+INFO::inception_score: (9.099648, 0.039371267)
+INFO::inps_baseline: 9.084991403788935
+INFO::----step132000----
+INFO::inception_score: (9.01319, 0.023640566)
+INFO::inps_baseline: 9.070631176925191
+INFO::----step132500----
+INFO::inception_score: (9.116473, 0.016627053)
+INFO::inps_baseline: 9.079799581127556
+INFO::step: 133000, new best result: 9.089365139450384
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step133000----
+INFO::inception_score: (9.127627, 0.028752415)
+INFO::inps_baseline: 9.089365139450384
+INFO::----step133500----
+INFO::inception_score: (9.041029, 0.027138826)
+INFO::inps_baseline: 9.079697906848393
+INFO::----step134000----
+INFO::inception_score: (9.097841, 0.021880696)
+INFO::inps_baseline: 9.083326578042191
+INFO::----step134500----
+INFO::inception_score: (9.07898, 0.01516033)
+INFO::inps_baseline: 9.082457351606116
+INFO::----step135000----
+INFO::inception_score: (9.116118, 0.021993691)
+INFO::inps_baseline: 9.089189567503155
+INFO::step: 135500, new best result: 9.093382865855551
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step135500----
+INFO::inception_score: (9.110156, 0.02815702)
+INFO::inps_baseline: 9.093382865855551
+INFO::----step136000----
+INFO::inception_score: (9.091829, 0.023588719)
+INFO::inps_baseline: 9.093072152669793
+INFO::step: 136500, new best result: 9.10322835964804
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step136500----
+INFO::inception_score: (9.143853, 0.0066138394)
+INFO::inps_baseline: 9.10322835964804
+INFO::----step137000----
+INFO::inception_score: (9.050858, 0.017472934)
+INFO::inps_baseline: 9.092754196507496
+INFO::----step137500----
+INFO::inception_score: (9.086229, 0.021494556)
+INFO::inps_baseline: 9.09144922207416
+INFO::----step138000----
+INFO::inception_score: (9.051294, 0.01492534)
+INFO::inps_baseline: 9.083418243015775
+INFO::----step138500----
+INFO::inception_score: (9.115343, 0.028392935)
+INFO::inps_baseline: 9.089803213187034
+INFO::----step139000----
+INFO::inception_score: (8.988024, 0.03608303)
+INFO::inps_baseline: 9.069447322136542
+INFO::----step139500----
+INFO::inception_score: (7.6658583, 0.048155013)
+INFO::inps_baseline: 8.788729511456792
+INFO::----step140000----
+INFO::inception_score: (9.030882, 0.040767767)
+INFO::inps_baseline: 8.837159985508206
+INFO::----step140500----
+INFO::inception_score: (9.067525, 0.035165925)
+INFO::inps_baseline: 8.883232970401194
+INFO::----step141000----
+INFO::inception_score: (9.065585, 0.01663945)
+INFO::inps_baseline: 8.91970340360367
+INFO::----step141500----
+INFO::inception_score: (9.107584, 0.01527944)
+INFO::inps_baseline: 8.957279522809694
+INFO::----step142000----
+INFO::inception_score: (8.878691, 0.036197037)
+INFO::inps_baseline: 8.941561762168654
+INFO::----step142500----
+INFO::inception_score: (9.110849, 0.023165507)
+INFO::inps_baseline: 8.975419285833556
+INFO::----step143000----
+INFO::inception_score: (9.114042, 0.020395635)
+INFO::inps_baseline: 9.003143885087743
+INFO::----step143500----
+INFO::inception_score: (9.116205, 0.027317714)
+INFO::inps_baseline: 9.025756151161014
+INFO::----step144000----
+INFO::inception_score: (9.064731, 0.05354374)
+INFO::inps_baseline: 9.033551049774026
+INFO::----step144500----
+INFO::inception_score: (9.131792, 0.03498111)
+INFO::inps_baseline: 9.05319925351551
+INFO::----step145000----
+INFO::inception_score: (9.130751, 0.010456189)
+INFO::inps_baseline: 9.068709534037994
+INFO::----step145500----
+INFO::inception_score: (9.12351, 0.04429735)
+INFO::inps_baseline: 9.07966969937395
+INFO::----step146000----
+INFO::inception_score: (9.124461, 0.029606236)
+INFO::inps_baseline: 9.088627994301406
+INFO::----step146500----
+INFO::inception_score: (9.123187, 0.018186804)
+INFO::inps_baseline: 9.095539808466027
+INFO::----step147000----
+INFO::inception_score: (9.122946, 0.014715275)
+INFO::inps_baseline: 9.101021003877314
+INFO::step: 147500, new best result: 9.11238246930058
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step147500----
+INFO::inception_score: (9.157828, 0.022624368)
+INFO::inps_baseline: 9.11238246930058
+INFO::step: 148000, new best result: 9.119759224036656
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step148000----
+INFO::inception_score: (9.149266, 0.015941074)
+INFO::inps_baseline: 9.119759224036656
+INFO::----step148500----
+INFO::inception_score: (9.104975, 0.014096821)
+INFO::inps_baseline: 9.116802328570145
+INFO::step: 149000, new best result: 9.12097177008268
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step149000----
+INFO::inception_score: (9.13765, 0.02777011)
+INFO::inps_baseline: 9.12097177008268
+INFO::step: 149500, new best result: 9.124366641835186
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step149500----
+INFO::inception_score: (9.137946, 0.046908285)
+INFO::inps_baseline: 9.124366641835186
+INFO::step: 150000, new best result: 9.125192738211801
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step150000----
+INFO::inception_score: (9.128497, 0.015244704)
+INFO::inps_baseline: 9.125192738211801
+INFO::step: 150500, new best result: 9.128704720049422
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step150500----
+INFO::inception_score: (9.142753, 0.030806584)
+INFO::inps_baseline: 9.128704720049422
+INFO::----step151000----
+INFO::inception_score: (9.124922, 0.0147276735)
+INFO::inps_baseline: 9.127948135780748
+INFO::----step151500----
+INFO::inception_score: (9.122217, 0.011078089)
+INFO::inps_baseline: 9.126801944293543
+INFO::step: 152000, new best result: 9.13553731959499
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step152000----
+INFO::inception_score: (9.170479, 0.032622647)
+INFO::inps_baseline: 9.13553731959499
+INFO::step: 152500, new best result: 9.135772461266813
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step152500----
+INFO::inception_score: (9.136713, 0.01553974)
+INFO::inps_baseline: 9.135772461266813
+INFO::----step153000----
+INFO::inception_score: (9.093468, 0.04188142)
+INFO::inps_baseline: 9.12731151149392
+INFO::----step153500----
+INFO::inception_score: (9.111669, 0.028028179)
+INFO::inps_baseline: 9.124182926541328
+INFO::----step154000----
+INFO::inception_score: (9.111331, 0.0372883)
+INFO::inps_baseline: 9.121612538437653
+INFO::----step154500----
+INFO::inception_score: (9.135675, 0.04273216)
+INFO::inps_baseline: 9.124425116809693
+INFO::----step155000----
+INFO::inception_score: (9.177397, 0.012843404)
+INFO::inps_baseline: 9.135019448306153
+INFO::----step155500----
+INFO::inception_score: (9.138783, 0.0236377)
+INFO::inps_baseline: 9.135772249623926
+INFO::----step156000----
+INFO::inception_score: (8.897822, 0.029230839)
+INFO::inps_baseline: 9.088182275712324
+INFO::----step156500----
+INFO::inception_score: (9.141637, 0.033543725)
+INFO::inps_baseline: 9.0988731902598
+INFO::----step157000----
+INFO::inception_score: (9.162021, 0.024025556)
+INFO::inps_baseline: 9.111502688865555
+INFO::----step157500----
+INFO::inception_score: (9.156327, 0.051288303)
+INFO::inps_baseline: 9.120467600616369
+INFO::----step158000----
+INFO::inception_score: (9.175108, 0.020919424)
+INFO::inps_baseline: 9.131395671679618
+INFO::----step158500----
+INFO::inception_score: (9.135594, 0.023699328)
+INFO::inps_baseline: 9.132235410939886
+INFO::----step159000----
+INFO::inception_score: (9.136717, 0.041595086)
+INFO::inps_baseline: 9.133131697282183
+INFO::step: 159500, new best result: 9.135790597999087
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step159500----
+INFO::inception_score: (9.146426, 0.019126635)
+INFO::inps_baseline: 9.135790597999087
+INFO::step: 160000, new best result: 9.136491593999855
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step160000----
+INFO::inception_score: (9.139296, 0.021486562)
+INFO::inps_baseline: 9.136491593999855
+INFO::----step160500----
+INFO::inception_score: (9.102776, 0.02664531)
+INFO::inps_baseline: 9.129748389945979
+INFO::----step161000----
+INFO::inception_score: (9.091053, 0.047986835)
+INFO::inps_baseline: 9.122009313763424
+INFO::----step161500----
+INFO::inception_score: (9.172247, 0.03329415)
+INFO::inps_baseline: 9.132056837607418
+INFO::step: 162000, new best result: 9.141877083245115
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step162000----
+INFO::inception_score: (9.181158, 0.039267395)
+INFO::inps_baseline: 9.141877083245115
+INFO::step: 162500, new best result: 9.145281909516013
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step162500----
+INFO::inception_score: (9.158901, 0.018787915)
+INFO::inps_baseline: 9.145281909516013
+INFO::----step163000----
+INFO::inception_score: (9.11115, 0.030898007)
+INFO::inps_baseline: 9.138455485193377
+INFO::----step163500----
+INFO::inception_score: (9.154957, 0.01690218)
+INFO::inps_baseline: 9.141755751680092
+INFO::step: 164000, new best result: 9.146184104212725
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step164000----
+INFO::inception_score: (9.1638975, 0.018407354)
+INFO::inps_baseline: 9.146184104212725
+INFO::----step164500----
+INFO::inception_score: (9.0430565, 0.036053166)
+INFO::inps_baseline: 9.125558580977602
+INFO::----step165000----
+INFO::inception_score: (9.081393, 0.022837037)
+INFO::inps_baseline: 9.116725513158546
+INFO::----step165500----
+INFO::inception_score: (9.131449, 0.02837344)
+INFO::inps_baseline: 9.119670159672344
+INFO::----step166000----
+INFO::inception_score: (9.166654, 0.031172482)
+INFO::inps_baseline: 9.12906685436141
+INFO::----step166500----
+INFO::inception_score: (9.120741, 0.025575748)
+INFO::inps_baseline: 9.127401661589714
+INFO::----step167000----
+INFO::inception_score: (9.187346, 0.025203763)
+INFO::inps_baseline: 9.139390620958782
+INFO::----step167500----
+INFO::inception_score: (9.026802, 0.025937967)
+INFO::inps_baseline: 9.116872909364682
+INFO::----step168000----
+INFO::inception_score: (9.139056, 0.034684964)
+INFO::inps_baseline: 9.121309568641648
+INFO::----step168500----
+INFO::inception_score: (9.133606, 0.030842597)
+INFO::inps_baseline: 9.123768846319567
+INFO::----step169000----
+INFO::inception_score: (9.180055, 0.021540182)
+INFO::inps_baseline: 9.135026009978017
+INFO::----step169500----
+INFO::inception_score: (9.177737, 0.026730394)
+INFO::inps_baseline: 9.143568255187002
+INFO::----step170000----
+INFO::inception_score: (9.1388235, 0.01840211)
+INFO::inps_baseline: 9.142619305992863
+INFO::----step170500----
+INFO::inception_score: (9.115582, 0.017126461)
+INFO::inps_baseline: 9.137211938019387
+INFO::----step171000----
+INFO::inception_score: (9.144592, 0.016862942)
+INFO::inps_baseline: 9.13868800744676
+INFO::----step171500----
+INFO::inception_score: (9.152445, 0.033417057)
+INFO::inps_baseline: 9.141439373852915
+INFO::step: 172000, new best result: 9.150659509946589
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step172000----
+INFO::inception_score: (9.18754, 0.02481136)
+INFO::inps_baseline: 9.150659509946589
+INFO::----step172500----
+INFO::inception_score: (8.215877, 0.037521444)
+INFO::inps_baseline: 8.963702923814205
+INFO::----step173000----
+INFO::inception_score: (9.046567, 0.03655079)
+INFO::inps_baseline: 8.980275731690524
+INFO::----step173500----
+INFO::inception_score: (9.11603, 0.03924277)
+INFO::inps_baseline: 9.007426533228395
+INFO::----step174000----
+INFO::inception_score: (9.150464, 0.038395386)
+INFO::inps_baseline: 9.03603403816719
+INFO::----step174500----
+INFO::inception_score: (9.164873, 0.026081108)
+INFO::inps_baseline: 9.061801855167541
+INFO::----step175000----
+INFO::inception_score: (9.1072445, 0.03426713)
+INFO::inps_baseline: 9.070890382449463
+INFO::----step175500----
+INFO::inception_score: (9.163571, 0.03705455)
+INFO::inps_baseline: 9.08942657750498
+INFO::----step176000----
+INFO::inception_score: (9.112968, 0.042916328)
+INFO::inps_baseline: 9.094134950968828
+INFO::----step176500----
+INFO::inception_score: (8.787721, 0.050657023)
+INFO::inps_baseline: 9.032852096822426
+INFO::----step177000----
+INFO::inception_score: (9.175348, 0.02493311)
+INFO::inps_baseline: 9.061351333830011
+INFO::----step177500----
+INFO::inception_score: (9.148778, 0.03828236)
+INFO::inps_baseline: 9.0788366594102
+INFO::----step178000----
+INFO::inception_score: (9.143498, 0.015068525)
+INFO::inps_baseline: 9.091769011671227
+INFO::----step178500----
+INFO::inception_score: (9.141333, 0.014494147)
+INFO::inps_baseline: 9.101681734605537
+INFO::----step179000----
+INFO::inception_score: (9.175924, 0.0445239)
+INFO::inps_baseline: 9.116530247913921
+INFO::----step179500----
+INFO::inception_score: (8.893651, 0.05169954)
+INFO::inps_baseline: 9.071954400052329
+INFO::----step180000----
+INFO::inception_score: (9.119703, 0.038852528)
+INFO::inps_baseline: 9.0815041786112
+INFO::----step180500----
+INFO::inception_score: (9.132677, 0.013167358)
+INFO::inps_baseline: 9.091738758538373
+INFO::----step181000----
+INFO::inception_score: (9.147192, 0.017749919)
+INFO::inps_baseline: 9.102829407099254
+INFO::----step181500----
+INFO::inception_score: (9.162939, 0.02344588)
+INFO::inps_baseline: 9.114851340010457
+INFO::----step182000----
+INFO::inception_score: (9.142734, 0.03394671)
+INFO::inps_baseline: 9.12042778679108
+INFO::----step182500----
+INFO::inception_score: (9.128459, 0.035775658)
+INFO::inps_baseline: 9.122034024781986
+INFO::----step183000----
+INFO::inception_score: (9.154314, 0.053397246)
+INFO::inps_baseline: 9.128490028053127
+INFO::----step183500----
+INFO::inception_score: (9.139281, 0.022833271)
+INFO::inps_baseline: 9.13064827702014
+INFO::----step184000----
+INFO::inception_score: (9.172676, 0.0389556)
+INFO::inps_baseline: 9.139053838901267
+INFO::----step184500----
+INFO::inception_score: (9.184053, 0.03728894)
+INFO::inps_baseline: 9.148053755325115
+INFO::----step185000----
+INFO::inception_score: (9.037085, 0.011475471)
+INFO::inps_baseline: 9.125859920153648
+INFO::----step185500----
+INFO::inception_score: (9.156239, 0.031167647)
+INFO::inps_baseline: 9.131935647304559
+INFO::----step186000----
+INFO::inception_score: (9.093338, 0.017905729)
+INFO::inps_baseline: 9.124216120382709
+INFO::----step186500----
+INFO::inception_score: (9.207712, 0.027525028)
+INFO::inps_baseline: 9.14091533099855
+INFO::----step187000----
+INFO::inception_score: (9.18753, 0.040620107)
+INFO::inps_baseline: 9.1502381775796
+INFO::step: 187500, new best result: 9.151194303355185
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step187500----
+INFO::inception_score: (9.155019, 0.029428089)
+INFO::inps_baseline: 9.151194303355185
+INFO::step: 188000, new best result: 9.159922193782782
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step188000----
+INFO::inception_score: (9.194834, 0.02817861)
+INFO::inps_baseline: 9.159922193782782
+INFO::----step188500----
+INFO::inception_score: (9.144655, 0.020020245)
+INFO::inps_baseline: 9.156868800558453
+INFO::----step189000----
+INFO::inception_score: (9.161847, 0.05931513)
+INFO::inps_baseline: 9.15786446335936
+INFO::step: 189500, new best result: 9.160094556832506
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step189500----
+INFO::inception_score: (9.169015, 0.015258047)
+INFO::inps_baseline: 9.160094556832506
+INFO::step: 190000, new best result: 9.164279602070009
+INFO::Save model at /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model
+INFO::----step190000----
+INFO::inception_score: (9.18102, 0.05030473)
+INFO::inps_baseline: 9.164279602070009
+INFO::----step190500----
+INFO::inception_score: (8.971766, 0.030025518)
+INFO::inps_baseline: 9.125776976028565
+INFO::----step191000----
+INFO::inception_score: (9.065288, 0.013540863)
+INFO::inps_baseline: 9.113679098828223
+INFO::----step191500----
+INFO::inception_score: (9.170548, 0.040414646)
+INFO::inps_baseline: 9.125052966867754
+INFO::----step192000----
+INFO::inception_score: (9.216529, 0.024548464)
+INFO::inps_baseline: 9.143348151997621
+INFO::----step192500----
+INFO::inception_score: (9.00725, 0.052065127)
+INFO::inps_baseline: 9.11612848802876
+INFO::----step193000----
+INFO::inception_score: (9.176356, 0.041037798)
+INFO::inps_baseline: 9.128174053545568
+INFO::----step193500----
+INFO::inception_score: (9.086496, 0.037144486)
+INFO::inps_baseline: 9.119838513466338
+INFO::----step194000----
+INFO::inception_score: (9.200926, 0.030524401)
+INFO::inps_baseline: 9.136055976178344
+INFO::----step194500----
+INFO::inception_score: (9.141672, 0.022183044)
+INFO::inps_baseline: 9.137179207822559
+INFO::----step195000----
+INFO::inception_score: (9.181505, 0.018103486)
+INFO::inps_baseline: 9.14604440690746
+INFO::----step195500----
+INFO::inception_score: (9.160483, 0.022926703)
+INFO::inps_baseline: 9.148932197584074
+INFO::----step196000----
+INFO::inception_score: (9.17069, 0.0283832)
+INFO::inps_baseline: 9.1532836746322
+INFO::----step196500----
+INFO::inception_score: (9.189769, 0.021616878)
+INFO::inps_baseline: 9.160580697945507
+INFO::----step197000----
+INFO::inception_score: (9.130594, 0.016504154)
+INFO::inps_baseline: 9.154583409064413
+INFO::----step197500----
+INFO::inception_score: (9.192456, 0.019522388)
+INFO::inps_baseline: 9.162157976336003
+INFO::----step198000----
+INFO::inception_score: (9.097944, 0.01377757)
+INFO::inps_baseline: 9.149315232997512
+INFO::----step198500----
+INFO::inception_score: (9.17013, 0.016708683)
+INFO::inps_baseline: 9.153478141598205
+INFO::----step199000----
+INFO::inception_score: (9.160081, 0.043611247)
+INFO::inps_baseline: 9.154798695224365
+INFO::----step199500----
+INFO::inception_score: (9.139857, 0.02511684)
+INFO::inps_baseline: 9.15181041461455
+INFO::----step200000----
+INFO::inception_score: (9.158341, 0.012398153)
+INFO::inps_baseline: 9.153116613246816
+INFO::Loading pretrained model from: /media/haowen/autoLoss/saved_models/rebuttal_gan_2l_adam_short_gan/model-190000
+INFO::inps_test: (9.178222, 0.005303996)
+INFO::[(9.178222, 0.005303996)]
+init_mnist_model
+Extracting /media/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /media/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /media/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /media/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Extracting /media/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /media/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /media/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /media/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /media/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+4.591763
