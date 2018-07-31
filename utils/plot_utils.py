@@ -10,7 +10,7 @@ import log_utils
 name = ''
 engine = ''
 
-def lineplot(data):
+def lineplot(data, colors, labels, fig_name):
     #x1 = np.array(range(len(data[0])))
     #x2 = np.array(range(len(data[1])))
     #y1 = np.array(data[0])
@@ -21,13 +21,6 @@ def lineplot(data):
     for d in data:
         x.append(np.array(range(len(d))))
         y.append(np.array(d))
-    colors = ['k', 'r', 'b', 'y', 'brown', 'g']
-    labels = ['baseline 1:1',
-              'baseline 1:3',
-              'baseline 1:5',
-              'baseline 1:7',
-              'baseline 2:1',
-              'autoLoss']
 
 
     # Plot code
@@ -62,7 +55,7 @@ def lineplot(data):
     handles, labels = ax.get_legend_handles_labels()
     ax.legend(handles, labels, loc = 'lower right', fontsize = legendfont)
 
-    ax.set_ylim(0, 7)
+    #ax.set_ylim(0, 7)
     #ax.set_xlim(0, 8)
 
     #ax.text(0.35, 0.1, 'Caffe', fontsize = 10)
@@ -71,7 +64,7 @@ def lineplot(data):
 
     plt.xlabel('Epoch (x10)', fontdict = labelfont)
     plt.ylabel('$Inception Score (\mathcal{IS})$', fontdict = labelfont)
-    plt.xticks([0, 10, 20, 30, 40, 50, 60, 70], fontsize = ticksize)
+    #plt.xticks([0, 10, 20, 30, 40, 50, 60, 70], fontsize = ticksize)
     #plt.yticks([0, 2, 4, 6, 8, 10], fontsize = ticksize)
 
     # set the grid lines to dotted
@@ -84,13 +77,13 @@ def lineplot(data):
     for line in ticklines:
         line.set_linewidth(10)
     plt.show()
-    fig.savefig('cifar.pdf', transparent = True, bbox_inches = 'tight', pad_inches = 0)
+    fig.savefig(fig_name, transparent = True, bbox_inches = 'tight', pad_inches = 0)
     #fig.savefig(save_dir + '.png', transparent = True, bbox_inches = 'tight', pad_inches = 0)
 
 
 def mnist_transfer_cifar10():
-    curve_baseline11 = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
-    curve_baseline11 = curve_baseline11[:62]
+    #curve_baseline11 = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
+    #curve_baseline11 = curve_baseline11[:62]
     curve_baseline13 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline13_01.log')
     curve_baseline13 = curve_baseline13[0::2]
     curve_baseline15 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline15_02.log')
@@ -101,18 +94,21 @@ def mnist_transfer_cifar10():
     curve_baseline21 = curve_baseline21[0::2]
     curve_autoLoss = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp02_refine.log')
     curve_autoLoss = curve_autoLoss[0:120:2]
-    #curve_baseline11 = np.array(curve_baseline11)
-    #curve_autoLoss = np.array(curve_autoLoss)
-    #ind = np.arange(0,120,2)
-    #curve_autoLoss = curve_autoLoss[ind]
-    #curve_baseline = curve_baseline[:62]
-    lineplot([curve_baseline11,
+    colors = ['r', 'b', 'y', 'brown', 'g']
+    labels = [
+              'baseline 1:3',
+              'baseline 1:5',
+              'baseline 1:7',
+              'baseline 2:1',
+              'autoLoss']
+    lineplot([
               curve_baseline13,
               curve_baseline15,
               curve_baseline17,
               curve_baseline21,
               curve_autoLoss,
-              ])
+              ],
+             colors, labels, 'cifar.pdf')
 
 def mnist_compare_with_baseline():
     num = sys.argv[1]
@@ -223,11 +219,21 @@ def mnist_compare_with_baseline():
     #fig.savefig(save_dir + '.png', transparent = True, bbox_inches = 'tight', pad_inches = 0)
 
 def mnist_compare_with_baseline_new():
-    num = sys.argv[1]
-
     curve_at1 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_autoLoss_01.log')
     curve_at2 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_autoLoss_02.log')
     curve_at3 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_autoLoss_03.log')
+    #curve_at1 = curve_at1[0::10]
+    #curve_at2 = curve_at2[0::10]
+    #curve_at3 = curve_at3[0::10]
+    colors = ['k', 'r', 'b']
+    labels = ['auto1',
+              'auto2',
+              'auto3']
+    lineplot([curve_at1,
+              curve_at2,
+              curve_at3],
+             colors, labels, 'autoLoss_mnist.pdf')
+    exit()
 
     #curves_bl = [np.array(curve_bl1),
     #             np.array(curve_bl2),
@@ -293,5 +299,5 @@ def mnist_compare_with_baseline_new():
     #fig.savefig(save_dir + '.png', transparent = True, bbox_inches = 'tight', pad_inches = 0)
 
 if __name__ == '__main__':
-    #mnist_compare_with_baseline()
+    #mnist_compare_with_baseline_new()
     mnist_transfer_cifar10()
