@@ -14,7 +14,7 @@ from time import gmtime, strftime
 from models import controller
 from models import reg
 from models import cls
-#from models import gan
+from models import gan
 #from models import gan_grid
 #from models import gan_cifar10
 import utils
@@ -339,8 +339,8 @@ if __name__ == '__main__':
     argv = sys.argv
     # ----Parsing config file.----
     logger.info(socket.gethostname())
-    #config_file = 'gan.cfg'
-    config_file = 'regression.cfg'
+    config_file = 'gan.cfg'
+    #config_file = 'regression.cfg'
     #config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)

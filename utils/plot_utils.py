@@ -11,16 +11,30 @@ name = ''
 engine = ''
 
 def lineplot(data):
-    x1 = np.array(range(len(data[0])))
-    x2 = np.array(range(len(data[1])))
-    y1 = np.array(data[0])
-    y2 = np.array(data[1])
+    #x1 = np.array(range(len(data[0])))
+    #x2 = np.array(range(len(data[1])))
+    #y1 = np.array(data[0])
+    #y2 = np.array(data[1])
+    num = len(data)
+    x = []
+    y = []
+    for d in data:
+        x.append(np.array(range(len(d))))
+        y.append(np.array(d))
+    colors = ['k', 'r', 'b', 'y', 'brown', 'g']
+    labels = ['baseline 1:1',
+              'baseline 1:3',
+              'baseline 1:5',
+              'baseline 1:7',
+              'baseline 2:1',
+              'autoLoss']
+
 
     # Plot code
     markersize = 9
     ticksize = 14
     linewidth = 1.5
-    legendfont = 17
+    legendfont = 14
 
     labelfont = {#'family': 'times',
             'color':  'black',
@@ -34,10 +48,9 @@ def lineplot(data):
             'weight' : 'bold'}
 
     fig, ax = plt.subplots()
-    ax.plot(x1, y1, color='k',
-            linewidth=linewidth, label='baseline')
-    ax.plot(x2, y2, color='green',
-            linewidth=linewidth, label='autoLoss')
+    for i in range(num):
+        ax.plot(x[i], y[i], color=colors[i],
+                linewidth=linewidth, label=labels[i])
     #ax.plot(x1, y1, color='k', marker='s', markersize=markersize,
     #        linewidth=linewidth, label='baseline')
     #ax.plot(x2, y2, color='green', marker='D', markersize=markersize,
@@ -47,9 +60,9 @@ def lineplot(data):
     ax.grid(True)
 
     handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, loc = 'upper left', fontsize = legendfont)
+    ax.legend(handles, labels, loc = 'lower right', fontsize = legendfont)
 
-    ax.set_ylim(6, 7)
+    ax.set_ylim(0, 7)
     #ax.set_xlim(0, 8)
 
     #ax.text(0.35, 0.1, 'Caffe', fontsize = 10)
@@ -58,7 +71,7 @@ def lineplot(data):
 
     plt.xlabel('Epoch (x10)', fontdict = labelfont)
     plt.ylabel('$Inception Score (\mathcal{IS})$', fontdict = labelfont)
-    plt.xticks([0, 10, 20, 30, 40, 50, 60], fontsize = ticksize)
+    plt.xticks([0, 10, 20, 30, 40, 50, 60, 70], fontsize = ticksize)
     #plt.yticks([0, 2, 4, 6, 8, 10], fontsize = ticksize)
 
     # set the grid lines to dotted
@@ -76,15 +89,30 @@ def lineplot(data):
 
 
 def mnist_transfer_cifar10():
-    curve_baseline = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
-    #curve_autoLoss = log_utils.read_log_inps_baseline('../log_5-15/dcgan_cifar10_exp01_refine.log')
+    curve_baseline11 = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
+    curve_baseline11 = curve_baseline11[:62]
+    curve_baseline13 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline13_01.log')
+    curve_baseline13 = curve_baseline13[0::2]
+    curve_baseline15 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline15_02.log')
+    curve_baseline15 = curve_baseline15[0::4]
+    curve_baseline17 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline17_02.log')
+    curve_baseline17 = curve_baseline17[0::4]
+    curve_baseline21 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline21_01.log')
+    curve_baseline21 = curve_baseline21[0::2]
     curve_autoLoss = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp02_refine.log')
-    curve_baseline = np.array(curve_baseline)
-    curve_autoLoss = np.array(curve_autoLoss)
-    ind = np.arange(0,120,2)
-    curve_autoLoss = curve_autoLoss[ind]
-    curve_baseline = curve_baseline[:62]
-    lineplot([curve_baseline.tolist(), curve_autoLoss.tolist()])
+    curve_autoLoss = curve_autoLoss[0:120:2]
+    #curve_baseline11 = np.array(curve_baseline11)
+    #curve_autoLoss = np.array(curve_autoLoss)
+    #ind = np.arange(0,120,2)
+    #curve_autoLoss = curve_autoLoss[ind]
+    #curve_baseline = curve_baseline[:62]
+    lineplot([curve_baseline11,
+              curve_baseline13,
+              curve_baseline15,
+              curve_baseline17,
+              curve_baseline21,
+              curve_autoLoss,
+              ])
 
 def mnist_compare_with_baseline():
     num = sys.argv[1]

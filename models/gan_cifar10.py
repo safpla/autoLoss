@@ -74,13 +74,15 @@ class Gan_cifar10(Gan):
                                                 name='real_data')
             self.noise = tf.placeholder(tf.float32, shape=[None, dim_z],
                                         name='noise')
+            self.lr = tf.placeholder(tf.float32, name='learning_rate')
             self.is_training = tf.placeholder(tf.bool, name='is_training')
 
     def _build_graph(self):
         dim_x = self.config.dim_x
         dim_z = self.config.dim_z
         batch_size = self.config.batch_size
-        lr = self.config.lr_stud
+        #lr = self.config.lr_stud
+        lr = self.lr
         beta1 = self.config.beta1
         beta2 = self.config.beta2
 
