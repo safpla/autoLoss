@@ -15,4 +15,6 @@ if __name__ == '__main__':
     #model.load_model(load_dir)
 
     model.train(save_model=True)
-    print(model.get_inception_score(5000))
+    print(model.get_inception_score(100))
+    print(model.get_inception_score(300))
+    print(model.get_inception_score(1000))
