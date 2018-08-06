@@ -25,3 +25,66 @@ Traceback (most recent call last):
   File "/users/hzhang2/haowen/GitHub/autoLoss/utils/config_util.py", line 11, in __init__
     assert os.path.exists(config_path), '{} not exists.'.format(config_path)
 AssertionError: /users/hzhang2/haowen/GitHub/autoLoss/config/log/dcgan_mnist_exp08_1llc2_up1.log not exists.
+/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+WARNING::lambda1_stud not found in config file
+WARNING::lambda2_stud not found in config file
+2018-07-31 02:24:42.358047: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-07-31 02:24:43.267141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX TITAN X major: 5 minor: 2 memoryClockRate(GHz): 1.076
+pciBusID: 0000:04:00.0
+totalMemory: 11.92GiB freeMemory: 11.80GiB
+2018-07-31 02:24:43.267169: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0, compute capability: 5.2)
+init_mnist_model
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 55000 samples.
+Extracting /datasets/BigLearning/haowen/mnist/train-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/train-labels-idx1-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-images-idx3-ubyte.gz
+Extracting /datasets/BigLearning/haowen/mnist/t10k-labels-idx1-ubyte.gz
+Load 10000 samples.
+Traceback (most recent call last):
+  File "arch_search_cifar_trainer.py", line 17, in <module>
+    from models import gan
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/gan.py", line 13, in <module>
+    from utils import inception_score_mnist
+  File "/users/hzhang2/haowen/GitHub/autoLoss/utils/inception_score_mnist.py", line 56, in <module>
+    _init_mnist_model()
+  File "/users/hzhang2/haowen/GitHub/autoLoss/utils/inception_score_mnist.py", line 51, in _init_mnist_model
+    mnist_model = Mnist(config, exp_name='mnist_classification')
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/mnist.py", line 53, in __init__
+    self._build_graph()
+  File "/users/hzhang2/haowen/GitHub/autoLoss/models/mnist.py", line 113, in _build_graph
+    self.saver = tf.train.Saver()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 1218, in __init__
+    self.build()
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 1227, in build
+    self._build(self._filename, build_save=True, build_restore=True)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 1263, in _build
+    build_save=build_save, build_restore=build_restore)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 748, in _build_internal
+    save_tensor = self._AddSaveOps(filename_tensor, saveables)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 296, in _AddSaveOps
+    save = self.save_op(filename_tensor, saveables)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/training/saver.py", line 239, in save_op
+    tensors)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/ops/gen_io_ops.py", line 1163, in save_v2
+    shape_and_slices=shape_and_slices, tensors=tensors, name=name)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/op_def_library.py", line 510, in _apply_op_helper
+    preferred_dtype=default_dtype)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 926, in internal_convert_to_tensor
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/constant_op.py", line 229, in _constant_tensor_conversion_function
+    return constant(v, dtype=dtype, name=name)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/constant_op.py", line 214, in constant
+    name=name).outputs[0]
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+  File "/users/hzhang2/haowen/miniconda3/envs/py35_tf/lib/python3.5/site-packages/tensorflow/python/framework/ops.py", line 2561, in _extract_stack
+    frame_info))
+KeyboardInterrupt

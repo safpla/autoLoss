@@ -435,7 +435,6 @@ class Gan(Basic_model):
         #logger.info(self.metrics_track_baseline)
         return adv
 
-
     def get_final_reward(self):
         if self.collapse:
             return 0, -self.config.reward_max_value
@@ -483,9 +482,3 @@ class Gan(Basic_model):
         save_path = os.path.join(task_dir, 'images_{}.jpg'.format(step))
         save_images.save_images(samples.reshape((-1, 28, 28, 1)), save_path)
 
-
-if __name__ == '__main__':
-    root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/' + 'gan.cfg')
-    config = utils.Parser(config_path)
-    gan = Gan(config)

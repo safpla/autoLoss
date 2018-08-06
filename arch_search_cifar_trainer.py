@@ -290,13 +290,9 @@ class Trainer():
                 logger.info('Step {}'.format(i))
                 logger.info('train_loss: {}, valid_loss: {}'.format(train_loss, valid_loss))
                 logger.info('train_acc : {}, valid_acc : {}'.format(train_acc, valid_acc))
-            elif (i % 10 == 0) and config.student_model_name == 'reg':
-                valid_loss = model_stud.previous_valid_loss[-1]
-                logger.info('loss: {}'.format(valid_loss))
 
             state = state_new
             if dead:
-                print('training_cost: {}'.format(i))
                 break
         if config.student_model_name == 'reg':
             loss = model_stud.best_loss
@@ -317,9 +313,11 @@ class Trainer():
         elif config.student_model_name == 'gan_grid':
             raise NotImplementedError
         elif config.student_model_name == 'gan_cifar10':
-            best_inps = model_stud.best_inception_score
-            logger.info('best_inps: {}'.format(best_inps))
-            return best_inps
+            model_stud.load_model(model_stud.task_dir)
+            inps_test = model_stud.get_inception_score(50)
+            #model_stud.generate_images(0)
+            logger.info('inps_test: {}'.format(inps_test))
+            return inps_test
         else:
             raise NotImplementedError
 
@@ -331,10 +329,7 @@ class Trainer():
             inps_baseline = self.model_stud.get_inception_score(500, splits=5)
             self.model_stud.generate_images(0)
             logger.info('inps_baseline: {}'.format(inps_baseline))
-            performance = inps_baseline
-        elif self.config.student_model_name == 'reg':
-            raise NotImplementedError
-        return performance
+        return inps_baseline
 
     def generate(self, load_stud):
         self.model_stud.initialize_weights()
@@ -347,15 +342,26 @@ if __name__ == '__main__':
     # ----Parsing config file.----
     logger.info(socket.gethostname())
     #config_file = 'gan.cfg'
-    config_file = 'regression.cfg'
-    #config_file = 'gan_cifar10.cfg'
+    #config_file = 'regression.cfg'
+    config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
     config = utils.Parser(config_path)
     config.print_config()
 
+    architecture = {}
+    architecture['dim_c_G'] = 32
+    architecture['dim_c_D'] = 32
+    architecture['dim_z'] = 64
+    architecture['batchnorm_G'] = False
+    architecture['batchnorm_D'] = False
+    architecture['activation_G'] = 'relu'
+    architecture['activation_D'] = 'leaky_relu'
+    architecture['depth_G'] = 2
+    architecture['depth_D'] = 2
+
     # ----Instantiate a trainer object.----
-    trainer = Trainer(config, exp_name=argv[1])
+    trainer = Trainer(config, exp_name=argv[1], arch=architecture)
 
     # classification task controllor model
     #load_ctrl = '/datasets/BigLearning/haowen/autoLoss/saved_models/h5-haowen6_05-13-04-30_ctrl'
