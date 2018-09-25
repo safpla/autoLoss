@@ -28,7 +28,8 @@ def _normalize1(x):
 def _normalize2(x):
     y = []
     for xx in x:
-        y.append(min(1, xx / 20))
+        #y.append(min(1, xx / 20))
+        y.append(1 + math.log(xx + 1e-5) / 12)
     return y
 
 def _normalize3(x):
@@ -201,7 +202,7 @@ class Cls(Basic_model):
         [loss_ce, acc, pred, gdth] = self.sess.run(fetch, feed_dict=feed_dict)
         return loss_ce, acc, pred, gdth
 
-    def response(self, action, mode='TRAIN'):
+    def response(self, action, lr, mode='TRAIN'):
         # Given an action, return the new state, reward and whether dead
 
         # Args:
@@ -338,7 +339,7 @@ class Cls(Basic_model):
             state = (rel_diff[-1:] +
                      _normalize1([abs(ib)]) +
                      _normalize2(self.previous_ce_loss[-1:]) +
-                     _normalize3(self.previous_l1_loss[-1:]) +
+                     _normalize2(self.previous_l1_loss[-1:]) +
                      self.previous_train_acc[-1:] +
                      [self.previous_train_acc[-1] - self.previous_valid_acc[-1]] +
                      self.previous_valid_acc[-1:]

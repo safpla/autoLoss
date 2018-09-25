@@ -138,7 +138,7 @@ class Controller(Basic_model):
         #    a = 0
         #mse_loss = state[2]
         #l1_loss = state[3]
-        #if (l1_loss - mse_loss) > 0.8:
+        #if (l1_loss - mse_loss) / l1_loss > 0.01:
         #    a = 1
         #else:
         #    a = 0
@@ -146,25 +146,6 @@ class Controller(Basic_model):
         #    a = 0
         #else:
         #    a = 1
-
-        #gen_cost = state[1]
-        #disc_cost = state[2]
-        #if gen_cost > disc_cost:
-        #    a = 0
-        #else:
-        #    a = 1
-
-        #  ---Soft version---
-        #  Equals to one layer one dim ffn with sigmoid activation
-        #  ------
-        #f = state[-1]
-        #k = 20
-        #t = 1
-        #p = 1 / (1 + math.exp(-k * (f - t)))
-        #if np.random.rand(1) < p:
-        #    a = 1
-        #else:
-        #    a = 0
 
         action = np.zeros(len(a_dist[0]), dtype='i')
         action[a] = 1

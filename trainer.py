@@ -265,7 +265,7 @@ class Trainer():
             #if endurance > config.max_endurance_rl:
             #    break
 
-    def test(self, load_ctrl, ckpt_num=None):
+    def test(self, load_ctrl=None, ckpt_num=None):
         config = self.config
         model_ctrl = self.model_ctrl
         model_stud = self.model_stud
@@ -363,9 +363,9 @@ if __name__ == '__main__':
         # ----Training----
         #   --Start from pretrained--
         #trainer.train(load_ctrl=load_ctrl)
-        trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
+        #trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
         #   --Start from strach--
-        #trainer.train(save_ctrl=True)
+        trainer.train(save_ctrl=True)
         #trainer.train(save_ctrl=False)
     elif argv[2] == 'test':
         ## ----Testing----
@@ -373,6 +373,7 @@ if __name__ == '__main__':
         test_accs = []
         for i in range(6):
             #test_accs.append(trainer.test(trainer.model_ctrl.task_dir))
+            load_ctrl = '/media/haowen/autoLoss/saved_models_rebuttal/test_ctrl'
             test_accs.append(trainer.test(load_ctrl))
         logger.info(test_accs)
         print(np.mean(test_accs))

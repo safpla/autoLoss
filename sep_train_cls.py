@@ -50,7 +50,7 @@ if __name__ == '__main__':
     config_path = os.path.join(root_path, 'config/classification.cfg')
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
-        lambda_set1 = 0.002 + (np.array(range(50))+1) * 0.002
+        lambda_set1 = np.array(range(20)) * 0.002 + 0.030
         #lambda_set1 = [0.034]
         num1 = len(lambda_set1)
         mean_mat = np.zeros([num1])
@@ -59,7 +59,7 @@ if __name__ == '__main__':
         for i in range(num1):
             config.lambda1_stud = lambda_set1[i]
             acc = []
-            for k in range(1):
+            for k in range(5):
                 acc.append(train(config))
             mean_mat[i] = np.mean(np.array(acc))
             var_mat[i] = np.var(np.array(acc))

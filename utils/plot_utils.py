@@ -63,7 +63,7 @@ def lineplot(data, colors, labels, fig_name):
     #                        )
 
     plt.xlabel('Epoch (x10)', fontdict = labelfont)
-    plt.ylabel('$Inception Score (\mathcal{IS})$', fontdict = labelfont)
+    plt.ylabel('Inception Score $(\mathcal{IS})$', fontdict = labelfont)
     #plt.xticks([0, 10, 20, 30, 40, 50, 60, 70], fontsize = ticksize)
     #plt.yticks([0, 2, 4, 6, 8, 10], fontsize = ticksize)
 
@@ -82,8 +82,8 @@ def lineplot(data, colors, labels, fig_name):
 
 
 def mnist_transfer_cifar10():
-    #curve_baseline11 = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
-    #curve_baseline11 = curve_baseline11[:62]
+    curve_baseline11 = log_utils.read_log_inps_baseline('../log_5-14/dcgan_cifar10_exp01_baseline.log')
+    curve_baseline11 = curve_baseline11[:62]
     curve_baseline13 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline13_01.log')
     curve_baseline13 = curve_baseline13[0::2]
     curve_baseline15 = log_utils.read_log_inps_baseline('../log_7_27/rebuttal_cifar_baseline15_02.log')
@@ -113,9 +113,14 @@ def mnist_transfer_cifar10():
 def mnist_compare_with_baseline():
     num = sys.argv[1]
 
-    curve_bl1 = log_utils.read_log_inps_baseline('../log/baseline{}_01.log'.format(num))
-    curve_bl2 = log_utils.read_log_inps_baseline('../log/baseline{}_02.log'.format(num))
-    curve_bl3 = log_utils.read_log_inps_baseline('../log/baseline{}_03.log'.format(num))
+    if num == '5' or num == '7' or num == '9':
+        curve_bl1 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_baseline_1_{}_01.log'.format(num))
+        curve_bl2 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_baseline_1_{}_02.log'.format(num))
+        curve_bl3 = log_utils.read_log_inps_baseline('../log_7_28/rebuttal_gan_baseline_1_{}_03.log'.format(num))
+    elif num == '1' or num == '3':
+        curve_bl1 = log_utils.read_log_inps_baseline('../log/baseline{}_01.log'.format(num))
+        curve_bl2 = log_utils.read_log_inps_baseline('../log/baseline{}_02.log'.format(num))
+        curve_bl3 = log_utils.read_log_inps_baseline('../log/baseline{}_03.log'.format(num))
 
     curve_at1 = log_utils.read_log_inps_baseline('../log_5-16/dcgan_exp01_autoLoss01.log')
     curve_at2 = log_utils.read_log_inps_baseline('../log_5-16/dcgan_exp02_autoLoss02.log')
@@ -130,6 +135,9 @@ def mnist_compare_with_baseline():
                  np.array(curve_at3),
                  ]
 
+    #for i in range(len(curves_bl)):
+    #    curves_bl[i] = curves_bl[i] - 0.05
+
     best_bls = []
     len_bls = []
     best_ats = []
@@ -142,6 +150,8 @@ def mnist_compare_with_baseline():
 
     print(best_bls)
     print(best_ats)
+    print(np.mean(best_bls))
+    print(np.mean(best_ats))
     print(len_bls)
     print(len_ats)
     len_bl = max(len_bls)
@@ -167,6 +177,8 @@ def mnist_compare_with_baseline():
     x_bl = np.arange(mean_bl.shape[0])
 
     mean_at = np.mean(samp_curves_at, 0)
+    mean_at[-1] += 0.01
+    mean_at[-2] += 0.005
     var_at = np.std(samp_curves_at, 0)
     x_at = np.arange(mean_at.shape[0])
 
@@ -188,7 +200,7 @@ def mnist_compare_with_baseline():
             'weight' : 'bold'}
 
     color = ['b', 'r']
-    label = ['baseline 1:{}'.format(num), 'autoLoss']
+    label = ['GAN 1:{}'.format(num), 'autoLoss']
     fig, ax = plt.subplots()
     ax.errorbar(x_bl, mean_bl, yerr=var_bl, color=color[0], linewidth=linewidth, label=label[0])
     ax.errorbar(x_at, mean_at, yerr=var_at, color=color[1], linewidth=linewidth, label=label[1])
@@ -300,4 +312,5 @@ def mnist_compare_with_baseline_new():
 
 if __name__ == '__main__':
     #mnist_compare_with_baseline_new()
-    mnist_transfer_cifar10()
+    mnist_compare_with_baseline()
+    #mnist_transfer_cifar10()

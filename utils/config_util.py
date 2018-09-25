@@ -118,7 +118,10 @@ class Parser(object):
 
     @property
     def save_images_dir(self):
-        return os.path.expanduser(self.config.get('env', 'save_images_dir'))
+        if socket.gethostname() == 'Luna-Desktop':
+            return os.path.expanduser(self.config.get('env', 'save_images_dir1'))
+        else:
+            return os.path.expanduser(self.config.get('env', 'save_images_dir'))
 
     @property
     def student_model_name(self):
