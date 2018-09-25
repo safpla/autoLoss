@@ -296,6 +296,10 @@ class Parser(object):
         return self.config.getfloat('gan', 'inps_threshold')
 
     @property
+    def conv_target_stud(self):
+        return self.config.getfloat('stud', 'conv_target_stud')
+
+    @property
     def inps_batches(self):
         return self.config.getint('gan', 'inps_batches')
 

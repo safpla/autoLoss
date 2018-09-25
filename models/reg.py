@@ -243,7 +243,14 @@ class Reg(Basic_model):
                 self.best_step = self.step_number[0]
                 self.best_loss = loss
                 self.endurance = 0
-            if self.endurance > self.config.max_endurance_stud:
+
+        if step > self.config.max_training_step:
+            return True
+        if self.config.stop_strategy_stud == 'exceeding_endurance' and \
+                self.endurance > self.config.max_endurance_stud:
+            return True
+        elif self.config.stop_strategy_stud == 'prescribed_conv_target':
+            if self.best_loss < self.config.conv_target_stud:
                 return True
         return False
 
@@ -310,7 +317,7 @@ class Reg(Basic_model):
                  + _normalize1([abs(ib)])
                  + _normalize2(self.previous_mse_loss[-1:])
                  + _normalize3(self.previous_l1_loss[-1:])
-                 #+ [self.mag_mse_grad - self.mag_l1_grad]
+                 + [self.mag_mse_grad - self.mag_l1_grad]
                  )
         return np.array(state, dtype='f')
 

@@ -44,6 +44,16 @@ def read_log_inps_baseline(log_file):
                 curve.append(float(string))
     return curve
 
+def read_log_loss(log_file):
+    with open(log_file, 'r') as f:
+        curve = []
+        for line in f.readlines():
+            if 'INFO::loss:' in line:
+                string = line.split(':')[-1].strip()
+                curve.append(float(string))
+    return curve
+
+
 if __name__ == '__main__':
     read_log_inps_baseline('log_5-14/dcgan_cifar10_exp01_baseline.log')
 

@@ -20,19 +20,30 @@ def train(config):
     best_loss = 1e10
     endurance = 0
     i = 0
-    while i < max_training_step and endurance < config.max_endurance_stud:
+    terminate = False
+
+    while not terminate:
         train_loss = model.train()
-        if i % 10 == 0:
+        if i % config.valid_frequency_stud == 0:
             endurance += 1
             valid_loss, _, _ = model.valid()
             if valid_loss < best_loss:
                 best_loss = valid_loss
-                with model.graph.as_default():
-                    best_tvars = tf.trainable_variables()
                 endurance = 0
-        i += 1
+            logger.info('loss: {}'.format(valid_loss))
+            if i > config.max_training_step:
+                terminate = True
+            if config.stop_strategy_stud == 'exceeding_endurance':
+                if endurance > config.max_endurance_stud:
+                    terminate = True
+            elif config.stop_strategy_stud == 'prescribed_conv_target':
+                if best_loss < config.conv_target_stud:
+                    terminate = True
+        i += 2
+
     logger.info('lambda1: {}'.format(config.lambda1_stud))
     logger.info('best_loss: {}'.format(best_loss))
+    logger.info('training cost: {}'.format(i))
     return best_loss
 
 
@@ -44,7 +55,8 @@ if __name__ == '__main__':
     config = utils.Parser(config_path)
     if sys.argv[1] == '1':
         #lambda_set1 = [0.05, 0.1, 0.2, 0.4, 0.8, 1.6, 3.2]
-        lambda_set1 = 0.3 + (np.array(range(21))) * 0.01
+        #lambda_set1 = 0.3 + (np.array(range(21))) * 0.01
+        lambda_set1 = [0.4]
         num1 = len(lambda_set1)
         aver_mat = np.zeros([num1])
         var_mat = np.zeros([num1])

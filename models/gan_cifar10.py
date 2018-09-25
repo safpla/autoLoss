@@ -17,10 +17,15 @@ from models.gan import Gan
 logger = utils.get_logger()
 
 class Gan_cifar10(Gan):
-    def __init__(self, config, exp_name='new_exp_gan_cifar10'):
+    def __init__(self, config, exp_name='new_exp_gan_cifar10', arch=None):
         self.config = config
         self.graph = tf.Graph()
         self.exp_name = exp_name
+        self.arch = arch
+        if arch:
+            logger.info('architecture:')
+            for key in sorted(arch.keys()):
+                logger.info('{}: {}'.format(key, arch[key]))
         gpu_options = tf.GPUOptions(allow_growth=True)
         configProto = tf.ConfigProto(gpu_options=gpu_options)
         self.sess = tf.InteractiveSession(config=configProto,
@@ -145,26 +150,44 @@ class Gan_cifar10(Gan):
             self.grads = gen_grad + disc_grad
 
     def generator(self, input):
-        dim_z = self.config.dim_z
-        dim_c = self.config.dim_c
+        if self.arch:
+            arch = self.arch
+            dim_z = arch['dim_z']
+            dim_c = arch['dim_c_G']
+            if arch['activation_G'] == 'relu':
+                activation_fn = tf.nn.relu
+            elif arch['activation_G'] == 'leakyRelu':
+                activation_fn = tf.nn.leaky_relu
+            else:
+                activation_fn = tf.nn.tanh
+            batchnorm = arch['batchnorm_G']
+        else:
+            dim_z = self.config.dim_z
+            dim_c = self.config.dim_c
+            activation_fn = tf.nn.relu
+            batchnorm = True
+
         with tf.variable_scope('Generator'):
             output = layers.linear(input, 4*4*4*dim_c, name='LN1')
-            output = layers.batchnorm(output, is_training=self.is_training,
-                                      name='BN1')
-            output = tf.nn.relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN1')
+            output = activation_fn(output)
             output = tf.reshape(output, [-1, 4, 4, 4*dim_c])
 
             output_shape = [-1, 8, 8, 2*dim_c]
             output = layers.deconv2d(output, output_shape, name='Deconv2')
-            output = layers.batchnorm(output, is_training=self.is_training,
-                                      name='BN2')
-            output = tf.nn.relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN2')
+            output = activation_fn(output)
 
             output_shape = [-1, 16, 16, dim_c]
             output = layers.deconv2d(output, output_shape, name='Decovn3')
-            output = layers.batchnorm(output, is_training=self.is_training,
-                                      name='BN3')
-            output = tf.nn.relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN3')
+            output = activation_fn(output)
 
             output_shape = [-1, 32, 32, 3]
             output = layers.deconv2d(output, output_shape, name='Deconv4')
@@ -173,7 +196,21 @@ class Gan_cifar10(Gan):
             return tf.reshape(output, [-1, 32*32*3])
 
     def discriminator(self, inputs, reuse=False):
-        dim_c = self.config.dim_c
+        if self.arch:
+            arch = self.arch
+            dim_c = arch['dim_c_D']
+            if arch['activation_D'] == 'relu':
+                activation_fn = tf.nn.relu
+            elif arch['activation_D'] == 'leakyRelu':
+                activation_fn = tf.nn.leaky_relu
+            else:
+                activation_fn = tf.nn.tanh
+            batchnorm = arch['batchnorm_D']
+        else:
+            dim_c = self.config.dim_c
+            activation_fn = tf.nn.leaky_relu
+            batchnorm = True
+
         with tf.variable_scope('Discriminator') as scope:
             if reuse:
                 scope.reuse_variables()
@@ -181,17 +218,19 @@ class Gan_cifar10(Gan):
             output = tf.reshape(inputs, [-1, 32, 32, 3])
 
             output = layers.conv2d(output, dim_c, name='Conv1')
-            output = tf.nn.leaky_relu(output)
+            output = activation_fn(output)
 
             output = layers.conv2d(output, 2*dim_c, name='Conv2')
-            output = layers.batchnorm(output, is_training=self.is_training,
-                                      name='BN2')
-            output = tf.nn.leaky_relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN2')
+            output = activation_fn(output)
 
             output = layers.conv2d(output, 4*dim_c, name='Conv3')
-            output = layers.batchnorm(output, is_training=self.is_training,
-                                      name='BN3')
-            output = tf.nn.leaky_relu(output)
+            if batchnorm:
+                output = layers.batchnorm(output, is_training=self.is_training,
+                                        name='BN3')
+            output = activation_fn(output)
 
             output = tf.reshape(output, [-1, 4*4*4*dim_c])
             output = layers.linear(output, 1, name='LN4')
@@ -202,11 +241,11 @@ class Gan_cifar10(Gan):
         if self.step_number == 0:
             state = [0] * self.config.dim_state_rl
         else:
-            state = [self.step_number / self.config.max_training_step,
+            state = [
                      math.log(self.mag_disc_grad / self.mag_gen_grad),
-                     self.ema_gen_cost,
+                     self.ema_gen_cost - 1,
                      (self.ema_disc_cost_real + self.ema_disc_cost_fake) / 2,
-                     self.inception_score / 10 * 7 / 9,
+                     self.inception_score - 6,
                      ]
         return np.array(state, dtype='f')
 
@@ -239,9 +278,3 @@ class Gan_cifar10(Gan):
         save_path = os.path.join(task_dir, 'images_{}.jpg'.format(step))
         save_images.save_images(samples.reshape((-1, 32, 32, 3)), save_path)
 
-
-if __name__ == '__main__':
-    root_path = os.path.dirname(os.path.realpath(__file__))
-    config_path = os.path.join(root_path, 'config/' + 'gan.cfg')
-    config = utils.Parser(config_path)
-    gan = Gan(config)
