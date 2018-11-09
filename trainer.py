@@ -16,7 +16,7 @@ from models import reg
 from models import cls
 from models import gan
 #from models import gan_grid
-from models import gan_cifar10
+#from models import gan_cifar10
 import utils
 from utils.analyse_utils import loss_analyzer_toy
 from utils.analyse_utils import loss_analyzer_gan
@@ -346,8 +346,8 @@ if __name__ == '__main__':
     argv = sys.argv
     # ----Parsing config file.----
     logger.info(socket.gethostname())
-    #config_file = 'gan.cfg'
-    config_file = 'regression.cfg'
+    config_file = 'gan.cfg'
+    #config_file = 'regression.cfg'
     #config_file = 'gan_cifar10.cfg'
     #config_file = 'classification.cfg'
     config_path = os.path.join(root_path, 'config/' + config_file)
@@ -371,8 +371,10 @@ if __name__ == '__main__':
         #   --Start from pretrained--
         #trainer.train(load_ctrl=load_ctrl)
         #trainer.train(load_ctrl=load_ctrl, save_ctrl=True)
+        trainer.train(load_ctrl=load_ctrl, save_ctrl=False)
+
         #   --Start from strach--
-        trainer.train(save_ctrl=True)
+        #trainer.train(save_ctrl=True)
         #trainer.train(save_ctrl=False)
     elif argv[2] == 'test':
         ## ----Testing----
